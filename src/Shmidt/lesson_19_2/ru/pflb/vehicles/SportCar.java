@@ -14,7 +14,6 @@ public class SportCar extends Car {
     public String toString(){
         String parentText = super.toString();
         String text = String.format("\tМаксимальная скорость: %s",maxVelocity);
-        System.out.println(text);
         return parentText +"\n"+ text;
     }
 

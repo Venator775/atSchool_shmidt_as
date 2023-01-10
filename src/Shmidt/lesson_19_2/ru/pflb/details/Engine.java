@@ -9,7 +9,6 @@ public class Engine {
     @Override
     public String toString(){
         String text = String.format("%s - %sВт", vendor,power);
-        System.out.println(text);
         return text;
     }
 

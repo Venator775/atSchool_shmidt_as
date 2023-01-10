@@ -7,7 +7,6 @@ public class Person {
     @Override
     public String toString() {
         String text = String.format("Человек: %s, возраст (полных лет): %s", name, age);
-        System.out.println(text);
         return text;
     }
 

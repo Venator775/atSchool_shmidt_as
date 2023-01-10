@@ -15,7 +15,6 @@ public class Driver extends Person {
                         "\t - № удостоверения: %s",
                 this.drivingExperience,
                 this.licenseId);
-        System.out.println(text);
         return parentText +"\n"+ text;
     }
 

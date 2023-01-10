@@ -11,7 +11,6 @@ public class Lorry extends Car {
     public String toString() {
         String parentText = super.toString();
         String text = String.format("\tГрузоподъемность: %s", loadingAmount);
-        System.out.println(text);
         return parentText +"\n"+ text;
     }
 

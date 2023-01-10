@@ -34,7 +34,6 @@ public class Car {
                         "\tдвигатель: %s\n" +
                         "\tВодитель: %s",
                 model, vehicleClass, weight, engine.toString(), driver.toString());
-        System.out.println(text);
         return text;
     }
 

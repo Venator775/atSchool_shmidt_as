@@ -9,13 +9,13 @@ import Shmidt.lesson_19_2.ru.pflb.vehicles.VehicleClass;
 
 public class Main {
     public static void main(String[] args) {
-        Engine zmz3302 = new Engine(120,"ЗМЗ");
-        Engine twoJZ = new Engine(220,"Toyota");
-        Engine valve16 = new Engine(100,"LADA");
-        Engine ecoBoost = new Engine(150,"Ford");
+        Engine zmz3302 = new Engine(120, "ЗМЗ");
+        Engine twoJZ = new Engine(220, "Toyota");
+        Engine valve16 = new Engine(100, "LADA");
+        Engine ecoBoost = new Engine(150, "Ford");
 
         Person jamshut = new Person();
-        jamshut.Person(42,"Джамшут");
+        jamshut.Person(42, "Джамшут");
         Person serega = new Person();
         serega.Person(32, "Серёга");
         Person johny = new Person();
@@ -36,25 +36,33 @@ public class Main {
         dvoika.Car("Двоечка на шестнаре", 915, VehicleClass.SMALL, johny_d, valve16);
 
 
-        Lorry gazel_l = new Lorry(gazel,1100);
-        Lorry transit_l = new Lorry(transit,700);
-        SportCar mark2_sc = new SportCar(mark2,220);
+        Lorry gazel_l = new Lorry(gazel, 1100);
+        Lorry transit_l = new Lorry(transit, 700);
+        SportCar mark2_sc = new SportCar(mark2, 220);
 
 
-//        System.out.println("\nПринт двигателя");
-//        twoJZ.toString();
+        System.out.println("\nПринт двигателя");
+        System.out.println(twoJZ);
 
-//        System.out.println("\nПринт человека");
-//        jamshut.toString();
+        System.out.println("\nПринт человека");
+        System.out.println(jamshut);
 
-//        System.out.println("\nПринт водителя");
-//        serega_d.toString();
+        System.out.println("\nПринт водителя");
+        System.out.println(serega_d);
 
-//        System.out.println("\nПринт обычной машины");
-//        dvoika.toString();
+        System.out.println("\nПринт обычной машины");
+        System.out.println(dvoika);
 
         System.out.println("\nПринт спорткара");
-        mark2_sc.toString();
+        System.out.println(mark2_sc);
+
+
+
+        System.out.println("\nПринт Финальный");
+        System.out.println(gazel_l + "\n\n" +
+                transit_l + "\n\n" +
+                mark2_sc);
+
 
     }
 }
