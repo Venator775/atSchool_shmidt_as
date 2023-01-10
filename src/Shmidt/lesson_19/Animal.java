@@ -39,8 +39,11 @@ public abstract class Animal {
     /**
      * выводит текст, что животное спит
      */
-    void sleep() {
+/*    void sleep() {
         System.out.println("Животное спит");
+    }*/
+    void sleep() {
+        System.out.println(String.format("%s спит",this.name));
     }
 
     /**

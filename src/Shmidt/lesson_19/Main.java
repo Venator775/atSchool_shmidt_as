@@ -44,6 +44,9 @@ public class Main {
         cat1.toString();
         cat3.toString();
 
+        cat3.sleep();
+        dog2.sleep();
+        horse1.sleep();
     }
 }
 /*
