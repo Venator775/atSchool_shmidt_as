@@ -1,9 +1,4 @@
-package Shmidt.lesson_19;
-
-import jdk.jfr.Description;
-import jdk.jfr.Label;
-
-import java.lang.annotation.Target;
+package Shmidt.lesson_19_1;
 
 public abstract class Animal {
     //Кличка

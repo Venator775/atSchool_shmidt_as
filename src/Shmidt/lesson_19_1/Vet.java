@@ -1,4 +1,4 @@
-package Shmidt.lesson_19;
+package Shmidt.lesson_19_1;
 
 public class Vet {
     //Имя ветеринара
