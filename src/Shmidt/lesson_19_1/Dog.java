@@ -38,12 +38,6 @@ public class Dog extends Animal {
 
     @Override
     public String toString() {
-        System.out.println("Животное - собака\n" +
-                "\tКличка:" + name + "\n" +
-                "\tСтрана обитания:" + location + "\n" +
-                "\tСостояние здоровья:" + health + "\n" +
-                "\tСколько особей:" + counter + "\n"
-        );
         /*
         Формат вывода:
         <Кличка>
@@ -51,6 +45,10 @@ public class Dog extends Animal {
         Состояние здоровья: ...
         Сколько особей: ...
         */
-        return null;
+        return "Животное - собака\n" +
+                "\tКличка:" + name + "\n" +
+                "\tСтрана обитания:" + location + "\n" +
+                "\tСостояние здоровья:" + health + "\n" +
+                "\tСколько особей:" + counter;
     }
 }

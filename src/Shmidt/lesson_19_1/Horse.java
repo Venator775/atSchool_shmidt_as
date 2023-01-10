@@ -27,12 +27,6 @@ public class Horse  extends Animal{
 
     @Override
     public String toString() {
-        System.out.println("Животное - лошадь\n" +
-                "\tКличка:" + name + "\n" +
-                "\tСтрана обитания:" + location + "\n" +
-                "\tСостояние здоровья:" + health + "\n" +
-                "\tСколько особей:" + counter + "\n"
-        );
         /*
         Формат вывода:
         <Кличка>
@@ -40,6 +34,10 @@ public class Horse  extends Animal{
         Состояние здоровья: ...
         Сколько особей: ...
         */
-        return null;
+        return "Животное - лошадь\n" +
+                "\tКличка:" + name + "\n" +
+                "\tСтрана обитания:" + location + "\n" +
+                "\tСостояние здоровья:" + health + "\n" +
+                "\tСколько особей:" + counter;
     }
 }

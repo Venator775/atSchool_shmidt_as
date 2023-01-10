@@ -10,11 +10,13 @@ public class Main {
         cat1.eat();
         cat1.makeSound();
         cat1.sleep();
-        cat1.toString();
+        System.out.println("\nВывод Барсика");
+        System.out.println(cat1);
 
         Cat cat3 = new Cat("Пикси", Animal.HealthState.HEALTHY);
         Cat cat2 = new Cat("ЧЁРНАЯТЬМА", Animal.HealthState.HEALTHY);
-        cat2.toString();
+        System.out.println("\nВывод ЧЁРНОЙТЬМЫ");
+        System.out.println(cat2);
 
 
         Dog dog1 = new Dog("Бобик", Animal.HealthState.UNHEALTHY);
@@ -22,28 +24,32 @@ public class Main {
         dog1.eat(7);
         dog2.makeSound();
         dog2.sleep();
-        dog2.toString();
+        System.out.println("\nВывод Брута");
+        System.out.println(dog2);
 
 
         Horse horse1 = new Horse("Сабатон", Animal.HealthState.UNHEALTHY);
         horse1.eat();
         horse1.makeSound();
         horse1.sleep();
-        horse1.toString();
+        System.out.println("\nВывод Сабатона");
+        System.out.println(horse1);
 
 
+        System.out.println("\nПоходы к ветеринару:");
         Vet vet = new Vet("Айболит");
         vet.treatAnimal(horse1);
         vet.treatAnimal(dog1);
         vet.treatAnimal(dog2);
         vet.treatAnimal(cat1);
         vet.treatAnimal(cat3);
-        horse1.toString();
-        dog1.toString();
-        dog2.toString();
-        cat1.toString();
-        cat3.toString();
+        System.out.println(horse1);
+        System.out.println(dog1);
+        System.out.println(dog2);
+        System.out.println(cat1);
+        System.out.println(cat3);
 
+        System.out.println("\nЖивотные идут спать");
         cat3.sleep();
         dog2.sleep();
         horse1.sleep();
