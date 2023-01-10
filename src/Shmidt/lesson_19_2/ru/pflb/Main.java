@@ -33,7 +33,7 @@ public class Main {
         Car mark2 = new Car();
         mark2.Car("Хороший марк 90", 1415, VehicleClass.LUXURY, serega_d, twoJZ);
         Car dvoika = new Car();
-        dvoika.Car("Двоечка на шестнаре", 915, VehicleClass.SMALL, johny_d, valve16);
+        dvoika.Car("Двоечка на шеснаре", 915, VehicleClass.SMALL, johny_d, valve16);
 
 
         Lorry gazel_l = new Lorry(gazel, 1100);
@@ -61,7 +61,8 @@ public class Main {
         System.out.println("\nПринт Финальный");
         System.out.println(gazel_l + "\n\n" +
                 transit_l + "\n\n" +
-                mark2_sc);
+                mark2_sc + "\n\n" +
+                dvoika);
 
 
     }
