@@ -7,33 +7,28 @@ import Shmidt.lesson_19_2.ru.pflb.vehicles.Car;
 public class Lorry extends Car {
     int loadingAmount;//грузоподъемность в киллограммах
 
-    public void setVehicleClass(VehicleClass vehicleClass) {
-        if (vehicleClass == VehicleClass.MEDIUM || vehicleClass == VehicleClass.LARGE)
-            this.vehicleClass = vehicleClass;
-        else System.out.println("Значение vehicleClass устанавливается как MEDIUM или LARGE.");
-    }
-
     @Override
     public String toString() {
-        return super.toString() + String.format("\n\tГрузоподъемность: %s", loadingAmount);
+        String parentText = super.toString();
+        String text = String.format("\tГрузоподъемность: %s", loadingAmount);
+        System.out.println(text);
+        return parentText +"\n"+ text;
     }
 
-    public void Lorry(String model,
-                      VehicleClass vehicleClass,
-                      int weight,
-                      Driver driver,
-                      Engine engine) {
-        if (vehicleClass == VehicleClass.MEDIUM || vehicleClass == VehicleClass.LARGE)
-            this.vehicleClass = vehicleClass;
+
+    public Lorry(Car car, int loadingAmount) {
+        if (car.vehicleClass == VehicleClass.MEDIUM || car.vehicleClass == VehicleClass.LARGE)
+            this.vehicleClass = car.vehicleClass;
         else {
-            System.out.println("Значение vehicleClass устанавливается как MEDIUM или LARGE. По умолчанию установится MEDIUM");
+            System.err.println(String.format("Значение vehicleClass для \'%s\' при инициализации устанавливается как MEDIUM или LARGE. Если указано иное, то установится MEDIUM",car.model));
             this.vehicleClass = VehicleClass.MEDIUM;
         }
 
-        this.model = model;//название модели автомобиля
-        this.weight = weight;//вес автомобиля в килограммах
-        this.driver = driver;//водитель, за которым закреплен автомобиль
-        this.engine = engine;//тип мотора типа Engine
+        this.model = car.model;
+        this.weight = car.weight;
+        this.driver = car.driver;
+        this.engine = car.engine;
+        this.loadingAmount = loadingAmount;
     }
 
 }

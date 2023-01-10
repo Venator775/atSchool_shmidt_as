@@ -3,17 +3,29 @@ package Shmidt.lesson_19_2.ru.pflb.professions;
 import Shmidt.lesson_19_2.ru.pflb.Person;
 
 public class Driver extends Person {
+
+
     public int drivingExperience;
     public String licenseId;
 
     @Override
     public String toString() {
-        return String.format("%s - возраст: %s\n" +
-                "\t - стаж: %s\n" +
-                "\t - № удостоверения: %s",
-                this.name, this.age,
+        String parentText = super.toString();
+        String text = String.format("\t - стаж (полных лет): %s\n" +
+                        "\t - № удостоверения: %s",
                 this.drivingExperience,
                 this.licenseId);
+        System.out.println(text);
+        return parentText +"\n"+ text;
+    }
+
+    public Driver(Person person,
+                       int drivingExperience,
+                       String licenseId) {
+        this.age = person.age;
+        this.name = person.name;
+        this.drivingExperience = drivingExperience;
+        this.licenseId = licenseId;
     }
 }
 /*

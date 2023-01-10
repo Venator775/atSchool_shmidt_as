@@ -10,27 +10,44 @@ public class Car {
     Driver driver;//водитель, за которым закреплен автомобиль
     Engine engine;//тип мотора типа Engine
 
-    public void start(){
+    public void start() {
         System.out.println("Поехали");
     }
-    public void stop(){
+
+    public void stop() {
         System.out.println("Останавливаемся");
     }
-    public void turnRight(){
+
+    public void turnRight() {
         System.out.println("Поворот направо");
     }
-    public void turnLeft(){
+
+    public void turnLeft() {
         System.out.println("Поворот налево");
     }
 
     @Override
     public String toString() {
-        return String.format("\tМодель: %s, класс: %s\n" +
-                "\tХарактеристики:\n" +
-                "\tвес: %s\n" +
-                "\tдвигатель: %s\n" +
-                "\tВодитель: %s",
-                model,vehicleClass,weight,engine.toString(),driver.toString());
+        String text = String.format("\tМодель: %s, класс: %s\n" +
+                        "\tХарактеристики:\n" +
+                        "\tвес: %s\n" +
+                        "\tдвигатель: %s\n" +
+                        "\tВодитель: %s",
+                model, vehicleClass, weight, engine.toString(), driver.toString());
+        System.out.println(text);
+        return text;
+    }
+
+    public void Car(String model,
+               int weight,
+               VehicleClass vehicleClass,
+               Driver driver,
+               Engine engine) {
+        this.vehicleClass = vehicleClass;//класc автомобиля типа vehicleClass
+        this.model = model;//название модели автомобиля
+        this.weight = weight;//вес автомобиля в килограммах
+        this.driver = driver;//водитель, за которым закреплен автомобиль
+        this.engine = engine;//тип мотора типа Engine
     }
 }
 /*

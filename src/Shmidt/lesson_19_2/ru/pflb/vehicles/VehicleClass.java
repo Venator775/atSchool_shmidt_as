@@ -9,7 +9,7 @@ public enum VehicleClass {
     LUXURY,
     SPORT_UTILITY_CARS,
     MULTI_PURPOSE,
-    SPORTS_CAR
+    SPORT_CAR
 }
 /*
 Создать enum VehicleClass в пакете ru.pflb.vehicles
