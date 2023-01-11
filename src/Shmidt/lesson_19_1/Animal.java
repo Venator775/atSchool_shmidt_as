@@ -14,11 +14,6 @@ public abstract class Animal {
     //состояние здоровья животного
     public HealthState health;
 
-    enum HealthState {
-        HEALTHY,
-        UNHEALTHY
-    }
-
     /**
      * выводит текст, как звучит животное
      */

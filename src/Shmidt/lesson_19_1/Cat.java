@@ -1,8 +1,8 @@
 package Shmidt.lesson_19_1;
 
 public class Cat extends Animal {
-    static int counter;
-    static int foodCounter;
+    static private int counter;
+    static private int foodCounter;
 
     Cat(String name, HealthState health) {
         this.name = name;
@@ -10,6 +10,22 @@ public class Cat extends Animal {
         food = "Пурина ван";
         location = "Там, где тепло, есть еда, пакеты и человеки";
         counter++;
+    }
+
+    public static int getCounter() {
+        return counter;
+    }
+
+    public static void setCounter(int counter) {
+        Cat.counter = counter;
+    }
+
+    public static int getFoodCounter() {
+        return foodCounter;
+    }
+
+    public static void setFoodCounter(int foodCounter) {
+        Cat.foodCounter = foodCounter;
     }
 
     @Override
@@ -22,8 +38,8 @@ public class Cat extends Animal {
         if (foodCounter == 0)
             System.out.println("Еды для кошек нет!");
         else {
-            System.out.println(String.format("Котик ест: %s", food));
-            System.out.println(String.format("Осталось корма: %s", --foodCounter));
+            System.out.println("Котик ест: " + food);
+            System.out.println("Осталось корма: " + --foodCounter);
         }
     }
 
@@ -31,8 +47,8 @@ public class Cat extends Animal {
         if (foodCounter == 0)
             System.out.println("Еды для кошек нет!");
         else {
-            System.out.println(String.format("Пёсик ест: %s", food));
-            System.out.println(String.format("Осталось костей: %s", foodCounter -= foodCount));
+            System.out.println("Пёсик ест: " + food);
+            System.out.println("Осталось костей: " + (foodCounter -= foodCount));
         }
     }
 

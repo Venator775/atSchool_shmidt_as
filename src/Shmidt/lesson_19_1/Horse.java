@@ -1,15 +1,33 @@
 package Shmidt.lesson_19_1;
 
-public class Horse  extends Animal{
-    static int counter;
-    static int foodCounter;
-    Horse(String name, HealthState health){
+public class Horse extends Animal {
+    static private int counter;
+    static private int foodCounter;
+
+    Horse(String name, HealthState health) {
         this.name = name;
         this.health = health;
         food = "Сено, травка, яблочки.... соль О.О";
         location = "В деревнях с человеками";
         counter++;
     }
+
+    public static int getCounter() {
+        return counter;
+    }
+
+    public static void setCounter(int counter) {
+        Horse.counter = counter;
+    }
+
+    public static int getFoodCounter() {
+        return foodCounter;
+    }
+
+    public static void setFoodCounter(int foodCounter) {
+        Horse.foodCounter = foodCounter;
+    }
+
     @Override
     void makeSound() {
         System.out.println("I-GO-GO mothefucka!");
@@ -17,12 +35,13 @@ public class Horse  extends Animal{
 
     @Override
     void eat() {
-        System.out.println(String.format("Лошадь ест: %s", food));
-        System.out.println(String.format("Осталось травы: %s", --foodCounter));
+        System.out.println("Лошадь ест: " + food);
+        System.out.println("Осталось травы: " + --foodCounter);
     }
+
     void eat(int foodCount) {
-        System.out.println(String.format("Пёсик ест: %s", food));
-        System.out.println(String.format("Осталось костей: %s", foodCounter-=foodCount));
+        System.out.println("Пёсик ест: " + food);
+        System.out.println("Осталось костей: " + (foodCounter -= foodCount));
     }
 
     @Override

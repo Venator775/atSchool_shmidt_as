@@ -1,26 +1,28 @@
 package Shmidt.lesson_19_1;
 
+import static Shmidt.lesson_19_1.HealthState.*;
+
 public class Main {
     public static void main(String[] args) {
 
-        Cat.foodCounter = 10;
-        Dog.foodCounter = 15;
-        Horse.foodCounter = 123;
-        Cat cat1 = new Cat("Барсик", Animal.HealthState.HEALTHY);
+        Cat.setFoodCounter(10);
+        Dog.setFoodCounter(12);
+        Horse.setFoodCounter(123);
+        Cat cat1 = new Cat("Барсик", HEALTHY);
         cat1.eat();
         cat1.makeSound();
         cat1.sleep();
         System.out.println("\nВывод Барсика");
         System.out.println(cat1);
 
-        Cat cat3 = new Cat("Пикси", Animal.HealthState.HEALTHY);
-        Cat cat2 = new Cat("ЧЁРНАЯТЬМА", Animal.HealthState.HEALTHY);
+        Cat cat3 = new Cat("Пикси", HEALTHY);
+        Cat cat2 = new Cat("ЧЁРНАЯТЬМА", HEALTHY);
         System.out.println("\nВывод ЧЁРНОЙТЬМЫ");
         System.out.println(cat2);
 
 
-        Dog dog1 = new Dog("Бобик", Animal.HealthState.UNHEALTHY);
-        Dog dog2 = new Dog("Брут", Animal.HealthState.HEALTHY);
+        Dog dog1 = new Dog("Бобик", UNHEALTHY);
+        Dog dog2 = new Dog("Брут", HEALTHY);
         dog1.eat(7);
         dog2.makeSound();
         dog2.sleep();
@@ -28,7 +30,7 @@ public class Main {
         System.out.println(dog2);
 
 
-        Horse horse1 = new Horse("Сабатон", Animal.HealthState.UNHEALTHY);
+        Horse horse1 = new Horse("Сабатон", UNHEALTHY);
         horse1.eat();
         horse1.makeSound();
         horse1.sleep();

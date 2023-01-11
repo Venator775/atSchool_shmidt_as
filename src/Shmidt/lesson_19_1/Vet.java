@@ -1,20 +1,30 @@
 package Shmidt.lesson_19_1;
 
+import static Shmidt.lesson_19_1.HealthState.*;
+
 public class Vet {
     //Имя ветеринара
-    public String name;
+    private String name;
     Vet(String name){
         this.name = name;
     }
 
     //Лечение животного во время приёма
     public void treatAnimal(Animal animal){
-        if (animal.health != Animal.HealthState.HEALTHY) {
-            animal.health = Animal.HealthState.HEALTHY;
-            System.out.println(String.format("%s вылечился.",animal.name));
+        if (animal.health != HEALTHY) {
+            animal.health = HEALTHY;
+            System.out.println(animal.name+" вылечился.");
         }
         else
-            System.out.println(String.format("%s здоров!",animal.name));
+            System.out.println(animal.name+" здоров!");
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
 /*
