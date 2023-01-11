@@ -4,11 +4,7 @@ import Shmidt.lesson_19_2.ru.pflb.details.Engine;
 import Shmidt.lesson_19_2.ru.pflb.professions.Driver;
 
 public class SportCar extends Car {
-    int maxVelocity;//максимальная скорость в км/ч
-
-    public void setVehicleClass(VehicleClass vehicleClass) {
-        this.vehicleClass = VehicleClass.SPORT_CAR;
-    }
+    private int maxVelocity;//максимальная скорость в км/ч
 
     @Override
     public String toString() {
@@ -17,13 +13,21 @@ public class SportCar extends Car {
     }
 
     public SportCar(Car car, int maxVelocity) {
-        super(car.model, car.weight, car.vehicleClass, car.driver, car.engine);
+        super(car.getModel(), car.getWeight(), car.getVehicleClass(), car.getDriver(), car.getEngine());
 
-        this.vehicleClass = VehicleClass.SPORT_CAR;
-        this.model = car.model;
-        this.weight = car.weight;
-        this.driver = car.driver;
-        this.engine = car.engine;
+        this.setVehicleClass(VehicleClass.SPORT_CAR);
+        this.setModel(car.getModel());
+        this.setWeight(car.getWeight());
+        this.setDriver(car.getDriver());
+        this.setEngine(car.getEngine());
+        this.maxVelocity = maxVelocity;
+    }
+
+    public int getMaxVelocity() {
+        return maxVelocity;
+    }
+
+    public void setMaxVelocity(int maxVelocity) {
         this.maxVelocity = maxVelocity;
     }
 }

@@ -4,11 +4,23 @@ import Shmidt.lesson_19_2.ru.pflb.details.Engine;
 import Shmidt.lesson_19_2.ru.pflb.professions.Driver;
 
 public class Car {
-    String model;//название модели автомобиля
-    VehicleClass vehicleClass;//класc автомобиля типа vehicleClass
-    int weight;//вес автомобиля в килограммах
-    Driver driver;//водитель, за которым закреплен автомобиль
-    Engine engine;//тип мотора типа Engine
+    private String model;//название модели автомобиля
+    private VehicleClass vehicleClass;//класc автомобиля типа vehicleClass
+    private int weight;//вес автомобиля в килограммах
+    private Driver driver;//водитель, за которым закреплен автомобиль
+    private Engine engine;//тип мотора типа Engine
+
+    public Car(String model,
+               int weight,
+               VehicleClass vehicleClass,
+               Driver driver,
+               Engine engine) {
+        this.vehicleClass = vehicleClass;//класc автомобиля типа vehicleClass
+        this.model = model;//название модели автомобиля
+        this.weight = weight;//вес автомобиля в килограммах
+        this.driver = driver;//водитель, за которым закреплен автомобиль
+        this.engine = engine;//тип мотора типа Engine
+    }
 
     public void start() {
         System.out.println("Поехали");
@@ -35,16 +47,45 @@ public class Car {
                 "\tВодитель: " + driver.toString();
     }
 
-    public Car(String model,
-               int weight,
-               VehicleClass vehicleClass,
-               Driver driver,
-               Engine engine) {
-        this.vehicleClass = vehicleClass;//класc автомобиля типа vehicleClass
-        this.model = model;//название модели автомобиля
-        this.weight = weight;//вес автомобиля в килограммах
-        this.driver = driver;//водитель, за которым закреплен автомобиль
-        this.engine = engine;//тип мотора типа Engine
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public VehicleClass getVehicleClass() {
+        return vehicleClass;
+    }
+
+    public void setVehicleClass(VehicleClass vehicleClass) {
+        this.vehicleClass = vehicleClass;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    public Driver getDriver() {
+        return driver;
+    }
+
+    public void setDriver(Driver driver) {
+        this.driver = driver;
+    }
+
+    public Engine getEngine() {
+        return engine;
+    }
+
+    public void setEngine(Engine engine) {
+        this.engine = engine;
     }
 }
 /*
