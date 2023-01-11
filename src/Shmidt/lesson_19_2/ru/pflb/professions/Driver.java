@@ -13,6 +13,7 @@ public class Driver extends Person {
         this.drivingExperience = drivingExperience;
         this.licenseId = licenseId;
     }
+
     @Override
     public String toString() {
         return super.toString() + "\n" + "\t - стаж (полных лет): " + this.drivingExperience + "\n"

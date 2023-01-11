@@ -10,11 +10,7 @@ public class Car {
     private Driver driver;//водитель, за которым закреплен автомобиль
     private Engine engine;//тип мотора типа Engine
 
-    public Car(String model,
-               int weight,
-               VehicleClass vehicleClass,
-               Driver driver,
-               Engine engine) {
+    public Car(String model, int weight, VehicleClass vehicleClass, Driver driver, Engine engine) {
         this.vehicleClass = vehicleClass;//класc автомобиля типа vehicleClass
         this.model = model;//название модели автомобиля
         this.weight = weight;//вес автомобиля в килограммах
@@ -40,7 +36,7 @@ public class Car {
 
     @Override
     public String toString() {
-        return "\tМодель: " + model + ", класс: " + "vehicleClass\n" +
+        return "\tМодель: " + model + ", класс: " + vehicleClass + "\n" +
                 "\tХарактеристики:\n" +
                 "\tвес: " + weight + "\n" +
                 "\tдвигатель:" + engine.toString() + "\n" +

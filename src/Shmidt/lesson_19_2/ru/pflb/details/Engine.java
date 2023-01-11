@@ -6,15 +6,14 @@ public class Engine {
     //название производителя
     public String vendor;
 
-    @Override
-    public String toString(){
-        return vendor +" - "+ power;
-    }
-
-
-    public Engine(int power,String vendor){
+    public Engine(int power, String vendor) {
         this.power = power;
         this.vendor = vendor;
+    }
+
+    @Override
+    public String toString() {
+        return vendor + " - " + power;
     }
 }
 /*

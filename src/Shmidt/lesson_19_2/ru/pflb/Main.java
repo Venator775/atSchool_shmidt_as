@@ -7,13 +7,14 @@ import Shmidt.lesson_19_2.ru.pflb.vehicles.Lorry;
 import Shmidt.lesson_19_2.ru.pflb.vehicles.SportCar;
 import Shmidt.lesson_19_2.ru.pflb.vehicles.VehicleClass;
 
+
 public class Main {
     public static void main(String[] args) {
 
         Engine zmz3302 = new Engine(120, "ЗМЗ");
         Engine twoJZ = new Engine(220, "Toyota");
         Engine valve16 = new Engine(100, "LADA");
-        Engine ecoBoost = new Engine(150, "Ford");
+        Engine g4fc = new Engine(123, "Hyundai");
 
         Person jamshut = new Person(42, "Джамшут");
         Person serega = new Person(32, "Серёга");
@@ -24,12 +25,12 @@ public class Main {
         Driver johny_d = new Driver(johny, 3, "9658b666-ce92-4051-af5c-95e63c715e14");
 
         Car gazel = new Car("Джамшут-мобиль Газель", 1900, VehicleClass.LARGE, jamshut_d, zmz3302);
-        Car transit = new Car("Джамшут-мобиль Транзит", 2200, VehicleClass.LUXURY, jamshut_d, ecoBoost);
+        Car solaris = new Car("Джамшут-мобиль Солярис", 2200, VehicleClass.MINI, jamshut_d, g4fc);
         Car mark2 = new Car("Хороший марк 90", 1415, VehicleClass.LUXURY, serega_d, twoJZ);
         Car dvoika = new Car("Двоечка на шеснаре", 915, VehicleClass.SMALL, johny_d, valve16);
 
         Lorry gazel_l = new Lorry(gazel, 1100);
-        Lorry transit_l = new Lorry(transit, 700);
+        Lorry solaris_m = new Lorry(solaris, 700);
         SportCar mark2_sc = new SportCar(mark2, 220);
 
 
@@ -51,7 +52,7 @@ public class Main {
 
         System.out.println("\nПринт Финальный");
         System.out.println(gazel_l + "\n\n" +
-                transit_l + "\n\n" +
+                solaris_m + "\n\n" +
                 mark2_sc + "\n\n" +
                 dvoika);
     }
