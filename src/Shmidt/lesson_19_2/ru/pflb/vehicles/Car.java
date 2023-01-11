@@ -28,16 +28,14 @@ public class Car {
 
     @Override
     public String toString() {
-        String text = String.format("\tМодель: %s, класс: %s\n" +
-                        "\tХарактеристики:\n" +
-                        "\tвес: %s\n" +
-                        "\tдвигатель: %s\n" +
-                        "\tВодитель: %s",
-                model, vehicleClass, weight, engine.toString(), driver.toString());
-        return text;
+        return "\tМодель: " + model + ", класс: " + "vehicleClass\n" +
+                "\tХарактеристики:\n" +
+                "\tвес: " + weight + "\n" +
+                "\tдвигатель:" + engine.toString() + "\n" +
+                "\tВодитель: " + driver.toString();
     }
 
-    public void Car(String model,
+    public Car(String model,
                int weight,
                VehicleClass vehicleClass,
                Driver driver,

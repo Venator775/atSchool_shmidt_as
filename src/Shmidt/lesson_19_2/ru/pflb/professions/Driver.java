@@ -10,19 +10,14 @@ public class Driver extends Person {
 
     @Override
     public String toString() {
-        String parentText = super.toString();
-        String text = String.format("\t - стаж (полных лет): %s\n" +
-                        "\t - № удостоверения: %s",
-                this.drivingExperience,
-                this.licenseId);
-        return parentText +"\n"+ text;
+        return super.toString() + "\n" + "\t - стаж (полных лет): " + this.drivingExperience + "\n"
+                + "\t - № удостоверения: " + this.licenseId;
     }
 
     public Driver(Person person,
-                       int drivingExperience,
-                       String licenseId) {
-        this.age = person.age;
-        this.name = person.name;
+                  int drivingExperience,
+                  String licenseId) {
+        super(person.age, person.name);
         this.drivingExperience = drivingExperience;
         this.licenseId = licenseId;
     }

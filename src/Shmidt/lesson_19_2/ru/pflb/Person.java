@@ -6,11 +6,10 @@ public class Person {
 
     @Override
     public String toString() {
-        String text = String.format("Человек: %s, возраст (полных лет): %s", name, age);
-        return text;
+        return "Человек: " + name + ", возраст (полных лет): " + age;
     }
 
-    public void Person(int age, String name) {
+    public Person(int age, String name) {
         this.age = age;
         this.name = name;
     }

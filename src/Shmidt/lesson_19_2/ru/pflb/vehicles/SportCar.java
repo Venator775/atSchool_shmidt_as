@@ -11,13 +11,13 @@ public class SportCar extends Car {
     }
 
     @Override
-    public String toString(){
-        String parentText = super.toString();
-        String text = String.format("\tМаксимальная скорость: %s",maxVelocity);
-        return parentText +"\n"+ text;
+    public String toString() {
+        return super.toString() + "\n"
+                + "\tМаксимальная скорость: " + maxVelocity;
     }
 
-    public SportCar(Car car, int maxVelocity){
+    public SportCar(Car car, int maxVelocity) {
+        super(car.model, car.weight, car.vehicleClass, car.driver, car.engine);
 
         this.vehicleClass = VehicleClass.SPORT_CAR;
         this.model = car.model;

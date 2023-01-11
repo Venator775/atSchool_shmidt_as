@@ -9,17 +9,17 @@ public class Lorry extends Car {
 
     @Override
     public String toString() {
-        String parentText = super.toString();
-        String text = String.format("\tГрузоподъемность: %s", loadingAmount);
-        return parentText +"\n"+ text;
+        return super.toString() + "\n"
+                + "\tГрузоподъемность: " + loadingAmount;
     }
 
 
     public Lorry(Car car, int loadingAmount) {
+        super(car.model, car.weight, car.vehicleClass, car.driver, car.engine);
         if (car.vehicleClass == VehicleClass.MEDIUM || car.vehicleClass == VehicleClass.LARGE)
             this.vehicleClass = car.vehicleClass;
         else {
-            System.err.println(String.format("Значение vehicleClass для \'%s\' при инициализации устанавливается как MEDIUM или LARGE. Если указано иное, то установится MEDIUM",car.model));
+            System.err.println("Значение vehicleClass для \'" + car.model + "\' при инициализации устанавливается как MEDIUM или LARGE. Если указано иное, то установится MEDIUM");
             this.vehicleClass = VehicleClass.MEDIUM;
         }
 

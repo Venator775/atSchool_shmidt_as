@@ -8,8 +8,7 @@ public class Engine {
 
     @Override
     public String toString(){
-        String text = String.format("%s - %sВт", vendor,power);
-        return text;
+        return vendor +" - "+ power;
     }
 
 
