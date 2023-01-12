@@ -1,9 +1,4 @@
-package Shmidt.lesson_19;
-
-import jdk.jfr.Description;
-import jdk.jfr.Label;
-
-import java.lang.annotation.Target;
+package Shmidt.lesson_19_1;
 
 public abstract class Animal {
     //Кличка
@@ -11,18 +6,13 @@ public abstract class Animal {
     //Название типа пищи
     public String food;
     //Кол-во запасов пищи
-    public int foodCounter;
+//    public int foodCounter;
     //название страны обитания
     public String location;
     //все животные имеют внутреннюю связь с сородичами, в переменной содержится общее кол-во осыбей данного вида
     public int counter;
     //состояние здоровья животного
     public HealthState health;
-
-    enum HealthState {
-        HEALTHY,
-        UNHEALTHY
-    }
 
     /**
      * выводит текст, как звучит животное
@@ -34,33 +24,30 @@ public abstract class Animal {
      * уменьшает кол-во еды у животного;
      * также выводит сколько запасов осталось
      */
+    public void eat(int foodCounter ) {
+        if (foodCounter == 0)
+            System.out.println("Еды для " + this.name + " нет!");
+        else {
+            System.out.println(this.name + " ест: " + food);
+            System.out.println("Осталось еды(" + this.food + "): " + --foodCounter);
+        }
+    }
     abstract void eat();
 
     /**
      * выводит текст, что животное спит
      */
     void sleep() {
-        System.out.println("Животное спит");
+        System.out.println(String.format("%s спит", this.name));
     }
 
-    /**
-     * вовзращает в виде строки текущую информацию об особи
-     */
-    @Override
+
     public String toString() {
-        System.out.println("Кличка:" + name + "" +
-                "Страна обитания:" + location +
-                "Состояние здоровья:" + health +
-                "Сколько особей:" + counter
-        );
-        /*
-        Формат вывода:
-        <Кличка>
-        Страна обитания: ...
-        Состояние здоровья: ...
-        Сколько особей: ...
-        */
-        return null;
+        return "Животное - %s\n" +
+                "\tКличка:" + name + "\n" +
+                "\tСтрана обитания:" + location + "\n" +
+                "\tСостояние здоровья:" + health + "\n" +
+                "\tСколько особей: %d";
     }
 }
 /*
