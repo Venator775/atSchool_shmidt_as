@@ -4,7 +4,7 @@ public class Cat extends Animal {
     static private int counter;
     static private int foodCounter;
 
-    Cat(String name, HealthState health) {
+    public Cat(String name, HealthState health, int foodCounter) {
         this.name = name;
         this.health = health;
         food = "Пурина ван";
@@ -12,44 +12,19 @@ public class Cat extends Animal {
         counter++;
     }
 
-    public static int getCounter() {
-        return counter;
-    }
-
-    public static void setCounter(int counter) {
-        Cat.counter = counter;
-    }
-
-    public static int getFoodCounter() {
-        return foodCounter;
-    }
-
     public static void setFoodCounter(int foodCounter) {
         Cat.foodCounter = foodCounter;
+        return;
     }
 
     @Override
-    void makeSound() {
+    public void makeSound() {
         System.out.println("Meow motherfucka!");
     }
 
     @Override
-    void eat() {
-        if (foodCounter == 0)
-            System.out.println("Еды для кошек нет!");
-        else {
-            System.out.println("Котик ест: " + food);
-            System.out.println("Осталось корма: " + --foodCounter);
-        }
-    }
-
-    void eat(int foodCount) {
-        if (foodCounter == 0)
-            System.out.println("Еды для кошек нет!");
-        else {
-            System.out.println("Пёсик ест: " + food);
-            System.out.println("Осталось костей: " + (foodCounter -= foodCount));
-        }
+    public void eat() {
+        super.eat(foodCounter);
     }
 
     @Override
@@ -61,13 +36,10 @@ public class Cat extends Animal {
         Состояние здоровья: ...
         Сколько особей: ...
         */
-        return "Животное - кот\n" +
-                "\tКличка:" + name + "\n" +
-                "\tСтрана обитания:" + location + "\n" +
-                "\tСостояние здоровья:" + health + "\n" +
-                "\tСколько особей:" + counter;
+        return String.format(super.toString(), "Кот", counter);
     }
 }
+
 /*
 Написать классы Dog, Cat, Horse, которые наследуют Animal
 и переопределяют методы makeSound, eat, toString.

@@ -18,14 +18,6 @@ public class Vet {
         else
             System.out.println(animal.name+" здоров!");
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }
 /*
 Создайте класс Vet. Класс содержит параметр:

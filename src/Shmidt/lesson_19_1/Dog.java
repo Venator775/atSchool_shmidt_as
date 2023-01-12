@@ -12,44 +12,18 @@ public class Dog extends Animal {
         counter++;
     }
 
-    public static int getCounter() {
-        return counter;
-    }
-
-    public static void setCounter(int counter) {
-        Dog.counter = counter;
-    }
-
-    public static int getFoodCounter() {
-        return foodCounter;
-    }
-
     public static void setFoodCounter(int foodCounter) {
         Dog.foodCounter = foodCounter;
     }
 
     @Override
-    void makeSound() {
-        System.out.println("WOOF-WOOF mothefucka!");
+    public void eat() {
+        super.eat(foodCounter);
     }
 
     @Override
-    void eat() {
-        if (foodCounter == 0)
-            System.out.println("Еды для собак нет!");
-        else {
-            System.out.println(String.format("Пёсик ест: %s", food));
-            System.out.println(String.format("Осталось костей: %s", --foodCounter));
-        }
-    }
-
-    void eat(int foodCount) {
-        if (foodCounter == 0)
-            System.out.println("Еды для собак нет!");
-        else {
-            System.out.println(String.format("Пёсик ест: %s", food));
-            System.out.println(String.format("Осталось костей: %s", foodCounter -= foodCount));
-        }
+    void makeSound() {
+        System.out.println("WOOF-WOOF mothefucka!");
     }
 
     @Override
@@ -61,10 +35,6 @@ public class Dog extends Animal {
         Состояние здоровья: ...
         Сколько особей: ...
         */
-        return "Животное - собака\n" +
-                "\tКличка:" + name + "\n" +
-                "\tСтрана обитания:" + location + "\n" +
-                "\tСостояние здоровья:" + health + "\n" +
-                "\tСколько особей:" + counter;
+        return String.format(super.toString(), "Собака", counter);
     }
 }

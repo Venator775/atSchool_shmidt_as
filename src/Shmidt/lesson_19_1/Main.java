@@ -1,6 +1,9 @@
 package Shmidt.lesson_19_1;
 
-import static Shmidt.lesson_19_1.HealthState.*;
+import java.util.List;
+
+import static Shmidt.lesson_19_1.HealthState.HEALTHY;
+import static Shmidt.lesson_19_1.HealthState.UNHEALTHY;
 
 public class Main {
     public static void main(String[] args) {
@@ -8,55 +11,36 @@ public class Main {
         Cat.setFoodCounter(10);
         Dog.setFoodCounter(12);
         Horse.setFoodCounter(123);
-        Cat cat1 = new Cat("Барсик", HEALTHY);
-        cat1.eat();
-        cat1.makeSound();
-        cat1.sleep();
-        System.out.println("\nВывод Барсика");
-        System.out.println(cat1);
 
-        Cat cat3 = new Cat("Пикси", HEALTHY);
-        Cat cat2 = new Cat("ЧЁРНАЯТЬМА", HEALTHY);
-        System.out.println("\nВывод ЧЁРНОЙТЬМЫ");
-        System.out.println(cat2);
-
-
+        Cat cat1 = new Cat("Барсик", HEALTHY,3);
+        Cat cat2 = new Cat("ЧЁРНАЯТЬМА", HEALTHY,2);
+        Cat cat3 = new Cat("Пикси", HEALTHY,5);
         Dog dog1 = new Dog("Бобик", UNHEALTHY);
         Dog dog2 = new Dog("Брут", HEALTHY);
-        dog1.eat(7);
-        dog2.makeSound();
-        dog2.sleep();
-        System.out.println("\nВывод Брута");
-        System.out.println(dog2);
-
-
         Horse horse1 = new Horse("Сабатон", UNHEALTHY);
-        horse1.eat();
-        horse1.makeSound();
-        horse1.sleep();
-        System.out.println("\nВывод Сабатона");
-        System.out.println(horse1);
-
-
-        System.out.println("\nПоходы к ветеринару:");
         Vet vet = new Vet("Айболит");
-        vet.treatAnimal(horse1);
-        vet.treatAnimal(dog1);
-        vet.treatAnimal(dog2);
-        vet.treatAnimal(cat1);
-        vet.treatAnimal(cat3);
-        System.out.println(horse1);
-        System.out.println(dog1);
-        System.out.println(dog2);
-        System.out.println(cat1);
-        System.out.println(cat3);
 
-        System.out.println("\nЖивотные идут спать");
-        cat3.sleep();
-        dog2.sleep();
-        horse1.sleep();
+        List.of(cat1, cat2, cat3, dog1, dog2, horse1)
+                .stream().forEach((animal)->{
+                    System.out.println(animal.toString());
+                    animal.makeSound();
+                    animal.eat();
+                    vet.treatAnimal(animal);
+                    animal.sleep();
+                });
+
+
+        //List<Animal> listOfAnimals = List.of(cat1, cat2, cat3, dog1, dog2, horse1);
+//        for (Animal animal : listOfAnimals) {
+//            System.out.println(animal.toString());
+//            animal.makeSound();
+//            animal.eat();
+//            vet.treatAnimal(animal);
+//            animal.sleep();
+//        }
     }
 }
+
 /*
 Создайте класс Main со статическим метод main, в котором:
 
