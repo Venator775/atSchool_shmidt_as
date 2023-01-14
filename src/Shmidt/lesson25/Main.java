@@ -1,6 +1,5 @@
 package Shmidt.lesson25;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -75,11 +74,43 @@ public class Main {
 
         //checkDates(birthdayDates,nowDates);//не работает. Передаю объекты, он их вроде переводит в список. Затем я обращаюсь .get(0) и там лежит ещё один список, к которому уже не могу обратиться
 
+
         System.out.println("\nЗадание 3.");
-        System.out.println("Время выполнения задания 1: " + (endProgram-startProgram) + "ms");
+        System.out.println("Время выполнения задания 1: " + (endProgram - startProgram) + "ms");
+
 
         System.out.println("\nЗадание 4.");
-        System.out.println("Время выполнения взятия времени: " + (endProgram-startProgram) + "ms");
+        long startDate = new Date().getTime();
+        Date birthdayDate4 = new Date(1995, 0, 25);
+        System.out.println("Дата рождения Date: " + birthdayDate4.getDay() + "-" + birthdayDate4.getMonth() + "-" + birthdayDate4.getYear());
+        long endDate = new Date().getTime();
+        System.out.println("Время выполнения: " + (endDate - startDate));
+
+        long startLocalDate = new Date().getTime();
+        LocalDate birthdayLocalDat4e = LocalDate.of(1995, 01, 25);
+        System.out.println("Дата рождения LocalDate: " + birthdayLocalDate);
+        long endLocalDate = new Date().getTime();
+        System.out.println("Время выполнения: " + (endLocalDate - startLocalDate));
+
+        long startLocalDateTime = new Date().getTime();
+        LocalDateTime birthdayLocalDateTime4 = LocalDateTime.of(1995, 01, 25, 10, 10, 10);
+        System.out.println("Дата рождения LocalDateTime: " + birthdayLocalDateTime);
+        long endLocalDateTime = new Date().getTime();
+        System.out.println("Время выполнения: " + (endLocalDateTime - startLocalDateTime));
+
+        long startZonedDateTime = new Date().getTime();
+        ZonedDateTime birthdayZonedDateTime4 = ZonedDateTime.of(birthdayLocalDateTime, ZoneId.of("Asia/Krasnoyarsk"));
+        System.out.println("Дата рождения ZonedDateTime: " + birthdayZonedDateTime);
+        long endZonedDateTime = new Date().getTime();
+        System.out.println("Время выполнения: " + (endZonedDateTime - startZonedDateTime));
+
+        long startCalendar = new Date().getTime();
+        Calendar birthdayGregorianCalendar4 = new GregorianCalendar(1995, 0, 25);
+        System.out.println("Дата рождения Calendar: " + birthdayGregorianCalendar4.getTime());
+        long endCalendar = new Date().getTime();
+        System.out.println("Время выполнения: " + (endCalendar - startCalendar));
+
+
     }
 
     private static void printDate(Object dateClass) {
@@ -125,17 +156,18 @@ public class Main {
                 break;
         }
     }
-    private static void checkDates(Object birthdates, Object nowDates){
 
-        for(int i=0; i<List.of(nowDates).size(); i++){
+    private static void checkDates(Object birthdates, Object nowDates) {
+
+        for (int i = 0; i < List.of(nowDates).size(); i++) {
             var b = List.of(birthdates);
             var n = List.of(nowDates);
-                        compareDate(List.of(birthdates).get(i), List.of(nowDates).get(i));
+            compareDate(List.of(birthdates).get(i), List.of(nowDates).get(i));
             //((ImmutableCollections.ListN) List.of(birthdates).get(0)).get(3);
         }
     }
 
-    private static void alltime(){
+    private static void alltime() {
 
     }
 }
