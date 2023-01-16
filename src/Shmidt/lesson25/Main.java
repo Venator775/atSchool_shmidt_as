@@ -16,7 +16,7 @@ public class Main {
         System.out.println("Задание 1.");
         long startProgram = System.currentTimeMillis();
 
-        Date birthdayDate = new Date(1995, 0, 25);
+        Date birthdayDate = new Date(95, 0, 25);
         LocalDate birthdayLocalDate = LocalDate.of(1995, 1, 25);
         LocalDateTime birthdayLocalDateTime = LocalDateTime.of(1995, 1, 25, 10, 10, 10);
         ZonedDateTime birthdayZonedDateTime = ZonedDateTime.of(birthdayLocalDateTime, ZoneId.of("Asia/Krasnoyarsk"));
@@ -65,8 +65,8 @@ public class Main {
 
         System.out.println("\nЗадание 4.");
         long startDate = System.currentTimeMillis();
-        Date birthdayDate4 = new Date(1995, 0, 25);
-        System.out.println("Дата рождения Date: " + birthdayDate4.getDay() + "-" + birthdayDate4.getMonth() + "-" + birthdayDate4.getYear());
+        Date birthdayDate4 = new Date(95, 0, 25);
+        System.out.println("Дата рождения Date: " + birthdayDate4);
         long endDate = System.currentTimeMillis();
         System.out.println("Время выполнения: " + (endDate - startDate));
 
@@ -132,7 +132,7 @@ public class Main {
             case ("class java.util.Date"):
                 Date _nowDate = (Date) nowDate;
                 Date _birthdayDate = (Date) birthdayDate;
-                return "Даты отличаются на: " + Math.abs((_nowDate.getYear() + 1900) - _birthdayDate.getYear()) + " лет, " +
+                return "Даты отличаются на: " + Math.abs(_nowDate.getYear() - _birthdayDate.getYear()) + " лет, " +
                         Math.abs((_nowDate.getMonth() - _birthdayDate.getMonth())) + " месяцев, " +
                         Math.abs((_nowDate.getDate() - _birthdayDate.getDate())) + " дней";
 
