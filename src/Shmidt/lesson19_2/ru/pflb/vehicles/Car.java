@@ -1,7 +1,7 @@
-package Shmidt.lesson_19_2.ru.pflb.vehicles;
+package Shmidt.lesson19_2.ru.pflb.vehicles;
 
-import Shmidt.lesson_19_2.ru.pflb.details.Engine;
-import Shmidt.lesson_19_2.ru.pflb.professions.Driver;
+import Shmidt.lesson19_2.ru.pflb.details.Engine;
+import Shmidt.lesson19_2.ru.pflb.professions.Driver;
 
 public class Car {
     private String model;//название модели автомобиля
