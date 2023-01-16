@@ -59,11 +59,12 @@ public class Main {
         -1
         -1
          */
-        System.out.println(nowDate.compareTo(birthdayDate));
-        System.out.println(nowLocalDate.compareTo(birthdayLocalDate));
-        System.out.println(nowLocalDateTime.compareTo(birthdayLocalDateTime));
-        System.out.println(birthdayZonedDateTime.compareTo(nowZonedDateTime));
-        System.out.println(birthdayGregorianCalendar.compareTo(nowCalendar));
+        System.out.println("nowDate.before(birthdayDate)=" + nowDate.before(birthdayDate));
+        System.out.println("nowLocalDate.isAfter(birthdayLocalDate)=" + nowLocalDate.isAfter(birthdayLocalDate));
+        System.out.println("nowLocalDateTime.isEqual(birthdayLocalDateTime)=" + nowLocalDateTime.isEqual(birthdayLocalDateTime));
+        System.out.println("birthdayZonedDateTime.compareTo(nowZonedDateTime)=" + birthdayZonedDateTime.compareTo(nowZonedDateTime));
+        System.out.println("birthdayZonedDateTime.compareTo(birthdayZonedDateTime)=" + birthdayZonedDateTime.compareTo(birthdayZonedDateTime));
+        System.out.println("" + birthdayGregorianCalendar.compareTo(nowCalendar));
 
 //        var nowDates = List.of(nowDate,
 //                nowLocalDate,
