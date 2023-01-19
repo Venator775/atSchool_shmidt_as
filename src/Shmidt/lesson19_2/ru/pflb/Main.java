@@ -1,11 +1,11 @@
-package Shmidt.lesson_19_2.ru.pflb;
+package Shmidt.lesson19_2.ru.pflb;
 
-import Shmidt.lesson_19_2.ru.pflb.details.Engine;
-import Shmidt.lesson_19_2.ru.pflb.professions.Driver;
-import Shmidt.lesson_19_2.ru.pflb.vehicles.Car;
-import Shmidt.lesson_19_2.ru.pflb.vehicles.Lorry;
-import Shmidt.lesson_19_2.ru.pflb.vehicles.SportCar;
-import Shmidt.lesson_19_2.ru.pflb.vehicles.VehicleClass;
+import Shmidt.lesson19_2.ru.pflb.professions.Driver;
+import Shmidt.lesson19_2.ru.pflb.vehicles.Car;
+import Shmidt.lesson19_2.ru.pflb.vehicles.Lorry;
+import Shmidt.lesson19_2.ru.pflb.vehicles.SportCar;
+import Shmidt.lesson19_2.ru.pflb.vehicles.VehicleClass;
+import Shmidt.lesson19_2.ru.pflb.details.Engine;
 
 
 public class Main {

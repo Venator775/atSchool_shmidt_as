@@ -1,4 +1,4 @@
-package Shmidt.lesson_19_1;
+package Shmidt.lesson19_1;
 
 public enum HealthState {
     HEALTHY,

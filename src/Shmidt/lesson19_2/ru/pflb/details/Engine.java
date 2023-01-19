@@ -1,4 +1,4 @@
-package Shmidt.lesson_19_2.ru.pflb.details;
+package Shmidt.lesson19_2.ru.pflb.details;
 
 public class Engine {
     //значение мощности двигателя в ваттах
