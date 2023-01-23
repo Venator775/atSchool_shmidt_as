@@ -8,6 +8,7 @@ public class Main {
         task2(3, 7);
         task3();
         task4();
+        //если 1,2,3 методы-таски закомментить, то таск4 выполнится без проблем. А если таск3 будет незакомменченный, то таск упадёт с ошибкой Exception in thread "main" java.util.NoSuchElementException at java.base/java.util.Scanner.throwFor(Scanner.java:937)
     }
 
     /**
@@ -78,17 +79,18 @@ public class Main {
     public static void task4() {
         System.out.println("task4:");
 
-        Scanner in = new Scanner(System.in);
+        Scanner inp = new Scanner(System.in);
 
         System.out.print("Input time t: ");
-        int t = in.nextInt();
+        int t = inp.nextInt();//fixme
 
         System.out.print("Input your sum P: ");
-        int P = in.nextInt();
+        int P = inp.nextInt();
 
         System.out.print("Input percent r: ");
-        double r = in.nextDouble()/100;
+        double r = inp.nextDouble() / 100;
 
-        System.out.println("Amount: " + String.format("%.2f",P * Math.exp(r * t)));
+        inp.close();
+        System.out.println("Amount: " + String.format("%.2f", P * Math.exp(r * t)));
     }
 }

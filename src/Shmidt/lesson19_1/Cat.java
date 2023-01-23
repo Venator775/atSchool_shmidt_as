@@ -12,6 +12,7 @@ public class Cat extends Animal {
         counter++;
     }
 
+
     public static void setFoodCounter(int foodCounter) {
         Cat.foodCounter = foodCounter;
         return;

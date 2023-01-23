@@ -11,7 +11,7 @@ public class Main {
         Cat.setFoodCounter(10);
         Dog.setFoodCounter(12);
         Horse.setFoodCounter(123);
-
+         int x = 0;
         Cat cat1 = new Cat("Барсик", HEALTHY,3);
         Cat cat2 = new Cat("ЧЁРНАЯТЬМА", HEALTHY,2);
         Cat cat3 = new Cat("Пикси", HEALTHY,5);
