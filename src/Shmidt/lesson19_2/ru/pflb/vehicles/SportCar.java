@@ -1,4 +1,4 @@
-package Shmidt.lesson_19_2.ru.pflb.vehicles;
+package Shmidt.lesson19_2.ru.pflb.vehicles;
 
 
 public class SportCar extends Car {

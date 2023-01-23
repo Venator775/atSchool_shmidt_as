@@ -1,9 +1,9 @@
-package Shmidt.lesson_19_1;
+package Shmidt.lesson19_1;
 
 import java.util.List;
 
-import static Shmidt.lesson_19_1.HealthState.HEALTHY;
-import static Shmidt.lesson_19_1.HealthState.UNHEALTHY;
+import static Shmidt.lesson19_1.HealthState.HEALTHY;
+import static Shmidt.lesson19_1.HealthState.UNHEALTHY;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,7 +11,7 @@ public class Main {
         Cat.setFoodCounter(10);
         Dog.setFoodCounter(12);
         Horse.setFoodCounter(123);
-
+         int x = 0;
         Cat cat1 = new Cat("Барсик", HEALTHY,3);
         Cat cat2 = new Cat("ЧЁРНАЯТЬМА", HEALTHY,2);
         Cat cat3 = new Cat("Пикси", HEALTHY,5);

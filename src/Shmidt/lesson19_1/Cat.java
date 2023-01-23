@@ -1,4 +1,4 @@
-package Shmidt.lesson_19_1;
+package Shmidt.lesson19_1;
 
 public class Cat extends Animal {
     static private int counter;
@@ -11,6 +11,7 @@ public class Cat extends Animal {
         location = "Там, где тепло, есть еда, пакеты и человеки";
         counter++;
     }
+
 
     public static void setFoodCounter(int foodCounter) {
         Cat.foodCounter = foodCounter;
