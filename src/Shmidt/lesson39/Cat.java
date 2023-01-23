@@ -1,6 +1,6 @@
 package Shmidt.lesson39;
 
-public class Cat {
+public class Cat extends Animal{
     private int years;
     private double weight;
     private String woolColor;

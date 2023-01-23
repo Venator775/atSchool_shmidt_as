@@ -23,6 +23,6 @@ public class Summa {
     }
 
     public static double sum(Integer a, Integer b) {
-        return a + b;
+        return 2*a + 3*b;
     }
 }
