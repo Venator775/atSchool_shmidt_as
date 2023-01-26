@@ -2,6 +2,7 @@ package Shmidt.lesson39;
 
 import java.util.List;
 
+import static Shmidt.lesson39.Animal.testStaticMethod;
 import static Shmidt.lesson39.Summa.sum;
 
 public class Main {
@@ -42,6 +43,9 @@ public class Main {
         Cat.testStaticMethod();
         System.out.println("cat4.testStaticMethod():");
         cat4.testStaticMethod();
+        System.out.println("static testStaticMethod():");
+        testStaticMethod();
+
 
 
         System.out.println("\nTask 4");

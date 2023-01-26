@@ -7,14 +7,5 @@ public class Animal {
         System.out.println("Это статическое животное");
     }
 
-    public void testM(int a){
-        System.out.println("1");
-    }
-    public String testM(){
-        System.out.println("2");
-        return "G";
-    }
-
-
     public static String skyBody = "Планета Земля";
 }

@@ -42,12 +42,6 @@ public class Cat extends Animal{
         this.eyeColor = "undefined";
     }
 
-    public Cat(int years) {
-        this.years = years;
-        this.weight = -1;
-        this.woolColor = "undefined";
-        this.eyeColor = "undefined";
-    }
     //endregion
 
 
@@ -70,37 +64,4 @@ public class Cat extends Animal{
         return info;
     }
 
-    //region get/set
-    public int getYears() {
-        return years;
-    }
-
-    public void setYears(int years) {
-        this.years = years;
-    }
-
-    public double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
-    public String getWoolColor() {
-        return woolColor;
-    }
-
-    public void setWoolColor(String woolColor) {
-        this.woolColor = woolColor;
-    }
-
-    public String getEyeColor() {
-        return eyeColor;
-    }
-
-    public void setEyeColor(String eyeColor) {
-        this.eyeColor = eyeColor;
-    }
-    //endregion
 }
