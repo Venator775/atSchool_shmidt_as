@@ -7,9 +7,7 @@ import static Shmidt.lesson39.Summa.sum;
 
 public class Main {
 
-    static int x;
-
-    public static void main(String[] args) {
+       public static void main(String[] args) {
 
         System.out.println("\nTask 1");
         Cat cat1 = new Cat();
