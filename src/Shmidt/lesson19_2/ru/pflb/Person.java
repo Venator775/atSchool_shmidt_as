@@ -1,4 +1,4 @@
-package Shmidt.lesson_19_2.ru.pflb;
+package Shmidt.lesson19_2.ru.pflb;
 
 public class Person {
     private int age;
