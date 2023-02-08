@@ -2,7 +2,9 @@ package Shmidt.lesson47.task3;
 
 public class Task3 {
     public static void main(String[] args) {
+        if(Integer.valueOf(args[0])>=1 && Integer.valueOf(args[1])>0)
         snakePrint(Integer.valueOf(args[0]), Integer.valueOf(args[1]));
+        else System.out.println("Ошибка, числа не удовлетворяют условиям");
     }
 
     public static void snakePrint(int n, int col) {
