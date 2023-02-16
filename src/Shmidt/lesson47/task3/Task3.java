@@ -2,8 +2,8 @@ package Shmidt.lesson47.task3;
 
 public class Task3 {
     public static void main(String[] args) {
-        if(Integer.valueOf(args[0])>=1 && Integer.valueOf(args[1])>0)
-        snakePrint(Integer.valueOf(args[0]), Integer.valueOf(args[1]));
+        if (Integer.valueOf(args[0]) >= 1 && Integer.valueOf(args[1]) > 0)
+            snakePrint(Integer.valueOf(args[0]), Integer.valueOf(args[1]));
         else System.out.println("Ошибка, числа не удовлетворяют условиям");
     }
 
@@ -28,9 +28,12 @@ public class Task3 {
                     }
                 }
             } else {
-                for (int k = 1; i <= endRowPosition+1; i++) {
+                for (int k = 1; i <= endRowPosition + 1; i++) {
                     if (direction) {
-                        System.out.print(i + "\t");
+                        if (i > n)
+                            System.out.println(" \t");
+                        else
+                            System.out.print(i + "\t");
                     } else {
                         int h = i + col - k;
                         if (h > n)
