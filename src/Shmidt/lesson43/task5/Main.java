@@ -3,12 +3,13 @@ package Shmidt.lesson43.task5;
 public class Main {
     public static void main(String[] args) {
 
-        int a = Integer.valueOf(args[0]),
-                b = Integer.valueOf(args[1]),
-                c = Integer.valueOf(args[2]),
-                d = Integer.valueOf(args[3]);
+        int a = Integer.parseInt(args[0]),
+                b = Integer.parseInt(args[1]),
+                c = Integer.parseInt(args[2]),
+                d = Integer.parseInt(args[3]);
 
-        if (a <= 0 || b <= 0 || c <= 0 || d <= 0) {//Нужно добавить проверку, что числа больше или равны нулю.
+        if ((a <= 0 || b <= 0) && (c <= 0 || d <= 0)) {//Нужно добавить проверку, что числа больше или равны нулю.
+            //todo сюда вставить проверку, что сумма больше цены
             System.out.println("Некорректный ввод. Есть значение<0");
             return;//В противном случае нужно вывести пользователю сообщение об ошибке, и завершить программу.
         }

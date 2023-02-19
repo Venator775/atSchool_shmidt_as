@@ -1,5 +1,7 @@
 package Shmidt.lesson47.task6;
 
+import java.time.LocalDateTime;
+
 public class Task6 {
     public static void main(String[] args) {
         if (Integer.valueOf(args[0]) < 0) {
@@ -9,8 +11,15 @@ public class Task6 {
 
         Timer waiter = new Timer(Integer.valueOf(args[0]));
         waiter.start();
+
+
+        System.out.println(LocalDateTime.now().getNano());
+        System.out.println(LocalDateTime.now().getSecond());
+        System.out.println(LocalDateTime.now().getMinute());
+        System.out.println(LocalDateTime.now().getHour());
     }
 }
+
 /*
 Реализуйте класс Timer, который содержит:
 - целочисленное поле seconds - общее число секунд, устанавливается в конструкторе

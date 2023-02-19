@@ -3,16 +3,19 @@ package Shmidt.lesson47.task1;
 public class Task1 {
     public static void main(String[] args) {
         int x, m, n, k=0;
-        if (Integer.valueOf(args[0]) < Integer.valueOf(args[1])) {
-            m = Integer.valueOf(args[0]);
-            n = Integer.valueOf(args[1]);
+
+        if (Integer.parseInt(args[0]) < Integer.parseInt(args[1])) {
+            m = Integer.parseInt(args[0]);
+            n = Integer.parseInt(args[1]);
             x = m;
         } else {
-            m = Integer.valueOf(args[1]);
-            n = Integer.valueOf(args[0]);
+            m = Integer.parseInt(args[1]);
+            n = Integer.parseInt(args[0]);
             x = n;
         }
+
         System.out.println("m: " + m + "\tn: " + n);
+
         while (x <= n) {
             if (x % 3 == 0 && x % 5 != 0) {
                 System.out.println("x" + k + "=" + x);

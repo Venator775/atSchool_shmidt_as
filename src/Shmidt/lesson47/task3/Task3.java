@@ -9,26 +9,28 @@ public class Task3 {
 
     public static void snakePrint(int n, int col) {
         System.out.println("Max число: " + n + "\n" + "Количество элементов в строке: " + col);
+
         int rowCount = n / col;
         if (n % col != 0)
             rowCount++;
         System.out.println("Количество строк: " + rowCount);
+
         int i = 1;
         boolean direction = true;
         for (int j = 0; j < rowCount; j++) {
-            int endRowPosition = j * col + col - 1;
+            int maxRowValue = j * col + col - 1;//определяем максимальное значение в строке
 
-            if (j != rowCount - 1) {
-                for (int k = 1; i <= endRowPosition + 1; i++) {
+            if (j != rowCount - 1) {//если это не последняя строка
+                for (int k = 1; i <= maxRowValue + 1; i++) {
                     if (direction) {
                         System.out.print(i + "\t");
                     } else {
-                        System.out.print(i + col - k + "\t");
+                        System.out.print(i + col - k + "\t");//печатаем начиная с значения i+количество и потом уменьшаем печатаемое значение, по итогу получая обратный порядок
                         k += 2;
                     }
                 }
             } else {
-                for (int k = 1; i <= endRowPosition + 1; i++) {
+                for (int k = 1; i <= maxRowValue + 1; i++) {
                     if (direction) {
                         if (i > n)
                             System.out.println(" \t");

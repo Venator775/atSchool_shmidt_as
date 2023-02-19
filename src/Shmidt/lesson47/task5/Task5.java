@@ -7,16 +7,16 @@ public class Task5 {
     public static void main(String[] args) {
         switch (args[1]) {
             case ("+"):
-                System.out.println(args[0] + "+" + args[2] + "=" + add(Integer.valueOf(args[0]), Integer.valueOf(args[2])));
+                System.out.println(args[0] + "+" + args[2] + "=" + add(Integer.parseInt(args[0]), Integer.parseInt(args[2])));
                 break;
             case ("-"):
-                System.out.println(args[0] + "-" + args[2] + "=" + sub(Integer.valueOf(args[0]), Integer.valueOf(args[2])));
+                System.out.println(args[0] + "-" + args[2] + "=" + sub(Integer.parseInt(args[0]), Integer.parseInt(args[2])));
                 break;
             case ("*"):
-                System.out.println(args[0] + "*" + args[2] + "=" + mult(Integer.valueOf(args[0]), Integer.valueOf(args[2])));
+                System.out.println(args[0] + "*" + args[2] + "=" + mult(Integer.parseInt(args[0]), Integer.parseInt(args[2])));
                 break;
             case ("/"):
-                System.out.println(args[0] + "/" + args[2] + "=" + divide(Integer.valueOf(args[0]), Integer.valueOf(args[2])));
+                System.out.println(args[0] + "/" + args[2] + "=" + divide(Integer.parseInt(args[0]), Integer.parseInt(args[2])));
                 break;
             default:
                 System.out.println("Не верная операция. Список поддерживаемых операций: +, -, *, /");
