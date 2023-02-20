@@ -10,7 +10,7 @@ public class Task5 {
             System.out.println("Строка не является целым числом");
     }
 
-    static boolean isInteger(String str) {
+    static public boolean isInteger(String str) {
         int i = 0;
         if (str.charAt(i) == '-')
             i = 1;

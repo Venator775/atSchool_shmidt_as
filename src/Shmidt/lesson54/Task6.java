@@ -2,6 +2,8 @@ package Shmidt.lesson54;
 
 import java.math.BigDecimal;
 
+import static Shmidt.lesson54.Task5.isInteger;
+
 public class Task6 {
     public static void main(String[] args) {
 
@@ -9,44 +11,42 @@ public class Task6 {
 
         System.out.println("Строка: " + argValue);
 
-        if (Task5.isInteger(argValue)) {
+        if (isInteger(argValue)) {
             System.out.println("Строка '" + argValue + "' является целым числом");
             System.out.println("2 * " + toInt(argValue) + " = " + toInt(argValue) * 2);
-        } else
-            System.out.println("Строка не является целым числом");
+        } else System.out.println("Строка не является целым числом");
     }
 
-    static int toInt(String str) {
+    static public int toInt(String str) {
         StringBuilder sb = new StringBuilder(str);
+        int grade;//разряд числа
+        int minusModifier = 1;//отрицательное или положительное число
 
         int i = 0;
-        if (str.charAt(i) == '-')
+
+        if (sb.charAt(0) == '-') {//проверка на отрицательность
             i = 1;
+            sb.replace(0, 1, "");
+            minusModifier = -1;
+        }
+
+        grade = sb.length();
 
         boolean firstZerosEnded = false;
 
-        for (; i < sb.length(); i++)//удаление лидирующих нулей
-            if (Character.isDigit(sb.charAt(i))) {
-                if (sb.charAt(i) == '0' && !firstZerosEnded) {
-                    sb.replace(i, i + 1, "");
-                    i--;
+        if (sb.length() > 1)//на случай, если введён только один 0
+            for (; i < sb.length(); i++)//удаление лидирующих нулей
+                if (Character.isDigit(sb.charAt(i))) {
+                    if (sb.charAt(i) == '0' && !firstZerosEnded) {
+                        sb.replace(i, i + 1, "");
+                        i--;
+                    } else {
+                        firstZerosEnded = true;
+                    }
                 } else {
-                    firstZerosEnded = true;
+                    System.out.println("сообщение об ошибке");
+                    System.exit(-1);
                 }
-            } else {
-                System.out.println("сообщение об ошибке");
-                System.exit(-1);
-            }
-
-        int grade;//разряд числа
-        int minus = 1;//отрицательное или положительное число
-
-        if (sb.charAt(0) == '-') {//проверка на отрицательность
-            sb.replace(0, 1, "");
-            minus = -1;
-        }
-        grade = sb.length();
-
 
         BigDecimal resultBig = new BigDecimal(0);
         i = grade;
@@ -54,7 +54,7 @@ public class Task6 {
             var k = Math.pow(10, grade - i) * (sb.charAt(i - 1) - '0');
             resultBig = resultBig.add(BigDecimal.valueOf(k));
         }
-        resultBig = resultBig.multiply(BigDecimal.valueOf(minus));
+        resultBig = resultBig.multiply(BigDecimal.valueOf(minusModifier));
 
         if (resultBig.compareTo(BigDecimal.valueOf(Integer.MIN_VALUE)) == -1 || resultBig.compareTo(BigDecimal.valueOf(Integer.MAX_VALUE)) == 1) {
             System.out.println("Число не входит в диапазон int " + Integer.MIN_VALUE + "..." + Integer.MAX_VALUE);

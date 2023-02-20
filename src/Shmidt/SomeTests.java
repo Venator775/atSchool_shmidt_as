@@ -76,7 +76,6 @@ public class SomeTests {
         for (int i : array1) {
             System.out.println(i);
         }*/
-
     }
 }
 

@@ -1,18 +1,30 @@
 package Shmidt.lesson58.Test6;
 
+import static Shmidt.lesson54.Task5.isInteger;
+import static Shmidt.lesson54.Task6.toInt;
+
 public class Test6 {
     public static void main(String[] args) {
 
-        int[] ars = new int[]{0, 12, 35, -1, -1, 7, 3};
+        int[] ars = new int[args.length];
+
+        for (int i = 0; i < ars.length; i++) {
+            if (isInteger(args[i])) {
+                int g = toInt(args[i]);
+                ars[i]=g;
+            } else {
+                System.out.println("Элемент не является целым числом");
+                System.exit(-1);
+            }
+        }
+
         DynamicArray dynArray = new DynamicArray(ars);
         System.out.println("Получили массив dynArray:\n" + "[" + dynArray + "]");
 
         DynamicArray dynArray2 = new DynamicArray(dynArray.getArray());
-
-        int delInd = 3;
+        int delInd = 0;
+        System.out.println("Массив dynArray2:\n" + "[" + dynArray2 + "]");
         dynArray2.delete(delInd);
-
-        System.out.println("Массив dynArray:\n" + "[" + dynArray + "]");
         System.out.println("Массив dynArray2 после удаления из него " + delInd + " элемента:\n" + "[" + dynArray2 + "]");
 
         System.out.println("\nПросто проверка работы остальных методов.");
