@@ -1,11 +1,15 @@
 package Shmidt.tests;
 
+import java.io.FileWriter;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class sideMethods {
 
     /**
      * Возвращает рандомное число от min до max включая оба числа
+     *
      * @param min
      * @param max
      * @return
@@ -17,6 +21,7 @@ public class sideMethods {
 
     /**
      * Заполняет массив длинной n рандомными числами от -9 до 9
+     *
      * @param n
      * @return
      */
@@ -29,7 +34,22 @@ public class sideMethods {
     }
 
     /**
+     * Заполняет массив длинной n рандомными числами от min до max
+     *
+     * @param n
+     * @return
+     */
+    static public int[] fillArray(int n, int min, int max) {
+        int[] a = new int[n];
+        for (int i = 0; i < a.length; i++) {
+            a[i] = rnd(min, max);
+        }
+        return a;
+    }
+
+    /**
      * Пузырьковая сортировка массива a
+     *
      * @param a
      * @return
      */
@@ -59,6 +79,7 @@ public class sideMethods {
 
     /**
      * Находит медиану массива a
+     *
      * @param a
      * @return
      */
@@ -74,6 +95,7 @@ public class sideMethods {
 
     /**
      * Находит максимальное значение массива ar
+     *
      * @param ar
      * @return
      */
@@ -89,7 +111,8 @@ public class sideMethods {
     }
 
     /**
-     *Находит минимальное значение массива ar
+     * Находит минимальное значение массива ar
+     *
      * @param ar
      * @return
      */
@@ -106,6 +129,7 @@ public class sideMethods {
 
     /**
      * Определяет явзяется ли значение в строке числом
+     *
      * @param str
      * @return
      */
@@ -122,6 +146,7 @@ public class sideMethods {
 
     /**
      * Приводит значение строки в число
+     *
      * @param str
      * @return
      */
@@ -172,4 +197,18 @@ public class sideMethods {
         return resultBig.intValue();
     }
 
+    public static void printLog(String text) {
+        try {
+            String logFileName = " ";
+            String path = new java.io.File(".").getCanonicalPath() + "\\src\\Shmidt\\tests\\logs\\";
+            logFileName = path + "pokeLog" + "[" + DateTimeFormatter.ofPattern("dd.MM hh_mm_ss").format(LocalDateTime.now()) + "]" + ".txt";
+            System.out.println(logFileName);
+            try (FileWriter writer = new FileWriter(logFileName, true)) {
+                writer.write(text+ "\n");
+                writer.flush();
+            }
+        } catch (Exception exception) {
+            System.out.println("Ошибка вывода в файл:\n" + exception.getMessage());
+        }
+    }
 }

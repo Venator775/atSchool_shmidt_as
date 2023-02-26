@@ -23,10 +23,10 @@ public class Task2 {
 
         String path = "empty", file = "empty";
         if (str.contains("\\")) {
-            path = str.substring(0, str.lastIndexOf("\\"));
+            path = str.substring(0, str.lastIndexOf("\\")+1);
             file = str.substring(str.lastIndexOf("\\") + 1);
         } else if (str.contains("/")) {
-            path = str.substring(0, str.lastIndexOf("/"));
+            path = str.substring(0, str.lastIndexOf("/")+1);
             file = str.substring(str.lastIndexOf("/") + 1);
         }
 
