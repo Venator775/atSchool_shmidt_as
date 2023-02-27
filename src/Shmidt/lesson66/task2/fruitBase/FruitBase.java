@@ -1,6 +1,7 @@
 package Shmidt.lesson66.task2.fruitBase;
 
 import Shmidt.lesson66.task2.fruitBase.fruits.Apple;
+import Shmidt.lesson66.task2.fruitBase.fruits.Banana;
 import Shmidt.lesson66.task2.fruitBase.fruits.Fruit;
 
 import java.math.BigDecimal;
@@ -39,6 +40,26 @@ public class FruitBase {
         if (args.length > 0) {
             Cargo cargoOrder = base.takeOrder(args);
             System.out.println("Груз заказа заполнен:");
+            System.out.println(cargoOrder);
+
+            cargoOrder.removeFruitAt(4);
+            System.out.println("Убрали фрукт с 4 позиции");
+            System.out.println(cargoOrder);
+
+            cargoOrder.addFruit(base.fruitCatalogue.get(2));
+            cargoOrder.addFruit(base.fruitCatalogue.get(2));
+            cargoOrder.addFruit(base.fruitCatalogue.get(2));
+            cargoOrder.addFruit(base.fruitCatalogue.get(2));
+            cargoOrder.addFruit(base.fruitCatalogue.get(2));
+            System.out.println("Добавили бананов");
+            System.out.println(cargoOrder);
+
+            cargoOrder.removeFruitAt(base.fruitCatalogue.get(0));
+            System.out.println("Убрали яблоко");
+            System.out.println(cargoOrder);
+
+            cargoOrder.removeFruitAt(base.fruitCatalogue.get(0));
+            System.out.println("Попытались ещё убрать яблоко");
             System.out.println(cargoOrder);
         } else {
             System.out.println("Заказ пуст.");

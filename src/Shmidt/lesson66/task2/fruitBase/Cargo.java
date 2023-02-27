@@ -3,6 +3,7 @@ package Shmidt.lesson66.task2.fruitBase;
 import Shmidt.lesson66.task2.fruitBase.fruits.Fruit;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.*;
 
 public class Cargo {
@@ -12,6 +13,11 @@ public class Cargo {
         this.fruits = new ArrayList<>();
     }
 
+    /**
+     * возвращает суммарный вес груза
+     *
+     * @return
+     */
     public double getWeight() {
         double cargoWeight = 0;
         for (Fruit f : fruits)
@@ -19,6 +25,11 @@ public class Cargo {
         return cargoWeight;
     }
 
+    /**
+     * возвращает суммарную цену груза
+     *
+     * @return
+     */
     public BigDecimal getPrice() {
         BigDecimal cargoPrice = BigDecimal.valueOf(0);
         for (Fruit f : fruits)
@@ -26,12 +37,28 @@ public class Cargo {
         return cargoPrice;
     }
 
+    /**
+     * добавляет Fruit во внутренний массив
+     *
+     * @param fruit
+     */
     void addFruit(Fruit fruit) {
         this.fruits.add(fruit);
     }
 
+    /**
+     * Удаляет Fruit из внутреннего массива с позиции n
+     * Написал его просто так, чтоб был логически
+     * @param n
+     */
     void removeFruitAt(int n) {
         this.fruits.remove(n);
+    }
+
+    void removeFruitAt(Fruit fruit) {
+        if(this.fruits.contains(fruit))
+            this.fruits.remove(this.fruits.lastIndexOf(fruit));
+        else System.out.println("Фрукта нет в списке");
     }
 
     public List<Fruit> getFruits() {
@@ -54,13 +81,15 @@ public class Cargo {
             }
         }//на выходе получаем список с указанием какие фрукты в каком количестве есть в заказе
 
-
         if (fruits.size() > 0) {
             for (var f : fruitsCount.entrySet())
                 cargoInfo.append(f.getKey().getName() + ":\t" + f.getValue() + " [" + f.getKey().getPrice() + " у.е./" + f.getKey().getWeight() + "гр.]" + "\n");
 
-            cargoInfo.append("Общий вес заказа: " + this.getWeight() + "\n");
-            cargoInfo.append("Общая сумма заказа: " + this.getPrice() + "\n");
+            var totalWeight = new DecimalFormat("#0.00").format(this.getWeight());
+            var totalPrice = new DecimalFormat("# ###.00").format(this.getPrice());
+
+            cargoInfo.append("Общий вес заказа: " + totalWeight + "\n");
+            cargoInfo.append("Общая сумма заказа: " + totalPrice + "\n");
         } else cargoInfo.append("Заказ пуст.");
         return cargoInfo.toString();
     }
