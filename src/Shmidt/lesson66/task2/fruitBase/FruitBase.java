@@ -35,7 +35,7 @@ public class FruitBase {
     }
 
 
-    //Orange Blueberry Blueberry Pineapple Pineapple Orange Banana Apple Grape Pineapple
+    //Orange Blueberry Blueberry Pineapple Pineapple бульбазавр Orange Banana Apple Grape Pineapple
     public static void main(String[] args) {
         FruitBase base = new FruitBase();
 
