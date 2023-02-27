@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FruitBase {
+
     List<Fruit> fruitCatalogue;
 
     public FruitBase() {
@@ -34,6 +35,7 @@ public class FruitBase {
     }
 
 
+    //Orange Blueberry Blueberry Pineapple Pineapple Orange Banana Apple Grape Pineapple
     public static void main(String[] args) {
         FruitBase base = new FruitBase();
 
