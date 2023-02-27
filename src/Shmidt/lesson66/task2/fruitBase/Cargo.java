@@ -88,8 +88,8 @@ public class Cargo {
             var totalWeight = new DecimalFormat("#0.00").format(this.getWeight());
             var totalPrice = new DecimalFormat("# ###.00").format(this.getPrice());
 
-            cargoInfo.append("Общий вес заказа: " + totalWeight + "\n");
-            cargoInfo.append("Общая сумма заказа: " + totalPrice + "\n");
+            cargoInfo.append("Общий вес заказа: " + totalWeight + "гр.\n");
+            cargoInfo.append("Общая сумма заказа: " + totalPrice + "у.е.\n");
         } else cargoInfo.append("Заказ пуст.");
         return cargoInfo.toString();
     }
