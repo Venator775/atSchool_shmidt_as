@@ -8,22 +8,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FruitBase {
-    List<Fruit> FruitCatalogue;
+    List<Fruit> fruitCatalogue;
 
     public FruitBase() {
-        FruitCatalogue = new ArrayList<>();
+        fruitCatalogue = new ArrayList<>();
 
-        FruitCatalogue.add(new Apple("Apple", BigDecimal.valueOf(10), 150));
-        FruitCatalogue.add(new Apple("Orange", BigDecimal.valueOf(20), 170.5));
-        FruitCatalogue.add(new Apple("Banana", BigDecimal.valueOf(35), 130.3));
-        FruitCatalogue.add(new Apple("Pineapple", BigDecimal.valueOf(151), 280.4));
+        fruitCatalogue.add(new Apple("Apple", BigDecimal.valueOf(10), 150));
+        fruitCatalogue.add(new Apple("Orange", BigDecimal.valueOf(20), 170.5));
+        fruitCatalogue.add(new Apple("Banana", BigDecimal.valueOf(35), 130.3));
+        fruitCatalogue.add(new Apple("Pineapple", BigDecimal.valueOf(151), 280.4));
     }
 
     public Cargo takeOrder(String[] fruitsOrder) {
         Cargo cargo = new Cargo();
         for (String fruitOrder : fruitsOrder) {
-            for (Fruit fruitInCat : FruitCatalogue) {
-                if (fruitInCat.getName().equals(fruitOrder)) {
+            for (Fruit fruitInCat : fruitCatalogue) {
+                if (fruitInCat.getName().equals(fruitOrder)) {//если фрукт заказа есть в каталоге - добавляем его
                     cargo.addFruit(fruitInCat);
                     break;
                 }

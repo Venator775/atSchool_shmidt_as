@@ -42,17 +42,17 @@ public class Cargo {
     public String toString() {
         StringBuilder cargoInfo = new StringBuilder();
 
-        Set fruitSet = new HashSet<>();
-        HashMap<Fruit, Integer> fruitsCount = new HashMap<>();
+        Set fruitSet = new HashSet<>();//Список неповторяющихся фруктов в заказе
+        HashMap<Fruit, Integer> fruitsCount = new HashMap<>();//Список, содержащий какого фрукта в каком количестве есть в заказе
 
         for (Fruit f : fruits) {
-            if (fruitSet.add(f)) {
+            if (fruitSet.add(f)) {//если фрукт отсутствовал, он добавляется и его количество = 1
                 fruitsCount.put(f, 1);
             } else {
                 int fCount = fruitsCount.get(f);
-                fruitsCount.replace(f, fruitsCount.get(f), ++fCount);
+                fruitsCount.replace(f, fruitsCount.get(f), ++fCount);//увеличиваем количество фруктов, если он уже был в списке
             }
-        }
+        }//на выходе получаем список с указанием какие фрукты в каком количестве есть в заказе
 
 
         if (fruits.size() > 0) {
