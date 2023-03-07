@@ -13,13 +13,13 @@ public class Deck {
 
     public Deck() {
         initStandardDeck();
-        int deckCnt = rnd(1, 2);
+        int deckCnt = rnd(1, 8);
         cards = new ArrayList<>();
         while (deckCnt > 0) {
             cards.addAll(standardDeck);
             deckCnt--;
         }
-        this.shuffle();
+        shuffle();
     }
 
     public Card getTopCard() {

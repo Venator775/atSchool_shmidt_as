@@ -1,4 +1,4 @@
-package Shmidt.lesson66.task3;
+package Shmidt.lesson66.task3.Player;
 
 public enum PlayerState {
     ACTIVE("игрок продолжает брать карты"),

@@ -1,6 +1,65 @@
-package Shmidt.lesson66.task3;
+package Shmidt.lesson66.task3.Player;
+
+import Shmidt.lesson66.task3.cards.Card;
+import Shmidt.lesson66.task3.cards.CardHand;
+
+import static Shmidt.lesson66.task3.Player.PlayerState.ACTIVE;
+import static Shmidt.lesson66.task3.Player.PlayerState.STOP;
+import static Shmidt.tests.sideMethods.rnd;
 
 public class Player {
+    private int nervous;
+    private PlayerState state;
+
+    public CardHand getCardHand() {
+        return cardHand;
+    }
+
+    private CardHand cardHand;
+    private String name;
+
+    public Player(String name) {
+        this.name = name;
+        this.nervous = 0;
+        this.state = ACTIVE;
+        this.cardHand = new CardHand();
+    }
+
+    private void checkState() {
+        int points = this.cardHand.getPoints();
+
+        if (points == 19 | points == 20 | points == 21) {
+            this.state = STOP;
+            return;
+        }
+
+        if (points > 10) {
+            for (int i = 0; i < points - 10; i++)
+                nervous++;
+
+            int nerv = rnd(0, 9);
+            if (nerv < this.nervous)
+                this.state = STOP;
+        }
+    }
+
+    public boolean isActive() {
+        return this.state == ACTIVE;
+    }
+
+    public void takeCard(Card card){
+        cardHand.addHand(card);
+        checkState();
+    }
+
+    public int getPoints(){
+        return cardHand.getPoints();
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }
 /*
 класс Player

@@ -7,6 +7,11 @@ public enum GameState {
     DRAW("игра закончилась ничьей");
 
     private String desc;
+
+    public String getDesc() {
+        return desc;
+    }
+
     GameState(String desc) {
         this.desc = desc;
     }

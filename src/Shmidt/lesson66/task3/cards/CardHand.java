@@ -22,6 +22,13 @@ public class CardHand {
         return points;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (var c : currentHand)
+            sb.append(c + "\n");
+        return sb.toString();
+    }
 }
 /*
 класс CardHand
