@@ -40,9 +40,6 @@ public class Game {
     }
 
     private void takeTurn(Player player) {
-//        игроку дают карту из колоды
-//        если игрок активен, то он берет карту
-//        выводят какую карту дали игроку
         Card card = getTopCard();
         if (player.isActive()) {
             player.takeCard(card);
@@ -52,33 +49,32 @@ public class Game {
 
     void printResult() {
         System.out.println(state.getDesc());
-        System.out.println("Победитель:" + winner);
+        System.out.println("Победитель: " + winner + ", с результатом " + winner.getPoints());
     }
 
     public static void main(String[] args) {
-//        создается новая игра
-//        создаются два игрока
-//        стартует новая игра
-//        повторяем пока игра продолжается
-//        по-очереди делаются ходы для каждого игрока
-//        проверяется завершена ли игра
-//        если игра завершена, то вывести информацию об игре
         Game game = new Game();
         Player player1 = new Player("Санёк");
         Player player2 = new Player("Женёк");
 
         game.start();
 
-        boolean playerTurnFlag = true;//true - player1, false - player2
+        boolean player1TurnFlag = true;//true - player1, false - player2
+        int round = 0;
         while (game.isRunning()) {
-            if (playerTurnFlag)
+            if (player1TurnFlag) {
+                round++;
+                System.out.println("Раунд " + round);
+            }
+            if (player1TurnFlag)
                 game.takeTurn(player1);
             else game.takeTurn(player2);
 
             game.checkState(player1, player2);
-            playerTurnFlag = !playerTurnFlag;
-        }
+            player1TurnFlag = !player1TurnFlag;
 
+        }
+        System.out.println("\nИтоги игры:");
         System.out.println(player1 + ": " + player1.getPoints() + ";\nКарты:\n" + player1.getCardHand().toString());
         System.out.println(player2 + ": " + player2.getPoints() + ";\nКарты:\n" + player2.getCardHand().toString());
 

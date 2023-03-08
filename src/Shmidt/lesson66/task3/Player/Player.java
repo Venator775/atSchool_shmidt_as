@@ -47,12 +47,12 @@ public class Player {
         return this.state == ACTIVE;
     }
 
-    public void takeCard(Card card){
+    public void takeCard(Card card) {
         cardHand.addHand(card);
         checkState();
     }
 
-    public int getPoints(){
+    public int getPoints() {
         return cardHand.getPoints();
     }
 

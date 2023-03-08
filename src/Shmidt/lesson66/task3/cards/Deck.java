@@ -6,7 +6,7 @@ import java.util.List;
 import static Shmidt.tests.sideMethods.rnd;
 
 public class Deck {
-    List<Card> cards;
+    private List<Card> cards;
 
     private List<Card> standardDeck;
 
@@ -29,8 +29,7 @@ public class Deck {
             this.cards.remove(0);
             System.out.println("Взяли карту сверху: " + topCard);
             return topCard;
-        }
-        else return null;
+        } else return null;
     }
 
     private void shuffle() {
