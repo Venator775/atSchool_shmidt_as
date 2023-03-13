@@ -40,16 +40,19 @@ public class Game {
     }
 
     private void takeTurn(Player player) {
-        Card card = getTopCard();
         if (player.isActive()) {
+            Card card = getTopCard();
             player.takeCard(card);
             System.out.println("Игроку " + player + " дали карту: " + card);
+            if (!player.isActive())
+                System.out.println(player + " закончил добор карт");
         }
     }
 
     void printResult() {
         System.out.println(state.getDesc());
-        System.out.println("Победитель: " + winner + ", с результатом " + winner.getPoints());
+        if (winner != null)
+            System.out.println("Победитель: " + winner + ", с результатом " + winner.getPoints());
     }
 
     public static void main(String[] args) {
@@ -64,7 +67,7 @@ public class Game {
         while (game.isRunning()) {
             if (player1TurnFlag) {
                 round++;
-                System.out.println("Раунд " + round);
+                System.out.println("\nРаунд " + round);
             }
             if (player1TurnFlag)
                 game.takeTurn(player1);

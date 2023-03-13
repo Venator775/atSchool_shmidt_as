@@ -1,30 +1,18 @@
 package Shmidt.lesson66.task2.fruitBase;
 
-import Shmidt.lesson66.task2.fruitBase.fruits.Apple;
-import Shmidt.lesson66.task2.fruitBase.fruits.Banana;
 import Shmidt.lesson66.task2.fruitBase.fruits.Fruit;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-
 public class FruitBase {
-
-    List<Fruit> fruitCatalogue;
+    FruitCatalogue fruitCatalogue;
 
     public FruitBase() {
-        fruitCatalogue = new ArrayList<>();
-
-        fruitCatalogue.add(new Apple("Apple", BigDecimal.valueOf(10), 150));
-        fruitCatalogue.add(new Apple("Orange", BigDecimal.valueOf(20), 170.5));
-        fruitCatalogue.add(new Apple("Banana", BigDecimal.valueOf(35), 130.3));
-        fruitCatalogue.add(new Apple("Pineapple", BigDecimal.valueOf(151), 280.4));
+        fruitCatalogue = new FruitCatalogue();
     }
 
     public Cargo takeOrder(String[] fruitsOrder) {
         Cargo cargo = new Cargo();
         for (String fruitOrder : fruitsOrder) {
-            for (Fruit fruitInCat : fruitCatalogue) {
+            for (Fruit fruitInCat : fruitCatalogue.getFruitCatalogue()) {
                 if (fruitInCat.getName().equals(fruitOrder)) {//если фрукт заказа есть в каталоге - добавляем его
                     cargo.addFruit(fruitInCat);
                     break;
@@ -48,19 +36,19 @@ public class FruitBase {
             System.out.println("Убрали фрукт с 4 позиции");
             System.out.println(cargoOrder);
 
-            cargoOrder.addFruit(base.fruitCatalogue.get(2));
-            cargoOrder.addFruit(base.fruitCatalogue.get(2));
-            cargoOrder.addFruit(base.fruitCatalogue.get(2));
-            cargoOrder.addFruit(base.fruitCatalogue.get(2));
-            cargoOrder.addFruit(base.fruitCatalogue.get(2));
+            cargoOrder.addFruit(base.fruitCatalogue.getFruit(2));
+            cargoOrder.addFruit(base.fruitCatalogue.getFruit(2));
+            cargoOrder.addFruit(base.fruitCatalogue.getFruit("Banana"));
+            cargoOrder.addFruit(base.fruitCatalogue.getFruit("Banana"));
+            cargoOrder.addFruit(base.fruitCatalogue.getFruit("Banana"));
             System.out.println("Добавили бананов");
             System.out.println(cargoOrder);
 
-            cargoOrder.removeFruitAt(base.fruitCatalogue.get(0));
+            cargoOrder.removeFruitAt(base.fruitCatalogue.getFruitCatalogue().get(0));
             System.out.println("Убрали яблоко");
             System.out.println(cargoOrder);
 
-            cargoOrder.removeFruitAt(base.fruitCatalogue.get(0));
+            cargoOrder.removeFruitAt(base.fruitCatalogue.getFruitCatalogue().get(0));
             System.out.println("Попытались ещё убрать яблоко");
             System.out.println(cargoOrder);
         } else {

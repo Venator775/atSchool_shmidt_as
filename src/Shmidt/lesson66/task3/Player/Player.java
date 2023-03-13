@@ -16,6 +16,7 @@ public class Player {
     }
 
     private CardHand cardHand;
+
     private String name;
 
     public Player(String name) {

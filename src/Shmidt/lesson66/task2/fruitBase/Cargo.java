@@ -43,20 +43,25 @@ public class Cargo {
      * @param fruit
      */
     void addFruit(Fruit fruit) {
-        this.fruits.add(fruit);
+        if (fruit != null)
+            this.fruits.add(fruit);
+        else System.out.println("Ничего не добавили");
     }
 
     /**
      * Удаляет Fruit из внутреннего массива с позиции n
      * Написал его просто так, чтоб был логически
+     *
      * @param n
      */
     void removeFruitAt(int n) {
-        this.fruits.remove(n);
+        if (this.fruits.size() >= n)
+            this.fruits.remove(n);
+        else System.out.println("Фрукта нет в списке на данной позиции");
     }
 
     void removeFruitAt(Fruit fruit) {
-        if(this.fruits.contains(fruit))
+        if (this.fruits.contains(fruit))
             this.fruits.remove(this.fruits.lastIndexOf(fruit));
         else System.out.println("Фрукта нет в списке");
     }
