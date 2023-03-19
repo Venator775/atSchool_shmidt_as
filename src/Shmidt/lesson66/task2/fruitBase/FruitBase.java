@@ -3,7 +3,7 @@ package Shmidt.lesson66.task2.fruitBase;
 import Shmidt.lesson66.task2.fruitBase.fruits.Fruit;
 
 public class FruitBase {
-    FruitCatalogue fruitCatalogue;
+    private FruitCatalogue fruitCatalogue;
 
     public FruitBase() {
         fruitCatalogue = new FruitCatalogue();
@@ -11,15 +11,24 @@ public class FruitBase {
 
     public Cargo takeOrder(String[] fruitsOrder) {
         Cargo cargo = new Cargo();
+//        for (String fruitOrder : fruitsOrder) {
+//            for (Fruit fruitInCat : fruitCatalogue.getFruitCatalogue()) {
+//                if (fruitInCat.getName().equals(fruitOrder)) {//если фрукт заказа есть в каталоге - добавляем его
+//                    cargo.addFruit(fruitInCat);
+//                    break;
+//                }
+//            }
+//        }
+
         for (String fruitOrder : fruitsOrder) {
-            for (Fruit fruitInCat : fruitCatalogue.getFruitCatalogue()) {
-                if (fruitInCat.getName().equals(fruitOrder)) {//если фрукт заказа есть в каталоге - добавляем его
-                    cargo.addFruit(fruitInCat);
-                    break;
-                }
+            Fruit fruit = fruitCatalogue.getFruit(fruitOrder);
+            if (fruit != null) {
+                cargo.addFruit(fruit);
             }
         }
+
         return cargo;
+
     }
 
 

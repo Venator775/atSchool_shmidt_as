@@ -4,6 +4,8 @@ import Shmidt.lesson66.task3.Player.Player;
 import Shmidt.lesson66.task3.cards.Card;
 import Shmidt.lesson66.task3.cards.Deck;
 
+import java.util.Scanner;
+
 import static Shmidt.lesson66.task3.game.GameState.*;
 
 public class Game {
@@ -64,7 +66,8 @@ public class Game {
 
         boolean player1TurnFlag = true;//true - player1, false - player2
         int round = 0;
-        while (game.isRunning()) {
+        Scanner sc = new Scanner(System.in);
+        while (game.isRunning()) {//todo вот сюда можно пихнуть сканнер, для игры между людьми
             if (player1TurnFlag) {
                 round++;
                 System.out.println("\nРаунд " + round);

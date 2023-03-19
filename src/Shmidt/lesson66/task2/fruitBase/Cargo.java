@@ -74,7 +74,7 @@ public class Cargo {
     public String toString() {
         StringBuilder cargoInfo = new StringBuilder();
 
-        Set fruitSet = new HashSet<>();//Список неповторяющихся фруктов в заказе
+        Set<Fruit> fruitSet = new HashSet<>();//Список неповторяющихся фруктов в заказе
         HashMap<Fruit, Integer> fruitsCount = new HashMap<>();//Список, содержащий какого фрукта в каком количестве есть в заказе
 
         for (Fruit f : fruits) {
@@ -98,37 +98,6 @@ public class Cargo {
         } else cargoInfo.append("Заказ пуст.");
         return cargoInfo.toString();
     }
-
-    /*    private Fruit[] fruits;
-
-    public Cargo() {
-        this.fruits = new Fruit[]{};
-    }
-
-    public double getWeight() {
-        double cargoWeight = 0;
-        for (int i = 0; i < fruits.length; i++) {
-            cargoWeight += fruits[i].getWeight();
-        }
-        return cargoWeight;
-    }
-
-    public BigDecimal getPrice() {
-        BigDecimal cargoPrice = new BigDecimal(0);
-        for (int i = 0; i < fruits.length; i++) {
-            cargoPrice.add(fruits[i].getPrice());
-        }
-        return cargoPrice;
-    }
-
-    void addFruit(Fruit fruit) {
-        Fruit[] ar = new Fruit[this.fruits.length+1];
-        for (int i = 0; i < this.fruits.length; i++) {
-            ar[i] = this.fruits[i];
-        }
-        ar[ar.length - 1] = fruit;
-        this.fruits = ar;
-    }*/
 }
 /*
 - класс Cargo

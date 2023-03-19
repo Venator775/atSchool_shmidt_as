@@ -30,16 +30,16 @@ public abstract class Database {
      * передает указанную сумму с одного указанного счета на другой
      *
      * @param accSender   аккаунт отправителя
-     * @param accReciever аккаунт получателя
+     * @param accReceiver аккаунт получателя
      * @param transferSum сумма отправки
      * @return успешность выполнения перевода
      */
-    boolean transfer(Account accSender, Account accReciever, BigDecimal transferSum) {
+    boolean transfer(Account accSender, Account accReceiver, BigDecimal transferSum) {
         boolean successTransfer = false;
 
         if (getAmount(accSender).compareTo(transferSum) >= 0) {
             if (withdraw(accSender, transferSum)) {//если снятие прошло успешно
-                if (deposit(accReciever, transferSum)) {//если зачисление прошло успешно
+                if (deposit(accReceiver, transferSum)) {//если зачисление прошло успешно
                     successTransfer = true;
                 } else if (!deposit(accSender, transferSum)) {//если зачисление прошло неуспешно, то вернуть средства отправителю
                     sendErrorLog("Произошла ошибка при возврате средств на счёт отправителя");

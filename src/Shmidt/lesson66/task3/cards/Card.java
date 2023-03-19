@@ -34,20 +34,24 @@ public class Card {
 
     @Override
     public String toString() {
-        String HEARTS = "♥";
-        String CLUBS = "♣";
-        String DIAMONDS = "♦";
-        String SPADES = "♠";
+        final String HEARTS = "♥";
+        final String CLUBS = "♣";
+        final String DIAMONDS = "♦";
+        final String SPADES = "♠";
         switch (this.cardSuit) {
 //            case HEARTS: return HEARTS + this.cardType;
 //            case CLUBS: return CLUBS + this.cardType;
 //            case DIAMONDS: return DIAMONDS + this.cardType;
 //            case SPADES: return SPADES + this.cardType;
 
-            case HEARTS:return this.cardType + HEARTS;
-            case CLUBS:return this.cardType + CLUBS;
-            case DIAMONDS:return this.cardType + DIAMONDS;
-            case SPADES:return this.cardType + SPADES;
+            case HEARTS:
+                return this.cardType + HEARTS;
+            case CLUBS:
+                return this.cardType + CLUBS;
+            case DIAMONDS:
+                return this.cardType + DIAMONDS;
+            case SPADES:
+                return this.cardType + SPADES;
 
             default:
                 return this.cardType + " of " + this.cardSuit;
