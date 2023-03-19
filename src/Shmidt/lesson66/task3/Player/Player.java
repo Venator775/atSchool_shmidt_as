@@ -9,6 +9,15 @@ import static Shmidt.tests.sideMethods.rnd;
 
 public class Player {
     private int nervous;
+
+    public void setState(PlayerState state) {
+        this.state = state;
+    }
+
+    public PlayerState getState() {
+        return state;
+    }
+
     private PlayerState state;
 
     public CardHand getCardHand() {
@@ -48,9 +57,10 @@ public class Player {
         return this.state == ACTIVE;
     }
 
-    public void takeCard(Card card) {
+    public void takeCard(Card card, String command) {
         cardHand.addHand(card);
-        checkState();
+        if (command == null)
+            checkState();
     }
 
     public int getPoints() {

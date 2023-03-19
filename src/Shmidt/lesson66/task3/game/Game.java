@@ -6,6 +6,8 @@ import Shmidt.lesson66.task3.cards.Deck;
 
 import java.util.Scanner;
 
+import static Shmidt.lesson66.task3.Player.PlayerState.ACTIVE;
+import static Shmidt.lesson66.task3.Player.PlayerState.STOP;
 import static Shmidt.lesson66.task3.game.GameState.*;
 
 public class Game {
@@ -14,7 +16,7 @@ public class Game {
     private GameState state;
 
     private Game() {
-        this.state = STOP;
+        this.state = GameState.STOP;
     }
 
     private boolean isRunning() {
@@ -44,11 +46,19 @@ public class Game {
     private void takeTurn(Player player) {
         if (player.isActive()) {
             Card card = getTopCard();
-            player.takeCard(card);
+            player.takeCard(card, null);
             System.out.println("Игроку " + player + " дали карту: " + card);
             if (!player.isActive())
                 System.out.println(player + " закончил добор карт");
         }
+    }
+
+    public void userTurn(Player userPlayer, String command) {
+        if (command.equals("more")) {
+            Card card = getTopCard();
+            userPlayer.takeCard(card, command);
+            System.out.println("Игроку " + userPlayer + " дали карту: " + card);
+        } else userPlayer.setState(STOP);
     }
 
     void printResult() {
@@ -67,18 +77,21 @@ public class Game {
         boolean player1TurnFlag = true;//true - player1, false - player2
         int round = 0;
         Scanner sc = new Scanner(System.in);
+        String command = "z";
         while (game.isRunning()) {//todo вот сюда можно пихнуть сканнер, для игры между людьми
-            if (player1TurnFlag) {
+
+            if (player1TurnFlag & player1.getState().equals(ACTIVE)) {
+                command = sc.next();
                 round++;
                 System.out.println("\nРаунд " + round);
-            }
-            if (player1TurnFlag)
-                game.takeTurn(player1);
-            else game.takeTurn(player2);
+                game.userTurn(player1, command);
 
-            game.checkState(player1, player2);
+            } else game.takeTurn(player2);
+
+            if (player1.getState().equals(STOP) & player2.getState().equals(STOP))
+                game.checkState(player1, player2);
+
             player1TurnFlag = !player1TurnFlag;
-
         }
         System.out.println("\nИтоги игры:");
         System.out.println(player1 + ": " + player1.getPoints() + ";\nКарты:\n" + player1.getCardHand().toString());
