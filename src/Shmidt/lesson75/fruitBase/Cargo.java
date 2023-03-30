@@ -54,16 +54,20 @@ public class Cargo {
      *
      * @param n
      */
-    void removeFruit(int n) {
+    public void removeFruit(int n) {
         if (this.fruits.size() >= n)
             this.fruits.remove(n);
         else System.out.println("Фрукта нет в списке на данной позиции");
     }
 
-    void removeFruit(Fruit fruit) {
-        if (this.fruits.contains(fruit))
+    public Fruit removeFruit(Fruit fruit) {
+        if (this.fruits.contains(fruit)) {//todo добавить проверку по хешкоду
             this.fruits.remove(this.fruits.lastIndexOf(fruit));
-        else System.out.println("Фрукта нет в списке");
+            return fruit;
+        } else {
+            System.out.println("Фрукта нет в списке");
+            return null;
+        }
     }
 
     public List<Fruit> getFruits() {

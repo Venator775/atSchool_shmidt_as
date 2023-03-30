@@ -6,10 +6,6 @@ public class Orange extends Fruit {
     public Orange(String name, BigDecimal price, double weight) {
         super(name, price, weight);
     }
-
-    public Orange(String name, BigDecimal price, double weight, Freshness freshness) {
-        super(name, price, weight, freshness);
-    }
 }
 /*
     Каждый класс наследуется от Fruit

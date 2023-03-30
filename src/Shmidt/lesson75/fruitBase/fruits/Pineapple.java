@@ -6,10 +6,6 @@ public class Pineapple extends Fruit {
     public Pineapple(String name, BigDecimal price, double weight) {
         super(name, price, weight);
     }
-
-    public Pineapple(String name, BigDecimal price, double weight, Freshness freshness) {
-        super(name, price, weight, freshness);
-    }
 }
 /*
     Каждый класс наследуется от Fruit

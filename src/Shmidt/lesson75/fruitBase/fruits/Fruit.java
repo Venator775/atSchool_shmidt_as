@@ -42,6 +42,14 @@ public abstract class Fruit {
         return this.freshness == FRESH;
     }
 
+    public Freshness getFreshness() {
+        return freshness;
+    }
+
+    public void setFreshness(Freshness freshness) {
+        this.freshness = freshness;
+    }
+
     public void setRandFresh() {
         int lucky = rnd(1, 3);
         switch (lucky) {

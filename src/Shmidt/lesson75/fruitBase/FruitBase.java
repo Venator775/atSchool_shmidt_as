@@ -2,6 +2,9 @@ package Shmidt.lesson75.fruitBase;
 
 import Shmidt.lesson75.fruitBase.fruits.Fruit;
 
+import static Shmidt.lesson75.fruitBase.fruits.Freshness.*;
+import static Shmidt.tests.sideMethods.rnd;
+
 public class FruitBase {
     private FruitCatalogue fruitCatalogue;
 
@@ -11,9 +14,8 @@ public class FruitBase {
 
     public Cargo takeOrder(String[] fruitsOrder) {
         Cargo cargo = new Cargo();
-
-        for (String fruitOrder : fruitsOrder) {
-            Fruit fruit = fruitCatalogue.getFruit(fruitOrder);
+        for (String orderedFruit : fruitsOrder) {
+            Fruit fruit = fruitCatalogue.getFruit(orderedFruit);
             if (fruit != null) {
                 fruit.setRandFresh();//устанавливаем рандомную свежесть
                 cargo.addFruit(fruit);
@@ -44,8 +46,7 @@ public class FruitBase {
             System.out.println("Добавили бананов");
             System.out.println(cargoOrder);
 
-            cargoOrder.removeFruit(base.fruitCatalogue.getFruitCatalogue().get(0));
-            System.out.println("Убрали яблоко");
+            System.out.println("Убрали " + cargoOrder.removeFruit(base.fruitCatalogue.getFruitCatalogue().get(0)));
             System.out.println(cargoOrder);
 
             cargoOrder.removeFruit(base.fruitCatalogue.getFruitCatalogue().get(0));

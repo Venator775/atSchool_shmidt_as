@@ -15,9 +15,8 @@ public abstract class Customer {
         purchases = new ArrayList<>();
     }
 
-    protected void takeFruits(Cargo cargo) {
-        purchases = cargo.getFruits();
-    }
+    protected abstract List<Fruit> takeFruits(Cargo cargo);
+
 
     public void printPurchases() {
         System.out.println("Список покупок:");

@@ -24,10 +24,12 @@ public class FruitCatalogue {
         return fruitCatalogue.size() >= n ? fruitCatalogue.get(n) : null;
     }
 
-    public Fruit getFruit(String fruit) {
-        for (Fruit f : fruitCatalogue)
-            if (f.getName().equals(fruit))
-                return f;
+    public Fruit getFruit(String fruitName) {
+        for (Fruit fruit : fruitCatalogue)
+            if (fruit.getName().equals(fruitName)) {
+
+                return fruit;
+            }
         return null;
     }
 
