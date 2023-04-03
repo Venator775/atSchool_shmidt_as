@@ -16,7 +16,7 @@ public class UniqueCustomer extends Customer {
             if (cargo.getFruits().size() > 0)
                 for (int i = 0; i < cargo.getFruits().size(); i++) {
                     Fruit fruit = cargo.getFruits().get(i);
-                    if (!this.purchases.contains(fruit)) {
+                    if (this.purchases.contains(fruit)) {//todo переделать проверку, что фрукт уже есть в покупках
                         this.purchases.add(fruit);
                         cargo.removeFruit(cargo.getFruits().get(i));
                     }

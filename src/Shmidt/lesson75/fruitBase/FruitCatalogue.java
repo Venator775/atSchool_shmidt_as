@@ -27,8 +27,7 @@ public class FruitCatalogue {
     public Fruit getFruit(String fruitName) {
         for (Fruit fruit : fruitCatalogue)
             if (fruit.getName().equals(fruitName)) {
-
-                return fruit;
+                return fruit.clone();//todo можно возвращать новый объект фрукта
             }
         return null;
     }

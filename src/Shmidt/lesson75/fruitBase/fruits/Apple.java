@@ -6,6 +6,10 @@ public class Apple extends Fruit {
     public Apple(String name, BigDecimal price, double weight) {
         super(name, price, weight);
     }
+
+    public Fruit clone() {
+        return new Apple(this.name, this.price, this.weight);
+    }
 }
 /*
     Каждый класс наследуется от Fruit

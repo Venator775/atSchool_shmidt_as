@@ -19,7 +19,7 @@ public abstract class Customer {
 
 
     public void printPurchases() {
-        System.out.println("Список покупок:");
+        System.out.println("\nСписок покупок:");
         purchases.stream().forEach(purchase -> {
             System.out.println(purchase + ": " + purchase.getPrice() + "у.е.");
         });

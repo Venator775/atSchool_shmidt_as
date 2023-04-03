@@ -19,35 +19,17 @@ public abstract class Fruit {
         this.freshness = FRESH;
     }
 
-    public Fruit(String name, BigDecimal price, double weight, Freshness freshness) {
+    public Fruit(String name, BigDecimal price) {
         this.name = name;
         this.price = price;
-        this.weight = weight;
-        this.freshness = freshness;
     }
 
-    public double getWeight() {
-        return weight;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public String getName() {
-        return name;
+    public Fruit(Fruit fruit) {
+        this(fruit.name, fruit.price, fruit.weight);
     }
 
     public boolean isFresh() {
         return this.freshness == FRESH;
-    }
-
-    public Freshness getFreshness() {
-        return freshness;
-    }
-
-    public void setFreshness(Freshness freshness) {
-        this.freshness = freshness;
     }
 
     public void setRandFresh() {
@@ -65,6 +47,30 @@ public abstract class Fruit {
         }
     }
 
+    abstract public Fruit clone();
+
+
+    //region get/set
+    public String getName() {
+        return name;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public Freshness getFreshness() {
+        return freshness;
+    }
+
+    public void setFreshness(Freshness freshness) {
+        this.freshness = freshness;
+    }
+    //endregion
 
     @Override
     public int hashCode() {
