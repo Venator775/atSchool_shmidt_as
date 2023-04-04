@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Simulation {
     //Orange Blueberry Blueberry Pineapple Pineapple бульбазавр Orange Orange Orange Orange  Banana Apple Grape Pineapple Banana Apple Grape Banana Apple Grape Banana Apple Grape
-    //Pineapple Pineapple Pineapple Pineapple Pineapple Pineapple Pineapple Pineapple Pineapple Pineapple Pineapple Pineapple
+    //Orange Banana Apple Grape Pineapple Banana Banana Apple Grape Banana Apple Grape Blueberry
     public static void main(String[] args) {
         FruitBase base = new FruitBase();
 
@@ -24,14 +24,16 @@ public class Simulation {
             }
 
             //todo доделать изъятие фруктов из груза
-
-            ((UniqueCustomer) customers.get(1)).takeFruits(cargoOrder);
+            System.out.println("\nДо заказа cargoOrder.size()=" + cargoOrder.getFruits().size());
+            System.out.println(cargoOrder);
+            System.out.println();
             ((FreshCustomer) customers.get(0)).takeFruits(cargoOrder);
-
+            ((UniqueCustomer) customers.get(1)).takeFruits(cargoOrder);
 
             for (Customer c: customers)
                 c.printPurchases();
 
+            System.out.println("\nПосле заказаc argoOrder.size()=" + cargoOrder.getFruits().size());
             System.out.println(cargoOrder);
         } else {
             System.out.println("Заказ пуст.");

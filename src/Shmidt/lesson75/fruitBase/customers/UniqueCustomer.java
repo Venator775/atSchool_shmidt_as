@@ -12,15 +12,31 @@ public class UniqueCustomer extends Customer {
 
     @Override
     public List<Fruit> takeFruits(Cargo cargo) {
-        if (cargo != null)
-            if (cargo.getFruits().size() > 0)
+        if (cargo != null) {
+            if (cargo.getFruits().size() > 0) {
                 for (int i = 0; i < cargo.getFruits().size(); i++) {
-                    Fruit fruit = cargo.getFruits().get(i);
-                    if (this.purchases.contains(fruit)) {//todo переделать проверку, что фрукт уже есть в покупках
-                        this.purchases.add(fruit);
+                    Fruit cargoFruit = cargo.getFruits().get(i);
+                    boolean isFruitContained = false;
+                    for (Fruit purchaseFruit : this.purchases) {
+                        if (purchaseFruit.getName().equals(cargoFruit.getName())) {
+                            isFruitContained = true;
+                            break;
+                        }
+                    }
+
+                    if (!isFruitContained) {
+                        this.purchases.add(cargoFruit);
                         cargo.removeFruit(cargo.getFruits().get(i));
                     }
+
+//                    if (!this.purchases.contains(fruit)) {//todo переделать проверку, что фрукт уже есть в покупках
+//                        this.purchases.add(fruit);
+//                        cargo.removeFruit(cargo.getFruits().get(i));
+//                    }
                 }
-        return cargo.getFruits();
+            } else return null;
+        } else return null;
+
+        return this.purchases;
     }
 }
