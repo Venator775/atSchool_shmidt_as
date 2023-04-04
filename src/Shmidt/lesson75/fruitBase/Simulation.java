@@ -19,6 +19,7 @@ public class Simulation {
         if (args.length > 0) {
             Cargo cargoOrder = base.takeOrder(args);
 
+            System.out.println("\nИмеющиеся фрукты:");
             for (Fruit c: cargoOrder.getFruits()){
                 System.out.println(c + " " + c.getFreshness());
             }
@@ -33,7 +34,7 @@ public class Simulation {
             for (Customer c: customers)
                 c.printPurchases();
 
-            System.out.println("\nПосле заказаc argoOrder.size()=" + cargoOrder.getFruits().size());
+            System.out.println("\nПосле заказа argoOrder.size()=" + cargoOrder.getFruits().size());
             System.out.println(cargoOrder);
         } else {
             System.out.println("Заказ пуст.");

@@ -93,7 +93,7 @@ public class Cargo {
 
         if (fruits.size() > 0) {
             for (var f : fruitsCount.entrySet())
-                cargoInfo.append(f.getKey().getName() + ":\t" + f.getValue() + " [" + f.getKey().getPrice() + " у.е./" + f.getKey().getWeight() + "гр.]" + "\n");
+                cargoInfo.append(f.getKey().getName() + ":\t" + f.getValue() + " [" + f.getKey().getPrice() + " у.е./" + f.getKey().getWeight() + "гр.]" + "; Свежесть: "+ f.getKey().getFreshness() +"\n");
 
             var totalWeight = new DecimalFormat("#0.00").format(this.getWeight());
             var totalPrice = new DecimalFormat("# ###.00").format(this.getPrice());
