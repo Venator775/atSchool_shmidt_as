@@ -19,7 +19,7 @@ public abstract class Customer {
 
 
     public void printPurchases() {
-        System.out.println("\nСписок покупок " + getClass() + ":");
+        System.out.println("\nСписок покупок " + getClass().getSimpleName() + ":");
         purchases.forEach(purchase -> {
             System.out.println(purchase + ": " + purchase.getPrice() + "у.е." + " " + purchase.getFreshness());
         });

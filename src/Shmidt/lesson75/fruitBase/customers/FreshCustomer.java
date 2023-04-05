@@ -10,20 +10,19 @@ public class FreshCustomer extends Customer {
         super(name);
     }
 
-    @Override
-    public List<Fruit> takeFruits(Cargo cargo) {//todo на всякий потом перепроверить на предмет нескольких одинаковых фруктов
+    public List<Fruit> takeFruits(Cargo cargo) {
 
         List<Fruit> freshfruits = cargo.getFruits();//fixme что эффективнее: создавать такой список фруктов freshfruits и обращаться к его элементам или же напрямую всегда дёргать список фруктов в заказе и уже из него брать фрукты, как я сделал в UniqueCustomer?
 
         if (freshfruits != null) {
             if (freshfruits.size() > 0) {
-                int cntrFruits = freshfruits.size();
-                while (cntrFruits > 0) {
-                    cntrFruits--;
-                    if (freshfruits.get(cntrFruits).isFresh()){
-                        this.purchases.add(freshfruits.get(cntrFruits));
-                        cargo.removeFruit(cntrFruits);
+                int cntr = 0;
+                while (cntr < freshfruits.size()) {
+                    if (freshfruits.get(cntr).isFresh()){
+                        this.purchases.add(cargo.withdrawFruit(freshfruits.get(cntr)));
+                        cntr--;
                     }
+                    cntr++;
                 }
             } else return null;
         } else return null;

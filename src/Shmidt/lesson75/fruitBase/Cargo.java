@@ -42,17 +42,28 @@ public class Cargo {
      *
      * @param fruit
      */
-    void addFruit(Fruit fruit) {
+    public void addFruit(Fruit fruit) {
         if (fruit != null)
             this.fruits.add(fruit);
         else System.out.println("Ничего не добавили");
     }
 
     /**
+     * Изымает фрукт из заказа для выдачи
+     * @param fruit Фрукт, который надо выдать
+     * @return Выдаваемый фрукт
+     */
+    public Fruit withdrawFruit(Fruit fruit){
+        this.removeFruit(fruit);
+        return fruit;
+    }
+
+
+    /**
      * Удаляет Fruit из внутреннего массива с позиции n
      * Написал его просто так, чтоб был логически
      *
-     * @param n
+     * @param n Индекс фрукта в списке
      */
     public void removeFruit(int n) {
         if (this.fruits.size() >= n)

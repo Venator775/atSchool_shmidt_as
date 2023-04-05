@@ -10,7 +10,6 @@ public class UniqueCustomer extends Customer {
         super(name);
     }
 
-    @Override
     public List<Fruit> takeFruits(Cargo cargo) {
         if (cargo != null) {
             if (cargo.getFruits().size() > 0) {
@@ -25,14 +24,8 @@ public class UniqueCustomer extends Customer {
                     }
 
                     if (!isFruitContained) {
-                        this.purchases.add(cargoFruit);
-                        cargo.removeFruit(cargo.getFruits().get(i));
+                        this.purchases.add(cargo.withdrawFruit(cargoFruit));
                     }
-
-//                    if (!this.purchases.contains(fruit)) {//todo переделать проверку, что фрукт уже есть в покупках
-//                        this.purchases.add(fruit);
-//                        cargo.removeFruit(cargo.getFruits().get(i));
-//                    }
                 }
             } else return null;
         } else return null;
