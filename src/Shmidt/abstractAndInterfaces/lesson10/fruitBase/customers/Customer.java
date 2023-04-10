@@ -1,7 +1,7 @@
-package Shmidt.lesson75.fruitBase.customers;
+package Shmidt.abstractAndInterfaces.lesson10.fruitBase.customers;
 
-import Shmidt.lesson75.fruitBase.Cargo;
-import Shmidt.lesson75.fruitBase.fruits.Fruit;
+import Shmidt.abstractAndInterfaces.lesson10.fruitBase.Cargo;
+import Shmidt.abstractAndInterfaces.lesson10.fruitBase.fruits.Fruit;
 
 import java.util.ArrayList;
 import java.util.List;
