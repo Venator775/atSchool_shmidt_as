@@ -1,13 +1,14 @@
-package Shmidt.abstractAndInterfaces.lesson10.task1.fruitBase;
+package Shmidt.abstractAndInterfaces.lesson10.fruitBase;
 
-import Shmidt.abstractAndInterfaces.lesson10.task1.fruitBase.fruits.Fruit;
+import Shmidt.abstractAndInterfaces.lesson10.fruitBase.fruits.Fruit;
 
 import java.io.*;
 
 public class FruitBase implements Serializable {
     private FruitCatalogue fruitCatalogue;
-    final private String serializeFileName = "fruitCatalogue.dat";
-    final private String serializeFileName_new = "fruitCatalogue_new.dat";
+    final String path = "C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/abstractAndInterfaces/lesson10/fruitBase/";
+    final private String serializeFileName = path + "fruitCatalogue.dat";
+    final private String serializeFileName_new = path + "fruitCatalogue_new.dat";
 
     public FruitBase() {
         fruitCatalogue = new FruitCatalogue();
@@ -26,7 +27,7 @@ public class FruitBase implements Serializable {
     }
 
     public void exportCatalogue() {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(serializeFileName_new))) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(serializeFileName))) {
             oos.writeObject(this.fruitCatalogue);
             System.out.println("Сериализация в файл " + serializeFileName_new + " успешна. Набор каталога:");
 
@@ -41,20 +42,17 @@ public class FruitBase implements Serializable {
     }
 
     public void importCatalogue() {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(serializeFileName))) {
-            FruitCatalogue fc = (FruitCatalogue) ois.readObject();
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(serializeFileName_new))) {
+            this.fruitCatalogue = (FruitCatalogue) ois.readObject();
             System.out.println("Десериализация из файла " + serializeFileName + " успешна. Набор каталога:");
-//            fc.getFruitCatalogue().forEach(fruit -> {
-//                System.out.println(fruit.getName() + " " + fruit.getWeight() + " " + fruit.getPrice());
-//            });
-//            this.fruitCatalogue = fc;
 
             StringBuilder catInfo = new StringBuilder();
-            fc.getFruitCatalogue().forEach(f -> {
+            this.fruitCatalogue.getFruitCatalogue().forEach(f -> {
                 catInfo.append(f.getName() + ":\t" + " [" + f.getPrice() + " у.е./" + f.getWeight() + "гр.]" + ";\n");
             });
+
             System.out.println(catInfo);
-            this.fruitCatalogue = fc;
+
         } catch (Exception ex) {
             System.out.println("Ошибка десериализации:\n" + ex.getMessage());
         }

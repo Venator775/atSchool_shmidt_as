@@ -1,7 +1,7 @@
-package Shmidt.abstractAndInterfaces.lesson10.task1.fruitBase.customers;
+package Shmidt.abstractAndInterfaces.lesson10.fruitBase.customers;
 
-import Shmidt.abstractAndInterfaces.lesson10.task1.fruitBase.Cargo;
-import Shmidt.abstractAndInterfaces.lesson10.task1.fruitBase.fruits.Fruit;
+import Shmidt.abstractAndInterfaces.lesson10.fruitBase.Cargo;
+import Shmidt.abstractAndInterfaces.lesson10.fruitBase.fruits.Fruit;
 
 import java.util.List;
 

@@ -1,11 +1,11 @@
-package Shmidt.abstractAndInterfaces.lesson10.task1.fruitBase.fruits;
+package Shmidt.abstractAndInterfaces.lesson10.fruitBase.fruits;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
 
-import static Shmidt.abstractAndInterfaces.lesson10.task1.fruitBase.fruits.Freshness.*;
+import static Shmidt.abstractAndInterfaces.lesson10.fruitBase.fruits.Freshness.*;
 import static Shmidt.tests.sideMethods.rnd;
 
 public abstract class Fruit implements Serializable {

@@ -1,6 +1,6 @@
-package Shmidt.abstractAndInterfaces.lesson10.task1.fruitBase;
+package Shmidt.abstractAndInterfaces.lesson10.fruitBase;
 
-import Shmidt.abstractAndInterfaces.lesson10.task1.fruitBase.fruits.Fruit;
+import Shmidt.abstractAndInterfaces.lesson10.fruitBase.fruits.Fruit;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

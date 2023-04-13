@@ -1,10 +1,10 @@
-package Shmidt.abstractAndInterfaces.lesson10.task1.fruitBase;
+package Shmidt.abstractAndInterfaces.lesson10.fruitBase;
 
 
-import Shmidt.abstractAndInterfaces.lesson10.task1.fruitBase.customers.Customer;
-import Shmidt.abstractAndInterfaces.lesson10.task1.fruitBase.customers.FreshCustomer;
-import Shmidt.abstractAndInterfaces.lesson10.task1.fruitBase.customers.UniqueCustomer;
-import Shmidt.abstractAndInterfaces.lesson10.task1.fruitBase.fruits.Fruit;
+import Shmidt.abstractAndInterfaces.lesson10.fruitBase.customers.FreshCustomer;
+import Shmidt.abstractAndInterfaces.lesson10.fruitBase.customers.UniqueCustomer;
+import Shmidt.abstractAndInterfaces.lesson10.fruitBase.fruits.Fruit;
+import Shmidt.abstractAndInterfaces.lesson10.fruitBase.customers.Customer;
 
 import java.util.List;
 
