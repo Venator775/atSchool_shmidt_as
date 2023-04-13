@@ -2,11 +2,12 @@ package Shmidt.lesson75.fruitBase;
 
 import Shmidt.lesson75.fruitBase.fruits.Fruit;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.*;
 
-public class Cargo {
+public class Cargo implements Serializable {
     private List<Fruit> fruits;
 
     public Cargo() {

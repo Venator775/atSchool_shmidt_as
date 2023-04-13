@@ -1,12 +1,13 @@
 package Shmidt.lesson75.fruitBase.fruits;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
 import static Shmidt.lesson75.fruitBase.fruits.Freshness.*;
 import static Shmidt.tests.sideMethods.rnd;
 
-public abstract class Fruit {
+public abstract class Fruit implements Serializable {
     protected String name;
     protected BigDecimal price;
     protected double weight;

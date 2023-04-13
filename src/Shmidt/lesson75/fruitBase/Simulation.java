@@ -62,6 +62,7 @@ public class Simulation {
             System.out.println("Заказ пуст.");
         }
 
-
+        base.exportCatalogue();
+        base.importCatalogue();
     }
 }
