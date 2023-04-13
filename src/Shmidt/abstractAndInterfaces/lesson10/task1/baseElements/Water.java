@@ -4,26 +4,16 @@ import Shmidt.abstractAndInterfaces.lesson10.task1.NatureElement;
 import Shmidt.abstractAndInterfaces.lesson10.task1.resultElements.*;
 
 public class Water extends NatureElement {
-    /*
-          Water + Water = Sea
-      Water + Fire = Steam
-      Water + Earth = Mud
-      Water + Air = Rain
-     */
 
     public NatureElement connect(NatureElement natElem) {
         switch (natElem.getClass().getSimpleName()) {
             case ("Water"):
-                //System.out.println("Sea");
                 return new Sea();
             case ("Fire"):
-                //System.out.println("Steam");
                 return new Steam();
             case ("Ground"):
-                //System.out.println("Mud");
                 return new Mud();
             case ("Air"):
-                //System.out.println("Rain");
                 return new Rain();
             default:
                 System.out.println("HZ");
