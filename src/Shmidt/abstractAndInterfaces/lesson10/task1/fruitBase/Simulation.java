@@ -1,10 +1,10 @@
-package Shmidt.abstractAndInterfaces.lesson10.fruitBase;
+package Shmidt.abstractAndInterfaces.lesson10.task1.fruitBase;
 
 
-import Shmidt.abstractAndInterfaces.lesson10.fruitBase.customers.Customer;
-import Shmidt.abstractAndInterfaces.lesson10.fruitBase.customers.FreshCustomer;
-import Shmidt.abstractAndInterfaces.lesson10.fruitBase.customers.UniqueCustomer;
-import Shmidt.abstractAndInterfaces.lesson10.fruitBase.fruits.Fruit;
+import Shmidt.abstractAndInterfaces.lesson10.task1.fruitBase.customers.Customer;
+import Shmidt.abstractAndInterfaces.lesson10.task1.fruitBase.customers.FreshCustomer;
+import Shmidt.abstractAndInterfaces.lesson10.task1.fruitBase.customers.UniqueCustomer;
+import Shmidt.abstractAndInterfaces.lesson10.task1.fruitBase.fruits.Fruit;
 
 import java.util.List;
 
@@ -62,6 +62,7 @@ public class Simulation {
             System.out.println("Заказ пуст.");
         }
 
-
+        base.exportCatalogue();
+        base.importCatalogue();
     }
 }

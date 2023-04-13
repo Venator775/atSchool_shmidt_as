@@ -1,4 +1,4 @@
-package Shmidt.abstractAndInterfaces.lesson10.fruitBase.fruits;
+package Shmidt.abstractAndInterfaces.lesson10.task1.fruitBase.fruits;
 
 public enum Freshness {
     FRESH("Продукт свежий"),

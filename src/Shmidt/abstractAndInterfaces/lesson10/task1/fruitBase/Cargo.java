@@ -1,12 +1,13 @@
-package Shmidt.abstractAndInterfaces.lesson10.fruitBase;
+package Shmidt.abstractAndInterfaces.lesson10.task1.fruitBase;
 
-import Shmidt.abstractAndInterfaces.lesson10.fruitBase.fruits.Fruit;
+import Shmidt.abstractAndInterfaces.lesson10.task1.fruitBase.fruits.Fruit;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.*;
 
-public class Cargo {
+public class Cargo implements Serializable {
     private List<Fruit> fruits;
 
     public Cargo() {
