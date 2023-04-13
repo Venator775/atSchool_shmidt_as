@@ -17,10 +17,10 @@ public class FruitCatalogue implements Serializable {
      */
     public FruitCatalogue() {
         fruitCatalogue = new ArrayList<>();
-        fruitCatalogue.add(new Apple("Apple", BigDecimal.valueOf(10), 131));
-        fruitCatalogue.add(new Orange("Orange", BigDecimal.valueOf(20), 181.5));
-        fruitCatalogue.add(new Banana("Banana", BigDecimal.valueOf(30), 121.3));
-        fruitCatalogue.add(new Pineapple("Pineapple", BigDecimal.valueOf(150), 251.4));
+        fruitCatalogue.add(new Apple("Apple", BigDecimal.valueOf(11), 121));
+        fruitCatalogue.add(new Orange("Orange", BigDecimal.valueOf(24), 111.5));
+        fruitCatalogue.add(new Banana("Banana", BigDecimal.valueOf(45), 131.6));
+        fruitCatalogue.add(new Pineapple("Pineapple", BigDecimal.valueOf(180), 300.1));
     }
 
     public Fruit getFruit(int n) {
