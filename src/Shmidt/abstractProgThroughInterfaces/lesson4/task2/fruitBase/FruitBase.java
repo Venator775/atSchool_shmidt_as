@@ -6,7 +6,7 @@ import java.io.*;
 
 public class FruitBase implements Serializable {
     private FruitCatalogue fruitCatalogue;
-    final String path = "C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/abstractAndInterfaces/lesson10/fruitBase/";
+    final String path = "C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/abstractProgThroughInterfaces/lesson4/task2/fruitBase/";
     final private String serializeFileName = path + "fruitCatalogue.dat";
     final private String serializeFileName_new = path + "fruitCatalogue_new.dat";
 
@@ -27,7 +27,7 @@ public class FruitBase implements Serializable {
     }
 
     public void exportCatalogue() {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(serializeFileName))) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(serializeFileName_new))) {
             oos.writeObject(this.fruitCatalogue);
             System.out.println("Сериализация в файл " + serializeFileName_new + " успешна. Набор каталога:");
 
@@ -37,12 +37,12 @@ public class FruitBase implements Serializable {
             });
             System.out.println(catInfo);
         } catch (Exception ex) {
-            System.out.println("Ошибка сериализации:\n" + ex.getMessage());
+            System.out.println("Ошибка сериализации:\n" + ex.getMessage() + "/n" + ex.getStackTrace());
         }
     }
 
     public void importCatalogue() {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(serializeFileName_new))) {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(serializeFileName))) {
             this.fruitCatalogue = (FruitCatalogue) ois.readObject();
             System.out.println("Десериализация из файла " + serializeFileName + " успешна. Набор каталога:");
 
@@ -54,43 +54,10 @@ public class FruitBase implements Serializable {
             System.out.println(catInfo);
 
         } catch (Exception ex) {
-            System.out.println("Ошибка десериализации:\n" + ex.getMessage());
+            System.out.println("Ошибка десериализации:\n" + ex.getMessage() + "/n" + ex.getStackTrace());
         }
     }
 
-
-    //Orange Blueberry Blueberry Pineapple Pineapple бульбазавр Orange Banana Apple Grape Pineapple
-    public static void main(String[] args) {
-        FruitBase base = new FruitBase();
-
-        if (args.length > 0) {
-            Cargo cargoOrder = base.takeOrder(args);
-            System.out.println("Груз заказа заполнен:");
-            System.out.println(cargoOrder);
-
-            cargoOrder.removeFruit(4);
-            System.out.println("Убрали фрукт с 4 позиции");
-            System.out.println(cargoOrder);
-
-            cargoOrder.addFruit(base.fruitCatalogue.getFruit(2));
-            cargoOrder.addFruit(base.fruitCatalogue.getFruit(2));
-            cargoOrder.addFruit(base.fruitCatalogue.getFruit("Banana"));
-            cargoOrder.addFruit(base.fruitCatalogue.getFruit("Banana"));
-            cargoOrder.addFruit(base.fruitCatalogue.getFruit("Banana"));
-            System.out.println("Добавили бананов");
-            System.out.println(cargoOrder);
-
-            System.out.println("Убрали " + cargoOrder.removeFruit(base.fruitCatalogue.getFruitCatalogue().get(0)));
-            System.out.println(cargoOrder);
-
-            cargoOrder.removeFruit(base.fruitCatalogue.getFruitCatalogue().get(0));
-            System.out.println("Попытались ещё убрать яблоко");
-            System.out.println(cargoOrder);
-        } else {
-            System.out.println("Заказ пуст.");
-            System.exit(0);
-        }
-    }
 }
 /*
    Добавьте в класс FruitBase следующие методы:

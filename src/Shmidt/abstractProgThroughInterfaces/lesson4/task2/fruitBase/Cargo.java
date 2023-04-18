@@ -7,14 +7,14 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.*;
 
-public class Cargo implements Serializable {
+public class Cargo implements Serializable, Delivery {
     private List<Fruit> fruits;
 
     public Cargo() {
         this.fruits = new ArrayList<>();
     }
 
-
+//region интерфейс
     /**
      * возвращает суммарный вес груза
      *
@@ -74,7 +74,7 @@ public class Cargo implements Serializable {
             return null;
         }
     }
-
+//endregion интерфейс
 
     /**
      * Удаляет Fruit из внутреннего массива с позиции n
