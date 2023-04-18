@@ -1,7 +1,7 @@
-package Shmidt.abstractProgThroughInterfaces.lesson4;
+package Shmidt.abstractProgThroughInterfaces.lesson4.task1;
 
-import Shmidt.abstractProgThroughInterfaces.lesson4.functions.Double;
-import Shmidt.abstractProgThroughInterfaces.lesson4.functions.*;
+import Shmidt.abstractProgThroughInterfaces.lesson4.task1.functions.Double;
+import Shmidt.abstractProgThroughInterfaces.lesson4.task1.functions.*;
 
 import java.util.stream.Stream;
 
