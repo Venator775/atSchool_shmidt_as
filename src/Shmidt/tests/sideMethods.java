@@ -197,6 +197,21 @@ public class sideMethods {
         return resultBig.intValue();
     }
 
+    /**
+     * Преобразует массив строк в массив интов
+     *
+     * @param arrStr массив строковых чисел
+     * @return arrInt массив интов
+     */
+    static public int[] arrString2Int(String[] arrStr) {
+        int[] arrInt = new int[arrStr.length];
+        for (int i = 0; i < arrStr.length; i++) {
+            if (isInteger(arrStr[i]))
+                arrInt[i] = toInt(arrStr[i]);
+        }
+        return arrInt;
+    }
+
     public static void printLog(String text) {
         try {
             String logFileName = " ";
@@ -204,7 +219,7 @@ public class sideMethods {
             logFileName = path + "pokeLog" + "[" + DateTimeFormatter.ofPattern("dd.MM hh_mm_ss").format(LocalDateTime.now()) + "]" + ".txt";
             System.out.println(logFileName);
             try (FileWriter writer = new FileWriter(logFileName, true)) {
-                writer.write(text+ "\n");
+                writer.write(text + "\n");
                 writer.flush();
             }
         } catch (Exception exception) {
