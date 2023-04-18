@@ -6,20 +6,24 @@ import Shmidt.abstractProgThroughInterfaces.lesson4.task1.functions.*;
 import java.util.stream.Stream;
 
 import static Shmidt.tests.sideMethods.arrString2Int;
+import static Shmidt.tests.sideMethods.isInteger;
 
 //Double 4 -5 69 8 -1 0
 //Half 4 -5 69 8 -1 0
 //Exact 4 -5 69 8 -1 0
 //Square 4 -5 69 8 -1 0
 //Square
-//
+//4 -5 69 8 -1 0
 public class MainClass {
     public static void main(String[] args) {
 
         if (args.length == 0) {
             System.out.println("Не передано название операции и аргументы");
             return;
-        } else if (args.length == 1) {
+        } else if (isInteger(args[0])) {
+            System.out.println("Не передано название операции");
+            return;
+        } else if (args.length == 1 & !isInteger(args[0])) {
             System.out.println("Не переданы аргументы");
             return;
         }
