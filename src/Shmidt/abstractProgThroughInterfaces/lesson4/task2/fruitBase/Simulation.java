@@ -18,16 +18,20 @@ public class Simulation {
         List<Customer> customers = List.of(new FreshCustomer("Серёга"), new UniqueCustomer("Пашок"));
         if (args.length > 0) {
             Cargo cargoOrder = base.takeOrder(args);
+            Delivery deliveryOrder = base.takeOrder(args);
 
             System.out.println("\nИмеющиеся фрукты:");
             int n=0;
-            for (Fruit c: cargoOrder.getFruits()){
+//            for (Fruit c: cargoOrder.getFruits()){
+            for (Fruit c: deliveryOrder.getFruits()){
                 System.out.println(++n + ") " + c + " " + c.getFreshness());
             }
 
 
-            System.out.println("\nДо заказа cargoOrder.size()=" + cargoOrder.getFruits().size());
-            System.out.println(cargoOrder);
+//            System.out.println("\nДо заказа cargoOrder.size()=" + cargoOrder.getFruits().size());
+//            System.out.println(cargoOrder);
+            System.out.println("\nДо заказа deliveryOrder.size()=" + deliveryOrder.getFruits().size());
+            System.out.println(deliveryOrder);
             System.out.println();
 
 
@@ -35,20 +39,23 @@ public class Simulation {
                 String className = c.getClass().getSimpleName();
                 switch (className){
                     case ("FreshCustomer"):
-                        List<Fruit> zakaz1 = ((FreshCustomer) c).takeFruits(cargoOrder);
+//                        List<Fruit> zakaz1 = ((FreshCustomer) c).takeFruits(cargoOrder);
+                        List<Fruit> zakaz1 = ((FreshCustomer) c).takeFruits(deliveryOrder);
                         System.out.println("FreshCustomer собрал заказ:");
                         for(Fruit f: zakaz1)
                             System.out.println(f);
                         break;
                     case ("UniqueCustomer"):
-                        List<Fruit> zakaz2 = ((UniqueCustomer) c).takeFruits(cargoOrder);
+//                        List<Fruit> zakaz2 = ((UniqueCustomer) c).takeFruits(cargoOrder);
+                        List<Fruit> zakaz2 = ((UniqueCustomer) c).takeFruits(deliveryOrder);
                         System.out.println("UniqueCustomer собрал заказ:");
                         for(Fruit f: zakaz2)
                             System.out.println(f);
                         break;
                 }
                 System.out.println("Список оставшихся фруктов:");
-                System.out.println(cargoOrder.getFruits() + "\n");
+//                System.out.println(cargoOrder.getFruits() + "\n");
+                System.out.println(deliveryOrder.getFruits() + "\n");
             }
 
             System.out.println("=====================================================================================");
@@ -56,8 +63,9 @@ public class Simulation {
             for (Customer c: customers)
                 c.printPurchases();
 
-            System.out.println("\nПосле заказа argoOrder.size()=" + cargoOrder.getFruits().size());
-            System.out.println(cargoOrder);
+//            System.out.println("\nПосле заказа cargoOrder.size()=" + cargoOrder.getFruits().size());
+            System.out.println("\nПосле заказа deliveryOrder.size()=" + deliveryOrder.getFruits().size());
+            System.out.println(deliveryOrder);
         } else {
             System.out.println("Заказ пуст.");
         }

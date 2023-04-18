@@ -1,6 +1,7 @@
 package Shmidt.abstractProgThroughInterfaces.lesson4.task2.fruitBase.customers;
 
 import Shmidt.abstractProgThroughInterfaces.lesson4.task2.fruitBase.Cargo;
+import Shmidt.abstractProgThroughInterfaces.lesson4.task2.fruitBase.Delivery;
 import Shmidt.abstractProgThroughInterfaces.lesson4.task2.fruitBase.fruits.Fruit;
 
 import java.util.ArrayList;
@@ -16,7 +17,8 @@ public abstract class Customer {
         purchases = new ArrayList<>();
     }
 
-    protected abstract List<Fruit> takeFruits(Cargo cargo);
+//    protected abstract List<Fruit> takeFruits(Cargo cargo);
+    protected abstract List<Fruit> takeFruits(Delivery cargo);
 
 
     public void printPurchases() {
