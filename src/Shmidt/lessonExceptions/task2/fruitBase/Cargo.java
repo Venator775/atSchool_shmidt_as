@@ -129,6 +129,7 @@ public class Cargo implements Serializable, Delivery {
         return cargoInfo.toString();
     }
 }
+
 /*
 В класс Cargo надо добавить
     - общедоступный метод getFruits

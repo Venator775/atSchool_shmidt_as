@@ -10,16 +10,15 @@ import java.util.List;
 public class FruitCatalogue implements Serializable {
     private List<Fruit> fruitCatalogue;
 
-
     /**
      * Инициализируется список фруктов, имеющихся в продаже
      */
     public FruitCatalogue() {
         fruitCatalogue = new ArrayList<>();
-        fruitCatalogue.add(new Apple("Apple", BigDecimal.valueOf(13), 110));
-        fruitCatalogue.add(new Orange("Orange", BigDecimal.valueOf(15), 99.5));
-        fruitCatalogue.add(new Banana("Banana", BigDecimal.valueOf(30), 101.6));
-        fruitCatalogue.add(new Pineapple("Pineapple", BigDecimal.valueOf(141), 258.9));
+        fruitCatalogue.add(new Apple("Apple", BigDecimal.valueOf(14), 112));
+        fruitCatalogue.add(new Orange("Orange", BigDecimal.valueOf(14), 92.5));
+        fruitCatalogue.add(new Banana("Banana", BigDecimal.valueOf(34), 102.6));
+        fruitCatalogue.add(new Pineapple("Pineapple", BigDecimal.valueOf(144), 252.9));
     }
 
     public Fruit getFruit(int n) {

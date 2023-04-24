@@ -16,7 +16,6 @@ public abstract class Customer {
         purchases = new ArrayList<>();
     }
 
-//    protected abstract List<Fruit> takeFruits(Cargo cargo);
     protected abstract List<Fruit> takeFruits(Delivery cargo);
 
 

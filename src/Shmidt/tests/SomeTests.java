@@ -1,28 +1,14 @@
 package Shmidt.tests;
 
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+
 public class SomeTests {
-    public static void main(String[] args) {
-        Beetle b = new Beetle();
-        System.out.println(b.getNumberOfSections(5));
-    }
-}
+    public static void main(String[] args) throws IOException {
+        final String dir = System.getProperty("user.dir");
+        System.out.println("current dir = " + dir);
 
-
-interface HasExoskeleton {
-    double size = 2.0f;
-
-    int getNumberOfSections();
-}
-
-abstract class Insect implements HasExoskeleton {
-    int getNumberOfSections(int count) {
-        return count;
-    }
-}
-
-class Beetle extends Insect {
-    public int getNumberOfSections() {
-        return 0;
     }
 }

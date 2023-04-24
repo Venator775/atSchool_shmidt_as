@@ -6,12 +6,26 @@ import java.io.*;
 
 public class FruitBase implements Serializable {
     private FruitCatalogue fruitCatalogue;
-    final String path = "C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/abstractProgThroughInterfaces/lesson4/task2/fruitBase/";
-    final private String serializeFileName = path + "fruitCatalogue.dat";
-    final private String serializeFileName_new = path + "fruitCatalogue_new.dat";
+    //    final String path = "C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lessonExceptions/task2/fruitBase/";
+    private static String path = System.getProperty("user.dir") + "/src/Shmidt/lessonExceptions/task2/fruitBase/";
+
+    //    private static String deserializeFileName = path + "fruitCatalogue_IN.dat";
+//    private static String serializeFileName = path + "fruitCatalogue_OUT.dat";
+    private static String deserializeFileName;// = path + "fruitCatalogue_IN.dat";
+    private static String serializeFileName;// = path + "fruitCatalogue_OUT.dat";
 
     public FruitBase() {
         fruitCatalogue = new FruitCatalogue();
+    }
+
+    public FruitBase(boolean isImport) {
+        if (isImport) {
+            System.out.println("Загрузка каталога из файла");
+            this.importCatalogue();
+        } else {
+            System.out.println("Загрузка каталога по умолчанию");
+            fruitCatalogue = new FruitCatalogue();
+        }
     }
 
     public Cargo takeOrder(String[] fruitsOrder) {
@@ -27,24 +41,30 @@ public class FruitBase implements Serializable {
     }
 
     public void exportCatalogue() {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(serializeFileName_new))) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(serializeFileName))) {
             oos.writeObject(this.fruitCatalogue);
-            System.out.println("Сериализация в файл " + serializeFileName_new + " успешна. Набор каталога:");
+            System.out.println("Экспорт в файл " + serializeFileName + " успешен. Набор каталога:");
 
             StringBuilder catInfo = new StringBuilder();
             this.fruitCatalogue.getFruitCatalogue().forEach(f -> {
                 catInfo.append(f.getName() + ":\t" + " [" + f.getPrice() + " у.е./" + f.getWeight() + "гр.]" + ";\n");
             });
             System.out.println(catInfo);
+        } catch (NullPointerException ex) {
+            System.out.println("Ошибка экспорта: Передано null имя файла\n" + ex.getMessage() + "\n" + ex.getStackTrace());
+        } catch (FileNotFoundException ex) {
+            System.out.println("Ошибка экспорта: файл " + serializeFileName + " не найден\n" + ex.getMessage() + "\n" + ex.getStackTrace());
+        } catch (IOException ex) {
+            System.out.println("Непредвиденная ошибка вывода: файл " + serializeFileName + "\n" + ex.getMessage() + "\n" + ex.getStackTrace());
         } catch (Exception ex) {
-            System.out.println("Ошибка сериализации:\n" + ex.getMessage() + "/n" + ex.getStackTrace());
+            System.out.println("Непредведенная ошибка при экспорте каталога из файла " + serializeFileName + "\n" + ex.getMessage() + "\n" + ex.getStackTrace());
         }
     }
 
     public void importCatalogue() {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(serializeFileName))) {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(deserializeFileName))) {
             this.fruitCatalogue = (FruitCatalogue) ois.readObject();
-            System.out.println("Десериализация из файла " + serializeFileName + " успешна. Набор каталога:");
+            System.out.println("Импорт из файла " + deserializeFileName + " успешен. Набор каталога:");
 
             StringBuilder catInfo = new StringBuilder();
             this.fruitCatalogue.getFruitCatalogue().forEach(f -> {
@@ -53,11 +73,35 @@ public class FruitBase implements Serializable {
 
             System.out.println(catInfo);
 
+        } catch (NullPointerException ex) {
+            System.out.println("Ошибка импорта: Передано null имя файла\n" + ex.getMessage() + "\n" + ex.getStackTrace());
+        } catch (FileNotFoundException ex) {
+            System.out.println("Ошибка импорта: файл " + deserializeFileName + " не найден\n" + ex.getMessage() + "\n" + ex.getStackTrace());
+        } catch (InvalidClassException ex) {
+            System.out.println("Невозможно импортировать каталог: неподдерживаемая версия файла " + deserializeFileName + "\n" + ex.getMessage() + "\n" + ex.getStackTrace());
+        } catch (IOException ex) {
+            System.out.println("Непредвиденная ошибка ввода: файл " + deserializeFileName + "\n" + ex.getMessage() + "\n" + ex.getStackTrace());
         } catch (Exception ex) {
-            System.out.println("Ошибка десериализации:\n" + ex.getMessage() + "/n" + ex.getStackTrace());
+            System.out.println("Непредведенная ошибка при импорте каталога из файла " + deserializeFileName + "\n" + ex.getMessage() + "\n" + ex.getStackTrace());
         }
+
     }
 
+    public String getDeserializeFileName() {
+        return deserializeFileName;
+    }
+
+    public String getSerializeFileName() {
+        return serializeFileName;
+    }
+
+    public static void setDeserializeFileName(String FileName) {
+        deserializeFileName = FileName;
+    }
+
+    public static void setSerializeFileName(String FileName) {
+        serializeFileName = FileName;
+    }
 }
 /*
    Добавьте в класс FruitBase следующие методы:
