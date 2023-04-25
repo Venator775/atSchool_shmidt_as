@@ -13,7 +13,7 @@ public class FreshCustomer extends Customer {
 
     public List<Fruit> takeFruits(Delivery cargo) {
 
-        List<Fruit> freshfruits = cargo.getFruits();//fixme что эффективнее: создавать такой список фруктов freshfruits и обращаться к его элементам или же напрямую всегда дёргать список фруктов в заказе и уже из него брать фрукты, как я сделал в UniqueCustomer?
+        List<Fruit> freshfruits = cargo.getFruits();
 
         /*freshfruits.stream().forEach(fruit -> {
             this.purchases.add(fruit);

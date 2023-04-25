@@ -66,7 +66,7 @@ public class Cargo implements Serializable, Delivery {
      * @return Удалённый фрукт
      */
     public Fruit removeFruit(Fruit fruit) {
-        if (this.fruits.contains(fruit)) {//todo можно добавить проверку по хешкоду
+        if (this.fruits.contains(fruit)) {
             this.fruits.remove(this.fruits.lastIndexOf(fruit));
             return fruit;
         } else {

@@ -4,6 +4,9 @@ import Shmidt.lessonExceptions.task2.fruitBase.fruits.Fruit;
 
 import java.io.*;
 
+import static Shmidt.tests.ConsoleColors.GREEN;
+import static Shmidt.tests.ConsoleColors.RESET;
+
 public class FruitBase implements Serializable {
     private FruitCatalogue fruitCatalogue;
 
@@ -15,8 +18,8 @@ public class FruitBase implements Serializable {
         fruitCatalogue = new FruitCatalogue();
     }
 
-    public FruitBase(boolean isImport) {
-        if (isImport) {
+    public FruitBase(boolean doImport) {
+        if (doImport) {
             System.out.println("Загрузка каталога из файла");
             this.importCatalogue();
         } else {
@@ -40,7 +43,7 @@ public class FruitBase implements Serializable {
     public void exportCatalogue() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(serializeFileName))) {
             oos.writeObject(this.fruitCatalogue);
-            System.out.println("Экспорт в файл " + serializeFileName + " успешен. Набор каталога:");
+            System.out.println("\n" + GREEN + "Экспорт в файл " + serializeFileName + " успешен. Набор каталога:" + RESET);
 
             StringBuilder catInfo = new StringBuilder();
             this.fruitCatalogue.getFruitCatalogue().forEach(f -> {
@@ -61,7 +64,7 @@ public class FruitBase implements Serializable {
     public void importCatalogue() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(deserializeFileName))) {
             this.fruitCatalogue = (FruitCatalogue) ois.readObject();
-            System.out.println("Импорт из файла " + deserializeFileName + " успешен. Набор каталога:");
+            System.out.println(GREEN + "Импорт из файла " + deserializeFileName + " успешен. Набор каталога:" + RESET);
 
             StringBuilder catInfo = new StringBuilder();
             this.fruitCatalogue.getFruitCatalogue().forEach(f -> {
@@ -84,13 +87,6 @@ public class FruitBase implements Serializable {
 
     }
 
-    public String getDeserializeFileName() {
-        return deserializeFileName;
-    }
-
-    public String getSerializeFileName() {
-        return serializeFileName;
-    }
 
     public static void setDeserializeFileName(String FileName) {
         deserializeFileName = FileName;

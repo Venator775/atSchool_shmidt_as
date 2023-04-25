@@ -73,7 +73,7 @@ public class Cargo implements Serializable {
     }
 
     public Fruit removeFruit(Fruit fruit) {
-        if (this.fruits.contains(fruit)) {//todo добавить проверку по хешкоду
+        if (this.fruits.contains(fruit)) {
             this.fruits.remove(this.fruits.lastIndexOf(fruit));
             return fruit;
         } else {

@@ -78,7 +78,7 @@ public class Game {
         int round = 0;
         Scanner sc = new Scanner(System.in);
         String command = "z";
-        while (game.isRunning()) {//todo вот сюда можно пихнуть сканнер, для игры между людьми
+        while (game.isRunning()) {
 
             if (player1TurnFlag & player1.getState().equals(ACTIVE)) {
                 command = sc.next();

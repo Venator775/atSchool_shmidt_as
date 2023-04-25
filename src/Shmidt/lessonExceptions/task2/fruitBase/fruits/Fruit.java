@@ -30,11 +30,6 @@ public abstract class Fruit implements Serializable {
         this.price = price;
     }
 
-    //todo - возможно убрать после уборки имени из фруктов
-    public Fruit(Fruit fruit) {
-        this(fruit.name, fruit.price, fruit.weight);
-    }
-
     public boolean isFresh() {
         return this.freshness.equals(FRESH);
     }

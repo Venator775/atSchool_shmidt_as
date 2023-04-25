@@ -37,7 +37,7 @@ public class Timer {
     }
 
     public void start() {
-        finalSecondsValue = System.currentTimeMillis() + seconds * 1000;//todo bp,fdbnmcz jn yt`
+        finalSecondsValue = System.currentTimeMillis() + seconds * 1000;
 
         while (System.currentTimeMillis() <= finalSecondsValue) {
             printTime();

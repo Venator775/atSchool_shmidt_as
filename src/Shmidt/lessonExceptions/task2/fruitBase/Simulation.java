@@ -11,17 +11,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Simulation {
-    //todo сделать поиск в аргументах тегов -i -e
     //Orange Blueberry Blueberry Pineapple Pineapple бульбазавр Orange Orange Orange Orange  Banana Apple Grape Pineapple Banana Apple Grape Banana Apple Grape Banana Apple Grape
     //-e=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lessonExceptions/task2/fruitBase/fruitCatalogue_OUT.dat -i=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lessonExceptions/task2/fruitBase/fruitCatalogue_IN.dat Orange Banana Apple Grape Pineapple Banana Banana Apple Grape Banana Apple Grape Blueberry
     //-i=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lessonExceptions/task2/fruitBase/fruitCatalogue_IN.dat Orange Banana Apple Grape Pineapple Banana Banana Apple Grape Banana Apple Grape Blueberry
     //-e=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lessonExceptions/task2/fruitBase/fruitCatalogue_OUT.dat Orange Banana Apple Grape Pineapple Banana Banana Apple Grape Banana Apple Grape Blueberry
-    private static String outputFilePath = null;
-    private static String inputFilePath = null;
+    private static String outputFilePath;
+    private static String inputFilePath;
 
     public static void main(String[] args) {
-//        String outputFilePath = initFilePathExport(args[0]);
-//        String inputFilePath = initFilePathImport(args[1]);
         initFilePaths(args);
 
         FruitBase.setSerializeFileName(outputFilePath);
@@ -32,24 +29,30 @@ public class Simulation {
         List<Customer> customers = List.of(new FreshCustomer("Серёга"), new UniqueCustomer("Пашок"));
 
         if (args.length > 0) {
-            Delivery deliveryOrder = base.takeOrder(args);
-            printFruitsListByFreshness(deliveryOrder);
-            printAvailableFruits(deliveryOrder);
+//            Delivery deliveryOrder = base.takeOrder(args);
+//            //printFruitsListByFreshness(deliveryOrder);
+//            printAvailableFruits(deliveryOrder);
 
             for (Customer c : customers) {
+                Delivery deliveryOrder = base.takeOrder(args);
+                printAvailableFruits(deliveryOrder);
                 String className = c.getClass().getSimpleName();
                 switch (className) {
                     case ("FreshCustomer"):
-                        List<Fruit> zakaz1 = ((FreshCustomer) c).takeFruits(deliveryOrder);
-                        System.out.println("FreshCustomer собрал заказ:");
-                        for (Fruit f : zakaz1)
-                            System.out.println(f);
+                        List<Fruit> zakaz1 = ((FreshCustomer) c).takeFruits(deliveryOrder);//todo упростить takeFruits
+                        if (zakaz1.size() > 0) {
+                            System.out.println(c.getName() + " собрал заказ:");
+                            for (Fruit f : zakaz1)
+                                System.out.println(f);
+                        } else System.out.println(c.getName() + " не собрал подходящих фруктов");
                         break;
                     case ("UniqueCustomer"):
                         List<Fruit> zakaz2 = ((UniqueCustomer) c).takeFruits(deliveryOrder);
-                        System.out.println("UniqueCustomer собрал заказ:");
-                        for (Fruit f : zakaz2)
-                            System.out.println(f);
+                        System.out.println(c.getName() + " собрал заказ:");
+                        if (zakaz2.size() > 0) {
+                            for (Fruit f : zakaz2)
+                                System.out.println(f);
+                        } else System.out.println(c.getName() + " не собрал подходящих фруктов");
                         break;
                 }
                 System.out.println("Список оставшихся фруктов:");
@@ -59,8 +62,6 @@ public class Simulation {
             System.out.println("Вывод покупок заказчиков=====================================================================================");
             for (Customer c : customers)
                 c.printPurchases();
-
-            printAvailableFruits(deliveryOrder);
         } else {
             System.out.println("Заказ пуст.");
         }
