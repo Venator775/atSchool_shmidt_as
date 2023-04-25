@@ -15,6 +15,12 @@ public class FreshCustomer extends Customer {
 
         List<Fruit> freshfruits = cargo.getFruits();//fixme что эффективнее: создавать такой список фруктов freshfruits и обращаться к его элементам или же напрямую всегда дёргать список фруктов в заказе и уже из него брать фрукты, как я сделал в UniqueCustomer?
 
+        /*freshfruits.stream().forEach(fruit -> {
+            this.purchases.add(fruit);
+            freshfruits.remove(fruit);
+        });*/
+
+
         if (freshfruits != null) {
             if (freshfruits.size() > 0) {
                 int cntr = 0;

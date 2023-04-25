@@ -3,12 +3,13 @@ package Shmidt.lessonExceptions.task2.fruitBase.fruits;
 import java.math.BigDecimal;
 
 public class Banana extends Fruit {
-    public Banana(String name, BigDecimal price, double weight) {
-        super(name, price, weight);
+    public Banana(BigDecimal price, double weight) {
+        super(price, weight);
+        this.name="Banana";
     }
 
     public Fruit clone() {
-        return new Banana(this.name, this.price, this.weight);
+        return new Banana(this.price, this.weight);
     }
 }
 /*

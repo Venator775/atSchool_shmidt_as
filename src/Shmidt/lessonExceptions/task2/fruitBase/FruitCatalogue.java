@@ -7,6 +7,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import static Shmidt.tests.sideMethods.rnd;
+
 public class FruitCatalogue implements Serializable {
     private List<Fruit> fruitCatalogue;
 
@@ -15,10 +17,10 @@ public class FruitCatalogue implements Serializable {
      */
     public FruitCatalogue() {
         fruitCatalogue = new ArrayList<>();
-        fruitCatalogue.add(new Apple("Apple", BigDecimal.valueOf(14), 112));
-        fruitCatalogue.add(new Orange("Orange", BigDecimal.valueOf(14), 92.5));
-        fruitCatalogue.add(new Banana("Banana", BigDecimal.valueOf(34), 102.6));
-        fruitCatalogue.add(new Pineapple("Pineapple", BigDecimal.valueOf(144), 252.9));
+        fruitCatalogue.add(new Apple(BigDecimal.valueOf(rnd(10,20)), rnd(110,130)));
+        fruitCatalogue.add(new Orange(BigDecimal.valueOf(rnd(10,20)), rnd(90,105)));
+        fruitCatalogue.add(new Banana(BigDecimal.valueOf(rnd(25,35)), rnd(95,110)));
+        fruitCatalogue.add(new Pineapple(BigDecimal.valueOf(rnd(120,150)), rnd(210,250)));
     }
 
     public Fruit getFruit(int n) {

@@ -19,18 +19,24 @@ public abstract class Fruit implements Serializable {
         this.weight = weight;
         this.freshness = FRESH;
     }
+    public Fruit(BigDecimal price, double weight) {
+        this.price = price;
+        this.weight = weight;
+        this.freshness = FRESH;
+    }
 
     public Fruit(String name, BigDecimal price) {
         this.name = name;
         this.price = price;
     }
 
+    //todo - возможно убрать после уборки имени из фруктов
     public Fruit(Fruit fruit) {
         this(fruit.name, fruit.price, fruit.weight);
     }
 
     public boolean isFresh() {
-        return this.freshness == FRESH;
+        return this.freshness.equals(FRESH);
     }
 
     public void setRandFresh() {

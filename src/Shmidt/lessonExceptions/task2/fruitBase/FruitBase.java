@@ -6,11 +6,8 @@ import java.io.*;
 
 public class FruitBase implements Serializable {
     private FruitCatalogue fruitCatalogue;
-    //    final String path = "C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lessonExceptions/task2/fruitBase/";
-    private static String path = System.getProperty("user.dir") + "/src/Shmidt/lessonExceptions/task2/fruitBase/";
 
-    //    private static String deserializeFileName = path + "fruitCatalogue_IN.dat";
-//    private static String serializeFileName = path + "fruitCatalogue_OUT.dat";
+    private static String path = System.getProperty("user.dir") + "/src/Shmidt/lessonExceptions/task2/fruitBase/";
     private static String deserializeFileName;// = path + "fruitCatalogue_IN.dat";
     private static String serializeFileName;// = path + "fruitCatalogue_OUT.dat";
 
