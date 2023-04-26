@@ -15,24 +15,21 @@ public class FreshCustomer extends Customer {
 
         List<Fruit> freshfruits = cargo.getFruits();
 
-        /*freshfruits.stream().forEach(fruit -> {
+        for (int i = 0; i < freshfruits.size(); i++) {
+            Fruit fruit = freshfruits.get(i);
+            if (fruit.isFresh()) {
+                this.purchases.add(fruit);
+                cargo.removeFruit(fruit);
+                i--;
+            }
+        }
+
+        /*
+        freshfruits.stream().filter(Fruit::isFresh).forEach(fruit -> {
             this.purchases.add(fruit);
-            freshfruits.remove(fruit);
-        });*/
-
-
-        if (freshfruits != null) {
-            if (freshfruits.size() > 0) {
-                int cntr = 0;
-                while (cntr < freshfruits.size()) {
-                    if (freshfruits.get(cntr).isFresh()){
-                        this.purchases.add(cargo.withdrawFruit(freshfruits.get(cntr)));
-                        cntr--;
-                    }
-                    cntr++;
-                }
-            } else return null;
-        } else return null;
+            cargo.removeFruit(fruit);//удаляется ссылка на объект в обоих массивах -> java.util.ConcurrentModificationException
+        });
+        */
 
         return this.purchases;
     }

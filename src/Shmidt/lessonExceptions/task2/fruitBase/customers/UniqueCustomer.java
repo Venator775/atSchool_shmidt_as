@@ -13,35 +13,31 @@ public class UniqueCustomer extends Customer {
 
     //    public List<Fruit> takeFruits(Cargo cargo) {
     public List<Fruit> takeFruits(Delivery cargo) {
-        if (cargo != null) {
-            if (cargo.getFruits().size() > 0) {
-                for (int i = 0; i < cargo.getFruits().size(); i++) {
-                    Fruit cargoFruit = cargo.getFruits().get(i);
-                    boolean isFruitContained = false;
-                    for (Fruit purchaseFruit : this.purchases) {
-                        if (purchaseFruit.getName().equals(cargoFruit.getName())) {
-                            isFruitContained = true;
-                            break;
-                        }
-                    }
 
-                    if (!isFruitContained) {
-                        this.purchases.add(cargo.withdrawFruit(cargoFruit));
-                    }
-                }
-            } else return null;
-        } else return null;
+        for (int i = 0; i < cargo.getFruits().size(); i++) {
+            Fruit cargoFruit = cargo.getFruits().get(i);
+
+            boolean isFruitContained = this.purchases.stream().anyMatch(
+                    purchaseFruit -> purchaseFruit.getName().equals(cargoFruit.getName())
+            );
+
+            if (!isFruitContained) {
+                this.purchases.add(cargo.removeFruit(cargoFruit));
+            }
+        }
 
         return this.purchases;
-/*
+
+        /*
         List<Fruit> fruitList = cargo.getFruits();
         List<Fruit> resultList = new ArrayList<>();
         for (Fruit fruit : fruitList) {
             if (resultList.stream().noneMatch(orderList -> (orderList.getName().equals(fruit.getName())))) {
                 resultList.add(fruit);
             }
-            cargo.removeFruit(fruit);
+            cargo.removeFruit(fruit);//удаляется ссылка на объект в обоих массивах -> java.util.ConcurrentModificationException
         }
-        return resultList;*/
+        return resultList;
+        */
     }
 }
