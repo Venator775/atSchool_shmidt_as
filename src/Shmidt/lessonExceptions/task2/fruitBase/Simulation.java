@@ -13,33 +13,30 @@ import java.util.regex.Pattern;
 public class Simulation {
     //Orange Blueberry Blueberry Pineapple Pineapple бульбазавр Orange Orange Orange Orange  Banana Apple Grape Pineapple Banana Apple Grape Banana Apple Grape Banana Apple Grape
     //-e=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lessonExceptions/task2/fruitBase/fruitCatalogue_OUT.dat -i=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lessonExceptions/task2/fruitBase/fruitCatalogue_IN.dat Orange Banana Apple Grape Pineapple Banana Banana Apple Grape Banana Apple Grape Blueberry
-    //-i=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lessonExceptions/task2/fruitBase/fruitCatalogue_IN.dat Orange Banana Apple Grape Pineapple Banana Banana Apple Grape Banana Apple Grape Blueberry
-    //-e=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lessonExceptions/task2/fruitBase/fruitCatalogue_OUT.dat Orange Banana Apple Grape Pineapple Banana Banana Apple Grape Banana Apple Grape Blueberry
+    //-i=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lessonExceptions/task2/fruitBase/fruitCatalogue_IN.dat Orange Pineapple Banana Apple Grape Banana Banana Apple Grape Banana Apple Grape Blueberry
+    //-e=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lessonExceptions/task2/fruitBase/fruitCatalogue_OUT.dat Orange Pineapple Banana Apple Grape Banana Banana Apple Grape Banana Apple Grape Blueberry
     private static String outputFilePath;
     private static String inputFilePath;
 
     public static void main(String[] args) {
         initFilePaths(args);
 
-        FruitBase.setSerializeFileName(outputFilePath);
-        FruitBase.setDeserializeFileName(inputFilePath);
+        FruitBase.setOutputFileName(outputFilePath);
+        FruitBase.setInputFileName(inputFilePath);
 
         FruitBase base = inputFilePath == null ? new FruitBase(false) : new FruitBase(true);
 
         List<Customer> customers = List.of(new FreshCustomer("Серёга"), new UniqueCustomer("Пашок"));
 
         if (args.length > 0) {
-//            Delivery deliveryOrder = base.takeOrder(args);
-//            //printFruitsListByFreshness(deliveryOrder);
-//            printAvailableFruits(deliveryOrder);
-
             for (Customer c : customers) {
                 Delivery deliveryOrder = base.takeOrder(args);
+                System.out.println("Заказ у " + c.getName() + ":");
                 printAvailableFruits(deliveryOrder);
                 String className = c.getClass().getSimpleName();
                 switch (className) {
                     case ("FreshCustomer"):
-                        List<Fruit> zakaz1 = ((FreshCustomer) c).takeFruits(deliveryOrder);//todo упростить takeFruits
+                        List<Fruit> zakaz1 = ((FreshCustomer) c).takeFruits(deliveryOrder);
                         if (zakaz1.size() > 0) {
                             System.out.println(c.getName() + " собрал заказ:");
                             for (Fruit f : zakaz1)
@@ -55,7 +52,7 @@ public class Simulation {
                         } else System.out.println(c.getName() + " не собрал подходящих фруктов");
                         break;
                 }
-                System.out.println("Список оставшихся фруктов:");
+                System.out.println("Список оставшихся фруктов в заказе у "+ c.getName() +":");
                 System.out.println(deliveryOrder.getFruits() + "\n");
             }
 
@@ -71,19 +68,6 @@ public class Simulation {
             base.exportCatalogue();
         else
             System.out.println("Файл для экспорта не указан");
-    }
-
-    /**
-     * Краткий список фруктов в заказе с указанием свежести
-     *
-     * @param deliveryOrder
-     */
-    private static void printFruitsListByFreshness(Delivery deliveryOrder) {
-        System.out.println("\nИмеющиеся фрукты:");
-        int n = 0;
-        for (Fruit c : deliveryOrder.getFruits()) {
-            System.out.println(++n + ") " + c + " " + c.getFreshness());
-        }
     }
 
     /**

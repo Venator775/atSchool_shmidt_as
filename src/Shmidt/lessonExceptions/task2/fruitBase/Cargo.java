@@ -88,18 +88,6 @@ public class Cargo implements Serializable, Delivery {
         else System.out.println("Фрукта нет в списке на данной позиции");
     }
 
-
-    /**
-     * Изымает фрукт из заказа для выдачи
-     *
-     * @param fruit Фрукт, который надо выдать
-     * @return Выдаваемый фрукт
-     */
-    public Fruit withdrawFruit(Fruit fruit) {
-        this.removeFruit(fruit);
-        return fruit;
-    }
-
     @Override
     public String toString() {
         StringBuilder cargoInfo = new StringBuilder();

@@ -23,10 +23,6 @@ public class FruitCatalogue implements Serializable {
         fruitCatalogue.add(new Pineapple(BigDecimal.valueOf(rnd(120,150)), rnd(210,250)));
     }
 
-    public Fruit getFruit(int n) {
-        return fruitCatalogue.size() >= n ? fruitCatalogue.get(n) : null;
-    }
-
     public Fruit getFruit(String fruitName) {
         for (Fruit fruit : fruitCatalogue)
             if (fruit.getName().equals(fruitName)) {
@@ -39,7 +35,4 @@ public class FruitCatalogue implements Serializable {
         return fruitCatalogue;
     }
 
-    public void setFruitCatalogue(List<Fruit> fruitCatalogue) {
-        this.fruitCatalogue = fruitCatalogue;
-    }
 }

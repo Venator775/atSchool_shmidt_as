@@ -11,7 +11,6 @@ public class UniqueCustomer extends Customer {
         super(name);
     }
 
-    //    public List<Fruit> takeFruits(Cargo cargo) {
     public List<Fruit> takeFruits(Delivery cargo) {
 
         for (int i = 0; i < cargo.getFruits().size(); i++) {
@@ -23,6 +22,7 @@ public class UniqueCustomer extends Customer {
 
             if (!isFruitContained) {
                 this.purchases.add(cargo.removeFruit(cargoFruit));
+                i--;
             }
         }
 
@@ -35,7 +35,7 @@ public class UniqueCustomer extends Customer {
             if (resultList.stream().noneMatch(orderList -> (orderList.getName().equals(fruit.getName())))) {
                 resultList.add(fruit);
             }
-            cargo.removeFruit(fruit);//удаляется ссылка на объект в обоих массивах -> java.util.ConcurrentModificationException
+            cargo.removeFruit(fruit);//удаляется ссылка на объект в обоих массивах -> java.util.ConcurrentModificationException + ломается цикл перебора фруктов
         }
         return resultList;
         */

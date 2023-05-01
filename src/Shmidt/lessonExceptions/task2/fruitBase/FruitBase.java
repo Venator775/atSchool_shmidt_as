@@ -9,10 +9,8 @@ import static Shmidt.tests.ConsoleColors.RESET;
 
 public class FruitBase implements Serializable {
     private FruitCatalogue fruitCatalogue;
-
-    private static String path = System.getProperty("user.dir") + "/src/Shmidt/lessonExceptions/task2/fruitBase/";
-    private static String deserializeFileName;// = path + "fruitCatalogue_IN.dat";
-    private static String serializeFileName;// = path + "fruitCatalogue_OUT.dat";
+    private static String deserializeFileName;
+    private static String serializeFileName;
 
     public FruitBase() {
         fruitCatalogue = new FruitCatalogue();
@@ -88,20 +86,11 @@ public class FruitBase implements Serializable {
     }
 
 
-    public static void setDeserializeFileName(String FileName) {
+    public static void setInputFileName(String FileName) {
         deserializeFileName = FileName;
     }
 
-    public static void setSerializeFileName(String FileName) {
+    public static void setOutputFileName(String FileName) {
         serializeFileName = FileName;
     }
 }
-/*
-   Добавьте в класс FruitBase следующие методы:
-   - общедоступный метод exportCatalogue
-     Сериализует внутренний объект FruitCatalogue в проект.
-     Выводится сообщение "каталог экспортирован"
-
-   - общедоступный метод importCatalogue
-     Десериализует из проекта объект FruitCatalogue и результатом заменяет текущий
- */

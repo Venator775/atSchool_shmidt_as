@@ -32,7 +32,6 @@ public class NatureElement {
                 return new Water();
             }
             default:
-                //System.out.println("Элемент не найден");
                 throw new NoSuchElementException("Элемент " + elemName + " не найден");
         }
     }

@@ -11,7 +11,4 @@ public interface Delivery {
     void addFruit(Fruit fruit);
     List<Fruit> getFruits();
     Fruit removeFruit(Fruit fruit);
-
-//musthave метод
-    Fruit withdrawFruit(Fruit fruit);
 }
