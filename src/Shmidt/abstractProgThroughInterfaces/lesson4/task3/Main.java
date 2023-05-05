@@ -1,5 +1,6 @@
 package Shmidt.abstractProgThroughInterfaces.lesson4.task3;
 
+import Shmidt.abstractProgThroughInterfaces.lesson4.task3.queue.Queue;
 import Shmidt.abstractProgThroughInterfaces.lesson4.task3.queue.QueueFirst;
 import Shmidt.abstractProgThroughInterfaces.lesson4.task3.queue.QueueSecond;
 
