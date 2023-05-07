@@ -1,4 +1,4 @@
-package Shmidt.lesson58.Test6;
+package Shmidt.lesson58_Arrays.Test6;
 
 import static Shmidt.lesson54.Task5.isInteger;
 import static Shmidt.lesson54.Task6.toInt;

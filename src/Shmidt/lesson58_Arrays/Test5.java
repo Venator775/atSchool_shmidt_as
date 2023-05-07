@@ -1,7 +1,7 @@
-package Shmidt.lesson58;
+package Shmidt.lesson58_Arrays;
 
-import static Shmidt.lesson58.Test1.fillArray;
-import static Shmidt.lesson58.Test1.rnd;
+import static Shmidt.lesson58_Arrays.Test1.fillArray;
+import static Shmidt.lesson58_Arrays.Test1.rnd;
 
 public class Test5 {
     public static void main(String[] args) {

@@ -58,7 +58,6 @@ public class sideMethods {
         boolean sorted = false;
         while (!sorted) {
             counter++;
-            //System.out.print("\nШаг " + counter + ": ");
             sorted = true;
             for (int i = 0; i < a.length; i++) {
                 if ((i + 1) != a.length) {
@@ -69,11 +68,8 @@ public class sideMethods {
                         sorted = false;
                     }
                 }
-                //System.out.print(a[i] + " ");
             }
-
         }
-
         return a;
     }
 
@@ -212,6 +208,15 @@ public class sideMethods {
         return arrInt;
     }
 
+    static public Integer[] arrString2Integer(String[] arrStr) {
+        Integer[] arrInteger = new Integer[arrStr.length];
+        for (int i = 0; i < arrStr.length; i++) {
+            if (isInteger(arrStr[i]))
+                arrInteger[i] = Integer.valueOf(toInt(arrStr[i]));
+        }
+        return arrInteger;
+    }
+
     public static void printLog(String text) {
         try {
             String logFileName = " ";
@@ -226,4 +231,5 @@ public class sideMethods {
             System.out.println("Ошибка вывода в файл:\n" + exception.getMessage());
         }
     }
+
 }
