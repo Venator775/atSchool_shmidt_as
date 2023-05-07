@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import static Shmidt.lambdas.fruitBase.fruits.Freshness.FRESH;
 import static Shmidt.tests.sideMethods.rnd;
 
 public class FruitCatalogue implements Serializable {
@@ -17,10 +18,37 @@ public class FruitCatalogue implements Serializable {
      */
     public FruitCatalogue() {
         fruitCatalogue = new ArrayList<>();
-        fruitCatalogue.add(new Apple(BigDecimal.valueOf(rnd(10,20)), rnd(110,130)));
-        fruitCatalogue.add(new Orange(BigDecimal.valueOf(rnd(10,20)), rnd(90,105)));
-        fruitCatalogue.add(new Banana(BigDecimal.valueOf(rnd(25,35)), rnd(95,110)));
-        fruitCatalogue.add(new Pineapple(BigDecimal.valueOf(rnd(120,150)), rnd(210,250)));
+        fruitCatalogue.add(new Apple(BigDecimal.valueOf(rnd(10, 20)), rnd(110, 130)));
+        fruitCatalogue.add(new Orange(BigDecimal.valueOf(rnd(10, 20)), rnd(90, 105)));
+        fruitCatalogue.add(new Banana(BigDecimal.valueOf(rnd(25, 35)), rnd(95, 110)));
+        fruitCatalogue.add(new Pineapple(BigDecimal.valueOf(rnd(120, 150)), rnd(210, 250)));
+
+        Fruit mango = new Fruit("Mango", BigDecimal.valueOf(rnd(120, 150)), rnd(210, 250), FRESH) {
+            @Override
+            public Fruit clone() {
+                return new Fruit(this.name, this.price, this.weight, this.freshness) {
+                    @Override
+                    public Fruit clone() {//fixme какая-то хрень
+                        return this;
+                    }
+                };
+            }
+        };
+
+        var kiwi = new Fruit("Kiwi", BigDecimal.valueOf(rnd(120, 150)), rnd(210, 250), FRESH) {
+            @Override
+            public Fruit clone() {
+                return new Fruit(this.name, this.price, this.weight, this.freshness) {
+                    @Override
+                    public Fruit clone() {//fixme какая-то хрень
+                        return this;
+                    }
+                };
+            }
+        };
+
+        fruitCatalogue.add(mango);
+        fruitCatalogue.add(kiwi);
     }
 
     public Fruit getFruit(String fruitName) {

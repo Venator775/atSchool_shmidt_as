@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-
 import static Shmidt.lambdas.fruitBase.fruits.Freshness.*;
 import static Shmidt.tests.sideMethods.rnd;
 
@@ -14,12 +13,20 @@ public abstract class Fruit implements Serializable {
     protected double weight;
     protected Freshness freshness;
 
+    public Fruit(String name, BigDecimal price, double weight, Freshness freshness) {
+        this.name = name;
+        this.price = price;
+        this.weight = weight;
+        this.freshness = freshness;
+    }
+
     public Fruit(String name, BigDecimal price, double weight) {
         this.name = name;
         this.price = price;
         this.weight = weight;
         this.freshness = FRESH;
     }
+
     public Fruit(BigDecimal price, double weight) {
         this.price = price;
         this.weight = weight;

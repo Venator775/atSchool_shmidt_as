@@ -11,10 +11,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Simulation {
-    //Orange Blueberry Blueberry Pineapple Pineapple бульбазавр Orange Orange Orange Orange  Banana Apple Grape Pineapple Banana Apple Grape Banana Apple Grape Banana Apple Grape
-    //-e=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lessonExceptions/task2/fruitBase/fruitCatalogue_OUT.dat -i=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lessonExceptions/task2/fruitBase/fruitCatalogue_IN.dat Orange Banana Apple Grape Pineapple Banana Banana Apple Grape Banana Apple Grape Blueberry
-    //-i=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lessonExceptions/task2/fruitBase/fruitCatalogue_IN.dat Orange Pineapple Banana Apple Grape Banana Banana Apple Grape Banana Apple Grape Blueberry
-    //-e=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lessonExceptions/task2/fruitBase/fruitCatalogue_OUT.dat Orange Pineapple Banana Apple Grape Banana Banana Apple Grape Banana Apple Grape Blueberry
+    //Orange Kiwi Blueberry Pineapple Pineapple бульбазавр Orange Mango Orange Orange  Banana Apple Grape Pineapple Banana Mango Kiwi Banana Kiwi Grape Mango Apple Grape
+    //-e=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lessonExceptions/task2/fruitBase/fruitCatalogue_OUT.dat -i=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lessonExceptions/task2/fruitBase/fruitCatalogue_IN.dat Orange Kiwi Blueberry Pineapple Pineapple бульбазавр Orange Mango Orange Orange  Banana Apple Grape Pineapple Banana Mango Kiwi Banana Kiwi Grape Mango Apple Grape
+    //-i=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lessonExceptions/task2/fruitBase/fruitCatalogue_IN.dat Orange Kiwi Blueberry Pineapple Pineapple бульбазавр Orange Mango Orange Orange  Banana Apple Grape Pineapple Banana Mango Kiwi Banana Kiwi Grape Mango Apple Grape
+    //-e=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lessonExceptions/task2/fruitBase/fruitCatalogue_OUT.dat Orange Kiwi Blueberry Pineapple Pineapple бульбазавр Orange Mango Orange Orange  Banana Apple Grape Pineapple Banana Mango Kiwi Banana Kiwi Grape Mango Apple Grape
     private static String outputFilePath;
     private static String inputFilePath;
 

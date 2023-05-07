@@ -29,7 +29,7 @@ public class FruitBase implements Serializable {
     public Cargo takeOrder(String[] fruitsOrder) {
         Cargo cargo = new Cargo();
         for (String orderedFruit : fruitsOrder) {
-            Fruit fruit = fruitCatalogue.getFruit(orderedFruit);
+            Fruit fruit = fruitCatalogue.getFruit(orderedFruit);//todo тут возвращается null на Kiwi и Mango, надо доработать их Clone
             if (fruit != null) {
                 fruit.setRandFresh();//устанавливаем рандомную свежесть
                 cargo.addFruit(fruit);
