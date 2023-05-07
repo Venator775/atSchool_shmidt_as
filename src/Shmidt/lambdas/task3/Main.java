@@ -19,11 +19,18 @@ public class Main {
         });
         System.out.println("Очередь #1: " + queue1);
 
+        Swap methodAsc = new Swap() {//оставил анонимным классом, чтоб был его пример перед глазами
+            public boolean needToSwap(int a, int b) {
+                return a > b;
+            }
+        };
+        queue1.sort(methodAsc);
+        System.out.println("Очередь #1 (отсортированная по возрастанию): " + queue1);
 
-        for (int i = 0; i < queue1.getQueue().size(); i++) {
-            System.out.println("Удалён эемент " + queue1.remove() + ". Новая очередь: " + queue1);
-            i--;
-        }
+//        for (int i = 0; i < queue1.getQueue().size(); i++) {
+//            System.out.println("Удалён эемент " + queue1.remove() + ". Новая очередь: " + queue1);
+//            i--;
+//        }
 
         System.out.println();
         QueueSecond queue2 = new QueueSecond();
@@ -32,23 +39,13 @@ public class Main {
         });
         System.out.println("Очередь #2: " + queue2);
 
-        for (int i = 0; i < queue2.getQueue().size(); i++) {
-            System.out.println("Удалён эемент " + queue2.remove() + ". Новая очередь: " + queue2);
-            i--;
-        }
+        queue2.sort((a, b) -> a < b);
+        System.out.println("Очередь #2 (отсортированная по убыванию): " + queue2);
 
-
-        Swap methodDesc = new Swap() {
-            public boolean needToSwap(int a, int b) {
-                return a < b;
-            }
-        };
-
-        queue1.sort(new Swap() {//оставил анонимным классом, чтоб был пример перед глазами
-            public boolean needToSwap(int a, int b) {
-                return a > b;
-            }
-        });
+//        for (int i = 0; i < queue2.getQueue().size(); i++) {
+//            System.out.println("Удалён эемент " + queue2.remove() + ". Новая очередь: " + queue2);
+//            i--;
+//        }
     }
 }
 /*

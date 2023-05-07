@@ -1,5 +1,6 @@
 package Shmidt.lambdas.task3.queue;
 
+
 public interface Queue {
     /**
      * добавляет целочисленное значение в очередь

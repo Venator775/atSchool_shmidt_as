@@ -12,11 +12,7 @@ public class QueueSecond {
     }
 
     public void add(int value) {
-        /*List<Integer> tempQueue = new ArrayList<>();
-        tempQueue.add(value);
-        tempQueue.addAll(this.queue);
-        this.queue=tempQueue;*/
-        this.queue.add(0,value);
+        this.queue.add(0, value);
     }
 
     public int remove() {
@@ -27,9 +23,22 @@ public class QueueSecond {
         return queue.isEmpty();
     }
 
+    public void sort(Swap method) {
+        boolean sorted = false;
+        while (!sorted) {
+            sorted = true;
+            for (int i = 0; i < queue.size() - 1; i++) {
+                if (method.needToSwap(queue.get(i), queue.get(i + 1))) {
+                    Collections.swap(queue, i, i + 1);
+                    sorted = false;
+                }
+            }
+        }
+    }
+
     @Override
     public String toString() {
-        if (queue==null)
+        if (queue == null)
             return "Очередь не создана";
         if (queue.isEmpty())
             return "Элементы отсутствуют";
