@@ -20,7 +20,6 @@ public class Water extends NatureElement {
                 return new Mud();
             case ("Air"):
                 return new Rain();
-
             default:
                 throw new UnsupportedOperationException("Комбинация не найдена. Неизвестный элемент " + element);
         }

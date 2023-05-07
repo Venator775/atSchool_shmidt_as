@@ -3,6 +3,7 @@ package Shmidt.abstractProgThroughInterfaces.lesson4.task1;
 import Shmidt.abstractProgThroughInterfaces.lesson4.task1.functions.Double;
 import Shmidt.abstractProgThroughInterfaces.lesson4.task1.functions.*;
 
+import java.util.Arrays;
 import java.util.stream.Stream;
 
 import static Shmidt.tests.sideMethods.arrString2Int;
@@ -20,7 +21,7 @@ public class MainClass {
         if (args.length == 0) {
             System.out.println("Не передано название операции и аргументы");
             return;
-        } else if (isInteger(args[0])) {
+        } else if (isInteger(args[0])) {//todo добаввить проверку на наличие конкретно операции
             System.out.println("Не передано название операции");
             return;
         } else if (args.length == 1 & !isInteger(args[0])) {

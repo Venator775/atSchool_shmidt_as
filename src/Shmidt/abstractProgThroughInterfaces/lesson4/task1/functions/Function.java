@@ -1,7 +1,7 @@
 package Shmidt.abstractProgThroughInterfaces.lesson4.task1.functions;
 
 public interface Function {
-    abstract public int evaluate(int param);
+    int evaluate(int param);
 }
 
 /*

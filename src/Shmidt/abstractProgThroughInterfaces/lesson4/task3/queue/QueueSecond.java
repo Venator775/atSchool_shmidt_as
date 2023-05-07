@@ -12,10 +12,11 @@ public class QueueSecond {
     }
 
     public void add(int value) {
-        List<Integer> tempQueue = new ArrayList<>();
+        /*List<Integer> tempQueue = new ArrayList<>();
         tempQueue.add(value);
         tempQueue.addAll(this.queue);
-        this.queue=tempQueue;
+        this.queue=tempQueue;*/
+        this.queue.add(0,value);
     }
 
     public int remove() {

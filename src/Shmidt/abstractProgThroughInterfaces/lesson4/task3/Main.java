@@ -4,6 +4,7 @@ import Shmidt.abstractProgThroughInterfaces.lesson4.task3.queue.Queue;
 import Shmidt.abstractProgThroughInterfaces.lesson4.task3.queue.QueueFirst;
 import Shmidt.abstractProgThroughInterfaces.lesson4.task3.queue.QueueSecond;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Main {
