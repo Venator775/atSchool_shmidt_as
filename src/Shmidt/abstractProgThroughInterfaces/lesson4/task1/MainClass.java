@@ -21,7 +21,7 @@ public class MainClass {
         if (args.length == 0) {
             System.out.println("Не передано название операции и аргументы");
             return;
-        } else if (isInteger(args[0])) {//todo добаввить проверку на наличие конкретно операции
+        } else if (isInteger(args[0])) {
             System.out.println("Не передано название операции");
             return;
         } else if (args.length == 1 & !isInteger(args[0])) {

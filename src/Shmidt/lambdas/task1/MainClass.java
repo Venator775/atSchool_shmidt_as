@@ -58,9 +58,9 @@ public class MainClass {
                 return new Exact();
             case ("Square"):
                 return new Square();
-            case ("Wave"):
-                return new Function() {//fixme тут нужно использовать значение предыдущего элемента, но в данной реазилации по требованию мы можем передать только один int
-                    @Override
+            case ("Wave")://используя анонимный класс, добавьте операцию Wave: к каждому числу прибавляется значение предыдущего.
+                return new Function() {
+                    @Override//fixme для комбинаций тут нужно использовать значение предыдущего элемента, но в данной реазилации по требованию мы можем передать только один int
                     public int evaluate(int param) {
                         return param;
                     }

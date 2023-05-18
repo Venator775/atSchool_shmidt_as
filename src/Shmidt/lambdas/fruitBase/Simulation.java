@@ -28,6 +28,23 @@ public class Simulation {
 
         List<Customer> customers = List.of(new FreshCustomer("Серёга"), new UniqueCustomer("Пашок"));
 
+        customers.add(new Customer("Семёныч") {//fixme сюда не добавляется
+            @Override
+            protected List<Fruit> takeFruits(Delivery cargo) {
+                List<Fruit> freshfruits = cargo.getFruits();
+
+                for (int i = 0; i < freshfruits.size(); i++) {
+                    Fruit fruit = freshfruits.get(i);
+                    if (fruit.isFresh()) {
+                        this.purchases.add(fruit);
+                        cargo.removeFruit(fruit);
+                        i--;
+                    }
+                }
+                return this.purchases;
+            }
+        });
+
         if (args.length > 0) {
             for (Customer c : customers) {
                 Delivery deliveryOrder = base.takeOrder(args);
