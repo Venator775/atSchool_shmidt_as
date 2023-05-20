@@ -12,38 +12,35 @@ import java.util.regex.Pattern;
 
 public class Simulation {
     //Orange Kiwi Blueberry Pineapple Pineapple бульбазавр Orange Mango Orange Orange  Banana Apple Grape Pineapple Banana Mango Kiwi Banana Kiwi Grape Mango Apple Grape
-    //-e=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lessonExceptions/task2/fruitBase/fruitCatalogue_OUT.dat -i=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lessonExceptions/task2/fruitBase/fruitCatalogue_IN.dat Orange Kiwi Blueberry Pineapple Pineapple бульбазавр Orange Mango Orange Orange  Banana Apple Grape Pineapple Banana Mango Kiwi Banana Kiwi Grape Mango Apple Grape
-    //-i=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lessonExceptions/task2/fruitBase/fruitCatalogue_IN.dat Orange Kiwi Blueberry Pineapple Pineapple бульбазавр Orange Mango Orange Orange  Banana Apple Grape Pineapple Banana Mango Kiwi Banana Kiwi Grape Mango Apple Grape
-    //-e=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lessonExceptions/task2/fruitBase/fruitCatalogue_OUT.dat Orange Kiwi Blueberry Pineapple Pineapple бульбазавр Orange Mango Orange Orange  Banana Apple Grape Pineapple Banana Mango Kiwi Banana Kiwi Grape Mango Apple Grape
+    //-e=/src/Shmidt/lambdas/fruitBase/fruitCatalogue_OUT.dat -i=/src/Shmidt/lambdas/fruitBase/fruitCatalogue_IN.dat Orange Kiwi Blueberry Pineapple Pineapple бульбазавр Orange Mango Orange Orange  Banana Apple Grape Pineapple Banana Mango Kiwi Banana Kiwi Grape Mango Apple Grape
+    //-e=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lambdas/fruitBase/fruitCatalogue_OUT.dat -i=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lambdas/fruitBase/fruitCatalogue_IN.dat Orange Kiwi Blueberry Pineapple Pineapple бульбазавр Orange Mango Orange Orange  Banana Apple Grape Pineapple Banana Mango Kiwi Banana Kiwi Grape Mango Apple Grape
     private static String outputFilePath;
     private static String inputFilePath;
 
     public static void main(String[] args) {
         initFilePaths(args);
 
-        FruitBase.setOutputFileName(outputFilePath);
-        FruitBase.setInputFileName(inputFilePath);
-
-        FruitBase base = inputFilePath == null ? new FruitBase(false) : new FruitBase(true);
+        FruitBase base = inputFilePath == null ? new FruitBase(false) : new FruitBase(true);//проверка, если путь ввода указан, то загружаем каталог из файла. Если не указан - берём по умолчанию
 
         List<Customer> customers = List.of(new FreshCustomer("Серёга"), new UniqueCustomer("Пашок"));
 
-        customers.add(new Customer("Семёныч") {//fixme сюда не добавляется
-            @Override
-            protected List<Fruit> takeFruits(Delivery cargo) {
-                List<Fruit> freshfruits = cargo.getFruits();
 
-                for (int i = 0; i < freshfruits.size(); i++) {
-                    Fruit fruit = freshfruits.get(i);
-                    if (fruit.isFresh()) {
-                        this.purchases.add(fruit);
-                        cargo.removeFruit(fruit);
-                        i--;
-                    }
-                }
-                return this.purchases;
-            }
-        });
+//        customers.add(new Customer("Семёныч") {//fixme сюда не добавляется
+//            @Override
+//            protected List<Fruit> takeFruits(Delivery cargo) {
+//                List<Fruit> freshfruits = cargo.getFruits();
+//
+//                for (int i = 0; i < freshfruits.size(); i++) {
+//                    Fruit fruit = freshfruits.get(i);
+//                    if (fruit.getPrice().compareTo(BigDecimal.valueOf(40))>0) {
+//                        this.purchases.add(fruit);
+//                        cargo.removeFruit(fruit);
+//                        i--;
+//                    }
+//                }
+//                return this.purchases;
+//            }
+//        });
 
         if (args.length > 0) {
             for (Customer c : customers) {
@@ -51,7 +48,8 @@ public class Simulation {
                 System.out.println("Заказ у " + c.getName() + ":");
                 printAvailableFruits(deliveryOrder);
                 String className = c.getClass().getSimpleName();
-                switch (className) {
+
+                switch (className) {//fixme вот тут не получится вывести "анонимного" заказчика. Он имеет класс в дебаггере Simulation. Если таких заказчиков будет несколько, то хз, как
                     case ("FreshCustomer"):
                         List<Fruit> zakaz1 = ((FreshCustomer) c).takeFruits(deliveryOrder);
                         if (zakaz1.size() > 0) {
@@ -68,9 +66,12 @@ public class Simulation {
                                 System.out.println(f);
                         } else System.out.println(c.getName() + " не собрал подходящих фруктов");
                         break;
+                    default:
+                        //List<Fruit> zakaz3 = c.takeFruits(deliveryOrder);
                 }
-                System.out.println("Список оставшихся фруктов в заказе у "+ c.getName() +":");
-                System.out.println(deliveryOrder.getFruits() + "\n");
+
+
+                System.out.println("Список оставшихся фруктов в заказе у " + c.getName() + ":\n" + deliveryOrder.getFruits() + "\n");
             }
 
             System.out.println("Вывод покупок заказчиков=====================================================================================");
@@ -140,5 +141,7 @@ public class Simulation {
             if (arg.contains("-i="))
                 inputFilePath = initFilePathImport(arg);
         }
+        FruitBase.setOutputFileName(outputFilePath);
+        FruitBase.setInputFileName(inputFilePath);
     }
 }

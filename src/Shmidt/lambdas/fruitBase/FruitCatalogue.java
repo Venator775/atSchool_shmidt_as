@@ -22,8 +22,7 @@ public class FruitCatalogue implements Serializable {
         fruitCatalogue.add(new Orange(BigDecimal.valueOf(rnd(10, 20)), rnd(90, 105)));
         fruitCatalogue.add(new Banana(BigDecimal.valueOf(rnd(25, 35)), rnd(95, 110)));
         fruitCatalogue.add(new Pineapple(BigDecimal.valueOf(rnd(120, 150)), rnd(210, 250)));
-
-        Fruit mango = new Fruit("Mango", BigDecimal.valueOf(rnd(120, 150)), rnd(210, 250), FRESH) {
+        fruitCatalogue.add(new Fruit("Mango", BigDecimal.valueOf(rnd(120, 150)), rnd(210, 250), FRESH) {
             @Override
             public Fruit clone() {
                 return new Fruit(this.name, this.price, this.weight, this.freshness) {
@@ -33,9 +32,8 @@ public class FruitCatalogue implements Serializable {
                     }
                 };
             }
-        };
-
-        var kiwi = new Fruit("Kiwi", BigDecimal.valueOf(rnd(120, 150)), rnd(210, 250), FRESH) {
+        });
+        fruitCatalogue.add(new Fruit("Kiwi", BigDecimal.valueOf(rnd(120, 150)), rnd(210, 250), FRESH) {
             @Override
             public Fruit clone() {
                 return new Fruit(this.name, this.price, this.weight, this.freshness) {
@@ -45,10 +43,7 @@ public class FruitCatalogue implements Serializable {
                     }
                 };
             }
-        };
-
-        fruitCatalogue.add(mango);
-        fruitCatalogue.add(kiwi);
+        });
     }
 
     public Fruit getFruit(String fruitName) {

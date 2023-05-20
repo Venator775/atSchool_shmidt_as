@@ -1,15 +1,15 @@
 package Shmidt.lambdas.task1;
 
-import Shmidt.lambdas.task1.functions.*;
 import Shmidt.lambdas.task1.functions.Double;
-
+import Shmidt.lambdas.task1.functions.*;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static Shmidt.tests.sideMethods.*;
+import static Shmidt.tests.sideMethods.arrString2Int;
+import static Shmidt.tests.sideMethods.isInteger;
 
 //Double 1 -5 69 8 -1 0 4 -6
 //Half 1 -5 69 8 -1 0 4 -6
@@ -36,6 +36,7 @@ public class MainClass {
         System.out.println();
         Function operation = getFunction(args[0]);
 
+
         System.out.println("Обработанный массив:");
         applyFunction(values, operation);
 
@@ -60,9 +61,14 @@ public class MainClass {
                 return new Square();
             case ("Wave")://используя анонимный класс, добавьте операцию Wave: к каждому числу прибавляется значение предыдущего.
                 return new Function() {
-                    @Override//fixme для комбинаций тут нужно использовать значение предыдущего элемента, но в данной реазилации по требованию мы можем передать только один int
+                    int previous = 0;
+
+                    @Override
+//fixme для комбинаций тут нужно использовать значение предыдущего элемента, но в данной реазилации по требованию мы можем передать только один int
                     public int evaluate(int param) {
-                        return param;
+                        int result = previous + param;
+                        previous = param;
+                        return result;
                     }
                 };
             case ("SquareEven"):

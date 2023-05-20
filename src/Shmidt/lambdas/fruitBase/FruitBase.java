@@ -3,6 +3,8 @@ package Shmidt.lambdas.fruitBase;
 import Shmidt.lambdas.fruitBase.fruits.Fruit;
 
 import java.io.*;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
 
 import static Shmidt.tests.ConsoleColors.GREEN;
 import static Shmidt.tests.ConsoleColors.RESET;
@@ -19,6 +21,7 @@ public class FruitBase implements Serializable {
     public FruitBase(boolean doImport) {
         if (doImport) {
             System.out.println("Загрузка каталога из файла");
+            fruitCatalogue = new FruitCatalogue();
             this.importCatalogue();
         } else {
             System.out.println("Загрузка каталога по умолчанию");
@@ -39,7 +42,9 @@ public class FruitBase implements Serializable {
     }
 
     public void exportCatalogue() {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(serializeFileName))) {
+        String path = FileSystems.getDefault().getPath("").toAbsolutePath()+serializeFileName;
+
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path))) {
             oos.writeObject(this.fruitCatalogue);
             System.out.println("\n" + GREEN + "Экспорт в файл " + serializeFileName + " успешен. Набор каталога:" + RESET);
 
@@ -60,7 +65,9 @@ public class FruitBase implements Serializable {
     }
 
     public void importCatalogue() {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(deserializeFileName))) {
+        String path = FileSystems.getDefault().getPath("").toAbsolutePath()+deserializeFileName;
+
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path))) {
             this.fruitCatalogue = (FruitCatalogue) ois.readObject();
             System.out.println(GREEN + "Импорт из файла " + deserializeFileName + " успешен. Набор каталога:" + RESET);
 
