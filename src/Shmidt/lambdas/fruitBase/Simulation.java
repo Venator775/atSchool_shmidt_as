@@ -6,6 +6,7 @@ import Shmidt.lambdas.fruitBase.customers.FreshCustomer;
 import Shmidt.lambdas.fruitBase.customers.UniqueCustomer;
 import Shmidt.lambdas.fruitBase.fruits.Fruit;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -27,7 +28,36 @@ public class Simulation {
 
         FruitBase base = inputFilePath == null ? new FruitBase(false) : new FruitBase(true);//проверка, если путь ввода указан, то загружаем каталог из файла. Если не указан - берём по умолчанию
 
-        List<Customer> customers = List.of(new FreshCustomer("Серёга"), new UniqueCustomer("Пашок"));//создаём список заказчиков
+        List<Customer> customers = List.of(
+                new FreshCustomer("Серёга"),
+                new UniqueCustomer("Пашок"),
+                new Customer("Семёныч") {
+            /*
+            - в классе Simulation, используя анонимный класс, добавьте покупателя, который выбирает дорогие фрукты.
+    Дорогими считаются, те, чья стоимость больше или равна 75% от максимальной.
+             */
+                    public List<Fruit> takeFruits(Delivery cargo) {
+                        List<Fruit> fruits = cargo.getFruits();
+                        BigDecimal expensivePrice = getMaxPrice(fruits).multiply(BigDecimal.valueOf(0.75));
+                        for (int i = 0; i < fruits.size(); i++) {
+                            Fruit fruit = fruits.get(i);
+                            if (fruit.getPrice().compareTo(expensivePrice) > 0) {
+                                this.purchases.add(cargo.removeFruit(fruit));
+                                i--;
+                            }
+                        }
+                        return this.purchases;
+                    }
+
+                    private BigDecimal getMaxPrice(List<Fruit> fruits) {
+                        BigDecimal maxPrice = BigDecimal.ZERO;
+                        for (Fruit fruit : fruits) {
+                            if (maxPrice.compareTo(fruit.getPrice()) == -1)
+                                maxPrice = fruit.getPrice();
+                        }
+                        return maxPrice;
+                    }
+                });//создаём список заказчиков
 
 
         /*
