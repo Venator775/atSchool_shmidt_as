@@ -10,10 +10,15 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
+//Набор фруктов для запуска по умолчанию, без импорта/экспорта
+//Orange Kiwi Blueberry Pineapple Pineapple бульбазавр Orange Mango Orange Orange  Banana Apple Grape Pineapple Banana Mango Kiwi Banana Kiwi Grape Mango Apple Grape
+
+//Набор фруктов с указанием путей для файлов
+//-e=/src/Shmidt/lambdas/fruitBase/fruitCatalogue_OUT.dat -i=/src/Shmidt/lambdas/fruitBase/fruitCatalogue_IN.dat Orange Kiwi Blueberry Pineapple Pineapple бульбазавр Orange Mango Orange Orange  Banana Apple Grape Pineapple Banana Mango Kiwi Banana Kiwi Grape Mango Apple Grape
+
 public class Simulation {
-    //Orange Kiwi Blueberry Pineapple Pineapple бульбазавр Orange Mango Orange Orange  Banana Apple Grape Pineapple Banana Mango Kiwi Banana Kiwi Grape Mango Apple Grape
-    //-e=/src/Shmidt/lambdas/fruitBase/fruitCatalogue_OUT.dat -i=/src/Shmidt/lambdas/fruitBase/fruitCatalogue_IN.dat Orange Kiwi Blueberry Pineapple Pineapple бульбазавр Orange Mango Orange Orange  Banana Apple Grape Pineapple Banana Mango Kiwi Banana Kiwi Grape Mango Apple Grape
-    //-e=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lambdas/fruitBase/fruitCatalogue_OUT.dat -i=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lambdas/fruitBase/fruitCatalogue_IN.dat Orange Kiwi Blueberry Pineapple Pineapple бульбазавр Orange Mango Orange Orange  Banana Apple Grape Pineapple Banana Mango Kiwi Banana Kiwi Grape Mango Apple Grape
+
     private static String outputFilePath;
     private static String inputFilePath;
 
@@ -22,57 +27,46 @@ public class Simulation {
 
         FruitBase base = inputFilePath == null ? new FruitBase(false) : new FruitBase(true);//проверка, если путь ввода указан, то загружаем каталог из файла. Если не указан - берём по умолчанию
 
-        List<Customer> customers = List.of(new FreshCustomer("Серёга"), new UniqueCustomer("Пашок"));
+        List<Customer> customers = List.of(new FreshCustomer("Серёга"), new UniqueCustomer("Пашок"));//создаём список заказчиков
 
 
-//        customers.add(new Customer("Семёныч") {//fixme сюда не добавляется
-//            @Override
-//            protected List<Fruit> takeFruits(Delivery cargo) {
-//                List<Fruit> freshfruits = cargo.getFruits();
-//
-//                for (int i = 0; i < freshfruits.size(); i++) {
-//                    Fruit fruit = freshfruits.get(i);
-//                    if (fruit.getPrice().compareTo(BigDecimal.valueOf(40))>0) {
-//                        this.purchases.add(fruit);
-//                        cargo.removeFruit(fruit);
-//                        i--;
-//                    }
-//                }
-//                return this.purchases;
-//            }
-//        });
+        /*
+        Следующей строкой вылетает исключение:
+        Exception in thread "main" java.lang.UnsupportedOperationException
+	at java.base/java.util.ImmutableCollections.uoe(ImmutableCollections.java:71)
+	at java.base/java.util.ImmutableCollections$AbstractImmutableCollection.add(ImmutableCollections.java:75)
+	at Shmidt.lambdas.fruitBase.Simulation.main(Simulation.java:36)
+         */
+/*        customers.add(new Customer("Семёныч") {//fixme сюда не добавляется
+            public List<Fruit> takeFruits(Delivery cargo) {
+                List<Fruit> freshfruits = cargo.getFruits();
+
+                for (int i = 0; i < freshfruits.size(); i++) {
+                    Fruit fruit = freshfruits.get(i);
+                    if (fruit.getPrice().compareTo(BigDecimal.valueOf(40))>0) {
+                        this.purchases.add(fruit);
+                        cargo.removeFruit(fruit);
+                        i--;
+                    }
+                }
+                return this.purchases;
+            }
+        });*/
 
         if (args.length > 0) {
-            for (Customer c : customers) {
+            customers.forEach(customer -> {//для каждого заказчика делаем заказ
                 Delivery deliveryOrder = base.takeOrder(args);
-                System.out.println("Заказ у " + c.getName() + ":");
+                System.out.println("Заказ у " + customer.getName() + ":");
                 printAvailableFruits(deliveryOrder);
-                String className = c.getClass().getSimpleName();
 
-                switch (className) {//fixme вот тут не получится вывести "анонимного" заказчика. Он имеет класс в дебаггере Simulation. Если таких заказчиков будет несколько, то хз, как
-                    case ("FreshCustomer"):
-                        List<Fruit> zakaz1 = ((FreshCustomer) c).takeFruits(deliveryOrder);
-                        if (zakaz1.size() > 0) {
-                            System.out.println(c.getName() + " собрал заказ:");
-                            for (Fruit f : zakaz1)
-                                System.out.println(f);
-                        } else System.out.println(c.getName() + " не собрал подходящих фруктов");
-                        break;
-                    case ("UniqueCustomer"):
-                        List<Fruit> zakaz2 = ((UniqueCustomer) c).takeFruits(deliveryOrder);
-                        System.out.println(c.getName() + " собрал заказ:");
-                        if (zakaz2.size() > 0) {
-                            for (Fruit f : zakaz2)
-                                System.out.println(f);
-                        } else System.out.println(c.getName() + " не собрал подходящих фруктов");
-                        break;
-                    default:
-                        //List<Fruit> zakaz3 = c.takeFruits(deliveryOrder);
-                }
+                List<Fruit> recievedOrder = customer.takeFruits(deliveryOrder);
+                if (recievedOrder.size() > 0) {
+                    System.out.println(customer.getName() + " собрал заказ:");
+                    recievedOrder.forEach(System.out::println);
+                } else System.out.println(customer.getName() + " не собрал подходящих фруктов");
 
-
-                System.out.println("Список оставшихся фруктов в заказе у " + c.getName() + ":\n" + deliveryOrder.getFruits() + "\n");
-            }
+                System.out.println("Список не взятых фруктов в заказе у " + customer.getName() + ":\n" + deliveryOrder.getFruits() + "\n");
+            });
 
             System.out.println("Вывод покупок заказчиков=====================================================================================");
             for (Customer c : customers)

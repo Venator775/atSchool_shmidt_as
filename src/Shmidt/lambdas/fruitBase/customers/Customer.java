@@ -16,7 +16,7 @@ public abstract class Customer {
         purchases = new ArrayList<>();
     }
 
-    protected abstract List<Fruit> takeFruits(Delivery cargo);
+    public abstract List<Fruit> takeFruits(Delivery cargo);//protected
 
 
     public void printPurchases() {
