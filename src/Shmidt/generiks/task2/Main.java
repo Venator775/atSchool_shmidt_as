@@ -34,15 +34,13 @@ public class Main<T> {
         vegetables.addItemToMap(cucumber);
         vegetables.addItemToMap(tomato);
 
-        Main m = new Main();
+        Main m = new Main();//костыль =/
         m.makeSalad(fruits);
         m.makeSalad(vegetables);
     }
 
-    void makeSalad(Basket<T> basket) {
+    void makeSalad(Basket<T> basket) {//почему нельзя статик?
         System.out.print("Режем салат:");
-
-
         var mapIterator = basket.getPlantsMap().entrySet().iterator();
         while (mapIterator.hasNext()) {//намеренно оставил этот пример, чтоб был перед глазами, взамен for ( : ). С итераторами никогда не имел дел.
             Map.Entry<Plant, T> entry = mapIterator.next();
