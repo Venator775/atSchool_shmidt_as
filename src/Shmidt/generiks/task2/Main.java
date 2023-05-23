@@ -19,20 +19,10 @@ public class Main<T> {
         Basket<Fruit> fruits = new Basket<>();
         Basket<Vegetable> vegetables = new Basket<>();
 
-/*        fruits.addItem(apple);
+        fruits.addItem(apple);
         fruits.addItem(banana);
         vegetables.addItem(cucumber);
         vegetables.addItem(tomato);
-
-        System.out.println("Фрукты:");
-        fruits.getPlants().forEach(System.out::println);
-        System.out.println("Овощи:");
-        vegetables.getPlants().forEach(System.out::println);*/
-
-        fruits.addItemToMap(apple);
-        fruits.addItemToMap(banana);
-        vegetables.addItemToMap(cucumber);
-        vegetables.addItemToMap(tomato);
 
         Main m = new Main();//костыль =/
         m.makeSalad(fruits);
