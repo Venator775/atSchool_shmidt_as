@@ -1,7 +1,7 @@
 package Shmidt.generiks.task2;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 public class Basket<T> {
     private HashMap<Plant,T> plantsMap;
@@ -14,6 +14,11 @@ public class Basket<T> {
 
     public HashMap<Plant, T> getPlantsMap() {
         return plantsMap;
+    }
+
+
+    public Iterator<Plant> getIterator(){
+        return this.getPlantsMap().keySet().iterator();
     }
 }
 /*

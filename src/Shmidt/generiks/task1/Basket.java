@@ -6,8 +6,8 @@ public class Basket<T> {
     private ArrayList<T> plants;
 
     public void addItem(T plant) {
-        if (plants == null)
-            plants = new ArrayList<>();
+        if (this.plants == null)
+            this.plants = new ArrayList<>();
 
         plants.add(plant);
     }

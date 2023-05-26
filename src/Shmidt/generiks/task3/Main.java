@@ -22,7 +22,8 @@ public class Main<T> {
 
         plants.forEach(plant -> map.put(plant.getName(), plant));
 
-        map.keySet().forEach(key -> System.out.println(key + " " + map.get(key).getClass().getSimpleName()));
+        //map.keySet().forEach(key -> System.out.println(key + " " + map.get(key).getClass().getSimpleName()));
+        map.forEach((key,value)-> System.out.println(key + " " + value));
     }
 }
 /*

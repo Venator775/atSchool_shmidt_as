@@ -7,7 +7,7 @@ import Shmidt.generiks.task2.vegetables.Cucumber;
 import Shmidt.generiks.task2.vegetables.Tomato;
 import Shmidt.generiks.task2.vegetables.Vegetable;
 
-import java.util.Map;
+import java.util.Iterator;
 
 public class Main<T> {
     public static void main(String[] args) {
@@ -24,17 +24,16 @@ public class Main<T> {
         vegetables.addItem(cucumber);
         vegetables.addItem(tomato);
 
-        Main m = new Main();//костыль =/
-        m.makeSalad(fruits);
-        m.makeSalad(vegetables);
+        makeSalad(fruits);
+        makeSalad(vegetables);
+
     }
 
-    void makeSalad(Basket<T> basket) {//почему нельзя статик?
+    static void makeSalad(Basket<? extends Plant> basket) {
         System.out.print("Режем салат:");
-        var mapIterator = basket.getPlantsMap().entrySet().iterator();
+        Iterator<Plant> mapIterator = basket.getIterator();
         while (mapIterator.hasNext()) {//намеренно оставил этот пример, чтоб был перед глазами, взамен for ( : ). С итераторами никогда не имел дел.
-            Map.Entry<Plant, T> entry = mapIterator.next();
-            System.out.print(entry.getKey().getName() + " ");
+            System.out.print(mapIterator.next().getName() + " ");
         }
         System.out.println("\nКушать подано");
     }

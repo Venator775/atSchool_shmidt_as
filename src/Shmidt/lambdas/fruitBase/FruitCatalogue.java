@@ -17,7 +17,32 @@ public class FruitCatalogue implements Serializable {
      * Инициализируется список фруктов, имеющихся в продаже
      */
     public FruitCatalogue() {
-        fruitCatalogue = new ArrayList<>();
+        fruitCatalogue = new ArrayList<>() {{
+            add(new Apple(BigDecimal.valueOf(rnd(10, 20)), rnd(110, 130)));
+            add(new Orange(BigDecimal.valueOf(rnd(10, 20)), rnd(90, 105)));
+            add(new Banana(BigDecimal.valueOf(rnd(25, 35)), rnd(95, 110)));
+            add(new Pineapple(BigDecimal.valueOf(rnd(120, 150)), rnd(210, 250)));
+            add(new Fruit("Mango", BigDecimal.valueOf(rnd(120, 150)), rnd(210, 250)) {
+                public Fruit clone() {
+                    return new Fruit(this.name, this.price, this.weight, this.freshness) {
+                        public Fruit clone() {//fixme какая-то хрень
+                            return this;
+                        }
+                    };
+                }
+            });
+            add(new Fruit("Kiwi", BigDecimal.valueOf(rnd(120, 150)), rnd(210, 250)) {
+                public Fruit clone() {
+                    return new Fruit(this.name, this.price, this.weight, this.freshness) {
+                        public Fruit clone() {//fixme какая-то хрень
+                            return this;
+                        }
+                    };
+                }
+            });
+        }};
+
+        /*
         fruitCatalogue.add(new Apple(BigDecimal.valueOf(rnd(10, 20)), rnd(110, 130)));
         fruitCatalogue.add(new Orange(BigDecimal.valueOf(rnd(10, 20)), rnd(90, 105)));
         fruitCatalogue.add(new Banana(BigDecimal.valueOf(rnd(25, 35)), rnd(95, 110)));
@@ -40,7 +65,7 @@ public class FruitCatalogue implements Serializable {
                     }
                 };
             }
-        });
+        });*/
     }
 
     public Fruit getFruit(String fruitName) {

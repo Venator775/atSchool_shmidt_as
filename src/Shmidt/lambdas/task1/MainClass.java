@@ -63,8 +63,6 @@ public class MainClass {
                 return new Function() {
                     int previous = 0;
 
-                    @Override
-//fixme для комбинаций тут нужно использовать значение предыдущего элемента, но в данной реазилации по требованию мы можем передать только один int
                     public int evaluate(int param) {
                         int result = previous + param;
                         previous = param;
