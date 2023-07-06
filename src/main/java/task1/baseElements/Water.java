@@ -2,25 +2,29 @@ package task1.baseElements;
 
 
 import task1.NatureElement;
-import task1.resultElements.*;
+import task1.resultElements.Mud;
+import task1.resultElements.Rain;
+import task1.resultElements.Sea;
+import task1.resultElements.Steam;
 
 
 public class Water extends NatureElement {
 
     public NatureElement connect(NatureElement natElem) {
-        switch (natElem.getClass().getSimpleName()) {
-            case ("Water"):
-                return new Sea();
-            case ("Fire"):
-                return new Steam();
-            case ("Ground"):
-                return new Mud();
-            case ("Air"):
-                return new Rain();
-            default:
-                System.out.println("HZ");
-                return null;
-        }
+        if (natElem != null)
+            switch (natElem.getClass().getSimpleName()) {
+                case ("Water"):
+                    return new Sea();
+                case ("Fire"):
+                    return new Steam();
+                case ("Ground"):
+                    return new Mud();
+                case ("Air"):
+                    return new Rain();
+                default:
+                    return null;
+            }
+        else return null;
     }
 }
 /*
