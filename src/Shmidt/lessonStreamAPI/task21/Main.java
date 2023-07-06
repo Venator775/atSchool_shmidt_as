@@ -1,11 +1,7 @@
-package Shmidt.lessonStreamAPI.task21;
+package lessonStreamAPI.task21;
 
-import Shmidt.lessonStreamAPI.task21.vegetables.Cucumber;
-import Shmidt.lessonStreamAPI.task21.vegetables.Tomato;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import lessonStreamAPI.task21.vegetables.Cucumber;
+import lessonStreamAPI.task21.vegetables.Tomato;
 
 public class Main<T> {
     public static void main(String[] args) {

@@ -1,6 +1,6 @@
-package Shmidt.lessonStreamAPI.task21.vegetables;
+package lessonStreamAPI.task21.vegetables;
 
-import Shmidt.lessonStreamAPI.task21.Plant;
+import lessonStreamAPI.task21.Plant;
 
 public interface Vegetable extends Plant {
 }

@@ -1,4 +1,4 @@
-package Shmidt.classesDesign.lesson10.task1;
+package classesDesign.lesson10.task1;
 
 import java.util.ArrayList;
 import java.util.Arrays;

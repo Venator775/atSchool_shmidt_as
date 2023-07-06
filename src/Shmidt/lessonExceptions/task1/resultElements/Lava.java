@@ -1,6 +1,6 @@
-package Shmidt.lessonExceptions.task1.resultElements;
+package lessonExceptions.task1.resultElements;
 
-import Shmidt.lessonExceptions.task1.NatureElement;
+import lessonExceptions.task1.NatureElement;
 
 public class Lava extends NatureElement {
 }

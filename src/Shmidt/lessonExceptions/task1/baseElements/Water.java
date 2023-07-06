@@ -1,10 +1,7 @@
-package Shmidt.lessonExceptions.task1.baseElements;
+package lessonExceptions.task1.baseElements;
 
-import Shmidt.lessonExceptions.task1.NatureElement;
-import Shmidt.lessonExceptions.task1.resultElements.Mud;
-import Shmidt.lessonExceptions.task1.resultElements.Rain;
-import Shmidt.lessonExceptions.task1.resultElements.Sea;
-import Shmidt.lessonExceptions.task1.resultElements.Steam;
+import lessonExceptions.task1.NatureElement;
+import lessonExceptions.task1.resultElements.*;
 
 public class Water extends NatureElement {
 

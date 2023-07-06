@@ -1,10 +1,7 @@
-package Shmidt.lessonExceptions.task1.baseElements;
+package lessonExceptions.task1.baseElements;
 
-import Shmidt.lessonExceptions.task1.NatureElement;
-import Shmidt.lessonExceptions.task1.resultElements.Dust;
-import Shmidt.lessonExceptions.task1.resultElements.Energy;
-import Shmidt.lessonExceptions.task1.resultElements.Pressure;
-import Shmidt.lessonExceptions.task1.resultElements.Rain;
+import lessonExceptions.task1.NatureElement;
+import lessonExceptions.task1.resultElements.*;
 
 public class Air extends NatureElement {
     public NatureElement connect(NatureElement natElem) {

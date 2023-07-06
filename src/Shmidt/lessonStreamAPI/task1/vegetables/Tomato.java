@@ -1,4 +1,4 @@
-package Shmidt.lessonStreamAPI.task1.vegetables;
+package lessonStreamAPI.task1.vegetables;
 
 public class Tomato implements Vegetable {
     private String name = "Помидор";

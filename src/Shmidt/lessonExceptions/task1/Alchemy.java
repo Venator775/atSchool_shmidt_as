@@ -1,6 +1,6 @@
-package Shmidt.lessonExceptions.task1;
+package lessonExceptions.task1;
 
-import Shmidt.lessonExceptions.task1.resultElements.ShitElement;
+import lessonExceptions.task1.resultElements.ShitElement;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package Shmidt.lessonStreamAPI.task21.vegetables;
+package lessonStreamAPI.task21.vegetables;
 
 public class Cucumber implements Vegetable {
     private static int index = 0;

@@ -1,7 +1,7 @@
-package Shmidt.classesDesign.lesson10.task1.baseElements;
+package classesDesign.lesson10.task1.baseElements;
 
-import Shmidt.classesDesign.lesson10.task1.NatureElement;
-import Shmidt.classesDesign.lesson10.task1.resultElements.*;
+import classesDesign.lesson10.task1.NatureElement;
+import classesDesign.lesson10.task1.resultElements.*;
 
 public class Air extends NatureElement {
     public NatureElement connect(NatureElement natElem) {

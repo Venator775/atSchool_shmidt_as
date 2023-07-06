@@ -1,4 +1,4 @@
-package Shmidt.lessonStreamAPI.task21.fruits;
+package lessonStreamAPI.task21.fruits;
 
 
 public class Banana implements Fruit {
