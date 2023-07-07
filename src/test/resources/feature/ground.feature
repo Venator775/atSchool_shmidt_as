@@ -1,5 +1,5 @@
 Feature: Земля
 
-  @smoke
+  @smoke1
   Scenario: Создание земли
     Given Создать элемент земля
