@@ -1,8 +1,8 @@
-package Shmidt.lesson54;
+package Shmidt.lesson54_String_StringBuilder_StringToInt;
 
 import java.math.BigDecimal;
 
-import static Shmidt.lesson54.Task5.isInteger;
+import static Shmidt.lesson54_String_StringBuilder_StringToInt.Task5.isInteger;
 
 public class Task6 {
     public static void main(String[] args) {

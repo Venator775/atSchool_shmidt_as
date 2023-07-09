@@ -1,4 +1,4 @@
-package Shmidt.lesson54;
+package Shmidt.lesson54_String_StringBuilder_StringToInt;
 
 public class Task3 {
     public static void main(String[] args) {

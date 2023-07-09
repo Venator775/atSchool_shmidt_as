@@ -1,4 +1,4 @@
-package Shmidt.lesson54;
+package Shmidt.lesson54_String_StringBuilder_StringToInt;
 
 public class Task1 {
     static String s = "Циклом называется многократное выполнение одних и тех же действий.";

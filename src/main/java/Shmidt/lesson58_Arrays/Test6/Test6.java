@@ -1,7 +1,7 @@
 package Shmidt.lesson58_Arrays.Test6;
 
-import static Shmidt.lesson54.Task5.isInteger;
-import static Shmidt.lesson54.Task6.toInt;
+import static Shmidt.lesson54_String_StringBuilder_StringToInt.Task5.isInteger;
+import static Shmidt.lesson54_String_StringBuilder_StringToInt.Task6.toInt;
 
 public class Test6 {
     public static void main(String[] args) {
