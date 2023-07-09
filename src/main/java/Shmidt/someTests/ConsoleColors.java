@@ -1,4 +1,4 @@
-package main.java.Shmidt.someTests;
+package Shmidt.someTests;
 
 public class ConsoleColors {
     // Reset

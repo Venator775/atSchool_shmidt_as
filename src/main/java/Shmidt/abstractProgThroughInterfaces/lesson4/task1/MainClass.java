@@ -1,12 +1,16 @@
-package main.java.Shmidt.abstractProgThroughInterfaces.lesson4.task1;
+package Shmidt.abstractProgThroughInterfaces.lesson4.task1;
 
-import main.java.Shmidt.abstractProgThroughInterfaces.lesson4.task1.functions.Double;
-import main.java.Shmidt.abstractProgThroughInterfaces.lesson4.task1.functions.*;
+import Shmidt.abstractProgThroughInterfaces.lesson4.task1.functions.Double;
+import Shmidt.abstractProgThroughInterfaces.lesson4.task1.functions.Exact;
+import Shmidt.abstractProgThroughInterfaces.lesson4.task1.functions.Function;
+import Shmidt.abstractProgThroughInterfaces.lesson4.task1.functions.Half;
+import Shmidt.abstractProgThroughInterfaces.lesson4.task1.functions.Square;
 
 import java.util.stream.Stream;
 
-import static main.java.Shmidt.someTests.sideMethods.arrString2Int;
-import static main.java.Shmidt.someTests.sideMethods.isInteger;
+import static Shmidt.someTests.sideMethods.arrString2Int;
+import static Shmidt.someTests.sideMethods.isInteger;
+
 
 //Double 4 -5 69 8 -1 0
 //Half 4 -5 69 8 -1 0

@@ -1,4 +1,4 @@
-package main.java.Shmidt.abstractProgThroughInterfaces.lesson4.task1.functions;
+package Shmidt.abstractProgThroughInterfaces.lesson4.task1.functions;
 
 public class Half implements Function{
     public int evaluate(int param){

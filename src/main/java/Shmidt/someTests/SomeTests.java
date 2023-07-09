@@ -1,4 +1,4 @@
-package main.java.Shmidt.someTests;
+package Shmidt.someTests;
 
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
