@@ -6,6 +6,6 @@ import static io.cucumber.junit.platform.engine.Constants.GLUE_PROPERTY_NAME;
 @IncludeEngines("cucumber")
 @SelectClasspathResource("/")
 @ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "")
-@IncludeTags({"smoke","air","fire"})
+//@IncludeTags({"smoke","air","fire","water","ground"})
 public class RunAlchemyTest {
 }

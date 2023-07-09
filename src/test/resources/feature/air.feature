@@ -10,7 +10,7 @@ Feature: Воздух
     Given Соединить воздух с "<element>"
     Then Проверить результат соединения воздуха с "<element>": "<result>"
 
-    Examples:
+    Examples: Комбинации
       | element  | result   |
       | Air      | Pressure |
       | Fire     | Energy   |

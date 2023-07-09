@@ -10,7 +10,7 @@ Feature: Огонь
     Given Соединить огонь с "<element>"
     Then Проверить результат соединения огня с "<element>": "<result>"
 
-    Examples:
+    Examples: Комбинации
       | element  | result |
       | Air      | Energy |
       | Fire     | Fire   |
