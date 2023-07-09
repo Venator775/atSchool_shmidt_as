@@ -1,4 +1,4 @@
-package Shmidt.lesson54_String_StringBuilder_StringToInt;
+package main.java.Shmidt.lesson54_String_StringBuilder_StringToInt;
 
 import java.util.List;
 

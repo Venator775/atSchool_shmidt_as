@@ -1,6 +1,7 @@
-package Shmidt.tests;
+package main.java.Shmidt.tests;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 

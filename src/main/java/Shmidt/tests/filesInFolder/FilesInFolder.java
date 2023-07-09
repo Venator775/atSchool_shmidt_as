@@ -1,4 +1,4 @@
-package Shmidt.tests.filesInFolder;
+package main.java.Shmidt.tests.filesInFolder;
 
 import java.io.IOException;
 import java.nio.file.Files;

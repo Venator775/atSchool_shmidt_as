@@ -1,12 +1,12 @@
-package Shmidt.abstractProgThroughInterfaces.lesson4.task1;
+package main.java.Shmidt.abstractProgThroughInterfaces.lesson4.task1;
 
-import Shmidt.abstractProgThroughInterfaces.lesson4.task1.functions.Double;
-import Shmidt.abstractProgThroughInterfaces.lesson4.task1.functions.*;
+import main.java.Shmidt.abstractProgThroughInterfaces.lesson4.task1.functions.Double;
+import main.java.Shmidt.abstractProgThroughInterfaces.lesson4.task1.functions.*;
 
 import java.util.stream.Stream;
 
-import static Shmidt.tests.sideMethods.arrString2Int;
-import static Shmidt.tests.sideMethods.isInteger;
+import static main.java.Shmidt.tests.sideMethods.arrString2Int;
+import static main.java.Shmidt.tests.sideMethods.isInteger;
 
 //Double 4 -5 69 8 -1 0
 //Half 4 -5 69 8 -1 0
