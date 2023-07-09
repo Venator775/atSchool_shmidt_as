@@ -5,8 +5,8 @@ import main.java.Shmidt.abstractProgThroughInterfaces.lesson4.task1.functions.*;
 
 import java.util.stream.Stream;
 
-import static main.java.Shmidt.tests.sideMethods.arrString2Int;
-import static main.java.Shmidt.tests.sideMethods.isInteger;
+import static main.java.Shmidt.someTests.sideMethods.arrString2Int;
+import static main.java.Shmidt.someTests.sideMethods.isInteger;
 
 //Double 4 -5 69 8 -1 0
 //Half 4 -5 69 8 -1 0

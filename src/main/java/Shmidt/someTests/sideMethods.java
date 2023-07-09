@@ -1,4 +1,4 @@
-package main.java.Shmidt.tests;
+package main.java.Shmidt.someTests;
 
 import java.io.FileWriter;
 import java.math.BigDecimal;

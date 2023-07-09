@@ -2,7 +2,7 @@ package main.java.Shmidt.lesson54_String_StringBuilder_StringToInt;
 
 import java.math.BigDecimal;
 
-import static main.java.Shmidt.tests.sideMethods.isInteger;
+import static main.java.Shmidt.someTests.sideMethods.isInteger;
 
 public class Task6 {
     public static void main(String[] args) {
