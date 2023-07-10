@@ -4,8 +4,12 @@ public class Task1 {
     static String s = "Циклом называется многократное выполнение одних и тех же действий.";
 
     public static void main(String[] args) {
-        String arg = args[0];
-        System.out.println(s.replace(" ","").indexOf(arg));
+        System.out.println(method(args));
+    }
+
+    public static int method(String[] args) {
+        System.out.println("успех");
+        return s.replace(" ", "").indexOf(args[0]);
     }
 }
 /*
