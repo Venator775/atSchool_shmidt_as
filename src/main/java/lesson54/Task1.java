@@ -4,7 +4,7 @@ public class Task1 {
     static String s = "Циклом называется многократное выполнение одних и тех же действий.";
 
     public static void main(String[] args) {
-        System.out.println(method(args));
+        System.out.println(getFirstInputOfsymbol(args,s));
     }
 
     /**
@@ -12,8 +12,9 @@ public class Task1 {
      * @param args массив из одного искомого символа
      * @return Количество букв (без пробелов и точки) до определенного символа
      */
-    public static int method(String[] args){
-        return s.replace(" ","").indexOf(args[0]);
+    public static int getFirstInputOfsymbol(String[] args, String str){
+        System.out.println("Выполняется поиск индекса");
+        return str.replace(" ","").indexOf(args[0]);
     }
 }
 /*

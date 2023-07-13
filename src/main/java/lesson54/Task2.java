@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 public class Task2 {
     public static void main(String[] args) {
+        /*
         if (args[0].equals("\\") || args[0].equals("/")) {
             System.out.println("Введен некорректный путь до файла.");
             return;
@@ -24,7 +25,7 @@ public class Task2 {
             Arrays.stream(args)
                     .collect(Collectors.toList())
                     .forEach((arg) -> {
-                finalStr.append(arg + " ");
+                finalStr.append(arg).append(" ");
             });
             str=finalStr.toString();
         }
@@ -43,7 +44,72 @@ public class Task2 {
             file = "Введен некорректный путь до файла.";
 
         System.out.println("path=" + path);
+        System.out.println("file=" + file);*/
+        System.out.println(getPathAndName(args));
+    }
+
+    public static List<List<String>> getPathAndName(String[] args) {
+        List<List<String>> pathFile = new ArrayList<>();
+        String path = "empty", file = "empty";
+
+        if (args[0].equals("\\")
+                || args[0].equals("/")
+                || !(Arrays.stream(args).collect(Collectors.toList()).contains("\\")
+                    || Arrays.stream(args).collect(Collectors.toList()).contains("/"))
+
+        ) {
+            /*
+            ([A-Za-z]:[\\\/])((?:.*[\\\/])?)([\w\s]+\.\w+)
+C:\Users\Алексей\IdeaProjects\atSchool_shmidt_as.rar
+C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as.rar
+C:/Users\Алексей/IdeaProjects\atSchool_shmidt_as.rar
+C:/
+C:/Users
+sdfsdf
+/
+\\
+             */
+            System.out.println("Введен некорректный путь до файла.");
+            List<String> shit = new ArrayList<>();
+            shit.add("Введен некорректный путь.");
+            shit.add("Введен некорректный путь до файла.");
+            pathFile.add(shit);
+            return pathFile;
+        }
+
+        //это тут нужно для обработки пробела в пути
+        String str = "";
+        if (args.length > 1) {
+            StringBuilder finalStr = new StringBuilder(str);
+//            List.of(args).forEach((arg) -> {
+//                finalStr.append(arg + " ");
+//            });
+//            str=finalStr.toString();
+
+            Arrays.stream(args)
+                    .collect(Collectors.toList())
+                    .forEach((arg) -> {
+                        finalStr.append(arg).append(" ");
+                    });
+            str = finalStr.toString();
+        } else str = args[0];
+
+
+        if (str.contains("\\")) {
+            path = str.substring(0, str.lastIndexOf("\\") + 1);
+            file = str.substring(str.lastIndexOf("\\") + 1);
+        } else if (str.contains("/")) {
+            path = str.substring(0, str.lastIndexOf("/") + 1);
+            file = str.substring(str.lastIndexOf("/") + 1);
+        }
+
+        if (file.equals("") || file.equals(" "))
+            file = "Введен некорректный путь до файла.";
+
+        System.out.println("path=" + path);
         System.out.println("file=" + file);
+        pathFile.add(0, new ArrayList<>(Arrays.asList(path, file)));
+        return pathFile;
     }
 }
 /*
