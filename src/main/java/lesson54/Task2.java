@@ -5,6 +5,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/*
+C:\Users\Алексей\IdeaProjects\atSchool_shmidt_as.rar
+C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as.rar
+C:/Users\Алексей/IdeaProjects\atSchool_shmidt_as.rar
+C:\Users\Алексей\IdeaProjects\
+C:/
+sdfsdf
+null
+ */
 public class Task2 {
     public static void main(String[] args) {
         /*
@@ -48,34 +57,9 @@ public class Task2 {
         System.out.println(getPathAndName(args));
     }
 
-    public static List<List<String>> getPathAndName(String[] args) {
-        List<List<String>> pathFile = new ArrayList<>();
-        String path = "empty", file = "empty";
-
-        if (args[0].equals("\\")
-                || args[0].equals("/")
-                || !(Arrays.stream(args).collect(Collectors.toList()).contains("\\")
-                    || Arrays.stream(args).collect(Collectors.toList()).contains("/"))
-
-        ) {
-            /*
-            ([A-Za-z]:[\\\/])((?:.*[\\\/])?)([\w\s]+\.\w+)
-C:\Users\Алексей\IdeaProjects\atSchool_shmidt_as.rar
-C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as.rar
-C:/Users\Алексей/IdeaProjects\atSchool_shmidt_as.rar
-C:/
-C:/Users
-sdfsdf
-/
-\\
-             */
-            System.out.println("Введен некорректный путь до файла.");
-            List<String> shit = new ArrayList<>();
-            shit.add("Введен некорректный путь.");
-            shit.add("Введен некорректный путь до файла.");
-            pathFile.add(shit);
-            return pathFile;
-        }
+    public static List<String> getPathAndName(String[] args) {
+        List<String> pathFile = new ArrayList<>();
+        String path = "undefined", file = "undefined";
 
         //это тут нужно для обработки пробела в пути
         String str = "";
@@ -85,7 +69,7 @@ sdfsdf
 //                finalStr.append(arg + " ");
 //            });
 //            str=finalStr.toString();
-
+//java 8 -->
             Arrays.stream(args)
                     .collect(Collectors.toList())
                     .forEach((arg) -> {
@@ -104,11 +88,12 @@ sdfsdf
         }
 
         if (file.equals("") || file.equals(" "))
-            file = "Введен некорректный путь до файла.";
-
-        System.out.println("path=" + path);
-        System.out.println("file=" + file);
-        pathFile.add(0, new ArrayList<>(Arrays.asList(path, file)));
+            file = "Файл не указан";
+        System.out.println("str = |" + str + "|");
+        System.out.println("path = |" + path + "|");
+        System.out.println("file = |" + file + "|");
+        pathFile.add(path);
+        pathFile.add(file);
         return pathFile;
     }
 }

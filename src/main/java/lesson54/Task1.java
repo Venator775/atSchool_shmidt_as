@@ -13,7 +13,6 @@ public class Task1 {
      * @return Количество букв (без пробелов и точки) до определенного символа
      */
     public static int getFirstInputOfsymbol(String[] args, String str){
-        System.out.println("Выполняется поиск индекса");
         return str.replace(" ","").indexOf(args[0]);
     }
 }
