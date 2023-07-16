@@ -9,10 +9,25 @@ public class Task6 {
 
         System.out.println("Строка: " + argValue);
 
-        if (Task5.isInteger(argValue)) {
-            System.out.println("Строка '" + argValue + "' является целым числом");
-            System.out.println("2 * " + toInt(argValue) + " = " + toInt(argValue) * 2);
-        } else System.out.println("Строка не является целым числом");
+        System.out.println(toInt(argValue));
+//        if (isInteger(argValue)) {
+//            System.out.println("Строка '" + argValue + "' является целым числом");
+//            System.out.println("2 * " + toInt(argValue) + " = " + toInt(argValue) * 2);
+//        } else System.out.println("Строка не является целым числом");
+
+    }
+
+    static public boolean isInteger(String str) {
+        if(str.contains(".")||str.contains(","))
+            return false;
+        int i = 0;
+        if (str.charAt(i) == '-')
+            i = 1;
+        for (; i < str.length(); i++)
+            if (!Character.isDigit(str.charAt(i))) {
+                return false;
+            }
+        return true;
     }
 
     static public int toInt(String str) {
@@ -28,8 +43,6 @@ public class Task6 {
             minusModifier = -1;
         }
 
-        grade = sb.length();
-
         boolean firstZerosEnded = false;
 
         if (sb.length() > 1)//на случай, если введён только один 0
@@ -42,11 +55,14 @@ public class Task6 {
                         firstZerosEnded = true;
                     }
                 } else {
-                    System.out.println("сообщение об ошибке");
-                    System.exit(-1);
+//                    System.out.println("сообщение об ошибке");
+//                    System.exit(-1);
+                    System.out.println("Строка |"+str+"| не является целым числом");
+                    return 0;
                 }
 
         BigDecimal resultBig = new BigDecimal(0);
+        grade = sb.length();
         i = grade;
         for (; i > 0; i--) {
             double k = Math.pow(10, grade - i) * (sb.charAt(i - 1) - '0');
@@ -54,11 +70,18 @@ public class Task6 {
         }
         resultBig = resultBig.multiply(BigDecimal.valueOf(minusModifier));
 
-        if (resultBig.compareTo(BigDecimal.valueOf(Integer.MIN_VALUE)) == -1 || resultBig.compareTo(BigDecimal.valueOf(Integer.MAX_VALUE)) == 1) {
-            System.out.println("Число не входит в диапазон int " + Integer.MIN_VALUE + "..." + Integer.MAX_VALUE);
-            System.exit(-1);
+//        if (resultBig.compareTo(BigDecimal.valueOf(Integer.MIN_VALUE)) == -1 || resultBig.compareTo(BigDecimal.valueOf(Integer.MAX_VALUE)) == 1) {
+//            System.out.println("Число не входит в диапазон int " + Integer.MIN_VALUE + "..." + Integer.MAX_VALUE);
+//            System.exit(-1);
+//        }
+        if (resultBig.compareTo(BigDecimal.valueOf(Integer.MIN_VALUE)) == -1) {
+            System.out.println("Число меньше допустимого минимума диапазона int " + Integer.MIN_VALUE);
+            return Integer.MIN_VALUE;
         }
-
+        if (resultBig.compareTo(BigDecimal.valueOf(Integer.MAX_VALUE)) == 1) {
+            System.out.println("Число больше допустимого максимума диапазона int " + Integer.MAX_VALUE);
+            return Integer.MAX_VALUE;
+        }
         return resultBig.intValue();
     }
 
