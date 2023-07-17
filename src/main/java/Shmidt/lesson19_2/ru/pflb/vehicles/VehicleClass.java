@@ -1,4 +1,4 @@
-package main.java.Shmidt.lesson19_2.ru.pflb.vehicles;
+package Shmidt.lesson19_2.ru.pflb.vehicles;
 
 public enum VehicleClass {
     MINI,

@@ -1,12 +1,12 @@
-package main.java.Shmidt.lambdas.fruitBase;
+package Shmidt.lambdas.fruitBase;
 
-import main.java.Shmidt.lambdas.fruitBase.fruits.Fruit;
+import Shmidt.lambdas.fruitBase.fruits.Fruit;
 
 import java.io.*;
 import java.nio.file.FileSystems;
 
-import static main.java.Shmidt.tests.ConsoleColors.GREEN;
-import static main.java.Shmidt.tests.ConsoleColors.RESET;
+import static Shmidt.tests.ConsoleColors.GREEN;
+import static Shmidt.tests.ConsoleColors.RESET;
 
 public class FruitBase implements Serializable {
     private FruitCatalogue fruitCatalogue;

@@ -1,8 +1,8 @@
-package main.java.Shmidt.lambdas.task3;
+package Shmidt.lambdas.task3;
 
-import main.java.Shmidt.lambdas.task3.queue.QueueFirst;
-import main.java.Shmidt.lambdas.task3.queue.QueueSecond;
-import main.java.Shmidt.lambdas.task3.queue.Swap;
+import Shmidt.lambdas.task3.queue.QueueFirst;
+import Shmidt.lambdas.task3.queue.QueueSecond;
+import Shmidt.lambdas.task3.queue.Swap;
 
 import java.util.List;
 

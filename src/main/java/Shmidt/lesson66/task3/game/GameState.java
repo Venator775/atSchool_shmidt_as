@@ -1,4 +1,4 @@
-package main.java.Shmidt.lesson66.task3.game;
+package Shmidt.lesson66.task3.game;
 
 public enum GameState {
     STOP("Игра остановлена, но не завершена. Начальное состояние игры"),

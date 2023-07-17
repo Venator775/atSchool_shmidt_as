@@ -1,12 +1,12 @@
-package main.java.Shmidt.classesDesign.lesson10.fruitBase;
+package Shmidt.classesDesign.lesson10.fruitBase;
 
-import main.java.Shmidt.classesDesign.lesson10.fruitBase.fruits.Fruit;
+import Shmidt.classesDesign.lesson10.fruitBase.fruits.Fruit;
 
 import java.io.*;
 
 public class FruitBase implements Serializable {
     private FruitCatalogue fruitCatalogue;
-    final String path = "C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/main.java.Shmidt/abstractAndInterfaces/lesson10/fruitBase/";
+    final String path = "C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/abstractAndInterfaces/lesson10/fruitBase/";
     final private String serializeFileName = path + "fruitCatalogue.dat";
     final private String serializeFileName_new = path + "fruitCatalogue_new.dat";
 

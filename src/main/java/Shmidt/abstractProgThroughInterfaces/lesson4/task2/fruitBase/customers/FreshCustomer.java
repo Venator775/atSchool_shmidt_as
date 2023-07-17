@@ -1,7 +1,7 @@
-package main.java.Shmidt.abstractProgThroughInterfaces.lesson4.task2.fruitBase.customers;
+package Shmidt.abstractProgThroughInterfaces.lesson4.task2.fruitBase.customers;
 
-import main.java.Shmidt.abstractProgThroughInterfaces.lesson4.task2.fruitBase.Delivery;
-import main.java.Shmidt.abstractProgThroughInterfaces.lesson4.task2.fruitBase.fruits.Fruit;
+import Shmidt.abstractProgThroughInterfaces.lesson4.task2.fruitBase.Delivery;
+import Shmidt.abstractProgThroughInterfaces.lesson4.task2.fruitBase.fruits.Fruit;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
-package main.java.Shmidt.lesson58_Arrays;
+package Shmidt.lesson58_Arrays;
 
-import static main.java.Shmidt.lesson58_Arrays.Test1.*;
+import static Shmidt.lesson58_Arrays.Test1.*;
 
 public class Test3 {
     public static void main(String[] args) {

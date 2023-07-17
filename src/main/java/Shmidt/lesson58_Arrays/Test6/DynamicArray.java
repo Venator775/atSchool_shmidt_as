@@ -1,4 +1,4 @@
-package main.java.Shmidt.lesson58_Arrays.Test6;
+package Shmidt.lesson58_Arrays.Test6;
 
 public class DynamicArray {
     private int[] array;

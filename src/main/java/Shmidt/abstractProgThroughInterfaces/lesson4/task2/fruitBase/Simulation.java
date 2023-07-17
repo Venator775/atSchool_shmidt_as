@@ -1,10 +1,10 @@
-package main.java.Shmidt.abstractProgThroughInterfaces.lesson4.task2.fruitBase;
+package Shmidt.abstractProgThroughInterfaces.lesson4.task2.fruitBase;
 
 
-import main.java.Shmidt.abstractProgThroughInterfaces.lesson4.task2.fruitBase.customers.Customer;
-import main.java.Shmidt.abstractProgThroughInterfaces.lesson4.task2.fruitBase.customers.FreshCustomer;
-import main.java.Shmidt.abstractProgThroughInterfaces.lesson4.task2.fruitBase.customers.UniqueCustomer;
-import main.java.Shmidt.abstractProgThroughInterfaces.lesson4.task2.fruitBase.fruits.Fruit;
+import Shmidt.abstractProgThroughInterfaces.lesson4.task2.fruitBase.customers.Customer;
+import Shmidt.abstractProgThroughInterfaces.lesson4.task2.fruitBase.customers.FreshCustomer;
+import Shmidt.abstractProgThroughInterfaces.lesson4.task2.fruitBase.customers.UniqueCustomer;
+import Shmidt.abstractProgThroughInterfaces.lesson4.task2.fruitBase.fruits.Fruit;
 
 import java.util.List;
 

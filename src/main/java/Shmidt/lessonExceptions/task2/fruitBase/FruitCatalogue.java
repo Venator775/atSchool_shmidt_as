@@ -1,13 +1,13 @@
-package main.java.Shmidt.lessonExceptions.task2.fruitBase;
+package Shmidt.lessonExceptions.task2.fruitBase;
 
-import main.java.Shmidt.lessonExceptions.task2.fruitBase.fruits.*;
+import Shmidt.lessonExceptions.task2.fruitBase.fruits.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import static main.java.Shmidt.tests.sideMethods.rnd;
+import static Shmidt.tests.sideMethods.rnd;
 
 public class FruitCatalogue implements Serializable {
     private List<Fruit> fruitCatalogue;

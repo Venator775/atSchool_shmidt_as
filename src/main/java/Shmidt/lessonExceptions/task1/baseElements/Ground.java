@@ -1,10 +1,10 @@
-package main.java.Shmidt.lessonExceptions.task1.baseElements;
+package Shmidt.lessonExceptions.task1.baseElements;
 
-import main.java.Shmidt.lessonExceptions.task1.NatureElement;
-import main.java.Shmidt.lessonExceptions.task1.resultElements.Dust;
-import main.java.Shmidt.lessonExceptions.task1.resultElements.Lava;
-import main.java.Shmidt.lessonExceptions.task1.resultElements.Mud;
-import main.java.Shmidt.lessonExceptions.task1.resultElements.Pressure;
+import Shmidt.lessonExceptions.task1.NatureElement;
+import Shmidt.lessonExceptions.task1.resultElements.Dust;
+import Shmidt.lessonExceptions.task1.resultElements.Lava;
+import Shmidt.lessonExceptions.task1.resultElements.Mud;
+import Shmidt.lessonExceptions.task1.resultElements.Pressure;
 
 public class Ground extends NatureElement {
 

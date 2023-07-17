@@ -1,10 +1,10 @@
-package main.java.Shmidt.lambdas.fruitBase;
+package Shmidt.lambdas.fruitBase;
 
 
-import main.java.Shmidt.lambdas.fruitBase.customers.Customer;
-import main.java.Shmidt.lambdas.fruitBase.customers.FreshCustomer;
-import main.java.Shmidt.lambdas.fruitBase.customers.UniqueCustomer;
-import main.java.Shmidt.lambdas.fruitBase.fruits.Fruit;
+import Shmidt.lambdas.fruitBase.customers.Customer;
+import Shmidt.lambdas.fruitBase.customers.FreshCustomer;
+import Shmidt.lambdas.fruitBase.customers.UniqueCustomer;
+import Shmidt.lambdas.fruitBase.fruits.Fruit;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 //Orange Kiwi Blueberry Pineapple Pineapple бульбазавр Orange Mango Orange Orange  Banana Apple Grape Pineapple Banana Mango Kiwi Banana Kiwi Grape Mango Apple Grape
 
 //Набор фруктов с указанием путей для файлов
-//-e=/src/main.java.Shmidt/lambdas/fruitBase/fruitCatalogue_OUT.dat -i=/src/main.java.Shmidt/lambdas/fruitBase/fruitCatalogue_IN.dat Orange Kiwi Blueberry Pineapple Pineapple бульбазавр Orange Mango Orange Orange  Banana Apple Grape Pineapple Banana Mango Kiwi Banana Kiwi Grape Mango Apple Grape
+//-e=/src/Shmidt/lambdas/fruitBase/fruitCatalogue_OUT.dat -i=/src/Shmidt/lambdas/fruitBase/fruitCatalogue_IN.dat Orange Kiwi Blueberry Pineapple Pineapple бульбазавр Orange Mango Orange Orange  Banana Apple Grape Pineapple Banana Mango Kiwi Banana Kiwi Grape Mango Apple Grape
 
 public class Simulation {
 
@@ -65,7 +65,7 @@ public class Simulation {
         Exception in thread "main" java.lang.UnsupportedOperationException
 	at java.base/java.util.ImmutableCollections.uoe(ImmutableCollections.java:71)
 	at java.base/java.util.ImmutableCollections$AbstractImmutableCollection.add(ImmutableCollections.java:75)
-	at main.java.Shmidt.lambdas.fruitBase.Simulation.main(Simulation.java:36)
+	at Shmidt.lambdas.fruitBase.Simulation.main(Simulation.java:36)
          */
 /*        customers.add(new Customer("Семёныч") {//fixme сюда не добавляется
             public List<Fruit> takeFruits(Delivery cargo) {

@@ -1,9 +1,9 @@
-package main.java.Shmidt.generiks.task3;
+package Shmidt.generiks.task3;
 
-import main.java.Shmidt.generiks.task3.fruits.Apple;
-import main.java.Shmidt.generiks.task3.fruits.Banana;
-import main.java.Shmidt.generiks.task3.vegetables.Cucumber;
-import main.java.Shmidt.generiks.task3.vegetables.Tomato;
+import Shmidt.generiks.task3.fruits.Apple;
+import Shmidt.generiks.task3.fruits.Banana;
+import Shmidt.generiks.task3.vegetables.Cucumber;
+import Shmidt.generiks.task3.vegetables.Tomato;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package main.java.Shmidt.generiks.task3;
+package Shmidt.generiks.task3;
 
 import java.util.ArrayList;
 import java.util.HashMap;

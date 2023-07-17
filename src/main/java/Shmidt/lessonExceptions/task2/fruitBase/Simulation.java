@@ -1,10 +1,10 @@
-package main.java.Shmidt.lessonExceptions.task2.fruitBase;
+package Shmidt.lessonExceptions.task2.fruitBase;
 
 
-import main.java.Shmidt.lessonExceptions.task2.fruitBase.customers.Customer;
-import main.java.Shmidt.lessonExceptions.task2.fruitBase.customers.FreshCustomer;
-import main.java.Shmidt.lessonExceptions.task2.fruitBase.customers.UniqueCustomer;
-import main.java.Shmidt.lessonExceptions.task2.fruitBase.fruits.Fruit;
+import Shmidt.lessonExceptions.task2.fruitBase.customers.Customer;
+import Shmidt.lessonExceptions.task2.fruitBase.customers.FreshCustomer;
+import Shmidt.lessonExceptions.task2.fruitBase.customers.UniqueCustomer;
+import Shmidt.lessonExceptions.task2.fruitBase.fruits.Fruit;
 
 import java.util.List;
 import java.util.regex.Matcher;
@@ -12,9 +12,9 @@ import java.util.regex.Pattern;
 
 public class Simulation {
     //Orange Blueberry Blueberry Pineapple Pineapple бульбазавр Orange Orange Orange Orange  Banana Apple Grape Pineapple Banana Apple Grape Banana Apple Grape Banana Apple Grape
-    //-e=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/main.java.Shmidt/lessonExceptions/task2/fruitBase/fruitCatalogue_OUT.dat -i=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/main.java.Shmidt/lessonExceptions/task2/fruitBase/fruitCatalogue_IN.dat Orange Banana Apple Grape Pineapple Banana Banana Apple Grape Banana Apple Grape Blueberry
-    //-i=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/main.java.Shmidt/lessonExceptions/task2/fruitBase/fruitCatalogue_IN.dat Orange Pineapple Banana Apple Grape Banana Banana Apple Grape Banana Apple Grape Blueberry
-    //-e=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/main.java.Shmidt/lessonExceptions/task2/fruitBase/fruitCatalogue_OUT.dat Orange Pineapple Banana Apple Grape Banana Banana Apple Grape Banana Apple Grape Blueberry
+    //-e=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lessonExceptions/task2/fruitBase/fruitCatalogue_OUT.dat -i=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lessonExceptions/task2/fruitBase/fruitCatalogue_IN.dat Orange Banana Apple Grape Pineapple Banana Banana Apple Grape Banana Apple Grape Blueberry
+    //-i=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lessonExceptions/task2/fruitBase/fruitCatalogue_IN.dat Orange Pineapple Banana Apple Grape Banana Banana Apple Grape Banana Apple Grape Blueberry
+    //-e=C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/lessonExceptions/task2/fruitBase/fruitCatalogue_OUT.dat Orange Pineapple Banana Apple Grape Banana Banana Apple Grape Banana Apple Grape Blueberry
     private static String outputFilePath;
     private static String inputFilePath;
 

@@ -1,11 +1,11 @@
-package main.java.Shmidt.generiks.task2;
+package Shmidt.generiks.task2;
 
-import main.java.Shmidt.generiks.task2.fruits.Apple;
-import main.java.Shmidt.generiks.task2.fruits.Banana;
-import main.java.Shmidt.generiks.task2.fruits.Fruit;
-import main.java.Shmidt.generiks.task2.vegetables.Cucumber;
-import main.java.Shmidt.generiks.task2.vegetables.Tomato;
-import main.java.Shmidt.generiks.task2.vegetables.Vegetable;
+import Shmidt.generiks.task2.fruits.Apple;
+import Shmidt.generiks.task2.fruits.Banana;
+import Shmidt.generiks.task2.fruits.Fruit;
+import Shmidt.generiks.task2.vegetables.Cucumber;
+import Shmidt.generiks.task2.vegetables.Tomato;
+import Shmidt.generiks.task2.vegetables.Vegetable;
 
 import java.util.Iterator;
 

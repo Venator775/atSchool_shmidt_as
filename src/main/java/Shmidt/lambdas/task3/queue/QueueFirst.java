@@ -1,4 +1,4 @@
-package main.java.Shmidt.lambdas.task3.queue;
+package Shmidt.lambdas.task3.queue;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,4 +1,4 @@
-package main.java.Shmidt.abstractProgThroughInterfaces.lesson4.task1.functions;
+package Shmidt.abstractProgThroughInterfaces.lesson4.task1.functions;
 
 public interface Function {
     int evaluate(int param);

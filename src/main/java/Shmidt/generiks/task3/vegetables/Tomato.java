@@ -1,4 +1,4 @@
-package main.java.Shmidt.generiks.task3.vegetables;
+package Shmidt.generiks.task3.vegetables;
 
 public class Tomato implements Vegetable {
     private String name = "Помидор";

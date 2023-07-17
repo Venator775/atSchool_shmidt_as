@@ -1,6 +1,6 @@
-package main.java.Shmidt.lesson19_1;
+package Shmidt.lesson19_1;
 
-import static main.java.Shmidt.lesson19_1.HealthState.*;
+import static Shmidt.lesson19_1.HealthState.*;
 
 public class Vet {
     //Имя ветеринара

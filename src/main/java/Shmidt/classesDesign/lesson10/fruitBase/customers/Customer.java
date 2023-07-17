@@ -1,7 +1,7 @@
-package main.java.Shmidt.classesDesign.lesson10.fruitBase.customers;
+package Shmidt.classesDesign.lesson10.fruitBase.customers;
 
-import main.java.Shmidt.classesDesign.lesson10.fruitBase.fruits.Fruit;
-import main.java.Shmidt.classesDesign.lesson10.fruitBase.Cargo;
+import Shmidt.classesDesign.lesson10.fruitBase.fruits.Fruit;
+import Shmidt.classesDesign.lesson10.fruitBase.Cargo;
 
 import java.util.ArrayList;
 import java.util.List;

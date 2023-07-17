@@ -1,9 +1,9 @@
-package main.java.Shmidt.lessonExceptions.task1;
+package Shmidt.lessonExceptions.task1;
 
-import main.java.Shmidt.lessonExceptions.task1.baseElements.Air;
-import main.java.Shmidt.lessonExceptions.task1.baseElements.Fire;
-import main.java.Shmidt.lessonExceptions.task1.baseElements.Ground;
-import main.java.Shmidt.lessonExceptions.task1.baseElements.Water;
+import Shmidt.lessonExceptions.task1.baseElements.Air;
+import Shmidt.lessonExceptions.task1.baseElements.Fire;
+import Shmidt.lessonExceptions.task1.baseElements.Ground;
+import Shmidt.lessonExceptions.task1.baseElements.Water;
 
 import java.util.NoSuchElementException;
 

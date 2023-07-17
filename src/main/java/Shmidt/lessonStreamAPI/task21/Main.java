@@ -1,7 +1,7 @@
-package main.java.Shmidt.lessonStreamAPI.task21;
+package Shmidt.lessonStreamAPI.task21;
 
-import main.java.Shmidt.lessonStreamAPI.task21.vegetables.Cucumber;
-import main.java.Shmidt.lessonStreamAPI.task21.vegetables.Tomato;
+import Shmidt.lessonStreamAPI.task21.vegetables.Cucumber;
+import Shmidt.lessonStreamAPI.task21.vegetables.Tomato;
 
 public class Main<T> {
     public static void main(String[] args) {

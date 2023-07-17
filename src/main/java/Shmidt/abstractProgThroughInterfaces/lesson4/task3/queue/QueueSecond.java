@@ -1,4 +1,4 @@
-package main.java.Shmidt.abstractProgThroughInterfaces.lesson4.task3.queue;
+package Shmidt.abstractProgThroughInterfaces.lesson4.task3.queue;
 
 import java.util.ArrayList;
 import java.util.Collections;

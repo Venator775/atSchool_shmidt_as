@@ -1,4 +1,4 @@
-package main.java.Shmidt.abstractProgThroughInterfaces.lesson4.task2.fruitBase.fruits;
+package Shmidt.abstractProgThroughInterfaces.lesson4.task2.fruitBase.fruits;
 
 public enum Freshness {
     FRESH("Продукт свежий"),

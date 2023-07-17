@@ -1,4 +1,4 @@
-package main.java.Shmidt.lessonExceptions.task2.fruitBase.fruits;
+package Shmidt.lessonExceptions.task2.fruitBase.fruits;
 
 import java.math.BigDecimal;
 

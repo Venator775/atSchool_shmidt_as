@@ -1,11 +1,11 @@
-package main.java.Shmidt.tests;
+package Shmidt.tests;
 
 import java.io.*;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 
 public class SomeTests {
-    private static String deserializeFileName = "/src/main.java.Shmidt/lambdas/fruitBase/fruitCatalogue_IN.dat";
+    private static String deserializeFileName = "/src/Shmidt/lambdas/fruitBase/fruitCatalogue_IN.dat";
     public static void main(String[] args) {
 
         importCatalogue();

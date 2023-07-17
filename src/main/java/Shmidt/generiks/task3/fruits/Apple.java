@@ -1,4 +1,4 @@
-package main.java.Shmidt.generiks.task3.fruits;
+package Shmidt.generiks.task3.fruits;
 
 public class Apple implements Fruit {
     private String name = "Яблоко";

@@ -1,11 +1,11 @@
-package main.java.Shmidt.lessonExceptions.task2.fruitBase;
+package Shmidt.lessonExceptions.task2.fruitBase;
 
-import main.java.Shmidt.lessonExceptions.task2.fruitBase.fruits.Fruit;
+import Shmidt.lessonExceptions.task2.fruitBase.fruits.Fruit;
 
 import java.io.*;
 
-import static main.java.Shmidt.tests.ConsoleColors.GREEN;
-import static main.java.Shmidt.tests.ConsoleColors.RESET;
+import static Shmidt.tests.ConsoleColors.GREEN;
+import static Shmidt.tests.ConsoleColors.RESET;
 
 public class FruitBase implements Serializable {
     private FruitCatalogue fruitCatalogue;

@@ -1,4 +1,4 @@
-package main.java.Shmidt.lesson16_enum;
+package Shmidt.lesson16_enum;
 
 public class Week {
     public Day monday = new Day();

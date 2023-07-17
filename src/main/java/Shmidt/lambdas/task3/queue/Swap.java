@@ -1,4 +1,4 @@
-package main.java.Shmidt.lambdas.task3.queue;
+package Shmidt.lambdas.task3.queue;
 
 public interface Swap {
     boolean needToSwap(int a, int b);

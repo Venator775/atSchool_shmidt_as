@@ -1,10 +1,10 @@
-package main.java.Shmidt.classesDesign.lesson10.fruitBase;
+package Shmidt.classesDesign.lesson10.fruitBase;
 
 
-import main.java.Shmidt.classesDesign.lesson10.fruitBase.customers.FreshCustomer;
-import main.java.Shmidt.classesDesign.lesson10.fruitBase.customers.UniqueCustomer;
-import main.java.Shmidt.classesDesign.lesson10.fruitBase.fruits.Fruit;
-import main.java.Shmidt.classesDesign.lesson10.fruitBase.customers.Customer;
+import Shmidt.classesDesign.lesson10.fruitBase.customers.FreshCustomer;
+import Shmidt.classesDesign.lesson10.fruitBase.customers.UniqueCustomer;
+import Shmidt.classesDesign.lesson10.fruitBase.fruits.Fruit;
+import Shmidt.classesDesign.lesson10.fruitBase.customers.Customer;
 
 import java.util.List;
 

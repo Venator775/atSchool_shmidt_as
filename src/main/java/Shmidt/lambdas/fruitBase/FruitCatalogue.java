@@ -1,13 +1,13 @@
-package main.java.Shmidt.lambdas.fruitBase;
+package Shmidt.lambdas.fruitBase;
 
-import main.java.Shmidt.lambdas.fruitBase.fruits.*;
+import Shmidt.lambdas.fruitBase.fruits.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import static main.java.Shmidt.tests.sideMethods.rnd;
+import static Shmidt.tests.sideMethods.rnd;
 
 public class FruitCatalogue implements Serializable {
     private List<Fruit> fruitCatalogue;

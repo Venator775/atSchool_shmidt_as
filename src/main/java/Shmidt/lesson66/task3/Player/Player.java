@@ -1,11 +1,11 @@
-package main.java.Shmidt.lesson66.task3.Player;
+package Shmidt.lesson66.task3.Player;
 
-import main.java.Shmidt.lesson66.task3.cards.Card;
-import main.java.Shmidt.lesson66.task3.cards.CardHand;
+import Shmidt.lesson66.task3.cards.Card;
+import Shmidt.lesson66.task3.cards.CardHand;
 
-import static main.java.Shmidt.lesson66.task3.Player.PlayerState.ACTIVE;
-import static main.java.Shmidt.lesson66.task3.Player.PlayerState.STOP;
-import static main.java.Shmidt.tests.sideMethods.rnd;
+import static Shmidt.lesson66.task3.Player.PlayerState.ACTIVE;
+import static Shmidt.lesson66.task3.Player.PlayerState.STOP;
+import static Shmidt.tests.sideMethods.rnd;
 
 public class Player {
     private int nervous;

@@ -1,6 +1,6 @@
-package main.java.Shmidt.lesson19_2.ru.pflb.professions;
+package Shmidt.lesson19_2.ru.pflb.professions;
 
-import main.java.Shmidt.lesson19_2.ru.pflb.Person;
+import Shmidt.lesson19_2.ru.pflb.Person;
 
 public class Driver extends Person {
     private int drivingExperience;

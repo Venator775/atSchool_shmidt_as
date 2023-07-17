@@ -1,4 +1,4 @@
-package main.java.Shmidt.lessonStreamAPI.task21;
+package Shmidt.lessonStreamAPI.task21;
 
 import java.util.HashMap;
 

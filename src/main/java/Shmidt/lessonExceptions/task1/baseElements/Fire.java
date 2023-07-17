@@ -1,9 +1,9 @@
-package main.java.Shmidt.lessonExceptions.task1.baseElements;
+package Shmidt.lessonExceptions.task1.baseElements;
 
-import main.java.Shmidt.lessonExceptions.task1.NatureElement;
-import main.java.Shmidt.lessonExceptions.task1.resultElements.Energy;
-import main.java.Shmidt.lessonExceptions.task1.resultElements.Lava;
-import main.java.Shmidt.lessonExceptions.task1.resultElements.Steam;
+import Shmidt.lessonExceptions.task1.NatureElement;
+import Shmidt.lessonExceptions.task1.resultElements.Energy;
+import Shmidt.lessonExceptions.task1.resultElements.Lava;
+import Shmidt.lessonExceptions.task1.resultElements.Steam;
 
 public class Fire extends NatureElement {
     public NatureElement connect(NatureElement natElem) {

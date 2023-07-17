@@ -1,7 +1,7 @@
-package main.java.Shmidt.generiks.task1;
+package Shmidt.generiks.task1;
 
-import main.java.Shmidt.generiks.task1.fruits.*;
-import main.java.Shmidt.generiks.task1.vegetables.*;
+import Shmidt.generiks.task1.fruits.*;
+import Shmidt.generiks.task1.vegetables.*;
 
 public class Main {
     public static void main(String[] args) {

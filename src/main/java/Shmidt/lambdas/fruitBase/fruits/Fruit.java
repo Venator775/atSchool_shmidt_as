@@ -1,11 +1,11 @@
-package main.java.Shmidt.lambdas.fruitBase.fruits;
+package Shmidt.lambdas.fruitBase.fruits;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-import static main.java.Shmidt.lambdas.fruitBase.fruits.Freshness.*;
-import static main.java.Shmidt.tests.sideMethods.rnd;
+import static Shmidt.lambdas.fruitBase.fruits.Freshness.*;
+import static Shmidt.tests.sideMethods.rnd;
 
 public abstract class Fruit implements Serializable {
     protected String name;

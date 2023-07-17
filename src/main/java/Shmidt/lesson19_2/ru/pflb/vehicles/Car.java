@@ -1,7 +1,7 @@
-package main.java.Shmidt.lesson19_2.ru.pflb.vehicles;
+package Shmidt.lesson19_2.ru.pflb.vehicles;
 
-import main.java.Shmidt.lesson19_2.ru.pflb.details.Engine;
-import main.java.Shmidt.lesson19_2.ru.pflb.professions.Driver;
+import Shmidt.lesson19_2.ru.pflb.details.Engine;
+import Shmidt.lesson19_2.ru.pflb.professions.Driver;
 
 public class Car {
     private String model;//название модели автомобиля

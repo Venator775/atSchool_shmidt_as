@@ -1,4 +1,4 @@
-package main.java.Shmidt.generiks.task1.vegetables;
+package Shmidt.generiks.task1.vegetables;
 
 public interface Vegetable {
 }

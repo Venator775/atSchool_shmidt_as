@@ -1,4 +1,4 @@
-package main.java.Shmidt.tests;
+package Shmidt.tests;
 
 import java.io.FileWriter;
 import java.math.BigDecimal;
@@ -220,7 +220,7 @@ public class sideMethods {
     public static void printLog(String text) {
         try {
             String logFileName = " ";
-            String path = new java.io.File(".").getCanonicalPath() + "\\src\\main.java.Shmidt\\tests\\logs\\";
+            String path = new java.io.File(".").getCanonicalPath() + "\\src\\Shmidt\\tests\\logs\\";
             logFileName = path + "pokeLog" + "[" + DateTimeFormatter.ofPattern("dd.MM hh_mm_ss").format(LocalDateTime.now()) + "]" + ".txt";
             System.out.println(logFileName);
             try (FileWriter writer = new FileWriter(logFileName, true)) {

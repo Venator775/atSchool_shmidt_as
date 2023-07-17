@@ -1,4 +1,4 @@
-package main.java.Shmidt.lessonStreamAPI.task21.fruits;
+package Shmidt.lessonStreamAPI.task21.fruits;
 
 public class Apple implements Fruit {
     private String name = "Яблоко";

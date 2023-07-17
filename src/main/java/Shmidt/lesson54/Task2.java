@@ -1,4 +1,4 @@
-package main.java.Shmidt.lesson54;
+package Shmidt.lesson54;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package main.java.Shmidt.lesson16_enum;
+package Shmidt.lesson16_enum;
 
 public class Day {
     public DaysOfWeekEnum dayOfWeek;

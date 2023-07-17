@@ -1,4 +1,4 @@
-package main.java.Shmidt.lesson66.task3.cards;
+package Shmidt.lesson66.task3.cards;
 
 public enum CardSuit {
     DIAMONDS("♦"),

@@ -1,9 +1,9 @@
-package main.java.Shmidt.lesson75.task3;
+package Shmidt.lesson75.task3;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static main.java.Shmidt.tests.sideMethods.rnd;
+import static Shmidt.tests.sideMethods.rnd;
 
 /*
 3) Верните n исходное значение и в конец тела метода main добавьте следующие строчки:

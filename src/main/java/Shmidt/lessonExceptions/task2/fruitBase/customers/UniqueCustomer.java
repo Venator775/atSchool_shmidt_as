@@ -1,7 +1,7 @@
-package main.java.Shmidt.lessonExceptions.task2.fruitBase.customers;
+package Shmidt.lessonExceptions.task2.fruitBase.customers;
 
-import main.java.Shmidt.lessonExceptions.task2.fruitBase.Delivery;
-import main.java.Shmidt.lessonExceptions.task2.fruitBase.fruits.Fruit;
+import Shmidt.lessonExceptions.task2.fruitBase.Delivery;
+import Shmidt.lessonExceptions.task2.fruitBase.fruits.Fruit;
 
 import java.util.List;
 

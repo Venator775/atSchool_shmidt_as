@@ -1,4 +1,4 @@
-package main.java.Shmidt.lesson43.task3;
+package Shmidt.lesson43.task3;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package main.java.Shmidt.lesson75.task1;
+package Shmidt.lesson75.task1;
 
 import java.util.Arrays;
 import java.util.HashSet;

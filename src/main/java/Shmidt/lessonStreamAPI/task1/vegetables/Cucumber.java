@@ -1,4 +1,4 @@
-package main.java.Shmidt.lessonStreamAPI.task1.vegetables;
+package Shmidt.lessonStreamAPI.task1.vegetables;
 
 public class Cucumber implements Vegetable {
     private String name = "Огурец";

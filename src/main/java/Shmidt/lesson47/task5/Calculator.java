@@ -1,4 +1,4 @@
-package main.java.Shmidt.lesson47.task5;
+package Shmidt.lesson47.task5;
 
 public class Calculator {
     public static int add(int x, int y){

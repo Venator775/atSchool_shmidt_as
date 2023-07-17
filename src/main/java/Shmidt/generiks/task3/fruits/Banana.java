@@ -1,4 +1,4 @@
-package main.java.Shmidt.generiks.task3.fruits;
+package Shmidt.generiks.task3.fruits;
 
 
 public class Banana implements Fruit {

@@ -1,6 +1,6 @@
-package main.java.Shmidt.abstractProgThroughInterfaces.lesson4.task2.fruitBase;
+package Shmidt.abstractProgThroughInterfaces.lesson4.task2.fruitBase;
 
-import main.java.Shmidt.abstractProgThroughInterfaces.lesson4.task2.fruitBase.fruits.Fruit;
+import Shmidt.abstractProgThroughInterfaces.lesson4.task2.fruitBase.fruits.Fruit;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

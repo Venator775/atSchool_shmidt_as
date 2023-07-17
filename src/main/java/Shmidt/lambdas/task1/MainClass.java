@@ -1,15 +1,15 @@
-package main.java.Shmidt.lambdas.task1;
+package Shmidt.lambdas.task1;
 
-import main.java.Shmidt.lambdas.task1.functions.Double;
-import main.java.Shmidt.lambdas.task1.functions.*;
+import Shmidt.lambdas.task1.functions.Double;
+import Shmidt.lambdas.task1.functions.*;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static main.java.Shmidt.tests.sideMethods.arrString2Int;
-import static main.java.Shmidt.tests.sideMethods.isInteger;
+import static Shmidt.tests.sideMethods.arrString2Int;
+import static Shmidt.tests.sideMethods.isInteger;
 
 //Double 1 -5 69 8 -1 0 4 -6
 //Half 1 -5 69 8 -1 0 4 -6

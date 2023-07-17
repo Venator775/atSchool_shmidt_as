@@ -1,4 +1,4 @@
-package main.java.Shmidt.generiks.task2;
+package Shmidt.generiks.task2;
 
 import java.util.HashMap;
 import java.util.Iterator;

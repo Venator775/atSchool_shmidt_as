@@ -1,4 +1,4 @@
-package main.java.Shmidt.lesson66.task1.system;
+package Shmidt.lesson66.task1.system;
 
 import java.math.BigDecimal;
 

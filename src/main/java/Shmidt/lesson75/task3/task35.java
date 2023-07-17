@@ -1,9 +1,9 @@
-package main.java.Shmidt.lesson75.task3;
+package Shmidt.lesson75.task3;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static main.java.Shmidt.tests.sideMethods.rnd;
+import static Shmidt.tests.sideMethods.rnd;
 
 /*
 Попробуйте вновь увеличить n до 10_000_000 и переместить строчки, добавленные на шаге 3, в конец тела цикла по l.

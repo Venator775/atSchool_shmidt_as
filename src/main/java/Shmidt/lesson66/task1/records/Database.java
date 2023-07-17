@@ -1,6 +1,6 @@
-package main.java.Shmidt.lesson66.task1.records;
+package Shmidt.lesson66.task1.records;
 
-import main.java.Shmidt.lesson66.task1.system.Account;
+import Shmidt.lesson66.task1.system.Account;
 
 import java.math.BigDecimal;
 

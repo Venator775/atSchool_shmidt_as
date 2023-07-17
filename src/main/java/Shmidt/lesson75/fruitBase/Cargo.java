@@ -1,6 +1,6 @@
-package main.java.Shmidt.lesson75.fruitBase;
+package Shmidt.lesson75.fruitBase;
 
-import main.java.Shmidt.lesson75.fruitBase.fruits.Fruit;
+import Shmidt.lesson75.fruitBase.fruits.Fruit;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

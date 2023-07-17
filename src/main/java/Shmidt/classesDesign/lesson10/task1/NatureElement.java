@@ -1,6 +1,6 @@
-package main.java.Shmidt.classesDesign.lesson10.task1;
+package Shmidt.classesDesign.lesson10.task1;
 
-import main.java.Shmidt.classesDesign.lesson10.task1.baseElements.*;
+import Shmidt.classesDesign.lesson10.task1.baseElements.*;
 
 public class NatureElement {
 

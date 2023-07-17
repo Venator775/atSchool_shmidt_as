@@ -1,4 +1,5 @@
-package main.java.Shmidt.lesson75.task3;
+package Shmidt.lesson75.task3;
+
 
 public class Element {
 

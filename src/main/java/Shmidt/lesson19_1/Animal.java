@@ -1,4 +1,4 @@
-package main.java.Shmidt.lesson19_1;
+package Shmidt.lesson19_1;
 
 public abstract class Animal {
     //Кличка

@@ -1,4 +1,4 @@
-package main.java.Shmidt.generiks.task1;
+package Shmidt.generiks.task1;
 
 import java.util.ArrayList;
 

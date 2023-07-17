@@ -1,7 +1,7 @@
-package main.java.Shmidt.abstractProgThroughInterfaces.lesson4.task3;
+package Shmidt.abstractProgThroughInterfaces.lesson4.task3;
 
-import main.java.Shmidt.abstractProgThroughInterfaces.lesson4.task3.queue.QueueFirst;
-import main.java.Shmidt.abstractProgThroughInterfaces.lesson4.task3.queue.QueueSecond;
+import Shmidt.abstractProgThroughInterfaces.lesson4.task3.queue.QueueFirst;
+import Shmidt.abstractProgThroughInterfaces.lesson4.task3.queue.QueueSecond;
 
 import java.util.List;
 

@@ -1,9 +1,9 @@
-package main.java.Shmidt.lesson66.task3.cards;
+package Shmidt.lesson66.task3.cards;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static main.java.Shmidt.tests.sideMethods.rnd;
+import static Shmidt.tests.sideMethods.rnd;
 
 public class Deck {
     private List<Card> cards;

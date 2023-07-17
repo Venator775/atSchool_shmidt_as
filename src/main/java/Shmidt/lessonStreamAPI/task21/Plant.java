@@ -1,4 +1,4 @@
-package main.java.Shmidt.lessonStreamAPI.task21;
+package Shmidt.lessonStreamAPI.task21;
 
 public interface Plant {
     String getName();

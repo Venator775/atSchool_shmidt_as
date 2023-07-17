@@ -1,4 +1,4 @@
-package main.java.Shmidt.lesson31;
+package Shmidt.lesson31;
 
 import java.util.Scanner;
 

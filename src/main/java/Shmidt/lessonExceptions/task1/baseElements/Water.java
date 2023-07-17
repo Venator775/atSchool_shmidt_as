@@ -1,10 +1,10 @@
-package main.java.Shmidt.lessonExceptions.task1.baseElements;
+package Shmidt.lessonExceptions.task1.baseElements;
 
-import main.java.Shmidt.lessonExceptions.task1.NatureElement;
-import main.java.Shmidt.lessonExceptions.task1.resultElements.Mud;
-import main.java.Shmidt.lessonExceptions.task1.resultElements.Rain;
-import main.java.Shmidt.lessonExceptions.task1.resultElements.Sea;
-import main.java.Shmidt.lessonExceptions.task1.resultElements.Steam;
+import Shmidt.lessonExceptions.task1.NatureElement;
+import Shmidt.lessonExceptions.task1.resultElements.Mud;
+import Shmidt.lessonExceptions.task1.resultElements.Rain;
+import Shmidt.lessonExceptions.task1.resultElements.Sea;
+import Shmidt.lessonExceptions.task1.resultElements.Steam;
 
 public class Water extends NatureElement {
 

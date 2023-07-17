@@ -1,9 +1,9 @@
-package main.java.Shmidt.lesson19_1;
+package Shmidt.lesson19_1;
 
 import java.util.List;
 
-import static main.java.Shmidt.lesson19_1.HealthState.HEALTHY;
-import static main.java.Shmidt.lesson19_1.HealthState.UNHEALTHY;
+import static Shmidt.lesson19_1.HealthState.HEALTHY;
+import static Shmidt.lesson19_1.HealthState.UNHEALTHY;
 
 public class Main {
     public static void main(String[] args) {

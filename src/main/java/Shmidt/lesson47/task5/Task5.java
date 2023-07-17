@@ -1,7 +1,7 @@
-package main.java.Shmidt.lesson47.task5;
+package Shmidt.lesson47.task5;
 
 
-import static main.java.Shmidt.lesson47.task5.Calculator.*;
+import static Shmidt.lesson47.task5.Calculator.*;
 
 public class Task5 {
     public static void main(String[] args) {

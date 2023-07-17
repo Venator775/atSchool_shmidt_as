@@ -1,14 +1,14 @@
-package main.java.Shmidt.lessonExceptions.task1;
+package Shmidt.lessonExceptions.task1;
 
-import main.java.Shmidt.lessonExceptions.task1.resultElements.ShitElement;
+import Shmidt.lessonExceptions.task1.resultElements.ShitElement;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import static main.java.Shmidt.tests.ConsoleColors.RED;
-import static main.java.Shmidt.tests.ConsoleColors.RESET;
+import static Shmidt.tests.ConsoleColors.RED;
+import static Shmidt.tests.ConsoleColors.RESET;
 
 //Air Air Fire Ground Water Air Fire Fire
 public class Alchemy {

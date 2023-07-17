@@ -1,6 +1,6 @@
-package main.java.Shmidt.classesDesign.lesson10.task1.resultElements;
+package Shmidt.classesDesign.lesson10.task1.resultElements;
 
-import main.java.Shmidt.classesDesign.lesson10.task1.NatureElement;
+import Shmidt.classesDesign.lesson10.task1.NatureElement;
 
 public class Sea extends NatureElement {
 }

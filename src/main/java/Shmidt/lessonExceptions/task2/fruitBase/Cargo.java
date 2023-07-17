@@ -1,6 +1,6 @@
-package main.java.Shmidt.lessonExceptions.task2.fruitBase;
+package Shmidt.lessonExceptions.task2.fruitBase;
 
-import main.java.Shmidt.lessonExceptions.task2.fruitBase.fruits.Fruit;
+import Shmidt.lessonExceptions.task2.fruitBase.fruits.Fruit;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

@@ -1,4 +1,4 @@
-package main.java.Shmidt.lesson58_Arrays;
+package Shmidt.lesson58_Arrays;
 
 public class Test1 {
     public static void main(String[] args) {

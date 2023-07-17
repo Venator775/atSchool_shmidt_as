@@ -1,4 +1,4 @@
-package main.java.Shmidt.lesson10;
+package Shmidt.lesson10;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;

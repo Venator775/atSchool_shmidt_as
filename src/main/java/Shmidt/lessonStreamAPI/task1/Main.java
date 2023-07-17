@@ -1,10 +1,10 @@
-package main.java.Shmidt.lessonStreamAPI.task1;
+package Shmidt.lessonStreamAPI.task1;
 
-import main.java.Shmidt.lessonStreamAPI.task1.fruits.Apple;
-import main.java.Shmidt.lessonStreamAPI.task1.fruits.Banana;
-import main.java.Shmidt.lessonStreamAPI.task1.fruits.Fruit;
-import main.java.Shmidt.lessonStreamAPI.task1.vegetables.Cucumber;
-import main.java.Shmidt.lessonStreamAPI.task1.vegetables.Tomato;
+import Shmidt.lessonStreamAPI.task1.fruits.Apple;
+import Shmidt.lessonStreamAPI.task1.fruits.Banana;
+import Shmidt.lessonStreamAPI.task1.fruits.Fruit;
+import Shmidt.lessonStreamAPI.task1.vegetables.Cucumber;
+import Shmidt.lessonStreamAPI.task1.vegetables.Tomato;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package main.java.Shmidt.lambdas.fruitBase.fruits;
+package Shmidt.lambdas.fruitBase.fruits;
 
 public enum Freshness {
     FRESH("Продукт свежий"),

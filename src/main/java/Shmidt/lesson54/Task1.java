@@ -1,4 +1,4 @@
-package main.java.Shmidt.lesson54;
+package Shmidt.lesson54;
 
 public class Task1 {
     static String s = "Циклом называется многократное выполнение одних и тех же действий.";

@@ -1,14 +1,14 @@
-package main.java.Shmidt.lesson66.task3.game;
+package Shmidt.lesson66.task3.game;
 
-import main.java.Shmidt.lesson66.task3.Player.Player;
-import main.java.Shmidt.lesson66.task3.cards.Card;
-import main.java.Shmidt.lesson66.task3.cards.Deck;
+import Shmidt.lesson66.task3.Player.Player;
+import Shmidt.lesson66.task3.cards.Card;
+import Shmidt.lesson66.task3.cards.Deck;
 
 import java.util.Scanner;
 
-import static main.java.Shmidt.lesson66.task3.Player.PlayerState.ACTIVE;
-import static main.java.Shmidt.lesson66.task3.Player.PlayerState.STOP;
-import static main.java.Shmidt.lesson66.task3.game.GameState.*;
+import static Shmidt.lesson66.task3.Player.PlayerState.ACTIVE;
+import static Shmidt.lesson66.task3.Player.PlayerState.STOP;
+import static Shmidt.lesson66.task3.game.GameState.*;
 
 public class Game {
     private Deck currentDeck;

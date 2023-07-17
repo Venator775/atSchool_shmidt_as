@@ -1,4 +1,4 @@
-package main.java.Shmidt.lesson16;
+package Shmidt.lesson16;
 
 public class DaysOfWeek {
     static final String monday ="понедельник";

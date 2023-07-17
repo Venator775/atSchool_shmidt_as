@@ -1,6 +1,6 @@
-package main.java.Shmidt.generiks.task2.fruits;
+package Shmidt.generiks.task2.fruits;
 
-import main.java.Shmidt.generiks.task2.Plant;
+import Shmidt.generiks.task2.Plant;
 
 public interface Fruit extends Plant {
 

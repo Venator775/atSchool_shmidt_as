@@ -1,6 +1,6 @@
-package main.java.Shmidt.lesson66.task2.fruitBase;
+package Shmidt.lesson66.task2.fruitBase;
 
-import main.java.Shmidt.lesson66.task2.fruitBase.fruits.*;
+import Shmidt.lesson66.task2.fruitBase.fruits.*;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
-package main.java.Shmidt.lambdas.fruitBase;
+package Shmidt.lambdas.fruitBase;
 
-import main.java.Shmidt.lambdas.fruitBase.fruits.Fruit;
+import Shmidt.lambdas.fruitBase.fruits.Fruit;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

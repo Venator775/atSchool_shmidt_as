@@ -1,4 +1,4 @@
-package main.java.Shmidt.tests.filesInFolder;
+package Shmidt.tests.filesInFolder;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class FilesInFolder {
     public static void main(String[] args) throws IOException {
-        String path = "C:\\Users\\Алексей\\IdeaProjects\\atSchool_shmidt_as\\src\\main.java.Shmidt";
+        String path = "C:\\Users\\Алексей\\IdeaProjects\\atSchool_shmidt_as\\src\\Shmidt";
         var lst = Files.walk(Paths.get(path))
                 .filter(Files::isRegularFile)
                 .collect(Collectors.toList());

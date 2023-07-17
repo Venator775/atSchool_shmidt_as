@@ -1,12 +1,12 @@
-package main.java.Shmidt.abstractProgThroughInterfaces.lesson4.task2.fruitBase;
+package Shmidt.abstractProgThroughInterfaces.lesson4.task2.fruitBase;
 
-import main.java.Shmidt.abstractProgThroughInterfaces.lesson4.task2.fruitBase.fruits.Fruit;
+import Shmidt.abstractProgThroughInterfaces.lesson4.task2.fruitBase.fruits.Fruit;
 
 import java.io.*;
 
 public class FruitBase implements Serializable {
     private FruitCatalogue fruitCatalogue;
-    final String path = "C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/main.java.Shmidt/abstractProgThroughInterfaces/lesson4/task2/fruitBase/";
+    final String path = "C:/Users/Алексей/IdeaProjects/atSchool_shmidt_as/src/Shmidt/abstractProgThroughInterfaces/lesson4/task2/fruitBase/";
     final private String serializeFileName = path + "fruitCatalogue.dat";
     final private String serializeFileName_new = path + "fruitCatalogue_new.dat";
 

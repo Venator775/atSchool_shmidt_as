@@ -1,4 +1,4 @@
-package main.java.Shmidt.lesson47.task4;
+package Shmidt.lesson47.task4;
 
 import java.math.BigInteger;
 

@@ -1,4 +1,4 @@
-package main.java.Shmidt.lesson47.task6;
+package Shmidt.lesson47.task6;
 
 public class Timer {
 

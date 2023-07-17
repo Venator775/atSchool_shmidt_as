@@ -1,7 +1,7 @@
-package main.java.Shmidt.classesDesign.lesson10.task1.baseElements;
+package Shmidt.classesDesign.lesson10.task1.baseElements;
 
-import main.java.Shmidt.classesDesign.lesson10.task1.NatureElement;
-import main.java.Shmidt.classesDesign.lesson10.task1.resultElements.*;
+import Shmidt.classesDesign.lesson10.task1.NatureElement;
+import Shmidt.classesDesign.lesson10.task1.resultElements.*;
 
 public class Fire extends NatureElement {
     public NatureElement connect(NatureElement natElem) {

@@ -1,4 +1,4 @@
-package main.java.Shmidt.lesson25;
+package Shmidt.lesson25;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

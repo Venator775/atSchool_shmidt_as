@@ -1,7 +1,7 @@
-package main.java.Shmidt.lambdas.fruitBase.customers;
+package Shmidt.lambdas.fruitBase.customers;
 
-import main.java.Shmidt.lambdas.fruitBase.Delivery;
-import main.java.Shmidt.lambdas.fruitBase.fruits.Fruit;
+import Shmidt.lambdas.fruitBase.Delivery;
+import Shmidt.lambdas.fruitBase.fruits.Fruit;
 
 import java.util.List;
 
