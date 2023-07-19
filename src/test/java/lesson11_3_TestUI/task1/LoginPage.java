@@ -5,7 +5,6 @@ import com.codeborne.selenide.SelenideElement;
 import dev.failsafe.internal.util.Assert;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.open;
 
