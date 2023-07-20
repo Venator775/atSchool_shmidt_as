@@ -15,7 +15,7 @@ public class ProductsInCartList {
 
     private SelenideElement objectRoot;
 
-    public ElementsCollection productList = objectRoot == null
+    private final ElementsCollection productList = objectRoot == null
             ? $$x(".//div[@class = 'cart_list']//div[@class = 'cart_item']")
             : objectRoot.$$x(".//div[@class = 'cart_list']//div[@class = 'cart_item']");
 
@@ -46,7 +46,7 @@ public class ProductsInCartList {
      * Возвращает рандомный товар из списка продуктов
      * @return
      */
-    public void removeRandItem() {//не работает
+    public void removeRandItem() {
         new ProductInCartItem(productList.get(new Random().nextInt(productList.size())))
                 .removeItemFromCartButtonClick();
     }

@@ -7,6 +7,11 @@ import lesson11_3_TestUI.task3.Enums.ItemDataElement;
 import java.math.BigDecimal;
 
 public class ProductItem {
+
+    private String name;
+    private String desc;
+    private String price;
+
     private SelenideElement source;
 
     public ProductItem(SelenideElement source) {
@@ -14,14 +19,17 @@ public class ProductItem {
     }
 
     public SelenideElement itemName() {
+        this.name = getItemDataElement(ItemDataElement.NAME).text();
         return getItemDataElement(ItemDataElement.NAME);
     }
 
     public SelenideElement itemDesc() {
+        this.desc = getItemDataElement(ItemDataElement.DESC).text();
         return getItemDataElement(ItemDataElement.DESC);
     }
 
     public SelenideElement itemPrice() {
+        this.price = getItemDataElement(ItemDataElement.PRICE).text();
         return getItemDataElement(ItemDataElement.PRICE);
     }
 
@@ -38,7 +46,7 @@ public class ProductItem {
      *
      * @return
      */
-    public BigDecimal getPrice() {
+    public BigDecimal getPriceValue() {
         return new BigDecimal(itemPrice().getText().replace("$", ""));
     }
 
@@ -66,5 +74,15 @@ public class ProductItem {
         removeFromCartButton().shouldBe(Condition.visible, Condition.enabled).click();
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public String getDesc() {
+        return desc;
+    }
+
+    public String getPrice() {
+        return price;
+    }
 }

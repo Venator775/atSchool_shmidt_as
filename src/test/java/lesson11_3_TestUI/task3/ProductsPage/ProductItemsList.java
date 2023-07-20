@@ -17,7 +17,7 @@ public class ProductItemsList {
 
     private SelenideElement objectRoot;
 
-    public ElementsCollection productList = objectRoot == null
+    private final ElementsCollection productList = objectRoot == null
             ? $$x(".//div[@class = 'inventory_list']//div[@class = 'inventory_item']")
             : objectRoot.$$x(".//div[@class = 'inventory_list']//div[@class = 'inventory_item']");
 
