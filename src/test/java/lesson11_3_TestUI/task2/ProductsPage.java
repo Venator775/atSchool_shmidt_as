@@ -1,5 +1,6 @@
 package lesson11_3_TestUI.task2;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$x;
@@ -24,19 +25,13 @@ public class ProductsPage {
 
     /**
      * Всплывающее меню
+     *
      * @return
      */
-    public SelenideElement burgerMenu() {
-        return $x("//button[@id = 'react-burger-menu-btn']");
+    public SelenideElement burgerMenuIcon() {
+        return $x(".//button[@id = 'react-burger-menu-btn']");
     }
-
-    /**
-     * Кнопка logout во всплывающем меню
-     * @return
-     */
-    public SelenideElement logoutSidebarLink() {
-        return $x("//a[@id='logout_sidebar_link']");
+    public void burgerMenuIconClick() {
+        burgerMenuIcon().shouldBe(Condition.visible, Condition.enabled).click();
     }
-
-
 }

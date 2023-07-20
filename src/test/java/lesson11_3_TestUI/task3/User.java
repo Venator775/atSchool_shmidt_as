@@ -26,4 +26,8 @@ public class User {
     public static User getStandardUser(){
         return new User(UserAccounts.standard_user);
     }
+
+    public static User getEnumUser(UserAccounts userAcc){
+        return new User(userAcc);
+    }
 }

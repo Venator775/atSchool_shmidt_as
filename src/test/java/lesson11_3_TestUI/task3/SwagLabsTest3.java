@@ -1,9 +1,9 @@
 package lesson11_3_TestUI.task3;
 
 import com.codeborne.selenide.Condition;
-import jdk.jfr.Description;
 import lesson11_3_TestUI.task3.CartPage.CartPage;
 import lesson11_3_TestUI.task3.CartPage.ProductsInCartList;
+import lesson11_3_TestUI.task3.Enums.UserAccounts;
 import lesson11_3_TestUI.task3.ProductsPage.ProductItem;
 import lesson11_3_TestUI.task3.ProductsPage.ProductItemsList;
 import lesson11_3_TestUI.task3.ProductsPage.ProductsPage;
@@ -14,25 +14,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.webdriver;
+import static com.codeborne.selenide.WebDriverConditions.url;
 //mvn -Dgroups=task3 test
 
-public class SwagLabsTest {
+public class SwagLabsTest3 {
 
-    final private static String URL = "https://www.saucedemo.com/";
     private static List<ProductItem> addedProductsList;
 
     @DisplayName("Страница авторизации")
     @BeforeEach
     void loginPageTest() {
-        Authorization.authorize(User.getStandardUser());
+        Authorization.authorize(User.getEnumUser(UserAccounts.standard_user));
+        webdriver().shouldHave(url("https://www.saucedemo.com/inventory.html"));
         System.out.println("Залогинились");
-//        System.out.println("Страница авторизации");
-//        Configuration.timeout = 10000;
-//        LoginPage loginPage = new LoginPage();
-//
-//        open(URL);
-//        Assert.isTrue(loginPage.logo().isDisplayed(), "Страница не открыта");
-//        Assert.isTrue(loginPage.logo().getText().equals("Swag Labs"), "Лого не содержит искомый текст");
     }
 
     @DisplayName("Закрытие браузера")
@@ -43,6 +38,7 @@ public class SwagLabsTest {
 
     @DisplayName("Страница продуктов")
     @Tag("task3")
+    @Tag("smoke")
     @Test
     void productsPageListTest() {
         ProductsPage productsPage = new ProductsPage();
@@ -51,9 +47,6 @@ public class SwagLabsTest {
         productsPage.productsTitle().shouldBe(Condition.visible);
         productsPage.inventoryList().shouldBe(Condition.visible, Condition.enabled);
         System.out.println("Открыли страницу продуктов");
-
-//        itemList.selectFewRandomItems(3)
-//                .forEach((item) -> System.out.println(item.itemName().text()));
 
         int addProductsCount = 3;
         itemList.selectFewRandomItems(addProductsCount)
@@ -74,7 +67,7 @@ public class SwagLabsTest {
 
     @Test
     @Tag("task3")
-    @Description("Экран товаров в корзине")
+    @DisplayName("Экран товаров в корзине")
     void shoppingCartTest() {
         productsPageListTest();
 
@@ -83,8 +76,6 @@ public class SwagLabsTest {
         cartPage.cartList().shouldBe(Condition.visible);
 
         ProductsInCartList productsInCartList = new ProductsInCartList();
-//        productsInCartList.productList.first().text();
-        productsInCartList.productInCartItemsList().get(0).itemPrice().text();
 
         Assertions.assertEquals(addedProductsList.size(), productsInCartList.productInCartItemsList().size());
         for (int i = 0; i < addedProductsList.size(); i++) {
@@ -92,6 +83,7 @@ public class SwagLabsTest {
             Assertions.assertEquals(addedProductsList.get(i).getDesc(), productsInCartList.productInCartItemsList().get(i).getDesc());
             Assertions.assertEquals(addedProductsList.get(i).getPrice(), productsInCartList.productInCartItemsList().get(i).getPrice());
         }
+
         productsInCartList.removeRandItem();
         Assertions.assertEquals(1, addedProductsList.size() - productsInCartList.productInCartItemsList().size());
 

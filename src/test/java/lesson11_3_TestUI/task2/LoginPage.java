@@ -1,9 +1,7 @@
 package lesson11_3_TestUI.task2;
 
-import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import dev.failsafe.internal.util.Assert;
-import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.open;
@@ -24,6 +22,14 @@ public class LoginPage {
 
     public SelenideElement loginButton() {
         return $x("//input[@id='login-button']");
+    }
+
+    public void loginButtonClick(){
+        loginButton().shouldBe(Condition.visible, Condition.enabled).click();
+    }
+    public void fillLoginPassword(String login, String Password){
+        usernameField().sendKeys(login);
+        passwordField().sendKeys(Password);
     }
 }
 /*
