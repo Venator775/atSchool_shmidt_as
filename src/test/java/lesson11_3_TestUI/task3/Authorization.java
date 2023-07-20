@@ -1,6 +1,5 @@
 package lesson11_3_TestUI.task3;
 
-import lesson11_3_TestUI.User;
 import lesson11_3_TestUI.task3.LoginPage.LoginPage;
 
 import static com.codeborne.selenide.Selenide.open;

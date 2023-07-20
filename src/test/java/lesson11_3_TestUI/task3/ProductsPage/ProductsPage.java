@@ -1,9 +1,7 @@
 package lesson11_3_TestUI.task3.ProductsPage;
 
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class ProductsPage {
@@ -16,6 +14,13 @@ public class ProductsPage {
         return $x("//span[@class = 'title' and contains(text(), Products)]");
     }
 
+    /**
+     * Список товаров на странице
+     * @return
+     */
+    public SelenideElement inventoryList(){
+        return $x(".//div[@class = 'inventory_list']");
+    }
 
     /**
      * Всплывающее меню
@@ -33,20 +38,21 @@ public class ProductsPage {
         return $x(".//a[@id='logout_sidebar_link']");
     }
 
-    /**
+
+/*    *//**
      * Кнопка корзины
      * @return
-     */
-    public SelenideElement busketButton(){
+     *//*
+    public SelenideElement cartButton(){
         return $x(".//a[@class='shopping_cart_link']");
     }
 
-    /**
+    *//**
      * Значок на корзине
      * @return
-     */
-    public SelenideElement buscetButtonBadge(){
-        return busketButton().$x(".//span[@class='shopping_cart_badge']");
-    }
+     *//*
+    public SelenideElement cartButtonBadge(){
+        return cartButton().$x(".//span[@class='shopping_cart_badge']");
+    }*/
 
 }

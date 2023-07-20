@@ -1,5 +1,6 @@
 package lesson11_3_TestUI.task3.ProductsPage;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
@@ -10,6 +11,7 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 import static com.codeborne.selenide.Selenide.$$x;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class ProductItemsList {
 
@@ -28,9 +30,9 @@ public class ProductItemsList {
         this.objectRoot = objectRoot;
     }
 
+
     /**
-     * Список товаров на странице
-     *
+     * Список товаров ProductItem на странице
      * @return
      */
     public ArrayList<ProductItem> productItemsList() {//productItem список
@@ -45,10 +47,19 @@ public class ProductItemsList {
     }
 
 
+    /**
+     * Возвращает рандомный товар из списка продуктов
+     * @return
+     */
     public ProductItem selectRandItem() {
         return new ProductItem(productList.get(new Random().nextInt(productList.size())));
     }
 
+    /**
+     * Возвращает список рандомных товаров из списка продуктов
+     * @param count
+     * @return List<ProductItem>
+     */
     public List<ProductItem> selectFewRandomItems(int count) {
         if (count > productList.size()) {
             throw new IllegalArgumentException("Превышено количество запрашиваемых карточек на странице");

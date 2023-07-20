@@ -1,4 +1,6 @@
-package lesson11_3_TestUI;
+package lesson11_3_TestUI.task3;
+
+import lesson11_3_TestUI.task3.Enums.UserAccounts;
 
 public class User {
     private String login;
@@ -16,8 +18,12 @@ public class User {
         this.login = login;
         this.password = password;
     }
+    public User(UserAccounts userAcc) {
+        this.login = userAcc.getLogin();
+        this.password = userAcc.getPassword();
+    }
 
     public static User getStandardUser(){
-        return new User("standard_user","secret_sauce");
+        return new User(UserAccounts.standard_user);
     }
 }

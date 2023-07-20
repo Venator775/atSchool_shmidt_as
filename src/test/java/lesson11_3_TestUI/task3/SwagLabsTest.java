@@ -1,16 +1,19 @@
 package lesson11_3_TestUI.task3;
 
-import com.codeborne.selenide.Configuration;
-import dev.failsafe.internal.util.Assert;
-import lesson11_3_TestUI.User;
-import lesson11_3_TestUI.task3.LoginPage.LoginPage;
+import com.codeborne.selenide.Condition;
+import lesson11_3_TestUI.task3.CartPage.CartPage;
+import lesson11_3_TestUI.task3.CartPage.ProductsInCartList;
+import lesson11_3_TestUI.task3.ProductsPage.ShoppingCartButton;
+import lesson11_3_TestUI.task3.ProductsPage.ProductItem;
 import lesson11_3_TestUI.task3.ProductsPage.ProductItemsList;
 import lesson11_3_TestUI.task3.ProductsPage.ProductsPage;
 import org.junit.jupiter.api.*;
 
-import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 //mvn -Dgroups=task3 test
 
 public class SwagLabsTest {
@@ -19,8 +22,9 @@ public class SwagLabsTest {
 
     @DisplayName("Страница авторизации")
     @BeforeEach
-    void loginPageTest(){
+    void loginPageTest() {
         Authorization.authorize(User.getStandardUser());
+        System.out.println("Залогинились");
 //        System.out.println("Страница авторизации");
 //        Configuration.timeout = 10000;
 //        LoginPage loginPage = new LoginPage();
@@ -30,48 +34,53 @@ public class SwagLabsTest {
 //        Assert.isTrue(loginPage.logo().getText().equals("Swag Labs"), "Лого не содержит искомый текст");
     }
 
-//    @DisplayName("Ввод данных и вход в учётную запись")
-//    @Tag("task3")
-    //@Test
-    void inputLoginTest(){
-        System.out.println("Ввод данных и вход в учётную запись");
-
-        LoginPage loginPage = new LoginPage();
-        Assert.isTrue(loginPage.usernameField().isDisplayed() && loginPage.usernameField().isEnabled(),"Поле ввода логина не доступно");
-        Assert.isTrue(loginPage.passwordField().isDisplayed() && loginPage.passwordField().isEnabled(),"Поле ввода пароля не доступно");
-
-
-        loginPage.fillLogin("standard_user");
-        loginPage.fillPassword("secret_sauce");
-
-        Assert.isTrue(loginPage.loginButton().isDisplayed() && loginPage.loginButton().isEnabled(), "Кнопка логина недоступна");
-        loginPage.loginButton().click();
-
-        ProductsPage productsPage = new ProductsPage();
-        Assert.isTrue(productsPage.productsTitle().getText().equals("Products"), "Не открыта страница продуктов");
-        System.out.println("Залогинились");
-
+    @DisplayName("Закрытие браузера")
+    @AfterEach
+    void closeBrowser() {
+        closeWebDriver();
     }
-
 
     @DisplayName("Страница продуктов")
     @Tag("task3")
     @Test
     void productsPageListTest() {
-        //inputLoginTest();
+        ProductsPage productsPage = new ProductsPage();
+        ProductItemsList itemList = new ProductItemsList();
 
-        ProductItemsList list = new ProductItemsList();
-        list.selectRandItem().itemName().text();
-        list.selectFewRandomItems(3)
-                .stream()
-                .forEach((item)-> System.out.println(item.itemName().text()));
+        productsPage.productsTitle().shouldBe(Condition.visible);
+        productsPage.inventoryList().shouldBe(Condition.visible,Condition.enabled);
+        System.out.println("Открыли страницу продуктов");
 
-        //list.productList.subList()
+//        itemList.selectFewRandomItems(3)
+//                .forEach((item) -> System.out.println(item.itemName().text()));
 
-//        String productItemName = itemsList.get(0).$("div.inventory_item_name").getText();
-//        String productItemDesc = itemsList.get(0).$("div.inventory_item_desc").getText();
-//        String productItemPrice = itemsList.get(0).$("div.inventory_item_price").getText();
-//        SelenideElement addButton = itemsList.get(0).$x("button[@class='btn btn_primary btn_small btn_inventory']");
-//        String g = addButton.getText();//не работает
+        int addProductsCount = 3;
+        itemList.selectFewRandomItems(addProductsCount)
+                .forEach(ProductItem::addToCartButtonClick);
+        List<ProductItem> addedProdList = new ArrayList<>(itemList.selectFewRandomItems(addProductsCount));
+
+        System.out.println("Добавили в корзину");
+
+        ShoppingCartButton shoppingCartButton = new ShoppingCartButton();
+        shoppingCartButton.cartButton().shouldBe(Condition.visible);
+
+        Assertions.assertEquals(addProductsCount, shoppingCartButton.productsInCartCount(),"Количество продуктов, добавленных в корзину не соответствует требуемому");
+
+        shoppingCartButton.cartButtonClick();
+        System.out.println("Перешли в корзину");
+
+        CartPage cartPage = new CartPage();
+        cartPage.title().shouldBe(Condition.visible);
+        cartPage.cartList().shouldBe(Condition.visible);
+
+        ProductsInCartList productsInCartList = new ProductsInCartList();
+        productsInCartList.productList.first().text();
+        productsInCartList.productInCartItemsList().get(0).itemPrice().text();
+        productsInCartList.removeRandItem();
+
+        /*
+        -  проверяется, что в списке товаров указаны все выбранные товары
+  (совпадает название, сумма, описание)
+        */
     }
 }
