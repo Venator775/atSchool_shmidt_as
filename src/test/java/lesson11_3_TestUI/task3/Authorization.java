@@ -11,6 +11,7 @@ public class Authorization {
         open(URL);
         Configuration.timeout = 10000;
         new LoginPage()
+                .smokeCheck()
                 .fillLogin(user.getLogin())
                 .fillPassword(user.getPassword())
                 .loginButtonClick();

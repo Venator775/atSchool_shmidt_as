@@ -35,12 +35,22 @@ public class ProductsPage {
     }
 
     /**
-     * Кнопка logout во всплывающем меню
-     *
+     * Кнопка корзины
      * @return
      */
-    public SelenideElement logoutSidebarLink() {
-        return $x(".//a[@id='logout_sidebar_link']");
+    public SelenideElement cartIcon(){
+        return $x(".//a[@class='shopping_cart_link']");
+    }
+
+    /**
+     * Проверяет наличие базовых атрибутов страницы
+     */
+    public void smokeCheck() {
+        productsTitle().shouldBe(Condition.visible);
+        burgerMenuIcon().shouldBe(Condition.visible, Condition.enabled);
+        inventoryList().shouldBe(Condition.visible, Condition.enabled);
+        cartIcon().shouldBe(Condition.visible, Condition.enabled);
+        System.out.println("Смок проверки страницы продуктов пройдены");
     }
 
     public void burgerMenuIconClick() {

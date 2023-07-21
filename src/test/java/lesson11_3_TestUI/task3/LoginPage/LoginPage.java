@@ -61,6 +61,15 @@ public class LoginPage {
         loginButton().shouldBe(Condition.visible, Condition.enabled).click();
         return this;
     }
+
+    public LoginPage smokeCheck(){
+        logo().shouldBe(Condition.visible);
+        usernameField().shouldBe(Condition.visible);
+        passwordField().shouldBe(Condition.visible);
+        loginButton().shouldBe(Condition.visible);
+        System.out.println("Смок проверки страницы авторизации пройдены");
+        return this;
+    }
 }
 /*
 Проверка логина и выхода.

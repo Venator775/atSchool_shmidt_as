@@ -34,18 +34,18 @@ public class SwagLabsTest3 {
     @AfterEach
     void closeBrowser() {
         closeWebDriver();
+        System.out.println("Закрыли браузер");
     }
 
     @DisplayName("Страница продуктов")
     @Tag("task3")
     @Tag("smoke")
     @Test
-    void productsPageListTest() {
+    void productsPageTest() {
         ProductsPage productsPage = new ProductsPage();
         ProductItemsList itemList = new ProductItemsList();
 
-        productsPage.productsTitle().shouldBe(Condition.visible);
-        productsPage.inventoryList().shouldBe(Condition.visible, Condition.enabled);
+        productsPage.smokeCheck();
         System.out.println("Открыли страницу продуктов");
 
         int addProductsCount = 3;
@@ -65,27 +65,33 @@ public class SwagLabsTest3 {
     }
 
 
-    @Test
-    @Tag("task3")
     @DisplayName("Экран товаров в корзине")
+    @Tag("task3")
+    @Test
     void shoppingCartTest() {
-        productsPageListTest();
+        productsPageTest();
 
         CartPage cartPage = new CartPage();
-        cartPage.title().shouldBe(Condition.visible);
-        cartPage.cartList().shouldBe(Condition.visible);
+        cartPage.smokeCheck();
 
         ProductsInCartList productsInCartList = new ProductsInCartList();
+        checkProductCartCondition(productsInCartList);
 
+        productsInCartList.removeRandItem();
+        Assertions.assertEquals(1, addedProductsList.size() - productsInCartList.productInCartItemsList().size());
+
+    }
+
+    /**
+     * Проверяет соответствие добавленных продуктов и имеющихся в корзине
+     * @param productsInCartList
+     */
+    private void checkProductCartCondition(ProductsInCartList productsInCartList){
         Assertions.assertEquals(addedProductsList.size(), productsInCartList.productInCartItemsList().size());
         for (int i = 0; i < addedProductsList.size(); i++) {
             Assertions.assertEquals(addedProductsList.get(i).getName(), productsInCartList.productInCartItemsList().get(i).getName());
             Assertions.assertEquals(addedProductsList.get(i).getDesc(), productsInCartList.productInCartItemsList().get(i).getDesc());
             Assertions.assertEquals(addedProductsList.get(i).getPrice(), productsInCartList.productInCartItemsList().get(i).getPrice());
         }
-
-        productsInCartList.removeRandItem();
-        Assertions.assertEquals(1, addedProductsList.size() - productsInCartList.productInCartItemsList().size());
-
     }
 }
