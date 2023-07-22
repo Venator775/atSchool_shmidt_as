@@ -4,10 +4,11 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.Assertions;
 
+import static com.codeborne.selenide.Condition.and;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class CartPage {
-
+    Condition enVis = and("visible and enabled", Condition.visible, Condition.enabled);
     public SelenideElement title() {
         return $x(".//span[@class='title']");
     }
@@ -27,7 +28,7 @@ public class CartPage {
     public void smokeCheck() {
         Assertions.assertEquals("Your Cart", title().text());
         cartList().shouldBe(Condition.visible);
-        continueShoppingButton().shouldBe(Condition.visible, Condition.enabled);
-        checkoutButton().shouldBe(Condition.visible, Condition.enabled);
+        continueShoppingButton().shouldBe(enVis);
+        checkoutButton().shouldBe(enVis);
     }
 }

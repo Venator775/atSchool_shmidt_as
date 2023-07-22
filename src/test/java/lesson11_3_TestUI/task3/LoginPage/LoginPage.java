@@ -3,11 +3,13 @@ package lesson11_3_TestUI.task3.LoginPage;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.and;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
 
 public class LoginPage {
+    private Condition enVis = and("visible and enabled", Condition.visible, Condition.enabled);
 
     /**
      * Заголовок на странице
@@ -48,17 +50,17 @@ public class LoginPage {
 
 
     public LoginPage fillLogin(String login){
-        usernameField().shouldBe(Condition.visible, Condition.enabled).sendKeys(login);
+        usernameField().shouldBe(enVis).sendKeys(login);
         return this;
     }
 
     public LoginPage fillPassword(String password){
-        passwordField().shouldBe(Condition.visible, Condition.enabled).sendKeys(password);
+        passwordField().shouldBe(enVis).sendKeys(password);
         return this;
     }
 
     public LoginPage loginButtonClick(){
-        loginButton().shouldBe(Condition.visible, Condition.enabled).click();
+        loginButton().shouldBe(enVis).click();
         return this;
     }
 

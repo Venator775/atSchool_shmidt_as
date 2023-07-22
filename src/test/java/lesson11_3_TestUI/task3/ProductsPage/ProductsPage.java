@@ -3,9 +3,11 @@ package lesson11_3_TestUI.task3.ProductsPage;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.and;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class ProductsPage {
+    private Condition enVis = and("visible and enabled", Condition.visible, Condition.enabled);
 
     /**
      * Заголовок на странице продуктов
@@ -54,6 +56,6 @@ public class ProductsPage {
     }
 
     public void burgerMenuIconClick() {
-        burgerMenuIcon().shouldBe(Condition.visible, Condition.enabled).click();
+        burgerMenuIcon().shouldBe(enVis).click();
     }
 }

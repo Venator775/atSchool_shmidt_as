@@ -6,8 +6,10 @@ import lesson11_3_TestUI.task3.Enums.ItemDataElement;
 
 import java.math.BigDecimal;
 
-public class ProductItem {
+import static com.codeborne.selenide.Condition.and;
 
+public class ProductItem {
+    private Condition enVis = and("visible and enabled", Condition.visible, Condition.enabled);
     private String name;
     private String desc;
     private String price;
@@ -64,14 +66,14 @@ public class ProductItem {
      * Клик по кнопке Добавить в корзину
      */
     public void addToCartButtonClick() {
-        addToCartButton().shouldBe(Condition.visible, Condition.enabled).click();
+        addToCartButton().shouldBe(enVis).click();
     }
 
     /**
      * Клик по кнопке Убрать из корзины
      */
     public void removeFromCartButtonClick() {
-        removeFromCartButton().shouldBe(Condition.visible, Condition.enabled).click();
+        removeFromCartButton().shouldBe(enVis).click();
     }
 
     public String getName() {
