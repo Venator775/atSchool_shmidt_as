@@ -4,7 +4,6 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.and;
-import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class MainPage {

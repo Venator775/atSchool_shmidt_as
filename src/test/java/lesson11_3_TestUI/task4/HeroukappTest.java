@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Selenide.open;
 
 public class HeroukappTest {

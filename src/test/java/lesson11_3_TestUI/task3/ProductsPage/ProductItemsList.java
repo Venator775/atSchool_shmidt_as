@@ -1,6 +1,5 @@
 package lesson11_3_TestUI.task3.ProductsPage;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
@@ -11,7 +10,6 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 import static com.codeborne.selenide.Selenide.$$x;
-import static com.codeborne.selenide.Selenide.$x;
 
 public class ProductItemsList {
 

@@ -2,10 +2,8 @@ package lesson11_3_TestUI.task3.CartPage;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import lesson11_3_TestUI.task3.ProductsPage.ProductItem;
 
 import javax.annotation.Nonnull;
-
 import java.util.ArrayList;
 import java.util.Random;
 
