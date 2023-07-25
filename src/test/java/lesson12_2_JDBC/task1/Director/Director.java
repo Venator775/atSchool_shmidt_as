@@ -19,6 +19,7 @@ public class Director {
         this.country = country;
     }
 
+
     //region getters/setters
     public int getId() {
         return id;
@@ -64,12 +65,6 @@ public class Director {
 
     @Override
     public String toString() {
-        return "Director: {" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", birthDate=" + birthDate +
-                ", country='" + country + '\'' +
-                '}';
+        return String.format("%d %s %s %s %s", id, firstName, lastName, birthDate, country);
     }
 }
