@@ -1,4 +1,4 @@
-package lesson12_2_JDBC.task1.Director;
+package Shmidt.lesson12_2_JDBC.task1.Director;
 
 import java.sql.*;
 import java.time.LocalDate;
