@@ -13,7 +13,8 @@ public class DirectorRepositoryImpl implements DirectorRepository {
     public Director get(int id) {
         Director dir = null;
         try {
-            PreparedStatement psSelect = connection.prepareStatement("select * from directors where id = ?");
+            String query = "select * from directors where id = ?";
+            PreparedStatement psSelect = connection.prepareStatement(query);
             psSelect.setInt(1, id);
 
             ResultSet executionResult = psSelect.executeQuery();
@@ -35,7 +36,8 @@ public class DirectorRepositoryImpl implements DirectorRepository {
     public void save(Director director) {
 
         try {
-            PreparedStatement psInsert = connection.prepareStatement("insert into directors values (?,?,?,?,?)");
+            String query = "insert into directors values (?,?,?,?,?)";
+            PreparedStatement psInsert = connection.prepareStatement(query);
             psInsert.setInt(1, director.getId());
             psInsert.setString(2, director.getFirstName());
             psInsert.setString(3, director.getLastName());
@@ -51,6 +53,27 @@ public class DirectorRepositoryImpl implements DirectorRepository {
 
 
     public void delete(Director director) {
+        try {
+            String query = "delete from directors where " +
+                    "id = ? " +
+                    "and first_name like ? " +
+                    "and last_name like ? " +
+                    "and birth_date = ? " +
+                    "and country like ?";
+
+            PreparedStatement psDelete = connection.prepareStatement(query);
+            psDelete.setInt(1, director.getId());
+            psDelete.setString(2, director.getFirstName());
+            psDelete.setString(3, director.getLastName());
+            psDelete.setDate(4, Date.valueOf(director.getBirthDate()));
+            psDelete.setString(5, director.getCountry());
+
+            if (psDelete.executeUpdate()>0)
+                System.out.println("|"+director+"| успешно удалён");
+
+        } catch (SQLException e) {
+            System.out.println("Не удалось удалить |"+director+"|\n"+e.getMessage() + "\n");
+        }
 
     }
 

@@ -18,10 +18,12 @@ public class Main {
             System.out.println("May the force be with you.\n");
             DirectorRepositoryImpl dri = new DirectorRepositoryImpl(connection);
 
-            dri.save(new Director(1,"Graf", "Duku", LocalDate.parse("2020-07-12"), "Geonosis"));
+            dri.save(new Director(8,"Graf", "Duku", LocalDate.parse("2020-07-12"), "Geonosis"));
 
             Director dir1 = dri.get(8);
             System.out.println(dir1);
+
+            dri.delete(dir1);
 
 
 
