@@ -30,16 +30,22 @@ public class jdbcTest {
 
     @ParameterizedTest(name = "{displayName} - {0} ({2})")
     @DisplayName("Тест select")
-    @MethodSource("directorsProvider")
+    @MethodSource({"directorsProvider"})
     @Tag("select")
     void selectTest(int id, String firstName, String lastName, LocalDate birthDate, String country) {
         Director expectedDirector = new Director(id, firstName, lastName, birthDate, country);
 
         DirectorRepositoryImpl dri = new DirectorRepositoryImpl(connection);
         Director selectedDirector = dri.get(id);
-
         Assertions.assertNotNull(selectedDirector, "Не удалось выбрать запись");
-        Assertions.assertEquals(expectedDirector, selectedDirector);
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(expectedDirector.getId(), selectedDirector.getId()),
+                () -> Assertions.assertEquals(expectedDirector.getFirstName(), selectedDirector.getFirstName()),
+                () -> Assertions.assertEquals(expectedDirector.getLastName(), selectedDirector.getLastName()),
+                () -> Assertions.assertEquals(expectedDirector.getBirthDate(), selectedDirector.getBirthDate()),
+                () -> Assertions.assertEquals(expectedDirector.getCountry(), selectedDirector.getCountry())
+        );
+
     }
 
 
