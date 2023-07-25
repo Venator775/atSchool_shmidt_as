@@ -30,7 +30,7 @@ public class jdbcTest {
 
     @ParameterizedTest(name = "{displayName} - {0} ({2})")
     @DisplayName("Тест select")
-    @MethodSource({"directorsProvider"})
+    @MethodSource("lesson12_2_JDBC.task1.testDataProviders.TestDataProvider#directorsProvider")
     @Tag("select")
     void selectTest(int id, String firstName, String lastName, LocalDate birthDate, String country) {
         Director expectedDirector = new Director(id, firstName, lastName, birthDate, country);
@@ -48,16 +48,6 @@ public class jdbcTest {
 
     }
 
-
-    private static Stream<Arguments> directorsProvider() {
-        return Stream.of(
-                Arguments.arguments(1, "Anakin", "Skywalker", LocalDate.of(2000, 1, 1), "Tatooine"),
-                Arguments.arguments(2, "Obi-wan", "Kenobi", LocalDate.of(2023, 7, 24), "Stewjon"),
-                Arguments.arguments(4, "Jar Jar", "Binks", LocalDate.of(1967, 6, 22), "Naboo"),
-                Arguments.arguments(5, "Jar Jar2", "Binks", LocalDate.of(1967, 6, 22), "Naboo2"),
-                Arguments.arguments(6, "Jar Jar1", "Binks", LocalDate.of(1967, 6, 22), "Naboo1")
-        );
-    }
 
     @AfterAll
     static void closeConnection() {
