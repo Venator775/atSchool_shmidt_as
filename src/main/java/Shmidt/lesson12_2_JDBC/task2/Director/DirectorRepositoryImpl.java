@@ -10,6 +10,7 @@ public class DirectorRepositoryImpl implements DirectorRepository {
         this.connection = connection;
     }
 
+
     public Director get(int id) {
         Director director = null;
         try {
@@ -28,7 +29,7 @@ public class DirectorRepositoryImpl implements DirectorRepository {
             }
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
         return director;
     }
