@@ -15,12 +15,11 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 
+//mvn -Dgroups=lesson12_2_JDBCtask1 test
 public class jdbcTest {
     final private static String dbName = "testprojectjdbc";
     final private static String dbUser = "postgres";
     final private static String dbPassword = "123456";
-
-    private static ArrayList<Director> tempDirectors;
 
     private static Connection connection;
 
@@ -29,7 +28,6 @@ public class jdbcTest {
         Connection connectionTemp = ConnectToDB.InitDBConnection(dbName, dbUser, dbPassword);
         Assertions.assertNotNull(connectionTemp, "Не удалось подключиться к БД");
         connection = connectionTemp;
-        tempDirectors = new ArrayList<>();
     }
 
 
@@ -44,7 +42,6 @@ public class jdbcTest {
         Director selectedDirector = dri.get(id);
         Assertions.assertNotNull(selectedDirector, "Не удалось выбрать запись");
         assertDirectorsAreEqual(expectedDirector, selectedDirector);
-
     }
 
     @ParameterizedTest(name = "{displayName} - {0} ({2})")
@@ -58,8 +55,6 @@ public class jdbcTest {
         dri.save(expectedDirector);
         Director addedDirector = dri.get(id);
         assertDirectorsAreEqual(expectedDirector, addedDirector);
-
-        tempDirectors.add(expectedDirector);
     }
 
     @Test
@@ -69,7 +64,7 @@ public class jdbcTest {
         DirectorRepositoryImpl dri = new DirectorRepositoryImpl(connection);
         String query = "select * from directors where id > ? limit ?";
         PreparedStatement psSelect;
-        ArrayList<Director> tempDirectors = new ArrayList<>();
+        ArrayList<Director> directorsToRemove = new ArrayList<>();
         try {
             psSelect = connection.prepareStatement(query);
             psSelect.setInt(1, 10);
@@ -77,13 +72,13 @@ public class jdbcTest {
             psSelect.execute();
             ResultSet executionResult = psSelect.getResultSet();
             while (executionResult.next()){
-                tempDirectors.add(new Director(executionResult.getInt(1),
+                directorsToRemove.add(new Director(executionResult.getInt(1),
                         executionResult.getString(2),
                         executionResult.getString(3),
                         LocalDate.parse(executionResult.getString(4)),
                         executionResult.getString(5)));
             }
-            tempDirectors.forEach(dri::delete);
+            directorsToRemove.forEach(dri::delete);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
