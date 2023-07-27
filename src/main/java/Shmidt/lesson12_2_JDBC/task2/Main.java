@@ -3,11 +3,14 @@ package Shmidt.lesson12_2_JDBC.task2;
 
 import Shmidt.lesson12_2_JDBC.task2.Connection.ConnectToDB;
 import Shmidt.lesson12_2_JDBC.task2.Director.Director;
+import Shmidt.lesson12_2_JDBC.task2.Director.DirectorRepositoryImpl;
 import Shmidt.lesson12_2_JDBC.task2.Movies.Movie;
 import Shmidt.lesson12_2_JDBC.task2.Movies.MovieRepositoryImpl;
 
 import java.sql.Connection;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -28,6 +31,12 @@ public class Main {
             mri.save(testMovie);
 
             mri.delete(testMovie);
+
+            System.out.println("Режисёры жанров comedy, action:");
+            new DirectorRepositoryImpl(connection)
+                    .get(List.of("comedy", "action"))
+                    .forEach(System.out::println);
+
 
         } catch (Exception e) {
             System.out.println(e.getMessage());

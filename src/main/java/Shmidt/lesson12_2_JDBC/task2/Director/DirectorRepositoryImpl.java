@@ -2,6 +2,8 @@ package Shmidt.lesson12_2_JDBC.task2.Director;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DirectorRepositoryImpl implements DirectorRepository {
     private Connection connection;
@@ -79,5 +81,44 @@ public class DirectorRepositoryImpl implements DirectorRepository {
 
     }
 
+    public List<Director> get(List<String> genres) {
 
+        List<Director> directors = null;
+
+        try {
+            String query = "select d.id, d.first_name, d.last_name, d.birth_date, d.country  " +
+                    "from public.movies m " +
+                    "join public.directors d on " +
+                    "m.director = d.id " +
+                    "where genre in (" + genresToQueryString(genres) + ") " +
+                    "group by d.id";
+            Statement psGet = connection.createStatement();
+
+            if (psGet.execute(query)) {
+                directors = new ArrayList<>();
+                ResultSet dirIds = psGet.getResultSet();
+                while (dirIds.next()) {
+                    directors.add(new Director(dirIds.getInt("id"),
+                            dirIds.getString("first_name"),
+                            dirIds.getString("last_name"),
+                            LocalDate.parse(dirIds.getString("birth_date")),
+                            dirIds.getString("country")));
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return directors;
+    }
+
+    private String genresToQueryString(List<String> genres) {
+        StringBuilder result = new StringBuilder();
+        genres.forEach(genre -> {
+            result.append("'").append(genre).append("'").append(", ");
+        });
+        result.delete(result.length() - 2, result.length());
+        String g = result.toString();
+        return result.toString();
+    }
 }
