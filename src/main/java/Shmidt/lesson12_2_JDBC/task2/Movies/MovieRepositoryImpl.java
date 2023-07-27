@@ -37,7 +37,7 @@ public class MovieRepositoryImpl implements MovieRepository {
                                 LocalDate.parse(result.getString("birth_date")),
                                 result.getString("country"))
                 );
-                System.out.println("select: |"+movie+"| успешно найден");
+                System.out.println("select: |" + movie + "| успешно найден");
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -46,7 +46,19 @@ public class MovieRepositoryImpl implements MovieRepository {
     }
 
     public void save(Movie movie) {
-
+        try {
+            String query = "insert into movies values (" +
+                    movie.getId() + "," +
+                    "\'"+movie.getTitle() + "\'," +
+                    "\'"+movie.getGenre() + "\'," +
+                    "\'"+movie.getRelease().toString() + "\'," +
+                    movie.getDirector().getId() + ")";
+            Statement statement = connection.createStatement();
+            if (statement.executeUpdate(query) > 0)
+                System.out.println("insert: |" + movie + "| успешно добавлен");
+        } catch (SQLException e) {
+            System.out.println("Не удалось добавить |" + movie + "|\n" + e.getMessage() + "\n");
+        }
     }
 
     public void delete(Movie movie) {

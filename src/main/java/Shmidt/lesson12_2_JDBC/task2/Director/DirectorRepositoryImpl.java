@@ -25,7 +25,7 @@ public class DirectorRepositoryImpl implements DirectorRepository {
                         executionResult.getString(3),
                         LocalDate.parse(executionResult.getString(4)),
                         executionResult.getString(5));
-                System.out.println("select: |"+director+"| успешно найден");
+                System.out.println("select: |" + director + "| успешно найден");
             }
 
         } catch (SQLException e) {
@@ -46,10 +46,10 @@ public class DirectorRepositoryImpl implements DirectorRepository {
             psInsert.setDate(4, Date.valueOf(director.getBirthDate()));
             psInsert.setString(5, director.getCountry());
 
-            if (psInsert.executeUpdate()>0)
-                System.out.println("insert: |"+director+"| успешно добавлен");
+            if (psInsert.executeUpdate() > 0)
+                System.out.println("insert: |" + director + "| успешно добавлен");
         } catch (SQLException e) {
-            System.out.println("Не удалось добавить |"+director+"|\n"+e.getMessage() + "\n");
+            System.out.println("Не удалось добавить |" + director + "|\n" + e.getMessage() + "\n");
         }
     }
 
@@ -70,11 +70,11 @@ public class DirectorRepositoryImpl implements DirectorRepository {
             psDelete.setDate(4, Date.valueOf(director.getBirthDate()));
             psDelete.setString(5, director.getCountry());
 
-            if (psDelete.executeUpdate()>0)
-                System.out.println("delete: |"+director+"| успешно удалён");
+            if (psDelete.executeUpdate() > 0)
+                System.out.println("delete: |" + director + "| успешно удалён");
 
         } catch (SQLException e) {
-            System.out.println("Не удалось удалить |"+director+"|\n"+e.getMessage() + "\n");
+            System.out.println("Не удалось удалить |" + director + "|\n" + e.getMessage() + "\n");
         }
 
     }
