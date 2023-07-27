@@ -63,6 +63,6 @@ public class Movie {
     //endregion
     @Override
     public String toString() {
-        return String.format("%d %s %s %s %s", id, title, genre, release, director.getId()+"("+director.getLastName()+")");
+        return String.format("%d %s %s %s %s", id, title, genre, release, director.getId() + "(" + director.getLastName() + ")");
     }
 }

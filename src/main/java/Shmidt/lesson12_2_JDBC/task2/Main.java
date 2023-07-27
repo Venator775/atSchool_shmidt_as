@@ -18,13 +18,16 @@ public class Main {
         try {
             Connection connection = ConnectToDB.InitDBConnection(dbName, dbUser, dbPassword);
             System.out.println("May the force be with you.\n");
+
+            Movie testMovie = new Movie(34, "maintest", "testMain", LocalDate.now(), new Director(1, "Anakin", "Skywalker", LocalDate.parse("2023-07-27"), "Tatooine"));
+
             MovieRepositoryImpl mri = new MovieRepositoryImpl(connection);
 
-            Movie g = mri.get(3);
+            mri.get(3);
 
-            mri.save(new Movie(34, "maintest", "testMain", LocalDate.now(), new Director(1, "Anakin", "Skywalker", LocalDate.parse("2023-07-27"), "Tatooine")));
+            mri.save(testMovie);
 
-
+            mri.delete(testMovie);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());

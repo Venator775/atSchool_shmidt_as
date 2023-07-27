@@ -47,22 +47,33 @@ public class MovieRepositoryImpl implements MovieRepository {
 
     public void save(Movie movie) {
         try {
+            Statement statement = connection.createStatement();
             String query = "insert into movies values (" +
                     movie.getId() + "," +
-                    "\'"+movie.getTitle() + "\'," +
-                    "\'"+movie.getGenre() + "\'," +
-                    "\'"+movie.getRelease().toString() + "\'," +
+                    "'" + movie.getTitle() + "'," +
+                    "'" + movie.getGenre() + "'," +
+                    "'" + movie.getRelease().toString() + "'," +
                     movie.getDirector().getId() + ")";
-            Statement statement = connection.createStatement();
+
             if (statement.executeUpdate(query) > 0)
                 System.out.println("insert: |" + movie + "| успешно добавлен");
+
         } catch (SQLException e) {
             System.out.println("Не удалось добавить |" + movie + "|\n" + e.getMessage() + "\n");
         }
     }
 
     public void delete(Movie movie) {
+        try {
+            Statement statement = connection.createStatement();
+            String query = "delete from movies where id = " + movie.getId();
 
+            if (statement.executeUpdate(query) > 0)
+                System.out.println("delete: |" + movie + "| успешно удалён");
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public List<Movie> get(Director d) {
