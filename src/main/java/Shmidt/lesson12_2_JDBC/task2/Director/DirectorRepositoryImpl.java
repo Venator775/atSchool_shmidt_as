@@ -36,6 +36,25 @@ public class DirectorRepositoryImpl implements DirectorRepository {
         return director;
     }
 
+    public Director getRandom() {
+        Director director = null;
+        try {
+            String query = "select * from directors order by random() limit 1";
+            Statement statement = connection.createStatement();
+            ResultSet executionResult = statement.executeQuery(query);
+            while (executionResult.next()) {
+                director = new Director(executionResult.getInt("id"),
+                        executionResult.getString("first_name"),
+                        executionResult.getString("last_name"),
+                        LocalDate.parse(executionResult.getString("birth_date")),
+                        executionResult.getString("country"));
+                System.out.println("select random: |" + director + "| успешно найден");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return director;
+    }
 
     public void save(Director director) {
 

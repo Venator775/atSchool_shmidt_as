@@ -16,7 +16,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 
 //mvn -Dgroups=lesson12_2_JDBCtask1 test
-public class jdbcTest {
+public class jdbcTestTask1 {
     final private static String dbName = "testprojectjdbc";
     final private static String dbUser = "postgres";
     final private static String dbPassword = "123456";
