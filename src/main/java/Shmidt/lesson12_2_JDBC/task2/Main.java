@@ -32,9 +32,9 @@ public class Main {
 
             mri.delete(testMovie);
 
-            System.out.println("Режисёры жанров comedy, action:");
+            System.out.println("Режисёры жанров:");
             new DirectorRepositoryImpl(connection)
-                    .get(List.of("comedy", "action"))
+                    .get(List.of("porn"))
                     .forEach(System.out::println);
 
 

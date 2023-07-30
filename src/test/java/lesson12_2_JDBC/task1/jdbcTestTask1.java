@@ -33,7 +33,7 @@ public class jdbcTestTask1 {
 
     @ParameterizedTest(name = "{displayName} - {0} ({2})")
     @DisplayName("Тест select")
-    @MethodSource("lesson12_2_JDBC.task1.testDataProviders.TestDataProvider#directorsFromDBProvider")
+    @MethodSource("lesson12_2_JDBC.task2.testDataProviders.TestDataProvider#genresProvider")
     @Tag("lesson12_2_JDBCtask1")
     void selectTest(int id, String firstName, String lastName, LocalDate birthDate, String country) {
         Director expectedDirector = new Director(id, firstName, lastName, birthDate, country);
@@ -64,7 +64,7 @@ public class jdbcTestTask1 {
         DirectorRepositoryImpl dri = new DirectorRepositoryImpl(connection);
         String query = "select * from directors where id > ? limit ?";
         PreparedStatement psSelect;
-        ArrayList<Director> directorsToRemove = new ArrayList<>();
+
         try {
             psSelect = connection.prepareStatement(query);
             psSelect.setInt(1, 10);
@@ -72,13 +72,12 @@ public class jdbcTestTask1 {
             psSelect.execute();
             ResultSet executionResult = psSelect.getResultSet();
             while (executionResult.next()){
-                directorsToRemove.add(new Director(executionResult.getInt(1),
+                dri.delete(new Director(executionResult.getInt(1),
                         executionResult.getString(2),
                         executionResult.getString(3),
                         LocalDate.parse(executionResult.getString(4)),
                         executionResult.getString(5)));
             }
-            directorsToRemove.forEach(dri::delete);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

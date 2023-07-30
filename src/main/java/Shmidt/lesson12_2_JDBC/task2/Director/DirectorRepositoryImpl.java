@@ -101,7 +101,6 @@ public class DirectorRepositoryImpl implements DirectorRepository {
     }
 
     public List<Director> get(List<String> genres) {
-
         List<Director> directors = null;
 
         try {
@@ -131,7 +130,10 @@ public class DirectorRepositoryImpl implements DirectorRepository {
         return directors;
     }
 
-    private String genresToQueryString(List<String> genres) {
+    private String genresToQueryString(List<String> genres) throws SQLException {
+        if (genres == null)
+            throw new SQLException("Пустой список запрашиваемых жанров");
+
         StringBuilder result = new StringBuilder();
         genres.forEach(genre -> {
             result.append("'").append(genre).append("'").append(", ");
