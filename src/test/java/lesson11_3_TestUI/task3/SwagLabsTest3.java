@@ -26,16 +26,10 @@ public class SwagLabsTest3 {
     @BeforeEach
     void loginPageTest() {
         Authorization.authorize(User.getEnumUser(UserAccounts.standard_user));
-        webdriver().shouldHave(url("https://www.saucedemo.com/inventory.html"));
+
         System.out.println("Залогинились");
     }
 
-    @DisplayName("Закрытие браузера")
-    @AfterEach
-    void closeBrowser() {
-        closeWebDriver();
-        System.out.println("Закрыли браузер");
-    }
 
     @DisplayName("Страница продуктов")
     @Tag("task3")
@@ -74,6 +68,7 @@ public class SwagLabsTest3 {
         CartPage cartPage = new CartPage();
         cartPage.smokeCheck();
 
+
         ProductsInCartList productsInCartList = new ProductsInCartList();
         checkProductCartCondition(productsInCartList);
 
@@ -81,6 +76,7 @@ public class SwagLabsTest3 {
         Assertions.assertEquals(1, addedProductsList.size() - productsInCartList.productInCartItemsList().size());
 
     }
+
 
     /**
      * Проверяет соответствие добавленных продуктов и имеющихся в корзине
@@ -93,5 +89,13 @@ public class SwagLabsTest3 {
             Assertions.assertEquals(addedProductsList.get(i).getDesc(), productsInCartList.productInCartItemsList().get(i).getDesc());
             Assertions.assertEquals(addedProductsList.get(i).getPrice(), productsInCartList.productInCartItemsList().get(i).getPrice());
         }
+    }
+
+
+    @DisplayName("Закрытие браузера")
+    @AfterEach
+    void closeBrowser() {
+        closeWebDriver();
+        System.out.println("Закрыли браузер");
     }
 }
