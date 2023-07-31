@@ -1,0 +1,7 @@
+package Shmidt.lesson2_16_DaysOfWeek;
+
+public class Day {
+    public String dayOfWeek;
+    public int dayNumber;
+}
+//Создать класс Day c полем String dayOfWeek и поле с номером относительно начала месяца (не статические).

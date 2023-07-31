@@ -6,6 +6,7 @@ import org.junit.jupiter.params.provider.Arguments;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.List;
 import java.util.stream.Stream;
 
 import static Shmidt.tests.sideMethods.rnd;
@@ -31,9 +32,9 @@ public class TestDataProvider {
 
     private static Stream<Arguments> genresProvider() {
         return Stream.of(
-                Arguments.arguments("comedy"),
-                Arguments.arguments("horror", "action"),
-                Arguments.arguments("shit", "comedy", "horror")
+                Arguments.arguments(List.of("comedy")),
+                Arguments.arguments(List.of("horror", "action")),
+                Arguments.arguments(List.of("shit", "comedy", "horror"))
         );
     }
 

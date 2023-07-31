@@ -12,12 +12,12 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 //mvn -Dgroups=lesson12_2_JDBCtask2 test
 public class jdbcTestTask2 {
@@ -79,6 +79,7 @@ public class jdbcTestTask2 {
             psSelect.setInt(1, 10);
             psSelect.setInt(2, 3);
             psSelect.execute();
+
             ResultSet executionResult = psSelect.getResultSet();
             while (executionResult.next()) {
                 mri.delete(new Movie(executionResult.getInt("id"),
@@ -93,28 +94,77 @@ public class jdbcTestTask2 {
         }
     }
 
-//    @Tag("lesson12_2_JDBCtask2")
-//    @ParameterizedTest(name = "{displayName}")
-//    @MethodSource("lesson12_2_JDBC.task2.testDataProviders.TestDataProvider#genresProvider")
-//    @DisplayName("Тест getGenreDirectors")
-//    void getGenreDirectorsTest(List<String> genre) {
-////        void getGenreDirectorsTest(String... genre) {
-////        List<Director> genreDirectors = new DirectorRepositoryImpl(connection)
-////                .get(Arrays.stream(genre).collect(Collectors.toList()));
-//        List<Director> genreDirectors = new DirectorRepositoryImpl(connection).get(genre);
-//        Assertions.assertNotNull(genreDirectors);
-//
-//    }
-
     @Tag("lesson12_2_JDBCtask2")
-    @Test
+    @ParameterizedTest(name = "{displayName}")
+    @MethodSource("lesson12_2_JDBC.task2.testDataProviders.TestDataProvider#genresProvider")
     @DisplayName("Тест getGenreDirectors")
-    void getGenreDirectorsTest() {
-        List<String> genres = List.of("shit", "action", "comedy");
-        List<Director> genreDirectors = new DirectorRepositoryImpl(connection).get(genres);
+    void getGenreDirectorsTest(List<String> genre) {
+        System.out.println(genre);
+        List<Director> genreDirectors = new DirectorRepositoryImpl(connection).getX(genre);
+        genreDirectors.forEach(System.out::println);
         Assertions.assertNotNull(genreDirectors);
     }
 
+
+   void getFilms() {
+        List<Map<String, Object>> allStringFromDB = getAllStringFromDB();
+        allStringFromDB = getAllStringFromDB("select * from movies");
+        LocalDate resultDate = LocalDate.parse(allStringFromDB.get(1).get("release").toString());
+        allStringFromDB.stream()
+                .filter(releases -> LocalDate.parse(releases.get("release").toString()).isAfter(LocalDate.parse("2000-12-31")))
+                .filter(directors -> directors.get("director") != null)
+                .filter(id -> (int) id.get("id") >= 5)
+                .forEach(System.out::println);
+    }
+
+    private static List<Map<String, Object>> getAllStringFromDB() {
+        String query = "select * from movies";
+        List<Map<String, Object>> result = new ArrayList<>();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                ResultSetMetaData metaData = resultSet.getMetaData();
+                String columnName;
+                Map<String, Object> map = new HashMap<>();
+
+                for (int i = 1; i <= metaData.getColumnCount(); i++) {
+                    columnName = metaData.getColumnName(i);
+                    Object objStr = resultSet.getObject(columnName);
+                    map.put(columnName, objStr);
+                }
+                result.add(map);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return result;
+    }
+
+    private static List<Map<String, Object>> getAllStringFromDB(String query) {
+        List<Map<String, Object>> result = new ArrayList<>();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                ResultSetMetaData metaData = resultSet.getMetaData();
+                String columnName;
+                Map<String, Object> map = new HashMap<>();
+
+                for (int i = 1; i <= metaData.getColumnCount(); i++) {
+                    columnName = metaData.getColumnName(i);
+                    Object objStr = resultSet.getObject(columnName);
+                    map.put(columnName, objStr);
+                }
+                result.add(map);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return result;
+    }
 
     private static void assertMoviesAreEqual(Movie expectedMovie, Movie factMovie) {
         Assertions.assertAll(

@@ -18,6 +18,7 @@ public class User {
         this.login = login;
         this.password = password;
     }
+
     public User(UserAccounts userAcc) {
         this.login = userAcc.getLogin();
         this.password = userAcc.getPassword();

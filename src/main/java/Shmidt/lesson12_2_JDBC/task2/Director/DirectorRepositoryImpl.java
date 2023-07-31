@@ -3,7 +3,10 @@ package Shmidt.lesson12_2_JDBC.task2.Director;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class DirectorRepositoryImpl implements DirectorRepository {
     private Connection connection;
@@ -130,6 +133,57 @@ public class DirectorRepositoryImpl implements DirectorRepository {
         return directors;
     }
 
+    public List<Director> getX(List<String> genres) {
+        List<Director> directors = new ArrayList<>();
+
+        try {
+            String query = "select d.id, d.first_name, d.last_name, d.birth_date, d.country  " +
+                    "from public.movies m " +
+                    "join public.directors d on " +
+                    "m.director = d.id " +
+                    "where genre in (" + genresToQueryString(genres) + ") " +
+                    "group by d.id";
+
+            directors = getAllStringFromDB(query).stream()
+                    .map(resString -> new Director(
+                            (int) resString.get("id"),
+                            resString.get("first_name").toString(),
+                            resString.get("last_name").toString(),
+                            LocalDate.parse(resString.get("birth_date").toString()),
+                            resString.get("country").toString()))
+                    .collect(Collectors.toList());
+
+            return directors;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return directors;
+    }
+
+    private List<Map<String, Object>> getAllStringFromDB(String query) {
+        List<Map<String, Object>> result = new ArrayList<>();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                ResultSetMetaData metaData = resultSet.getMetaData();
+                String columnName;
+                Map<String, Object> map = new HashMap<>();
+
+                for (int i = 1; i <= metaData.getColumnCount(); i++) {
+                    columnName = metaData.getColumnName(i);
+                    Object objStr = resultSet.getObject(columnName);
+                    map.put(columnName, objStr);
+                }
+                result.add(map);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return result;
+    }
+
     private String genresToQueryString(List<String> genres) throws SQLException {
         if (genres == null)
             throw new SQLException("Пустой список запрашиваемых жанров");
@@ -139,7 +193,7 @@ public class DirectorRepositoryImpl implements DirectorRepository {
             result.append("'").append(genre).append("'").append(", ");
         });
         result.delete(result.length() - 2, result.length());
-        String g = result.toString();
+
         return result.toString();
     }
 }
