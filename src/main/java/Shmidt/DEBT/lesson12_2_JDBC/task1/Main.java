@@ -1,9 +1,9 @@
-package Shmidt.lesson12_2_JDBC.task1;
+package Shmidt.DEBT.lesson12_2_JDBC.task1;
 
 
-import Shmidt.lesson12_2_JDBC.task1.Connection.ConnectToDB;
-import Shmidt.lesson12_2_JDBC.task1.Director.Director;
-import Shmidt.lesson12_2_JDBC.task1.Director.DirectorRepositoryImpl;
+import Shmidt.DEBT.lesson12_2_JDBC.task1.Connection.ConnectToDB;
+import Shmidt.DEBT.lesson12_2_JDBC.task1.Director.Director;
+import Shmidt.DEBT.lesson12_2_JDBC.task1.Director.DirectorRepositoryImpl;
 
 import java.sql.Connection;
 import java.time.LocalDate;

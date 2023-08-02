@@ -1,11 +1,11 @@
 package lesson12_2_JDBC.task2;
 
 
-import Shmidt.lesson12_2_JDBC.task2.Connection.ConnectToDB;
-import Shmidt.lesson12_2_JDBC.task2.Director.Director;
-import Shmidt.lesson12_2_JDBC.task2.Director.DirectorRepositoryImpl;
-import Shmidt.lesson12_2_JDBC.task2.Movies.Movie;
-import Shmidt.lesson12_2_JDBC.task2.Movies.MovieRepositoryImpl;
+import Shmidt.DEBT.lesson12_2_JDBC.task2.Connection.ConnectToDB;
+import Shmidt.DEBT.lesson12_2_JDBC.task2.Director.Director;
+import Shmidt.DEBT.lesson12_2_JDBC.task2.Director.DirectorRepositoryImpl;
+import Shmidt.DEBT.lesson12_2_JDBC.task2.Movies.Movie;
+import Shmidt.DEBT.lesson12_2_JDBC.task2.Movies.MovieRepositoryImpl;
 import jdk.jfr.Description;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;

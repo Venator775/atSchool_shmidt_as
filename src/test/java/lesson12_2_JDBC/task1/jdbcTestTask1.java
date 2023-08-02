@@ -1,6 +1,6 @@
 package lesson12_2_JDBC.task1;
 
-import Shmidt.lesson12_2_JDBC.task1.Connection.ConnectToDB;
+import Shmidt.DEBT.lesson12_2_JDBC.task1.Connection.ConnectToDB;
 import lesson12_2_JDBC.task1.Director.Director;
 import lesson12_2_JDBC.task1.Director.DirectorRepositoryImpl;
 import org.junit.jupiter.api.*;
@@ -13,7 +13,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.ArrayList;
 
 //mvn -Dgroups=lesson12_2_JDBCtask1 test
 public class jdbcTestTask1 {

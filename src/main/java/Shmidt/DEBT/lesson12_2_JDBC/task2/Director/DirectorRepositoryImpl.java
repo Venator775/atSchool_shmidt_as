@@ -1,4 +1,4 @@
-package Shmidt.lesson12_2_JDBC.task2.Director;
+package Shmidt.DEBT.lesson12_2_JDBC.task2.Director;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -136,6 +136,25 @@ public class DirectorRepositoryImpl implements DirectorRepository {
     public List<Director> getX(List<String> genres) {
         List<Director> directors = new ArrayList<>();
 
+        //region
+        String str = genres.stream()
+                .map((s)-> "'"+s+"'")
+                .collect(Collectors.joining(", "));
+        String queryStr = "select d.id, d.first_name, d.last_name, d.birth_date, d.country  " +
+                "from public.movies m " +
+                "join public.directors d on " +
+                "m.director = d.id " +
+                "where genre in (?) " +
+                "group by d.id";
+        try {
+            PreparedStatement statementX = connection.prepareStatement(queryStr);
+            statementX.setString(1,str);
+            statementX.executeQuery();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        //region
+
         try {
             String query = "select d.id, d.first_name, d.last_name, d.birth_date, d.country  " +
                     "from public.movies m " +
@@ -144,7 +163,7 @@ public class DirectorRepositoryImpl implements DirectorRepository {
                     "where genre in (" + genresToQueryString(genres) + ") " +
                     "group by d.id";
 
-            directors = getAllStringFromDB(query).stream()
+            directors = getAllStringsFromDB(query).stream()
                     .map(resString -> new Director(
                             (int) resString.get("id"),
                             resString.get("first_name").toString(),
@@ -160,7 +179,7 @@ public class DirectorRepositoryImpl implements DirectorRepository {
         return directors;
     }
 
-    private List<Map<String, Object>> getAllStringFromDB(String query) {
+    private List<Map<String, Object>> getAllStringsFromDB(String query) {
         List<Map<String, Object>> result = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();

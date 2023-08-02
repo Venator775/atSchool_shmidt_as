@@ -1,6 +1,4 @@
-package Shmidt.lesson12_2_JDBC.task2.Director;
-
-import Shmidt.lesson12_2_JDBC.task2.Movies.Movie;
+package Shmidt.DEBT.lesson12_2_JDBC.task2.Director;
 
 import java.util.List;
 

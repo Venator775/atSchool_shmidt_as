@@ -1,4 +1,4 @@
-package Shmidt.lesson12_2_JDBC.task1.Connection;
+package Shmidt.DEBT.lesson12_2_JDBC.task2.Connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

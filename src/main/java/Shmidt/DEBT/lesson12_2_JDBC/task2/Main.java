@@ -1,15 +1,14 @@
-package Shmidt.lesson12_2_JDBC.task2;
+package Shmidt.DEBT.lesson12_2_JDBC.task2;
 
 
-import Shmidt.lesson12_2_JDBC.task2.Connection.ConnectToDB;
-import Shmidt.lesson12_2_JDBC.task2.Director.Director;
-import Shmidt.lesson12_2_JDBC.task2.Director.DirectorRepositoryImpl;
-import Shmidt.lesson12_2_JDBC.task2.Movies.Movie;
-import Shmidt.lesson12_2_JDBC.task2.Movies.MovieRepositoryImpl;
+import Shmidt.DEBT.lesson12_2_JDBC.task2.Connection.ConnectToDB;
+import Shmidt.DEBT.lesson12_2_JDBC.task2.Director.Director;
+import Shmidt.DEBT.lesson12_2_JDBC.task2.Director.DirectorRepositoryImpl;
+import Shmidt.DEBT.lesson12_2_JDBC.task2.Movies.Movie;
+import Shmidt.DEBT.lesson12_2_JDBC.task2.Movies.MovieRepositoryImpl;
 
 import java.sql.Connection;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Main {

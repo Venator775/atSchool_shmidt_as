@@ -1,4 +1,4 @@
-package Shmidt.lesson12_2_JDBC.task1.Director;
+package Shmidt.DEBT.lesson12_2_JDBC.task1.Director;
 
 public interface DirectorRepository {
     Director get(int id);

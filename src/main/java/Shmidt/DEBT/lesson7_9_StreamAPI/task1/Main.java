@@ -22,13 +22,10 @@ public class Main<T> {
         ArrayList<Fruit> multifruit = new ArrayList<>();
 
         multifruit.addAll(plants.stream()
-                .filter(p -> {
-                    if (p instanceof Fruit)
-                        return true;
-                    else return false;
-                })
+                .filter((p) -> p instanceof Fruit)
                 .map(plant -> (Fruit) plant)
                 .collect(Collectors.toList()));
+
 
         multifruit.forEach(System.out::println);
     }
