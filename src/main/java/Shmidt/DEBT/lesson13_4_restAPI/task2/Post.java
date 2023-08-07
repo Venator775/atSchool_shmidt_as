@@ -7,8 +7,10 @@ public class Post {
     private String title;
     private int userId;
 
-    Post(JSONObject jsonObject) {
-        this.title = jsonObject.toString();
+    public Post(int id, String title, int userId) {
+        this.id = id;
+        this.title = title;
+        this.userId = userId;
     }
 
     //region getters/setters

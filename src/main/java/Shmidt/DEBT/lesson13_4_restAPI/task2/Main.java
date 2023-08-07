@@ -1,8 +1,13 @@
 package Shmidt.DEBT.lesson13_4_restAPI.task2;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -24,10 +29,29 @@ public class Main {
         getAuthPosts.showRespInfo();
         JSONObject getAuthPostsJson = getAuthPosts.getJsonBody();
 
-        Post p = new Post(getAuthPostsJson);
+        List<Post> posts = getPosts(getAuthPosts);
+
 
         System.out.println();
     }
 
+    static List<Post> getPosts(Response getAuthPosts) {
+        JSONArray jsonArrayPosts = getAuthPosts.getJsonBody().getJSONArray("posts");
+        return StreamSupport.stream(jsonArrayPosts.spliterator(), false)
+                .map(o -> {
+                    if (o instanceof JSONObject) {
+                        return (JSONObject) o;
+                    }
+                    return null;
+                })
+                .filter(Objects::nonNull)
+                .map(obj -> new Post(
+                                obj.getInt("id"),
+                                obj.getString("title"),
+                                obj.getInt("userId")
+                        )
+                )
+                .collect(Collectors.toList());
+    }
 
 }

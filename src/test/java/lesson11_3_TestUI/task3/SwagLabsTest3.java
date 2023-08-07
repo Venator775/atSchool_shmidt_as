@@ -10,17 +10,14 @@ import lesson11_3_TestUI.task3.ProductsPage.ProductsPage;
 import lesson11_3_TestUI.task3.ProductsPage.ShoppingCartButton;
 import org.junit.jupiter.api.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
-import static com.codeborne.selenide.Selenide.webdriver;
-import static com.codeborne.selenide.WebDriverConditions.url;
 //mvn -Dgroups=task3 test
 
 public class SwagLabsTest3 {
 
-    private static List<ProductItem> addedProductsList;
+    private List<ProductItem> addedProductsList;
 
     @DisplayName("Страница авторизации")
     @BeforeEach
@@ -32,8 +29,7 @@ public class SwagLabsTest3 {
 
 
     @DisplayName("Страница продуктов")
-    @Tag("task3")
-    @Tag("smoke")
+    @Tags({@Tag("task3"), @Tag("smoke")})
     @Test
     void productsPageTest() {
         ProductsPage productsPage = new ProductsPage();
@@ -43,9 +39,12 @@ public class SwagLabsTest3 {
         System.out.println("Открыли страницу продуктов");
 
         int addProductsCount = 3;
-        itemList.selectFewRandomItems(addProductsCount)
+        /*itemList.selectFewRandomItems(addProductsCount)
                 .forEach(ProductItem::addToCartButtonClick);
         addedProductsList = new ArrayList<>(itemList.selectFewRandomItems(addProductsCount));
+        */
+        addedProductsList = itemList.selectFewRandomItems(addProductsCount);
+        addedProductsList.forEach(ProductItem::addToCartButtonClick);
 
         System.out.println("Добавили в корзину");
 
@@ -55,6 +54,7 @@ public class SwagLabsTest3 {
         Assertions.assertEquals(addProductsCount, shoppingCartButton.productsInCartCount(), "Количество продуктов, добавленных в корзину не соответствует требуемому");
 
         shoppingCartButton.cartButtonClick();
+        new CartPage().smokeCheck();
         System.out.println("Перешли в корзину");
     }
 
@@ -80,9 +80,10 @@ public class SwagLabsTest3 {
 
     /**
      * Проверяет соответствие добавленных продуктов и имеющихся в корзине
+     *
      * @param productsInCartList
      */
-    private void checkProductCartCondition(ProductsInCartList productsInCartList){
+    private void checkProductCartCondition(ProductsInCartList productsInCartList) {
         Assertions.assertEquals(addedProductsList.size(), productsInCartList.productInCartItemsList().size());
         for (int i = 0; i < addedProductsList.size(); i++) {
             Assertions.assertEquals(addedProductsList.get(i).getName(), productsInCartList.productInCartItemsList().get(i).getName());

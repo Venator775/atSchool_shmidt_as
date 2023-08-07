@@ -3,6 +3,9 @@ package lesson11_3_TestUI.task2;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
+import java.util.List;
+
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$x;
 
 
@@ -24,11 +27,12 @@ public class LoginPage {
     }
 
     public void loginButtonClick(){
-        loginButton().shouldBe(Condition.visible, Condition.enabled).click();
+        loginButton().shouldBe(visible, enabled).click();
     }
+
     public void fillLoginPassword(String login, String Password){
-        usernameField().sendKeys(login);
-        passwordField().sendKeys(Password);
+        usernameField().shouldBe(visible, enabled).sendKeys(login);
+        passwordField().shouldBe(visible, enabled).sendKeys(Password);
     }
 }
 /*

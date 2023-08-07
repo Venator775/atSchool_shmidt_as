@@ -1,21 +1,25 @@
 package Shmidt.DEBT.lesson13_4_restAPI.task2;
 
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 public class DummyJsonClientImpl implements DummyJsonClient {
     //static private CloseableHttpClient httpClient;
@@ -46,6 +50,7 @@ public class DummyJsonClientImpl implements DummyJsonClient {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
+
         return response;
     }
 
@@ -60,11 +65,7 @@ public class DummyJsonClientImpl implements DummyJsonClient {
         requestBodyParameters.add(new BasicNameValuePair("password", u.getPassword()));
         post.setEntity(new UrlEncodedFormEntity(requestBodyParameters));
 
-        /*JSONObject jsonObject = new JSONObject(
-                "{\"username\":\"" + u.getLogin() + "\"," +
-                "\"password\":\"" + u.getPassword() + "\"}");
-        Post jsonRequest = new Post(jsonObject);
-        post.setEntity(new StringEntity(jsonRequest.getTitle()));*/
+        var f = HttpStatus.SC_OK;
 
         try (CloseableHttpClient httpClient = HttpClients.createDefault();
              CloseableHttpResponse response = httpClient.execute(post)) {
@@ -88,11 +89,30 @@ public class DummyJsonClientImpl implements DummyJsonClient {
             HttpEntity entity = getResponse.getEntity();
             if (entity != null) {
                 String result = EntityUtils.toString(entity);
+                JSONArray jsonArray = new JSONObject(result).getJSONArray("posts");
+
+                List<Post> posts = StreamSupport.stream(jsonArray.spliterator(), false)
+                        .map(o -> {
+                            if (o instanceof JSONObject) {
+                                return (JSONObject) o;
+                            }
+                            return null;
+                        })
+                        .filter(Objects::nonNull)
+                        .map(obj -> new Post(
+                                        obj.getInt("id"),
+                                        obj.getString("title"),
+                                        obj.getInt("userId")
+                                )
+                        )
+                        .collect(Collectors.toList());
+
                 response = new Response(getResponse.getStatusLine().getStatusCode(), result);
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+
 
         return response;
     }

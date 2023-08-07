@@ -1,5 +1,6 @@
 package lesson11_3_TestUI.task1;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 import dev.failsafe.internal.util.Assert;
@@ -18,8 +19,13 @@ public class LoginPage {
         Configuration.timeout = 30000;
 
         open(URL);
+
         Assert.isTrue(logo.isDisplayed(), "Страница не открыта");
         Assert.isTrue(logo.getText().equals("Swag Labs"), "Лого не содержит искомый текст");
+
+        //или
+
+        logo.shouldBe(Condition.visible).shouldHave(Condition.text("Swag Labs"));
     }
 }
 /*
