@@ -31,19 +31,13 @@ public class Main {
 
         List<Post> posts = getPosts(getAuthPosts);
 
-
         System.out.println();
     }
 
     static List<Post> getPosts(Response getAuthPosts) {
         JSONArray jsonArrayPosts = getAuthPosts.getJsonBody().getJSONArray("posts");
         return StreamSupport.stream(jsonArrayPosts.spliterator(), false)
-                .map(o -> {
-                    if (o instanceof JSONObject) {
-                        return (JSONObject) o;
-                    }
-                    return null;
-                })
+                .map(o -> o instanceof JSONObject ? (JSONObject) o : null)
                 .filter(Objects::nonNull)
                 .map(obj -> new Post(
                                 obj.getInt("id"),

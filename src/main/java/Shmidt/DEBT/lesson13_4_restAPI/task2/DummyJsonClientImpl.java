@@ -1,7 +1,6 @@
 package Shmidt.DEBT.lesson13_4_restAPI.task2;
 
 import org.apache.http.HttpEntity;
-import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -22,13 +21,12 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 public class DummyJsonClientImpl implements DummyJsonClient {
-    //static private CloseableHttpClient httpClient;
 
     public DummyJsonClientImpl() {
     }
 
     // dummyjson.com/users/{id}
-    public Response getUser(int id) throws IOException {
+    public Response getUser(int id) {
 
         HttpGet request = new HttpGet("https://dummyjson.com/users/" + id);
         Response response = null;
@@ -44,7 +42,7 @@ public class DummyJsonClientImpl implements DummyJsonClient {
             HttpEntity entity = getResponse.getEntity();
             if (entity != null) {
                 String result = EntityUtils.toString(entity);
-//                    System.out.println(result);
+
                 response = new Response(getResponse.getStatusLine().getStatusCode(), result);
             }
         } catch (Exception ex) {
@@ -64,8 +62,6 @@ public class DummyJsonClientImpl implements DummyJsonClient {
         requestBodyParameters.add(new BasicNameValuePair("username", u.getLogin()));
         requestBodyParameters.add(new BasicNameValuePair("password", u.getPassword()));
         post.setEntity(new UrlEncodedFormEntity(requestBodyParameters));
-
-        var f = HttpStatus.SC_OK;
 
         try (CloseableHttpClient httpClient = HttpClients.createDefault();
              CloseableHttpResponse response = httpClient.execute(post)) {

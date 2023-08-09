@@ -12,6 +12,4 @@ public class TestDataProvider {
                 Arguments.arguments("{\"id\": 10,\"username\": \"umcgourty9\",\"password\": \"i0xzpX\"}")
         );
     }
-
-
 }

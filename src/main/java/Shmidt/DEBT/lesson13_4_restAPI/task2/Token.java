@@ -8,8 +8,13 @@ public class Token {
     public Token(String token) {
         this.token = token;
     }
+
     public Token(JSONObject jsonObject) {
-        this.token = jsonObject.getString("token");
+        try {
+            this.token = jsonObject.getString("token");
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     //region getters/setters

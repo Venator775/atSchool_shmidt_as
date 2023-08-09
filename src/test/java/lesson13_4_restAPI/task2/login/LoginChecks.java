@@ -4,7 +4,7 @@ import Shmidt.DEBT.lesson13_4_restAPI.task2.Response;
 
 import static lesson13_4_restAPI.task2.JsonWorker.getJsonStringParameter;
 
-public class Login {
+public class LoginChecks {
     public static void checkLoginToken(Response response){
         getJsonStringParameter(response.getJsonBody(), "token");
     }

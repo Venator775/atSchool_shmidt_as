@@ -21,7 +21,7 @@ public class JsonWorker {
         try {
             paramValue = json.getInt(parameter);
         } catch (JSONException ex) {
-            Assertions.assertNotNull(paramValue, "поля " + parameter + " не существует");
+            Assertions.fail("поля " + parameter + " не существует");
         }
         return paramValue;
     }
@@ -31,7 +31,7 @@ public class JsonWorker {
         try {
             paramValue = json.getJSONArray(parameter);
         } catch (JSONException ex) {
-            Assertions.assertNotNull(paramValue, "поля " + parameter + " не существует");
+            Assertions.fail("поля " + parameter + " не существует");
         }
         return paramValue;
     }

@@ -5,6 +5,7 @@ import jdk.jfr.Description;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -18,10 +19,17 @@ import java.util.stream.StreamSupport;
 
 import static lesson13_4_restAPI.task2.JsonWorker.*;
 import static lesson13_4_restAPI.task2.Response.ResponseChecks.checkResponse;
-import static lesson13_4_restAPI.task2.login.Login.checkLoginToken;
+import static lesson13_4_restAPI.task2.login.LoginChecks.checkLoginToken;
 import static lesson13_4_restAPI.task2.user.UserChecks.checkUserJson;
 
 public class MainApacheTest {
+
+    private static DummyJsonClientImpl clientImpl;
+
+    @BeforeEach
+    public void initNewClient() {
+        clientImpl = new DummyJsonClientImpl();
+    }
 
     @Tag("dummyjson")
     @ParameterizedTest(name = "{displayName} - id={0} ")
@@ -29,14 +37,13 @@ public class MainApacheTest {
     @DisplayName("Тест checkGetUser")
     @Description("Получение информации о пользователе по уникальному id (dummyjson.com/docs/users).  На сайте предустановлены пользователи с id от 1 до 100.")
     public void checkGetUser(int userId) {
-        DummyJsonClientImpl clientImpl = new DummyJsonClientImpl();
+
         Response getUserResp = null;
         try {
             getUserResp = clientImpl.getUser(userId);
 
             checkResponse(getUserResp);
             checkUserJson(getUserResp.getJsonBody());
-            getUserResp.showRespInfo();
 
         } catch (Exception e) {
             Assertions.assertNotNull(getUserResp);
@@ -52,8 +59,9 @@ public class MainApacheTest {
     @Description("Аутентификация пользователя по логину и паролю (dummyjson.com/docs/auth).  Логин и пароль возвращаются со всей информацией пользователя из пункта 1.\n" +
             "В ответе возвращается токен, который далее используется для отправки запросов.")
     public void checkPostLogin(String jsonString) {
+
         User user = new User(new JSONObject(jsonString));
-        DummyJsonClientImpl clientImpl = new DummyJsonClientImpl();
+
         Response postLoginResp = null;
 
         try {
@@ -61,7 +69,6 @@ public class MainApacheTest {
             checkResponse(postLoginResp);
             checkLoginToken(postLoginResp);
 
-//            postLoginResp.showRespInfo();
         } catch (Exception ex) {
             Assertions.assertNotNull(postLoginResp);
             System.out.println(ex.getMessage());
@@ -74,9 +81,10 @@ public class MainApacheTest {
     @DisplayName("Тест checkPostGettingPosts")
     @Description("Получение списка сообщений по уникальному id пользователя, используя токен, полученный при аутентификации. " +
             "Токен передается через заголовок \"Authorization\" (см. swagger.io/docs/specification/authentication/bearer-authentication/ и dummyjson.com/docs )")
-    public void checkPostGettingPosts(String jsonString) {
+    public void checkPostGettingPostsWithToken(String jsonString) {
+
         User user = new User(new JSONObject(jsonString));
-        DummyJsonClientImpl clientImpl = new DummyJsonClientImpl();
+
         Response getAuthPosts = null;
         try {
             getAuthPosts = clientImpl.login(user);
@@ -85,10 +93,8 @@ public class MainApacheTest {
             getAuthPosts = clientImpl.getPosts(user, new Token(getAuthPosts.getJsonBody()));
             checkResponse(getAuthPosts);
 
-
             Assertions.assertNotNull(getPosts(getAuthPosts));
 
-//            getAuthPosts.showRespInfo();
         } catch (Exception ex) {
             Assertions.assertNotNull(getAuthPosts);
             System.out.println(ex.getMessage());

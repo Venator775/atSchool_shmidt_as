@@ -12,7 +12,13 @@ public class Response {
     }
 
     public JSONObject getJsonBody(){
-        return new JSONObject(this.body);
+        JSONObject obj = null;
+        try{
+            obj = new JSONObject(this.body);
+        } catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return obj;
     }
 
     public void showRespInfo(){
