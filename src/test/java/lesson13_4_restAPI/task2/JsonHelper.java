@@ -5,13 +5,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Assertions;
 
-public class JsonWorker {
+public class JsonHelper {
     public static String getJsonStringParameter(JSONObject json, String parameter) {
         String paramValue = null;
         try {
             paramValue = json.getString(parameter);
         } catch (JSONException ex) {
-            Assertions.assertNotNull(paramValue, "поля " + parameter + " не существует");
+            Assertions.assertNotNull(paramValue, "Поля " + parameter + " не существует");
         }
         return paramValue;
     }
@@ -21,7 +21,7 @@ public class JsonWorker {
         try {
             paramValue = json.getInt(parameter);
         } catch (JSONException ex) {
-            Assertions.fail("поля " + parameter + " не существует");
+            Assertions.fail("Поля " + parameter + " не существует");
         }
         return paramValue;
     }

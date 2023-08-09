@@ -15,7 +15,8 @@ public class Main {
 
         BaseMethods postMethods = new BaseMethods("https://dummyjson.com/auth/login");
         JSONObject jsonObj = readJSONToObj("src/test/resources/user.json");
-        var p = postMethods.post("{\"password\":\"CQutx25i8r\",\"id\":\"2\",\"login\":\"hbingley1\"}");
+
+        var p = postMethods.post("{\"password\":\"CQutx25i8r\",\"id\":\"2\",\"username\":\"hbingley1\"}");
 
         Response res = new Response(p.getStatusCode(), p.getEntity());
         System.out.println(res.getCode());

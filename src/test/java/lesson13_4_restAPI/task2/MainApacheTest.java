@@ -17,7 +17,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import static lesson13_4_restAPI.task2.JsonWorker.*;
+import static lesson13_4_restAPI.task2.JsonHelper.*;
 import static lesson13_4_restAPI.task2.Response.ResponseChecks.checkResponse;
 import static lesson13_4_restAPI.task2.login.LoginChecks.checkLoginToken;
 import static lesson13_4_restAPI.task2.user.UserChecks.checkUserJson;
@@ -102,16 +102,22 @@ public class MainApacheTest {
     }
 
     private static List<Post> getPosts(Response getAuthPosts) {
-        JSONArray jsonArrayPosts = getJsonArray(getAuthPosts.getJsonBody(), "posts");
-        return StreamSupport.stream(jsonArrayPosts.spliterator(), false)
-                .map(o -> o instanceof JSONObject ? (JSONObject) o : null)
-                .filter(Objects::nonNull)
-                .map(obj -> new Post(getJsonIntParameter(obj, "id"),
-                                getJsonStringParameter(obj, "title"),
-                                getJsonIntParameter(obj, "userId")
-                        )
-                )
-                .collect(Collectors.toList());
+        try {
+            JSONArray jsonArrayPosts = getJsonArray(getAuthPosts.getJsonBody(), "posts");
+            return StreamSupport.stream(jsonArrayPosts.spliterator(), false)
+                    .map(o -> o instanceof JSONObject ? (JSONObject) o : null)
+                    .filter(Objects::nonNull)
+                    .map(obj -> new Post(getJsonIntParameter(obj, "id"),
+                                    getJsonStringParameter(obj, "title"),
+                                    getJsonIntParameter(obj, "userId")
+                            )
+                    )
+                    .collect(Collectors.toList());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        }
+
     }
 
 }
