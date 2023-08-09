@@ -2,8 +2,10 @@ package Shmidt.tests;
 
 import java.io.FileWriter;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public class sideMethods {
 
@@ -232,4 +234,14 @@ public class sideMethods {
         }
     }
 
+    /**
+     * String date -> LocalDate
+     * @param dateS "yyyy-MM-dd"
+     * @return
+     */
+    public static LocalDate parseDate(String dateS) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        formatter = formatter.withLocale(Locale.ENGLISH);  // Locale specifies human language for translating, and cultural norms for lowercase/uppercase and abbreviations and such. Example: Locale.US or Locale.CANADA_FRENCH
+        return LocalDate.parse(dateS, formatter);
+    }
 }

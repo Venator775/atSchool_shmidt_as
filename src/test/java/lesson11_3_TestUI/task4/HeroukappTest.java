@@ -20,6 +20,7 @@ public class HeroukappTest {
 
         mainPage.helloWorldLabel().shouldHave(Condition.attribute("style",""), Duration.ofSeconds(10));
 
+
     }
 }
 /*

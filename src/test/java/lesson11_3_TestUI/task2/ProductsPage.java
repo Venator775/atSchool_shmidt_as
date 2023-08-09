@@ -3,6 +3,7 @@ package lesson11_3_TestUI.task2;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class ProductsPage {
@@ -32,6 +33,6 @@ public class ProductsPage {
         return $x(".//button[@id = 'react-burger-menu-btn']");
     }
     public void burgerMenuIconClick() {
-        burgerMenuIcon().shouldBe(Condition.visible, Condition.enabled).click();
+        burgerMenuIcon().shouldBe(visible, enabled).click();
     }
 }

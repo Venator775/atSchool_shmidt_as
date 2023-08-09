@@ -3,6 +3,7 @@ package lesson11_3_TestUI.task2;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class BurgerMenu {
@@ -28,7 +29,7 @@ public class BurgerMenu {
     }
 
     public void logoutClick(){
-        getLogout().shouldBe(Condition.visible, Condition.enabled).click();
+        getLogout().shouldBe(visible, enabled).click();
     }
 
     private SelenideElement getSidebarItemDataElement(String attribute) {
