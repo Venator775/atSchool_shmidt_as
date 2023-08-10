@@ -1,4 +1,4 @@
-package lesson12_2_JDBC.task2;
+package lesson14_3_allure_log4j.databaseProj;
 
 
 import Shmidt.lesson12_2_JDBC.task2.Connection.ConnectToDB;

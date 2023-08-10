@@ -1,6 +1,6 @@
 package lesson12_2_JDBC.task1;
 
-import Shmidt.DEBT.lesson12_2_JDBC.task1.Connection.ConnectToDB;
+import Shmidt.lesson12_2_JDBC.task1.Connection.ConnectToDB;
 import lesson12_2_JDBC.task1.Director.Director;
 import lesson12_2_JDBC.task1.Director.DirectorRepositoryImpl;
 import org.junit.jupiter.api.*;
