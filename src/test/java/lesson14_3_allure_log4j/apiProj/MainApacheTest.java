@@ -1,6 +1,6 @@
 package lesson14_3_allure_log4j.apiProj;
 
-import Shmidt.DEBT.lesson13_4_restAPI.task2.*;
+import Shmidt.DEBT.lesson14_3_allure_log4j.apiProj.*;
 import jdk.jfr.Description;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -17,10 +17,10 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import static lesson13_4_restAPI.task2.JsonHelper.*;
-import static lesson13_4_restAPI.task2.Response.ResponseChecks.checkResponse;
-import static lesson13_4_restAPI.task2.login.LoginChecks.checkLoginToken;
-import static lesson13_4_restAPI.task2.user.UserChecks.checkUserJson;
+import static lesson14_3_allure_log4j.apiProj.JsonHelper.*;
+import static lesson14_3_allure_log4j.apiProj.Response.ResponseChecks.checkResponse;
+import static lesson14_3_allure_log4j.apiProj.login.LoginChecks.checkLoginToken;
+import static lesson14_3_allure_log4j.apiProj.user.UserChecks.checkUserJson;
 
 public class MainApacheTest {
 
@@ -39,6 +39,7 @@ public class MainApacheTest {
     public void checkGetUser(int userId) {
 
         Response getUserResp = null;
+
         try {
             getUserResp = clientImpl.getUser(userId);
 

@@ -1,6 +1,5 @@
 package Shmidt.lesson5_6_Exceptions.task2.fruitBase;
 
-import Shmidt.DEBT.lesson5_6_Exceptions.task2.fruitBase.fruits.*;
 import Shmidt.lesson5_6_Exceptions.task2.fruitBase.fruits.*;
 
 import java.io.Serializable;

@@ -1,6 +1,6 @@
 package lesson14_3_allure_log4j.apiProj.Response;
 
-import Shmidt.DEBT.lesson13_4_restAPI.task2.Response;
+import Shmidt.DEBT.lesson14_3_allure_log4j.apiProj.Response;
 import org.junit.jupiter.api.Assertions;
 
 public class ResponseChecks {
