@@ -38,10 +38,15 @@ public class TestDataProvider {
         );
     }
 
-    private static Stream<Arguments> randMovieProvider(){
-        System.out.println();
+    private static Stream<Arguments> idAndLimitProvider() {
         return Stream.of(
-                Arguments.arguments(rnd(10, 14), new Faker().book().title(), new Faker().book().genre(), new Faker().date().birthday().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()),
+                Arguments.arguments(10, 3)
+        );
+    }
+
+    private static Stream<Arguments> randMovieProvider() {
+        return Stream.of(
+                Arguments.arguments(rnd(11, 14), new Faker().book().title(), new Faker().book().genre(), new Faker().date().birthday().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()),
                 Arguments.arguments(rnd(15, 17), new Faker().book().title(), new Faker().book().genre(), new Faker().date().birthday().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()),
                 Arguments.arguments(rnd(18, 20), new Faker().book().title(), new Faker().book().genre(), new Faker().date().birthday().toInstant().atZone(ZoneId.systemDefault()).toLocalDate())
         );

@@ -1,6 +1,7 @@
 package lesson11_3_TestUI.task4;
 
 import com.codeborne.selenide.Condition;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
@@ -9,6 +10,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class HeroukappTest {
 
+    @Tag("herokuapp")
     @Test
     void dynamicButtonStartTest() {
         open("https://the-internet.herokuapp.com/dynamic_loading/1");
