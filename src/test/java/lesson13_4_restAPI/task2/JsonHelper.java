@@ -11,17 +11,17 @@ public class JsonHelper {
         try {
             paramValue = json.getString(parameter);
         } catch (JSONException ex) {
-            Assertions.assertNotNull(paramValue, "Поля " + parameter + " не существует");
+            Assertions.assertNotNull(paramValue, "Поля String" + parameter + " не существует");
         }
         return paramValue;
     }
 
-    public static int getJsonIntParameter(JSONObject json, String parameter) {
+    public static Integer getJsonIntParameter(JSONObject json, String parameter) {
         Integer paramValue = null;
         try {
             paramValue = json.getInt(parameter);
         } catch (JSONException ex) {
-            Assertions.fail("Поля " + parameter + " не существует");
+            Assertions.fail("Поля int" + parameter + " не существует");
         }
         return paramValue;
     }
@@ -31,7 +31,7 @@ public class JsonHelper {
         try {
             paramValue = json.getJSONArray(parameter);
         } catch (JSONException ex) {
-            Assertions.fail("поля " + parameter + " не существует");
+            Assertions.fail("поля Array" + parameter + " не существует");
         }
         return paramValue;
     }

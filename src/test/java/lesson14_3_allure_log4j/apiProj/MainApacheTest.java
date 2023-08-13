@@ -1,6 +1,10 @@
 package lesson14_3_allure_log4j.apiProj;
 
 import Shmidt.DEBT.lesson14_3_allure_log4j.apiProj.*;
+import io.qameta.allure.Allure;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Step;
+import io.qameta.allure.Story;
 import jdk.jfr.Description;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -26,13 +30,16 @@ public class MainApacheTest {
 
     private static DummyJsonClientImpl clientImpl;
 
+    @Owner("Shmidt-AS")
+    @Step("Инициализация клиента")
     @BeforeEach
     public void initNewClient() {
         clientImpl = new DummyJsonClientImpl();
     }
 
+    @Story("/users/USER_ID")
     @Tag("dummyjson")
-    @ParameterizedTest(name = "{displayName} - id={0} ")
+    @ParameterizedTest(name = " - id={0} ")
     @ValueSource(strings = {"1", "2", "3"})
     @DisplayName("Тест checkGetUser")
     @Description("Получение информации о пользователе по уникальному id (dummyjson.com/docs/users).  На сайте предустановлены пользователи с id от 1 до 100.")
@@ -42,19 +49,17 @@ public class MainApacheTest {
 
         try {
             getUserResp = clientImpl.getUser(userId);
-
             checkResponse(getUserResp);
             checkUserJson(getUserResp.getJsonBody());
-
         } catch (Exception e) {
             Assertions.assertNotNull(getUserResp);
             System.out.println(e.getMessage());
         }
     }
 
-
+    @Story("/auth/login")
     @Tag("dummyjson")
-    @ParameterizedTest(name = "{displayName} - {0}")
+    @ParameterizedTest(name = " - {0}")
     @MethodSource("lesson13_4_restAPI.task2.testDataProviders.TestDataProvider#jsonUserProvider")
     @DisplayName("Тест checkPostLogin")
     @Description("Аутентификация пользователя по логину и паролю (dummyjson.com/docs/auth).  Логин и пароль возвращаются со всей информацией пользователя из пункта 1.\n" +
@@ -76,8 +81,9 @@ public class MainApacheTest {
         }
     }
 
+    @Story("auth/posts/user/USER_ID")
     @Tag("dummyjson")
-    @ParameterizedTest(name = "{displayName} - {0}")
+    @ParameterizedTest(name = " - {0}")
     @MethodSource("lesson13_4_restAPI.task2.testDataProviders.TestDataProvider#jsonUserProvider")
     @DisplayName("Тест checkPostGettingPosts")
     @Description("Получение списка сообщений по уникальному id пользователя, используя токен, полученный при аутентификации. " +
@@ -94,7 +100,8 @@ public class MainApacheTest {
             getAuthPosts = clientImpl.getPosts(user, new Token(getAuthPosts.getJsonBody()));
             checkResponse(getAuthPosts);
 
-            Assertions.assertNotNull(getPosts(getAuthPosts));
+            List<Post> posts = getPosts(getAuthPosts);
+            verificatePosts(posts);
 
         } catch (Exception ex) {
             Assertions.assertNotNull(getAuthPosts);
@@ -102,6 +109,7 @@ public class MainApacheTest {
         }
     }
 
+    @Step("Получение списка постов пользователя")
     private static List<Post> getPosts(Response getAuthPosts) {
         try {
             JSONArray jsonArrayPosts = getJsonArray(getAuthPosts.getJsonBody(), "posts");
@@ -119,6 +127,16 @@ public class MainApacheTest {
             return null;
         }
 
+    }
+
+    @Step("Верификация списка постов пользователя")
+    private static void verificatePosts(List<Post> posts) {
+        Assertions.assertNotNull(posts);
+        StringBuilder postList = new StringBuilder();
+        posts.stream()
+                .map(Post::getTitle)
+                .forEach(title -> postList.append(title).append("\n"));
+        Allure.addAttachment("Список постов пользователя:", postList.toString());
     }
 
 }
