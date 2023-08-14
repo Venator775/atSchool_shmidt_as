@@ -2,6 +2,9 @@ package Shmidt.DEBT.lesson14_3_allure_log4j.databaseProj.Movies;
 
 import Shmidt.DEBT.lesson14_3_allure_log4j.databaseProj.Director.Director;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,7 +15,15 @@ import java.util.List;
 public class MovieRepositoryImpl implements MovieRepository {
     private Connection connection;
 
+    private static final Logger logger = LogManager.getLogger(MovieRepositoryImpl.class);
+
     public MovieRepositoryImpl(Connection connection) {
+        logger.trace("trace");
+        logger.debug("debug");
+        logger.info("info");
+        logger.warn("warn");
+        logger.error("error");
+        logger.fatal("fatal");
         this.connection = connection;
     }
 

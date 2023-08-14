@@ -23,4 +23,25 @@ public class ConnectToDB {
         System.out.println(connection != null ? "InitDBConnection success" : "InitDBConnection fail");
         return connection;
     }
+
+    public static Connection InitDBConnection() {
+        Connection connection = null;
+        String dbName = "testprojectjdbc";
+        String dbUser = "postgres";
+        String dbPassword = "123456";
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/" + dbName, dbUser, dbPassword);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println(connection != null ? "InitDBConnection success" : "InitDBConnection fail");
+        return connection;
+    }
 }
