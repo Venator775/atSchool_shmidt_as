@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="info">
     <Properties>
-        <Property name="baseDir">logs</Property>
+        <Property name="baseDir">target/logs</Property>
     </Properties>
     <Appenders>
         <Console name="logToConsole" target="SYSTEM_OUT">
@@ -48,5 +48,5 @@
         </Root>
     </Loggers>
 </Configuration>
-
+<!-- Параметр конфигурации -Dlog4j.configurationFile=log4jConf.xml -Dlog4j.enableJndiJdbc=true-->
         <!--https://logging.apache.org/log4j/2.x/manual/appenders.html-->
