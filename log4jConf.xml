@@ -23,30 +23,46 @@
             </Policies>
             <DirectWriteRolloverStrategy maxFiles="10"/>
         </RollingFile>
-        <JDBC name="databaseAppender" tableName="application_log">
+        <JDBC name="logToDatabase" tableName="application_log">
             <ConnectionFactory class="Shmidt.DEBT.lesson14_3_allure_log4j.databaseProj.Connection.ConnectToDB"
                                method="InitDBConnection"/>
+            <Column name="event_time" isEventTimestamp="true"/>
             <Column name="level" pattern="%level" isUnicode="false"/>
             <Column name="logger" pattern="%logger{5}" isUnicode="false"/>
             <Column name="message" pattern="%message" isUnicode="false"/>
-            <Column name="exception" pattern="%exception" isUnicode="false"/>
-            <Column name="date" isEventTimestamp="true"/>
         </JDBC>
     </Appenders>
 
     <Loggers>
-        <Logger name="Shmidt1.DEBT.lesson14_3_allure_log4j.databaseProj.Movies.MovieRepositoryImpl" level="all"
+        <Logger name="Shmidt.DEBT.lesson14_3_allure_log4j.databaseProj.Movies.MovieRepositoryImpl"
+                additivity="false">
+            <AppenderRef ref="RollingFile" level="debug"/>
+            <AppenderRef ref="logToDatabase" level="debug"/>
+            <AppenderRef ref="logToConsole" level="info"/>
+            <AppenderRef ref="logToFile" level="info"/>
+        </Logger>
+
+
+        <Logger name="Shmidt.DEBT.lesson14_3_allure_log4j.databaseProj.Connection.ConnectToDB" level="info"
                 additivity="false">
             <AppenderRef ref="logToConsole"/>
+            <AppenderRef ref="logToFile"/>
+            <AppenderRef ref="RollingFile"/>
+            <AppenderRef ref="logToDatabase"/>
+        </Logger>
+
+        <Logger name="lesson14_3_allure_log4j.databaseProj.jdbcTask2Test" level="debug"
+                additivity="false">
+            <AppenderRef ref="logToFile" level="debug"/>
+            <AppenderRef ref="logToDatabase" level="debug"/>
+            <AppenderRef ref="logToConsole" level="info"/>
+            <AppenderRef ref="RollingFile" level="info"/>
         </Logger>
 
         <Root level="all">
-            <AppenderRef ref="logToFile"/>
-            <AppenderRef ref="logToConsole"/>
-            <AppenderRef ref="RollingFile"/>
-            <AppenderRef ref="databaseAppender"/>
+            <AppenderRef ref="logToDatabase"/>
         </Root>
     </Loggers>
 </Configuration>
-<!-- Параметр конфигурации -Dlog4j.configurationFile=log4jConf.xml -Dlog4j.enableJndiJdbc=true-->
+        <!-- Параметр конфигурации -Dlog4j.configurationFile=log4jConf.xml -Dlog4j.enableJndiJdbc=true-->
         <!--https://logging.apache.org/log4j/2.x/manual/appenders.html-->

@@ -8,6 +8,8 @@ import Shmidt.DEBT.lesson14_3_allure_log4j.databaseProj.Movies.Movie;
 import Shmidt.DEBT.lesson14_3_allure_log4j.databaseProj.Movies.MovieRepositoryImpl;
 import io.qameta.allure.*;
 import jdk.jfr.Description;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -22,15 +24,12 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.sql.*;
 import java.time.LocalDate;
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 //mvn -Dgroups=lesson14_3_allure_log4j_db test
 public class jdbcTask2Test {
-
+    private static final Logger logger = LogManager.getLogger(jdbcTask2Test.class);
     final private static String dbName = "testprojectjdbc";
     final private static String dbUser = "postgres";
     final private static String dbPassword = "123456";
@@ -45,7 +44,8 @@ public class jdbcTask2Test {
     @DisplayName("Тест getAllMovies")
     @Test
     void getAllMoviesTest() {
-        List<LinkedHashMap<String, Object>> allMovies = getAllStringFromDB("select * from movies");
+        logger.info("void getAllMoviesTest() - Начало теста");
+        List<LinkedHashMap<String, Object>> allMovies = executeSQLQuery("select * from movies");
         Assertions.assertNotNull(allMovies);
         StringBuilder allMoviesResult = new StringBuilder("Фильмы:\n");
         allMovies.stream()
@@ -65,12 +65,12 @@ public class jdbcTask2Test {
     @ValueSource(strings = {"1", "2", "3"})
     @DisplayName("Тест getMovie")
     void getMovieTest(int movID) {
+        logger.info("void getMovieTest() - Начало теста");
         MovieRepositoryImpl mri = new MovieRepositoryImpl(connection);
         Movie expectedMovie = mri.get(movID);
         String fileName = "Movie" + expectedMovie.getId();
         Assertions.assertNotNull(expectedMovie, "Не удалось выбрать запись");
         addFileToAllureAttachment(fileName, expectedMovie.toString(), "Загруженный файл с фильмом");
-
     }
 
     @Link("Где брал инфу по аннотациям: https://dzen.ru/a/ZGnrocsnFljbBbD5")
@@ -86,9 +86,17 @@ public class jdbcTask2Test {
         MovieRepositoryImpl mri = new MovieRepositoryImpl(connection);
         DirectorRepositoryImpl dri = new DirectorRepositoryImpl(connection);
         Movie expectedMovie = new Movie(id, title, genre, release, dri.getRandom());
+        logger.info("void saveMovieTest() - Начало теста. Сохраняем фильм |" + expectedMovie + "|");
         mri.save(expectedMovie);
-        Movie addedMovie = mri.get(id);
-        assertMoviesAreEqual(expectedMovie, addedMovie);
+        Movie movieInDB = mri.get(id);
+        boolean moviesAreEqual = areMoviesEqual(expectedMovie, movieInDB);
+
+        if (moviesAreEqual)
+            logger.info("void saveMovieTest() - Сохранение фильма |" + expectedMovie + "| прошло успешно");
+        else
+            logger.error("void saveMovieTest() - Сохранение фильма |" + expectedMovie + "| не удалось");
+
+        Assertions.assertTrue(moviesAreEqual, "Сохранённый фильм уже существует в таблице |" + expectedMovie + "|");
     }
 
     @Link("Где брал инфу по аннотациям: https://dzen.ru/a/ZGnrocsnFljbBbD5")
@@ -100,6 +108,7 @@ public class jdbcTask2Test {
     @DisplayName("Тест deleteMovie")
     @Tag("lesson14_3_allure_log4j_db")
     void deleteMovieTest(int idMoreThan, int limit) {
+        logger.info("void deleteMovieTest() - Начало теста");
         MovieRepositoryImpl mri = new MovieRepositoryImpl(connection);
         DirectorRepositoryImpl dri = new DirectorRepositoryImpl(connection);
         String query = "select * from movies where id > ? limit ?";
@@ -140,6 +149,7 @@ public class jdbcTask2Test {
     @MethodSource("lesson12_2_JDBC.task2.testDataProviders.TestDataProvider#genresProvider")
     @DisplayName("Тест getGenreDirectors")
     void getGenreDirectorsTest(List<String> genres) {
+        logger.info("void getGenreDirectorsTest() - Начало теста");
         System.out.println(genres);
         List<Director> genreDirectors = new DirectorRepositoryImpl(connection).getX(genres);
         genreDirectors.forEach(System.out::println);
@@ -156,6 +166,7 @@ public class jdbcTask2Test {
     @Owner("Shmidt-AS")
     @BeforeAll
     static void connectionTest() {
+        logger.info("Начали тесты");
         try {
             Files.copy(Path.of("src/test/resources/environment.properties"),
                     Path.of("target/allure-results/environment.properties"),
@@ -169,22 +180,25 @@ public class jdbcTask2Test {
             Assertions.assertNotNull(connectionTemp, "Не удалось подключиться к БД");
             connection = connectionTemp;
 
-            System.out.println("Connection is OK " + connection.getSchema());
+            logger.info("void connectionTest()  - Connection is OK " + connection.getSchema());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
+    @Owner("Shmidt-AS")
+    @AfterAll
+    static void endingTests() {
+        logger.info("Закончили тесты");
+    }
 
     @Step("Проверка добавленного фильма после сохранения")
-    private static void assertMoviesAreEqual(Movie expectedMovie, Movie factMovie) {
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(expectedMovie.getId(), factMovie.getId()),
-                () -> Assertions.assertEquals(expectedMovie.getTitle(), factMovie.getTitle()),
-                () -> Assertions.assertEquals(expectedMovie.getGenre(), factMovie.getGenre()),
-                () -> Assertions.assertEquals(expectedMovie.getRelease(), factMovie.getRelease()),
-                () -> Assertions.assertEquals(expectedMovie.getDirector().getId(), factMovie.getDirector().getId())
-        );
+    private static boolean areMoviesEqual(Movie expectedMovie, Movie factMovie) {
+        return Objects.equals(expectedMovie.getId(), factMovie.getId())
+                && Objects.equals(expectedMovie.getTitle(), factMovie.getTitle())
+                && Objects.equals(expectedMovie.getGenre(), factMovie.getGenre())
+                && Objects.equals(expectedMovie.getRelease(), factMovie.getRelease())
+                && Objects.equals(expectedMovie.getDirector().getId(), factMovie.getDirector().getId());
     }
 
 
@@ -209,7 +223,7 @@ public class jdbcTask2Test {
     }
 
     @Step("Выполнение SQL запроса")
-    private static List<LinkedHashMap<String, Object>> getAllStringFromDB(String query) {
+    private static List<LinkedHashMap<String, Object>> executeSQLQuery(String query) {
         List<LinkedHashMap<String, Object>> result = null;
 
         try {
@@ -230,8 +244,9 @@ public class jdbcTask2Test {
                 result.add(map);
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            logger.error("List<LinkedHashMap<String, Object>> executeSQLQuery() - " + e.getMessage());
         }
+        logger.debug("List<LinkedHashMap<String, Object>> executeSQLQuery() - Выполнен запрос: " + query);
         return result;
     }
 
