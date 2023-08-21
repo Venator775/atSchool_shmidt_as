@@ -42,6 +42,13 @@
             <AppenderRef ref="logToFile" level="info"/>
         </Logger>
 
+        <Logger name = "Shmidt.DEBT.lesson14_3_allure_log4j.databaseProj.Director.DirectorRepositoryImpl" additivity="false">
+            <AppenderRef ref="RollingFile" level="debug"/>
+            <AppenderRef ref="logToDatabase" level="debug"/>
+            <AppenderRef ref="logToConsole" level="info"/>
+            <AppenderRef ref="logToFile" level="info"/>
+        </Logger>
+
 
         <Logger name="Shmidt.DEBT.lesson14_3_allure_log4j.databaseProj.Connection.ConnectToDB" level="info"
                 additivity="false">
@@ -51,7 +58,7 @@
             <AppenderRef ref="logToDatabase"/>
         </Logger>
 
-        <Logger name="lesson14_3_allure_log4j.databaseProj.jdbcTask2Test" level="debug"
+        <Logger name="lesson14_3_allure_log4j.databaseProj.jdbcTask2Test"
                 additivity="false">
             <AppenderRef ref="logToFile" level="debug"/>
             <AppenderRef ref="logToDatabase" level="debug"/>
@@ -64,5 +71,5 @@
         </Root>
     </Loggers>
 </Configuration>
-        <!-- Параметр конфигурации -Dlog4j.configurationFile=log4jConf.xml -Dlog4j.enableJndiJdbc=true-->
+        <!-- Параметр конфигурации -Dlog4j.configurationFile=log4jConf_databaseProj.xml -Dlog4j.enableJndiJdbc=true-->
         <!--https://logging.apache.org/log4j/2.x/manual/appenders.html-->

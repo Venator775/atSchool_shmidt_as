@@ -15,12 +15,10 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.sql.*;
 import java.time.LocalDate;
@@ -28,6 +26,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 //mvn -Dgroups=lesson14_3_allure_log4j_db test
+//-Dlog4j.configurationFile=log4jConf_databaseProj.xml -Dlog4j.enableJndiJdbc=true
 public class jdbcTask2Test {
     private static final Logger logger = LogManager.getLogger(jdbcTask2Test.class);
     final private static String dbName = "testprojectjdbc";
@@ -52,7 +51,7 @@ public class jdbcTask2Test {
                 .map(AbstractMap::toString)
                 .forEach(film -> allMoviesResult.append(film).append("\n"));
 
-        addFileToAllureAttachment("allMovies", allMoviesResult.toString(), "Список фильмов");
+        addFileToAllureAttachment("allMovies.txt", allMoviesResult.toString(), "Список фильмов");
     }
 
     @Link("Где брал инфу по аннотациям: https://dzen.ru/a/ZGnrocsnFljbBbD5")
@@ -68,7 +67,7 @@ public class jdbcTask2Test {
         logger.info("void getMovieTest() - Начало теста");
         MovieRepositoryImpl mri = new MovieRepositoryImpl(connection);
         Movie expectedMovie = mri.get(movID);
-        String fileName = "Movie" + expectedMovie.getId();
+        String fileName = "Movie" + expectedMovie.getId() + ".txt";
         Assertions.assertNotNull(expectedMovie, "Не удалось выбрать запись");
         addFileToAllureAttachment(fileName, expectedMovie.toString(), "Загруженный файл с фильмом");
     }
@@ -94,9 +93,9 @@ public class jdbcTask2Test {
         if (moviesAreEqual)
             logger.info("void saveMovieTest() - Сохранение фильма |" + expectedMovie + "| прошло успешно");
         else
-            logger.error("void saveMovieTest() - Сохранение фильма |" + expectedMovie + "| не удалось");
-
-        Assertions.assertTrue(moviesAreEqual, "Сохранённый фильм уже существует в таблице |" + expectedMovie + "|");
+            logger.error("void saveMovieTest() - Фильм с таким Id уже существует в таблице |" + movieInDB + "|");
+        logger.info("void saveMovieTest() - Конец теста.");
+        Assertions.assertTrue(moviesAreEqual, "Фильм с таким Id уже существует в таблице |" + movieInDB + "|");
     }
 
     @Link("Где брал инфу по аннотациям: https://dzen.ru/a/ZGnrocsnFljbBbD5")
@@ -132,11 +131,12 @@ public class jdbcTask2Test {
                 mri.delete(deleteMovie);
                 deletedMovies.append(deleteMovie).append("\n");
             }
-            addFileToAllureAttachment("deleteMovies", deletedMovies.toString(), "Удалённые фильмы");
+            addFileToAllureAttachment("deleteMovies.txt", deletedMovies.toString(), "Удалённые фильмы");
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        logger.info("void deleteMovieTest() - Конец теста");
     }
 
     @Link("Где брал инфу по аннотациям: https://dzen.ru/a/ZGnrocsnFljbBbD5")
@@ -152,14 +152,14 @@ public class jdbcTask2Test {
         logger.info("void getGenreDirectorsTest() - Начало теста");
         System.out.println(genres);
         List<Director> genreDirectors = new DirectorRepositoryImpl(connection).getX(genres);
-        genreDirectors.forEach(System.out::println);
-        Assertions.assertNotNull(genreDirectors);
+        Assertions.assertNotNull(genreDirectors, "Не удалось получить список режиссёров: genreDirectors = " + genreDirectors);
 
         String str = genreDirectors.stream()
                 .map((s) -> "'" + s + "'")
                 .collect(Collectors.joining("\n"));
 
-        addFileToAllureAttachment(genres.toString(), str, "Загруженный файл с режиссёрами");
+        addFileToAllureAttachment(genres.toString() + ".txt", str, "Загруженный файл с режиссёрами");
+        logger.info("void getGenreDirectorsTest() - Конец теста");
     }
 
     @Step("Подключение к базе данных")
@@ -187,9 +187,13 @@ public class jdbcTask2Test {
     }
 
     @Owner("Shmidt-AS")
+    @DisplayName("Конец тестов")
     @AfterAll
     static void endingTests() {
-        logger.info("Закончили тесты");
+        Path logFile = Paths.get("target/logs/logFile.log");
+
+        addFileToAllureAttachment(logFile.getFileName(), logFile.getParent(), "Лог теста");
+        logger.info("Закончили тесты. Файл лога: " + logFile);
     }
 
     @Step("Проверка добавленного фильма после сохранения")
@@ -204,10 +208,11 @@ public class jdbcTask2Test {
 
     @Step("Сохранение результатов в файл {logFileName}")
     private static void saveResultsInFile(String logFileName, String logText) {
-        String savePath = "target/allure-results/" + logFileName + ".txt";
+        String savePath = "target/allure-results/" + logFileName;
         try (FileWriter writer = new FileWriter(savePath, false)) {
             writer.write(logText + "\n");
             writer.flush();
+            logger.debug("void saveResultsInFile - Сохранили файл " + savePath);
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
         }
@@ -216,7 +221,16 @@ public class jdbcTask2Test {
     private static void addFileToAllureAttachment(String logFileName, String logText, String allureAttachmentFileName) {
         saveResultsInFile(logFileName, logText);
         try {
-            Allure.addAttachment(allureAttachmentFileName, new FileInputStream("target/allure-results/" + logFileName + ".txt"));
+            Allure.addAttachment(allureAttachmentFileName, new FileInputStream("target/allure-results/" + logFileName));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static void addFileToAllureAttachment(Path logFileName, Path logFileNamePath, String allureAttachmentFileName) {
+        File file = new File(logFileNamePath + "/" + logFileName);
+        try {
+            Allure.addAttachment(allureAttachmentFileName, new FileInputStream(file));
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

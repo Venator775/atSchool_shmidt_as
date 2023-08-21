@@ -1,5 +1,8 @@
 package Shmidt.DEBT.lesson14_3_allure_log4j.databaseProj.Director;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -10,6 +13,8 @@ import java.util.stream.Collectors;
 
 public class DirectorRepositoryImpl implements DirectorRepository {
     private Connection connection;
+
+    private static final Logger logger = LogManager.getLogger(DirectorRepositoryImpl.class);
 
     public DirectorRepositoryImpl(Connection connection) {
         this.connection = connection;
@@ -134,26 +139,27 @@ public class DirectorRepositoryImpl implements DirectorRepository {
     }
 
     public List<Director> getX(List<String> genres) {
+        logger.info("List<Director> getX - Запрос списка режисёров по жанрам: " + genres);
         List<Director> directors = new ArrayList<>();
 
         //region
-        String str = genres.stream()
-                .map((s)-> "'"+s+"'")
-                .collect(Collectors.joining(", "));
-        String queryStr = "select d.id, d.first_name, d.last_name, d.birth_date, d.country  " +
-                "from public.movies m " +
-                "join public.directors d on " +
-                "m.director = d.id " +
-                "where genre in (?) " +
-                "group by d.id";
-        try {
-            PreparedStatement statementX = connection.prepareStatement(queryStr);
-            statementX.setString(1,str);
-            statementX.executeQuery();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        //region
+//        String str = genres.stream()
+//                .map((s)-> "'"+s+"'")
+//                .collect(Collectors.joining(", "));
+//        String queryStr = "select d.id, d.first_name, d.last_name, d.birth_date, d.country  " +
+//                "from public.movies m " +
+//                "join public.directors d on " +
+//                "m.director = d.id " +
+//                "where genre in (?) " +
+//                "group by d.id";
+//        try {
+//            PreparedStatement statementX = connection.prepareStatement(queryStr);
+//            statementX.setString(1,str);
+//            statementX.executeQuery();
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+        //endregion
 
         try {
             String query = "select d.id, d.first_name, d.last_name, d.birth_date, d.country  " +
@@ -171,11 +177,11 @@ public class DirectorRepositoryImpl implements DirectorRepository {
                             LocalDate.parse(resString.get("birth_date").toString()),
                             resString.get("country").toString()))
                     .collect(Collectors.toList());
-
-            return directors;
         } catch (SQLException e) {
+            logger.error("List<Director> getX - запуск метода. id = " + e.getMessage());
             System.out.println(e.getMessage());
         }
+        logger.info("List<Director> getX - Получили список режисёров: " + directors);
         return directors;
     }
 
