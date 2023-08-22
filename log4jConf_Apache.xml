@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info">
+    <Properties>
+        <Property name="baseDir">target/logs</Property>
+    </Properties>
+    <Appenders>
+        <Console name="logToConsole" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{5} - %msg%n"/>
+        </Console>
+        <File name="logToFile" fileName="${baseDir}/logFile_API.log">
+            <Append value="false"/>
+            <PatternLayout>
+                <Pattern>%d %p %c{1.} [%t] %m %ex%n</Pattern>
+            </PatternLayout>
+        </File>
+        <RollingFile name="RollingFile" filePattern="${baseDir}/app-API-%d{yyyy_MM_dd HH-mm-ss}-%i.log.gz">
+            <PatternLayout>
+                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <CronTriggeringPolicy schedule="0 0 * * * ?"/>
+                <SizeBasedTriggeringPolicy size="250 MB"/>
+            </Policies>
+            <DirectWriteRolloverStrategy maxFiles="10"/>
+        </RollingFile>
+        <JDBC name="logToDatabase" tableName="application_api_log">
+            <ConnectionFactory class="Shmidt.DEBT.lesson14_3_allure_log4j.databaseProj.Connection.ConnectToDB"
+                               method="InitDBConnection"/>
+            <Column name="event_time" isEventTimestamp="true"/>
+            <Column name="level" pattern="%level" isUnicode="false"/>
+            <Column name="logger" pattern="%logger{5}" isUnicode="false"/>
+            <Column name="message" pattern="%message" isUnicode="false"/>
+        </JDBC>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="Shmidt.DEBT.lesson14_3_allure_log4j.apiProj.MainApacheTest"
+                additivity="false">
+            <AppenderRef ref="RollingFile" level="debug"/>
+            <AppenderRef ref="logToDatabase" level="trace"/>
+            <AppenderRef ref="logToConsole" level="info"/>
+            <AppenderRef ref="logToFile" level="info"/>
+        </Logger>
+
+        <Logger name="Shmidt.DEBT.lesson14_3_allure_log4j.apiProj.DummyJsonClientImpl" level="trace"
+                additivity="false">
+            <AppenderRef ref="logToConsole" level="info"/>
+            <AppenderRef ref="logToDatabase"/>
+        </Logger>
+
+        <Logger name="lesson14_3_allure_log4j.apiProj.login.LoginChecks" level="trace"
+                additivity="false">
+            <AppenderRef ref="logToConsole" level="info"/>
+            <AppenderRef ref="logToDatabase"/>
+        </Logger>
+
+        <Logger name="lesson14_3_allure_log4j.apiProj.user.UserChecks" level="trace"
+                additivity="false">
+            <AppenderRef ref="logToConsole" level="info"/>
+            <AppenderRef ref="logToDatabase"/>
+        </Logger>
+
+        <Logger name="lesson14_3_allure_log4j.apiProj.response.ResponseChecks" level="trace"
+                additivity="false">
+            <AppenderRef ref="logToConsole" level="info"/>
+            <AppenderRef ref="logToDatabase"/>
+        </Logger>
+
+
+        <Root level="all">
+            <AppenderRef ref="logToDatabase"/>
+        </Root>
+    </Loggers>
+</Configuration>
+        <!-- Параметр конфигурации -Dlog4j.configurationFile=log4jConf_databaseProj.xml -Dlog4j.enableJndiJdbc=true-->
+        <!--https://logging.apache.org/log4j/2.x/manual/appenders.html-->

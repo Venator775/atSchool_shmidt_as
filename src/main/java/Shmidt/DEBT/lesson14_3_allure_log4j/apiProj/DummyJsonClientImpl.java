@@ -1,20 +1,19 @@
 package Shmidt.DEBT.lesson14_3_allure_log4j.apiProj;
 
 import org.apache.http.HttpEntity;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -22,23 +21,25 @@ import java.util.stream.StreamSupport;
 
 public class DummyJsonClientImpl implements DummyJsonClient {
 
+    private static final Logger logger = LogManager.getLogger(DummyJsonClientImpl.class);
+
     public DummyJsonClientImpl() {
     }
 
     // dummyjson.com/users/{id}
     public Response getUser(int id) {
-
-        HttpGet request = new HttpGet("https://dummyjson.com/users/" + id);
+        String requestUrl = "https://dummyjson.com/users/" + id;
+        HttpGet requestGet = new HttpGet(requestUrl);
         Response response = null;
+        logger.debug("getUser() - Request: " + requestUrl);
 
         try (CloseableHttpClient httpClient = HttpClients.createDefault();
-             CloseableHttpResponse getResponse = httpClient.execute(request)) {
-
+             CloseableHttpResponse getResponse = httpClient.execute(requestGet)) {
 //                System.out.println(getResponse.getProtocolVersion());              // HTTP/1.1
 //                System.out.println(getResponse.getStatusLine().getStatusCode());   // 200
 //                System.out.println(getResponse.getStatusLine().getReasonPhrase()); // OK
 //                System.out.println(getResponse.getStatusLine().toString());        // HTTP/1.1 200 OK
-
+            logger.trace("getUser() - getStatusLine: " + getResponse.getStatusLine().toString());
             HttpEntity entity = getResponse.getEntity();
             if (entity != null) {
                 String result = EntityUtils.toString(entity);
@@ -46,41 +47,49 @@ public class DummyJsonClientImpl implements DummyJsonClient {
                 response = new Response(getResponse.getStatusLine().getStatusCode(), result);
             }
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            logger.error("getUser() - " + ex.getMessage());
         }
 
+        logger.debug("getUser() - Response: " + response.getJsonBody().toString());
         return response;
     }
 
     // dummyjson.com/auth/login/
     public Response login(User u) throws IOException {
-        HttpPost post = new HttpPost("https://dummyjson.com/auth/login");
+
+        HttpPost requestPost = new HttpPost("https://dummyjson.com/auth/login");
 
         Response result = null;
 
-        List<NameValuePair> requestBodyParameters = new ArrayList<>();
-        requestBodyParameters.add(new BasicNameValuePair("username", u.getLogin()));
-        requestBodyParameters.add(new BasicNameValuePair("password", u.getPassword()));
-        post.setEntity(new UrlEncodedFormEntity(requestBodyParameters));
+        String json = "{\"username\":\"" + u.getLogin() + "\",\"password\":\"" + u.getPassword() + "\"}";
+        StringEntity entity = new StringEntity(json);
+        requestPost.setEntity(entity);
+        requestPost.setHeader("Accept", "application/json");
+        requestPost.setHeader("Content-type", "application/json");
+
+        logger.debug("login() - Request: " + json);
 
         try (CloseableHttpClient httpClient = HttpClients.createDefault();
-             CloseableHttpResponse response = httpClient.execute(post)) {
-            result = new Response(response.getStatusLine().getStatusCode(), EntityUtils.toString(response.getEntity()));
+             CloseableHttpResponse postResponse = httpClient.execute(requestPost)) {
+            result = new Response(postResponse.getStatusLine().getStatusCode(), EntityUtils.toString(postResponse.getEntity()));
+            logger.trace("login() - getStatusLine: " + postResponse.getStatusLine().toString());
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            logger.error("login() - " + ex.getMessage());
         }
+
+        logger.debug("login() - Response: " + result.getJsonBody().toString());
         return result;
     }
 
     // dummyjson.com/auth/posts/{user.id}
     public Response getPosts(User u, Token token) {
 
-        HttpGet request = new HttpGet("https://dummyjson.com/auth/posts/user/" + u.getId());
-        request.addHeader("Authorization", "Bearer " + token.getToken());
+        HttpGet requestGet = new HttpGet("https://dummyjson.com/auth/posts/user/" + u.getId());
+        requestGet.addHeader("Authorization", "Bearer " + token.getToken());
 
         Response response = null;
         try (CloseableHttpClient httpClient = HttpClients.createDefault();
-             CloseableHttpResponse getResponse = httpClient.execute(request)) {
+             CloseableHttpResponse getResponse = httpClient.execute(requestGet)) {
 
             HttpEntity entity = getResponse.getEntity();
             if (entity != null) {

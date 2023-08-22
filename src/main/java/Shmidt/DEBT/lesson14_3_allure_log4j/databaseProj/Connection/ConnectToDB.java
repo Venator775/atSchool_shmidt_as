@@ -17,14 +17,14 @@ public class ConnectToDB {
             Class.forName("org.postgresql.Driver");
             logger.debug("Connection InitDBConnection() - Получили драйвер org.postgresql.Driver");
             connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/" + dbName, dbUser, dbPassword);
-            logger.debug("Connection InitDBConnection() - Удалось установить соединение с БД  \" + dbName");
+            logger.info("Connection InitDBConnection() - Удалось установить соединение с БД  " + dbName);
         } catch (ClassNotFoundException e) {
             logger.error("Connection InitDBConnection() - Не удалось получить драйвер org.postgresql.Driver");
         } catch (SQLException e) {
             logger.error("Connection InitDBConnection() - Не удалось установить соединение с БД ");
         }
 
-        logger.info(connection != null ? "InitDBConnection success" : "InitDBConnection fail");
+        //logger.info(connection != null ? "InitDBConnection success" : "InitDBConnection fail");
         return connection;
     }
 

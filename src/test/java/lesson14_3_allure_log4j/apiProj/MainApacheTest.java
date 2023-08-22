@@ -6,12 +6,11 @@ import io.qameta.allure.Owner;
 import io.qameta.allure.Step;
 import io.qameta.allure.Story;
 import jdk.jfr.Description;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -22,20 +21,16 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import static lesson14_3_allure_log4j.apiProj.JsonHelper.*;
-import static lesson14_3_allure_log4j.apiProj.Response.ResponseChecks.checkResponse;
+import static lesson14_3_allure_log4j.apiProj.response.ResponseChecks.checkResponse;
 import static lesson14_3_allure_log4j.apiProj.login.LoginChecks.checkLoginToken;
 import static lesson14_3_allure_log4j.apiProj.user.UserChecks.checkUserJson;
 
+//-Dlog4j.configurationFile=log4jConf_Apache.xml -Dlog4j.enableJndiJdbc=true
 public class MainApacheTest {
 
+    private static final Logger logger = LogManager.getLogger(MainApacheTest.class);
     private static DummyJsonClientImpl clientImpl;
 
-    @Owner("Shmidt-AS")
-    @Step("Инициализация клиента")
-    @BeforeEach
-    public void initNewClient() {
-        clientImpl = new DummyJsonClientImpl();
-    }
 
     @Story("/users/USER_ID")
     @Tag("dummyjson")
@@ -44,16 +39,17 @@ public class MainApacheTest {
     @DisplayName("Тест checkGetUser")
     @Description("Получение информации о пользователе по уникальному id (dummyjson.com/docs/users).  На сайте предустановлены пользователи с id от 1 до 100.")
     public void checkGetUser(int userId) {
-
+        logger.info("checkGetUser() - Получение информации о пользователе по уникальному id = " + userId);
         Response getUserResp = null;
 
         try {
             getUserResp = clientImpl.getUser(userId);
             checkResponse(getUserResp);
             checkUserJson(getUserResp.getJsonBody());
+            logger.info("checkGetUser() - Пользователь получен");
         } catch (Exception e) {
+            logger.error("checkGetUser() - " + e.getMessage());
             Assertions.assertNotNull(getUserResp);
-            System.out.println(e.getMessage());
         }
     }
 
@@ -65,7 +61,7 @@ public class MainApacheTest {
     @Description("Аутентификация пользователя по логину и паролю (dummyjson.com/docs/auth).  Логин и пароль возвращаются со всей информацией пользователя из пункта 1.\n" +
             "В ответе возвращается токен, который далее используется для отправки запросов.")
     public void checkPostLogin(String jsonString) {
-
+        logger.info("checkPostLogin() - Аутентификация пользователя по логину и паролю");
         User user = new User(new JSONObject(jsonString));
 
         Response postLoginResp = null;
@@ -74,10 +70,10 @@ public class MainApacheTest {
             postLoginResp = clientImpl.login(user);
             checkResponse(postLoginResp);
             checkLoginToken(postLoginResp);
-
+            logger.info("checkPostLogin() - Аутентификация успешна");
         } catch (Exception ex) {
+            logger.error("checkPostLogin() - Аутентификация провалена. " + ex.getMessage());
             Assertions.assertNotNull(postLoginResp);
-            System.out.println(ex.getMessage());
         }
     }
 
@@ -89,7 +85,7 @@ public class MainApacheTest {
     @Description("Получение списка сообщений по уникальному id пользователя, используя токен, полученный при аутентификации. " +
             "Токен передается через заголовок \"Authorization\" (см. swagger.io/docs/specification/authentication/bearer-authentication/ и dummyjson.com/docs )")
     public void checkPostGettingPostsWithToken(String jsonString) {
-
+        logger.info("checkPostGettingPostsWithToken() - Получение списка сообщений по уникальному id пользователя");
         User user = new User(new JSONObject(jsonString));
 
         Response getAuthPosts = null;
@@ -102,11 +98,37 @@ public class MainApacheTest {
 
             List<Post> posts = getPosts(getAuthPosts);
             verificatePosts(posts);
-
+            logger.info("checkPostGettingPostsWithToken() - Получение списка сообщений завершено");
         } catch (Exception ex) {
+            logger.error("checkPostGettingPostsWithToken() - " + ex.getMessage());
             Assertions.assertNotNull(getAuthPosts);
-            System.out.println(ex.getMessage());
         }
+    }
+
+    @Owner("Shmidt-AS")
+    @Step("Инициализация клиента")
+    @BeforeAll
+    public static void initNewClient() {
+        clientImpl = new DummyJsonClientImpl();
+
+//        Method m = null;
+//        try {
+//            m = MainApacheTest.class.getMethod("initNewClient");
+//            Step a = m.getAnnotation(Step.class);
+//            String value1 = a.value();
+//            System.out.println(value1);
+//        } catch (NoSuchMethodException e) {
+//            throw new RuntimeException(e);
+//        }
+
+        logger.info("initNewClient() - Начало теста. Инициализация клиента");
+    }
+
+    @Owner("Shmidt-AS")
+    @Step("Окончание теста")
+    @AfterAll
+    public static void closeClient() {
+        logger.info("void closeClient() - Конец теста.");
     }
 
     @Step("Получение списка постов пользователя")
@@ -123,7 +145,7 @@ public class MainApacheTest {
                     )
                     .collect(Collectors.toList());
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            logger.error(ex.getMessage());
             return null;
         }
 
@@ -137,6 +159,7 @@ public class MainApacheTest {
                 .map(Post::getTitle)
                 .forEach(title -> postList.append(title).append("\n"));
         Allure.addAttachment("Список постов пользователя:", postList.toString());
+        logger.debug("verificatePosts() - Список постов пользователя: " + postList);
     }
 
 }
