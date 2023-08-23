@@ -1,6 +1,7 @@
 package lesson14_3_allure_log4j.apiProj;
 
 import Shmidt.DEBT.lesson14_3_allure_log4j.apiProj.*;
+import com.github.javafaker.Faker;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Step;
@@ -39,6 +40,7 @@ public class MainApacheTest {
     @DisplayName("Тест checkGetUser")
     @Description("Получение информации о пользователе по уникальному id (dummyjson.com/docs/users).  На сайте предустановлены пользователи с id от 1 до 100.")
     public void checkGetUser(int userId) {
+        Faker f = new Faker();
         logger.info("checkGetUser() - Получение информации о пользователе по уникальному id = " + userId);
         Response getUserResp = null;
 
@@ -70,7 +72,8 @@ public class MainApacheTest {
             postLoginResp = clientImpl.login(user);
             checkResponse(postLoginResp);
             checkLoginToken(postLoginResp);
-            logger.info("checkPostLogin() - Аутентификация успешна");
+
+            logger.info("checkPostLogin() - Аутентификация успешна. Token: " + new Token(postLoginResp.getJsonBody()).getToken());
         } catch (Exception ex) {
             logger.error("checkPostLogin() - Аутентификация провалена. " + ex.getMessage());
             Assertions.assertNotNull(postLoginResp);
@@ -110,16 +113,6 @@ public class MainApacheTest {
     @BeforeAll
     public static void initNewClient() {
         clientImpl = new DummyJsonClientImpl();
-
-//        Method m = null;
-//        try {
-//            m = MainApacheTest.class.getMethod("initNewClient");
-//            Step a = m.getAnnotation(Step.class);
-//            String value1 = a.value();
-//            System.out.println(value1);
-//        } catch (NoSuchMethodException e) {
-//            throw new RuntimeException(e);
-//        }
 
         logger.info("initNewClient() - Начало теста. Инициализация клиента");
     }

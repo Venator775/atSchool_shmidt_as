@@ -17,6 +17,6 @@ public class ResponseChecks {
 
         Assertions.assertEquals(200, response.getCode(), "Код ответа не соответствует ожидаемому");
         Assertions.assertNotNull(response.getJsonBody(), "Тело ответа отсутствует");
-        logger.info("checkResponse() - ответ верифицирован. code " + response.getCode());
+        logger.debug("checkResponse() - ответ верифицирован. code " + response.getCode());
     }
 }

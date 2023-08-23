@@ -25,7 +25,7 @@ public class LoginChecks {
         if (Objects.nonNull(firstName)
                 && Objects.nonNull(lastName)
                 && Objects.nonNull(token))
-            logger.warn("checkLoginToken() - Проверка токена ответа авторизации успешная." +
+            logger.info("checkLoginToken() - Проверка токена ответа авторизации успешная." +
                     " Пользователь:  " + firstName + " " + lastName +
                     " Токен сессии: " + token);
         else
