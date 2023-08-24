@@ -11,27 +11,39 @@ public class Response {
         this.body = body;
     }
 
-    public JSONObject getJsonBody(){
+    public JSONObject getJsonBody() {
         JSONObject obj = null;
-        try{
+        try {
             obj = new JSONObject(this.body);
-        } catch (Exception ex){
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
         return obj;
     }
 
-    public void showRespInfo(){
+    public void showRespInfo() {
         System.out.println(this.getCode());
         System.out.println(this.getBody());
     }
 
-
+    public String getUserName() {
+        JSONObject responseBody = getJsonBody();
+        String userName;
+        try {
+            userName = responseBody.getString("firstName") + " " +
+                    responseBody.getString("maidenName") + " " +
+                    responseBody.getString("lastName");
+        } catch (Exception ex) {
+            userName = "Не удалось получить пользователя из запроса";
+        }
+        return userName;
+    }
 
     //region getters/setters
     public int getCode() {
         return code;
     }
+
     public String getBody() {
         return body;
     }

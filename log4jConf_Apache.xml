@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="info">
     <Properties>
-        <Property name="logDir">target/logs</Property>
+        <Property name="baseDir">target/logs</Property>
+        <Property name="dateTimePattern">{yyyy_MM_dd (HH-mm-ss)}</Property>
+        <Property name="datePattern">{yyyy_MM_dd}</Property>
+        <Property name="messagePatternLayout1">%d{yyyy-mm-dd HH:mm:ss.SSS} [%t] %-5level %logger{3} - %msg%n</Property>
+        <Property name="messagePatternLayout2">%d{yyyy-mm-dd HH:mm:ss.SSS} %p %c{1.} [%t] %m %ex%n</Property>
+        <Property name="messagePatternLayout3">%d{HH:mm:ss.SSS} [%t] %-5level %logger{5} - %msg%n</Property>
+        <Property name="messagePatternLayout4">%d %p %c{1.} [%t] %m%n</Property>
     </Properties>
     <Appenders>
         <Console name="logToConsole" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{5} - %msg%n"/>
+            <PatternLayout pattern="${messagePatternLayout3}"/>
         </Console>
-        <File name="logToFile" fileName="${logDir}/logFile_API.log">
+        <File name="logToFile" fileName="${baseDir}/logFile_API.log">
             <Append value="false"/>
             <PatternLayout>
-                <Pattern>%d %p %c{1.} [%t] %m %ex%n</Pattern>
+                <Pattern>${messagePatternLayout2}</Pattern>
             </PatternLayout>
         </File>
-        <RollingFile name="RollingFile" filePattern="${logDir}/app-API-%d{yyyy_MM_dd HH-mm-ss}-%i.log.gz">
+        <RollingFile name="RollingFile" filePattern="${baseDir}/app-API-%d${dateTimePattern}-%i.log.gz">
             <PatternLayout>
-                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+                <Pattern>${messagePatternLayout4}</Pattern>
             </PatternLayout>
             <Policies>
                 <CronTriggeringPolicy schedule="0 0 * * * ?"/>
-                <SizeBasedTriggeringPolicy size="250 MB"/>
+                <SizeBasedTriggeringPolicy size="20 MB"/>
             </Policies>
             <DirectWriteRolloverStrategy maxFiles="10"/>
         </RollingFile>
@@ -76,6 +82,7 @@
         <Root level="all">
             <AppenderRef ref="RollingFile"/>
             <AppenderRef ref="databaseAppender" level="all"/>
+            <AppenderRef ref="logToFile"/>
         </Root>
     </Loggers>
 </Configuration>
