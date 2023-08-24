@@ -48,9 +48,9 @@ public class MainApacheTest {
             checkResponse(getUserResp);
             checkUserJson(getUserResp.getJsonBody());
             logger.info("checkGetUser() - Пользователь получен");
-        } catch (Exception e) {
-            logger.error("checkGetUser() - " + e.getMessage());
-            Assertions.assertNotNull(getUserResp);
+        } catch (Exception ex) {
+            logger.error("checkGetUser() - " + ex.getMessage());
+            Assertions.fail(ex.getMessage());
         }
     }
 
@@ -75,7 +75,7 @@ public class MainApacheTest {
             logger.info("checkPostLogin() - Аутентификация успешна. Token: " + new Token(postLoginResp.getJsonBody()).getToken());
         } catch (Exception ex) {
             logger.error("checkPostLogin() - Аутентификация провалена. " + ex.getMessage());
-            Assertions.assertNotNull(postLoginResp);
+            Assertions.fail(ex.getMessage());
         }
     }
 
@@ -103,7 +103,7 @@ public class MainApacheTest {
             logger.info("checkPostGettingPostsWithToken() - Получение списка сообщений завершено");
         } catch (Exception ex) {
             logger.error("checkPostGettingPostsWithToken() - " + ex.getMessage());
-            Assertions.assertNotNull(getAuthPosts);
+            Assertions.fail(ex.getMessage());
         }
     }
 

@@ -68,6 +68,7 @@
 
         <Root level="all">
             <AppenderRef ref="logToDatabase"/>
+            <AppenderRef ref="logToFile"/>
         </Root>
     </Loggers>
 </Configuration>
