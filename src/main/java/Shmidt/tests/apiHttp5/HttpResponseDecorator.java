@@ -1,4 +1,4 @@
-package Shmidt.DEBT.lesson13_4_restAPI.apiHttp5;
+package Shmidt.tests.apiHttp5;
 
 import org.apache.hc.core5.http.ClassicHttpResponse;
 import org.apache.hc.core5.http.ParseException;

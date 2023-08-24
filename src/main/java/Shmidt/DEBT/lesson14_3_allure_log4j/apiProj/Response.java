@@ -26,6 +26,8 @@ public class Response {
         System.out.println(this.getBody());
     }
 
+
+
     //region getters/setters
     public int getCode() {
         return code;

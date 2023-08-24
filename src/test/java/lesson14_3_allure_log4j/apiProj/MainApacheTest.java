@@ -40,7 +40,6 @@ public class MainApacheTest {
     @DisplayName("Тест checkGetUser")
     @Description("Получение информации о пользователе по уникальному id (dummyjson.com/docs/users).  На сайте предустановлены пользователи с id от 1 до 100.")
     public void checkGetUser(int userId) {
-        Faker f = new Faker();
         logger.info("checkGetUser() - Получение информации о пользователе по уникальному id = " + userId);
         Response getUserResp = null;
 

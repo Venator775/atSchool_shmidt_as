@@ -1,4 +1,4 @@
-package Shmidt.DEBT.lesson13_4_restAPI.apiHttp5;
+package Shmidt.tests.apiHttp5;
 
 import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
@@ -25,17 +25,18 @@ public class BaseMethods implements Methods {
         uriBuilder = new CustomUriBuilder(uri);
     }
 
+    /**
+     * Заглушка метод
+     */
     public BaseMethods() {
         uriBuilder = new CustomUriBuilder("https://dummyjson.com/users");
     }
 
     @Override
     public HttpResponseDecorator get() {
+        System.out.println("HttpResponseDecorator get()");
         HttpGet get = new HttpGet(uriBuilder.getUri());
-        get.setHeaders(
-                new BasicHeader(CONTENT_TYPE, "application/json"),
-                new BasicHeader(ACCEPT, "application/json")
-        );
+        get.setHeaders(getBasicHeaders());
         try {
             return client.getSimpleClient().execute(get, new HttpResponseDecorator());
         } catch (Exception ex) {
@@ -46,33 +47,36 @@ public class BaseMethods implements Methods {
 
     @Override
     public HttpResponseDecorator post(String json) {
-        HttpPost post = new HttpPost(uriBuilder.getUri());
-        post.setHeaders(getBasicHeaders());
-        post.setEntity(new StringEntity(json));
+        System.out.println("HttpResponseDecorator post(String json)");
+        HttpPost httpPost = new HttpPost(uriBuilder.getUri());
+        httpPost.setHeaders(getBasicHeaders());
+        httpPost.setEntity(new StringEntity(json));
+        HttpResponseDecorator response;
 
         try {
-            client.getSimpleClient().execute(post, new HttpResponseDecorator());
+            response = client.getSimpleClient().execute(httpPost, new HttpResponseDecorator());
+            return response;
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
         throw new RuntimeException("Запрос не выполнен");
     }
 
     @Override
     public HttpResponseDecorator post(JSONObject jsonObj) {
-        String json = jsonObj.toString();
-
-        HttpPost post = new HttpPost(uriBuilder.getUri());
-        post.setHeaders(getBasicHeaders());
-        post.setEntity(new StringEntity(json));
+        System.out.println("HttpResponseDecorator post(JSONObject jsonObj)");
+        HttpPost httpPost = new HttpPost(uriBuilder.getUri());
+        httpPost.setHeaders(getBasicHeaders());
+        httpPost.setEntity(new StringEntity(jsonObj.toString()));
 
         try {
-            client.getSimpleClient().execute(post, new HttpResponseDecorator());
+            return client.getSimpleClient().execute(httpPost, new HttpResponseDecorator());
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
         throw new RuntimeException("Запрос не выполнен");
     }
+
 
     private Header[] getBasicHeaders() {
         return new Header[]{

@@ -1,4 +1,4 @@
-package Shmidt.DEBT.lesson13_4_restAPI.apiHttp5;
+package Shmidt.tests.apiHttp5;
 
 
 import org.apache.hc.core5.net.URIBuilder;
@@ -6,6 +6,9 @@ import org.apache.hc.core5.net.URIBuilder;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+/**
+ * Собирает ссылку
+ */
 public class CustomUriBuilder extends URIBuilder {
 
     private URI uri;
@@ -17,6 +20,14 @@ public class CustomUriBuilder extends URIBuilder {
     public CustomUriBuilder(String host) {
         try {
             this.uri = new URI(host);
+        } catch (URISyntaxException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public CustomUriBuilder(String host, String parameters) {
+        try {
+            this.uri = new URI(host + "/" + parameters);
         } catch (URISyntaxException e) {
             System.out.println(e.getMessage());
         }

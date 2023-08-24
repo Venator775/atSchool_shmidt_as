@@ -1,4 +1,4 @@
-package Shmidt.DEBT.lesson13_4_restAPI.apiHttp5;
+package Shmidt.tests.apiHttp5;
 
 import org.apache.hc.client5.http.cookie.BasicCookieStore;
 import org.apache.hc.client5.http.cookie.CookieStore;
@@ -13,7 +13,9 @@ public class Client {
     private CookieStore cookieStore = new BasicCookieStore();
 
     public CloseableHttpClient getSimpleClient(){
-        return HttpClientBuilder.create().setDefaultCookieStore(cookieStore).build();
+        return HttpClientBuilder.create()
+                .setDefaultCookieStore(cookieStore)
+                .build();
     }
 
     public CookieStore getCookieStore() {
