@@ -33,7 +33,7 @@
             <DriverManager connectionString="jdbc:postgresql://localhost:5432/testprojectjdbc"
                            driverClassName="org.postgresql.Driver"
                            username="postgres"
-                           password="123456"  />
+                           password="123456"/>
             <Column name="event_time" isEventTimestamp="true"/>
             <Column name="level" pattern="%level" isUnicode="false"/>
             <Column name="logger" pattern="%logger{2}" isUnicode="false"/>
@@ -42,47 +42,49 @@
     </Appenders>
 
     <Loggers>
-        <Logger name="Shmidt.DEBT.lesson14_3_allure_log4j.apiProj.MainApacheTest"
+        <Logger name="Shmidt.DEBT.lesson14_3_allure_log4j.apiProj.MainApacheTest" level="all"
                 additivity="false">
-            <AppenderRef ref="RollingFile" level="all"/>
             <AppenderRef ref="logToConsole" level="info"/>
             <AppenderRef ref="logToFile"/>
-            <AppenderRef ref="databaseAppender" level="all"/>
+            <AppenderRef ref="databaseAppender"/>
+            <AppenderRef ref="RollingFile" level="error"/>
         </Logger>
 
-        <Logger name="Shmidt.DEBT.lesson14_3_allure_log4j.apiProj.DummyJsonClientImpl" level="trace"
+        <Logger name="Shmidt.DEBT.lesson14_3_allure_log4j.apiProj.DummyJsonClientImpl" level="all"
                 additivity="false">
             <AppenderRef ref="logToConsole" level="info"/>
-            <AppenderRef ref="RollingFile" level="all"/>
-            <AppenderRef ref="databaseAppender" level="all"/>
+            <AppenderRef ref="logToFile"/>
+            <AppenderRef ref="databaseAppender"/>
+            <AppenderRef ref="RollingFile" level="error"/>
         </Logger>
 
-        <Logger name="lesson14_3_allure_log4j.apiProj.login.LoginChecks" level="trace"
+        <Logger name="lesson14_3_allure_log4j.apiProj.login.LoginChecks" level="all"
                 additivity="false">
             <AppenderRef ref="logToConsole" level="info"/>
-            <AppenderRef ref="RollingFile" level="all"/>
-            <AppenderRef ref="databaseAppender" level="all"/>
+            <AppenderRef ref="logToFile"/>
+            <AppenderRef ref="databaseAppender"/>
+            <AppenderRef ref="RollingFile" level="error"/>
         </Logger>
 
-        <Logger name="lesson14_3_allure_log4j.apiProj.user.UserChecks" level="trace"
+        <Logger name="lesson14_3_allure_log4j.apiProj.user.UserChecks" level="all"
                 additivity="false">
             <AppenderRef ref="logToConsole" level="info"/>
-            <AppenderRef ref="RollingFile" level="all"/>
-            <AppenderRef ref="databaseAppender" level="all"/>
+            <AppenderRef ref="logToFile"/>
+            <AppenderRef ref="databaseAppender"/>
+            <AppenderRef ref="RollingFile" level="error"/>
         </Logger>
 
         <Logger name="lesson14_3_allure_log4j.apiProj.response.ResponseChecks" level="trace"
                 additivity="false">
             <AppenderRef ref="logToConsole" level="info"/>
-            <AppenderRef ref="RollingFile" level="all"/>
+            <AppenderRef ref="logToFile" level="all"/>
             <AppenderRef ref="databaseAppender" level="all"/>
+            <AppenderRef ref="RollingFile" level="error"/>
         </Logger>
 
-
         <Root level="all">
-            <AppenderRef ref="RollingFile"/>
-            <AppenderRef ref="databaseAppender" level="all"/>
-            <AppenderRef ref="logToFile"/>
+            <AppenderRef ref="databaseAppender"/>
+            <AppenderRef ref="logToFile" level="all"/>
         </Root>
     </Loggers>
 </Configuration>
